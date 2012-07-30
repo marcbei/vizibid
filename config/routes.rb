@@ -1,10 +1,13 @@
 Vizibid::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'pages#home'
 
   match '/about' => 'pages#about'
   match '/signup' => 'users#new'
+  match '/signin' => 'sessions#new'
+  match '/signout' => 'sessions#destroy', :via => :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
