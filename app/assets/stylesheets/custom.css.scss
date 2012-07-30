@@ -94,6 +94,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
+  font-size: 75%;
   a {
     color: #555;
     &:hover { 
@@ -104,10 +105,11 @@ footer {
     float: left; 
   }
   ul {
-    float: right;
+    float: center;
     list-style: none;
+    text-align: center;
     li {
-      float: left;
+      display: inline;
       margin-left: 10px;
     }
   }
@@ -118,9 +120,8 @@ footer {
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   height: auto;
-  margin-bottom: 15px;
   @include box_sizing;
 }
 
