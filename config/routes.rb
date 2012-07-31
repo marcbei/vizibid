@@ -1,6 +1,7 @@
 Vizibid::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :forms
 
   root :to => 'pages#home'
 
@@ -8,6 +9,7 @@ Vizibid::Application.routes.draw do
   match '/signup' => 'users#new'
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
+  match '/share' => 'pages#share'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

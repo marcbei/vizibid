@@ -1,0 +1,10 @@
+<H4>Click on the form below for more details and a download link. </H4>
+
+<br/>
+
+<% @forms.each do |f| %>
+  <tr>
+    <td><%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %></td>
+  </tr>
+  <br/>
+<% end %>
