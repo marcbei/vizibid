@@ -38,6 +38,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: "Times New Roman";
 }
 
 h1 {
@@ -68,9 +69,10 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
+  font-family: "Times New Roman";
   letter-spacing: -1px;
   padding-top: 9px;
+  padding-bottom: 9px;
   font-weight: bold;
   line-height: 1;
 }
