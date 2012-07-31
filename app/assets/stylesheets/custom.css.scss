@@ -67,7 +67,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 2.5em;
   color: #fff;
   font-family: "Times New Roman";
   letter-spacing: -1px;
@@ -149,3 +149,9 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
  }
+
+/* todo: fix this so the negative margin is not needed */
+ .search {
+  margin-top: 10px;
+  margin-bottom: -15px;
+}

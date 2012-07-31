@@ -6,10 +6,10 @@ class Form < ActiveRecord::Base
   validates :form, :presence=>true, :length => {:minimum => 5}
 
   def self.search(search)
-	if search
-    	find(:all, :conditions => ['form ILIKE ?', "%#{search}%"])
-	else
-	    find(:all)
+  	if search
+      	find(:all, :conditions => ['form ILIKE ?', "%#{search}%"])
+  	else
+  	    find(:all)
   	end
   end
 end
