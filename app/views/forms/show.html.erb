@@ -18,9 +18,9 @@
 		<% end %>
 	</div>
 	<div class="span3 offset1">
+		<% if @form.comments.any? %>
 		<h3>Comments:</h3>
 		<ul class="comments">
-			<% if @form.comments.any? %>
 				<% @form.comments.each do |comment| %>
 					<li>
 						<h4><span class="content"><%= comment.content %></span></h4><br/>
@@ -28,8 +28,11 @@
 						<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
 					</li>
 				<% end %>
-			<% end %>
 		</ul>
+		<% end %>
+		<% else %>
+			<h3>Please let us know what you think of this form. </h3>
+		<% end %>
 	</div>
 </div>
 
