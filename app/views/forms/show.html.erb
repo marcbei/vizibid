@@ -21,19 +21,17 @@
 		<% if @form.comments.any? %>
 		<h3>Comments:</h3>
 		<ul class="comments">
-				<% @form.comments.each do |comment| %>
-					<li>
-						<h4><span class="content"><%= comment.content %></span></h4><br/>
-						<span class="content">by <%= comment.user.name %></span>
-						<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
-					</li>
-				<% end %>
+			<% @form.comments.each do |comment| %>
+				<li>
+					<h4><span class="content"><%= comment.content %></span></h4><br/>
+					<span class="content">by <%= comment.user.name %></span>
+					<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
+				</li>
+			<% end %>
 		</ul>
-		<% end %>
 		<% else %>
 			<h3>Please let us know what you think of this form. </h3>
 		<% end %>
 	</div>
 </div>
-
 </div>
