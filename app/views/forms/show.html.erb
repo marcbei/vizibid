@@ -1,6 +1,36 @@
 <% provide(:title, 'Form Details')%>
 
-<H1><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H1>
-<div class="center">
-<a href ="<%= @form.form.url %>" target="_blank">Download</a>
+<div class = "container">
+<br/> 
+<div class="row">
+	<H1><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H1>
+</div>
+<br/>
+<div class = "row">
+	<div class = "span5">
+		<a class="downloadlink" href ="<%= @form.form.url %>" target="_blank">Click to Download</a>
+		<%= form_for(@comment) do |f| %>
+		  <div class="commentfield">
+		    <%= f.text_area :content, placeholder: "Compose new comment..." %>
+		  </div>
+		  <%= hidden_field_tag(:form_id, @form.id) %>
+		  <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
+		<% end %>
+	</div>
+	<div class="span3 offset1">
+		<h3>Comments:</h3>
+		<ul class="comments">
+			<% if @form.comments.any? %>
+				<% @form.comments.each do |comment| %>
+					<li>
+						<h4><span class="content"><%= comment.content %></span></h4><br/>
+						<span class="content">by <%= comment.user.name %></span>
+						<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
 </div>
