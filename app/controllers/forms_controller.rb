@@ -12,7 +12,7 @@ class FormsController < ApplicationController
       flash.now[:error] = "There was a problem with your submission. Please try again."
     end
 
-    redirect_to profile_path
+    redirect_to root_path
   end
 
   def show
