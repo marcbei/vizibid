@@ -1,9 +1,13 @@
-<header class="navbar navbar-fixed-top">
+<% if signed_in? %>
+  <header class="navbar navbar-fixed-top">
+<% else %>
+  <header class="navbar nsignedout">
+<% end %>
   <div class="navbar-inner">
     <div class="container">
       <%= link_to "Vizibid", root_path, :id => "logo" %>
       <nav>
-        <% if signed_in? %>
+          <% if signed_in? %>
           <div class="span3 offset3 search">
             <%= form_tag root_path, :method => 'get' do %>
               <%= text_field_tag :search, params[:search], :placeholder => "Search Forms"%>

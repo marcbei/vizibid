@@ -78,8 +78,13 @@ p {
 }
 
 #logo:hover {
-  color: #33CC33;
+  color: #0070c0;
   text-decoration: none;
+}
+
+/* todo: this is weird */
+.nsignedout {
+  margin-top: -60px;
 }
 
 footer {

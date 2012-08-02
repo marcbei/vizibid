@@ -1,8 +1,52 @@
 <div class = "row-fluid">
-	<div class="span8 well">
-		<h1>Welcome to Vizibid!</h1>
-		<h2>Vizibid helps lawyers find, share, rate, and comment on model forms for legal documents. </h2> 
+	<div class="span8">
+		<!--<h1>Welcome to Vizibid!</h1>
+		<h2>Vizibid helps lawyers find, share, rate, and comment on model forms for legal documents. </h2>-->
+		<br/>
+		<div id="myCarousel" class="carousel slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+		    <div class="active item">
+		    	<%= image_tag("Slide01.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide02.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide03.jpg") %>
+		    </div>
+		      <div class="item">
+		    	<%= image_tag("Slide04.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide05.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide06.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide07.jpg") %>
+		    </div>
+		      <div class="item">
+		    	<%= image_tag("Slide08.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide09.jpg") %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag("Slide10.jpg") %>
+		    </div>
+		     <div class="item">
+		    	<%= image_tag("Slide11.jpg") %>
+		    </div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+
 	</div>
+	<br/>
 	<div class="span3 offset8">
 		<div class = "well">
 			<%= form_for(:session, url: sessions_path) do |f| %>
