@@ -4,7 +4,7 @@ class FormsController < ApplicationController
 
   def create
   	@form = Form.new(params[:form])
-    @form.user_id = current_user.id;
+    @form.user_id = current_user.id
     
     if @form.save
       flash[:success] = "Thank you for your contribution!"
