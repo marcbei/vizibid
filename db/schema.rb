@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803034049) do
+ActiveRecord::Schema.define(:version => 20120803232546) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(:version => 20120803034049) do
 
   create_table "forms", :force => true do |t|
     t.string   "form"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "user_id"
+    t.integer  "num_downloads"
   end
 
   create_table "users", :force => true do |t|

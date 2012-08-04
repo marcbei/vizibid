@@ -11,6 +11,7 @@ Vizibid::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/share' => 'pages#share'
+  match '/download' =>'forms#download', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
