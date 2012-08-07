@@ -4,14 +4,14 @@
 <br/> 
 <div class="row">
 	<H1><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H1>
-	Contributed by: <%= @user %>
-	<br/>Form Downloaded <%= @form.num_downloads %> times</br>
+	<H4>Contributed by: <%= @user %></H4>
+	<br/><H4>Form Downloaded <%= @form.num_downloads %> times</H4></br>
 </div>
 <br/>
 <br/>
 <div class = "row">
 	<div class = "span5">
-		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%>
+		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> <br/>
 		<%= form_for(@comment) do |f| %>
 		  <div class="commentfield">
 		    <%= f.text_area :content, placeholder: "Compose new comment..." %>
@@ -19,6 +19,7 @@
 		  <%= hidden_field_tag(:form_id, @form.id) %>
 		  <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
 		<% end %>
+		<a href="#" style="color: red; text-decoration:underline;">Report this form as unacceptable</a>
 	</div>
 	<div class="span3 offset1">
 		<% if @form.comments.any? %>
