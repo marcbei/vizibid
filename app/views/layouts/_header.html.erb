@@ -9,8 +9,13 @@
       <nav>
           <% if signed_in? %>
           <ul class="nav nav-pills pull-right">
-            <li class="divider-vertical">
-            <li id="fat-menu" class="dropdown">
+              <li class="divider-vertical">
+              <li><%= link_to "Search", root_path %></li> 
+              <li><%= link_to "Request Center", '#' %></li>
+              <li><%= link_to "Share", share_path %></li>
+              <li><%= link_to "History", '#' %></li>
+              <li class="divider-vertical">
+              <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <%= @current_user.name %> <b class="caret"></b>
                 </a>
@@ -22,11 +27,6 @@
                   </li>
                 </ul>
               </li>
-              <li class="divider-vertical">
-              <li><%= link_to "Search", root_path %></li> 
-              <li><%= link_to "Request Center", '#' %></li>
-              <li><%= link_to "Share", share_path %></li>
-              <li><%= link_to "History", '#' %></li>
               <li class="divider-vertical">
           </ul>
         <% end %>
