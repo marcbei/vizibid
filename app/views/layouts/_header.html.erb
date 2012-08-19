@@ -8,20 +8,11 @@
       <%= link_to "Vizibid", root_path, :id => "logo" %>
       <nav>
           <% if signed_in? %>
-          <div class="span3 offset3 search">
-            <%= form_tag root_path, :method => 'get' do %>
-              <%= text_field_tag :search, params[:search], :placeholder => "Search Forms"%>
-            <% end %>
-          </div>
-          <ul class="nav pull-right">
-              <li class="divider-vertical"></li>
-              <li><%= link_to "Home", root_path %></li>
-              <li class="divider-vertical"></li>
-              <li><%= link_to "Share Forms", share_path %></li>
-              <li class="divider-vertical"></li>
-              <li id="fat-menu" class="dropdown">
+          <ul class="nav nav-pills pull-right">
+            <li class="divider-vertical">
+            <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Account <b class="caret"></b>
+                  <%= @current_user.name %> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Profile", current_user %></li>
@@ -31,6 +22,12 @@
                   </li>
                 </ul>
               </li>
+              <li class="divider-vertical">
+              <li><%= link_to "Search", root_path %></li> 
+              <li><%= link_to "Request Center", '#' %></li>
+              <li><%= link_to "Share", share_path %></li>
+              <li><%= link_to "History", '#' %></li>
+              <li class="divider-vertical">
           </ul>
         <% end %>
       </nav>
