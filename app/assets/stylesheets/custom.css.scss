@@ -162,10 +162,9 @@ input, textarea, select, .uneditable-input {
  }
 
 /* todo: fix this so the negative margin is not needed */
- .search {
-  margin-top: 10px;
-  margin-bottom: -15px;
-}
+ .searchbox {
+    width: 500px;
+  }
 
 
 /* comments */

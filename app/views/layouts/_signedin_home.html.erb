@@ -1,12 +1,32 @@
-<H4>Click on the form below for more details and a download link. </H4>
+<br/><br/>
+<H3>Find a model legal document</H3>
 
-<br/>
+<br/> 
 
-<% @forms.each do |f| %>
-  <tr>
-    <td><%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %></td>
-  </tr>
-  <br/>
+<!-- Search Box -->
+<%= form_tag root_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search], :placeholder => "Search Documents", :class => "searchbox"%>
+	<%= submit_tag "Search", :class => "btn btn-info" %>
 <% end %>
 
-</div>
+<!-- Form List -->
+<% if @forms != nil %>
+	<p> <em> Can't find what you're looking for? </em> <%= link_to "Request a Document", '#' %></p>
+
+	<br/>
+	<h4>
+	 Results: <%= @forms.count %> documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort by: <%= link_to "Relevance", '#' %> | <%= link_to "Rating", '#' %> | <%= link_to "Date", '#' %></div>
+	</h4>
+	<br/>
+
+
+	<% @i = 1 %>
+
+	<% @forms.each do |f| %>
+	  <tr>
+	    <td><%= render 'layouts/form_summary', :f => f, :i => @i %></td>
+	  </tr>
+	  <br/>
+	  <% @i += 1 %>
+	<% end %>
+<% end %>

@@ -2,12 +2,13 @@
 #
 # Table name: forms
 #
-#  id          :integer          not null, primary key
-#  form        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :integer
-#  NumDownload :integer
+#  id            :integer          not null, primary key
+#  form          :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :integer
+#  num_downloads :integer
+#  description   :string(255)
 #
 
 require 'spec_helper'

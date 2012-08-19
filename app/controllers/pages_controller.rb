@@ -1,8 +1,14 @@
 class PagesController < ApplicationController
   def home
   	
-  	if signed_in?
-  		@forms = Form.search(params[:search])  		
+  	if signed_in? 
+
+      if params[:search] == nil || params[:search].empty?
+        @forms = nil
+      else
+        @forms = Form.search(params[:search])
+      end
+
   	else
   		@user = User.new
   	end

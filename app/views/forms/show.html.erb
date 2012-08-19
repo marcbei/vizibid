@@ -5,7 +5,8 @@
 <div class="row">
 	<H1><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H1>
 	<H4>Contributed by: <%= @user %></H4>
-	<br/><H4>Form Downloaded <%= @form.num_downloads %> times</H4></br>
+	<br/><H4>Form Downloaded <%= @form.num_downloads %> times</H4>
+	<br/><H4>Description:<br/> <%= @form.description %></H4></br>
 </div>
 <br/>
 <br/>
