@@ -2,8 +2,9 @@
 <h1>Share Forms</h1>
 
 <%= form_for @form, :html => {:multipart => true} do |f| %>
-  <%= f.text_field :description %>
   <div class="field">
+  	<%= f.label :Description %>
+  	<%= f.text_area :description, :size => "10x10" %>
     <%= f.file_field :form %>
   </div>
   <div class="actions">

@@ -2,4 +2,7 @@
 
 <br/>
 
-<%= f.description %>
+<%if f.description%>
+	<%= truncante_description(f.description) %>...
+<% end %>
+

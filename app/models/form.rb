@@ -8,7 +8,7 @@
 #  updated_at    :datetime         not null
 #  user_id       :integer
 #  num_downloads :integer
-#  description   :string(255)
+#  description   :text
 #
 
 class Form < ActiveRecord::Base

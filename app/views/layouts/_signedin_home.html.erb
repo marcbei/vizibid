@@ -4,19 +4,17 @@
 <br/> 
 
 <!-- Search Box -->
-<%= form_tag root_path, :method => 'get' do %>
-	<%= text_field_tag :search, params[:search], :placeholder => "Search Documents", :class => "searchbox"%>
-	<%= submit_tag "Search", :class => "btn btn-info" %>
-<% end %>
+<%= render 'layouts/search' %>
 
 <!-- Form List -->
 <% if @forms != nil %>
-	<p> <em> Can't find what you're looking for? </em> <%= link_to "Request a Document", '#' %></p>
-
+	
 	<br/>
 	<h4>
 	 Results: <%= @forms.count %> documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort by: <%= link_to "Relevance", '#' %> | <%= link_to "Rating", '#' %> | <%= link_to "Date", '#' %></div>
 	</h4>
+
+	<hr/>
 	<br/>
 
 
@@ -26,7 +24,7 @@
 	  <tr>
 	    <td><%= render 'layouts/form_summary', :f => f, :i => @i %></td>
 	  </tr>
-	  <br/>
+	  <br/><hr/>
 	  <% @i += 1 %>
 	<% end %>
 <% end %>

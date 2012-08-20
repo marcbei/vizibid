@@ -1,43 +1,47 @@
 <% provide(:title, 'Form Details')%>
 
-<div class = "container">
 <br/> 
-<div class="row">
-	<H1><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H1>
-	<H4>Contributed by: <%= @user %></H4>
-	<br/><H4>Form Downloaded <%= @form.num_downloads %> times</H4>
-	<br/><H4>Description:<br/> <%= @form.description %></H4></br>
-</div>
-<br/>
-<br/>
-<div class = "row">
-	<div class = "span5">
-		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> <br/>
-		<%= form_for(@comment) do |f| %>
-		  <div class="commentfield">
-		    <%= f.text_area :content, placeholder: "Compose new comment..." %>
-		  </div>
-		  <%= hidden_field_tag(:form_id, @form.id) %>
-		  <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
-		<% end %>
-		<a href="#" style="color: red; text-decoration:underline;">Report this form as unacceptable</a>
+
+<div class = "container">
+	<%= render 'layouts/search' %>
+	<hr/>
+
+	<div class="row">
+		<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
+		<strong>Uploaded by:</strong> <%= @user %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
+		<br/><strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
+		<br/><strong>Description:</strong> <%= @form.description %><br/><br/>
+		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" style="color: red;">Report inappropriate document</a>
+		<br/><br/>
+		<H3>Comments (<%=@comments.count%>)</H3>
+		<hr/>
 	</div>
-	<div class="span3 offset1">
+
+	<div class = "row">
+		<% if !@form.comments.any? %>
+			<h3>Please let us know what you think of this form. </h3>
+		<%end%>
+		<%= form_for(@comment) do |f| %>
+		  	<div class="commentfield">
+		    	<%= f.text_area :content, placeholder: "Compose new comment...", :size=>"1x7" %>
+		  	</div>
+		  	<%= hidden_field_tag(:form_id, @form.id) %>
+		  	<%= f.submit "Save", class: "btn btn-medium btn-primary" %>
+		<% end %>
+
 		<% if @form.comments.any? %>
-		<h3>Comments:</h3>
 		<ul class="comments">
 			<% @form.comments.each do |comment| %>
 				<li>
-					<h4><span class="content"><%= comment.content %></span></h4><br/>
-					<span class="content">by <%= comment.user.name %></span>
-					<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span>
+					<strong><%= comment.user.name %></strong>
+					<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
+					<span class="content"><%= comment.content %></span>
 				</li>
 			<% end %>
 		</ul>
-		<% else %>
-			<h3>Please let us know what you think of this form. </h3>
 		<% end %>
-	</div>
 </div>
 </div>
 
