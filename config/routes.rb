@@ -7,11 +7,13 @@ Vizibid::Application.routes.draw do
   root :to => 'pages#home'
 
   match '/about' => 'pages#about'
+  match '/requestcenter' => 'pages#requestcenter'
+  match '/history' => 'pages#history'
+  match '/share' => 'pages#share'
   match '/signup' => 'users#new'
+  match '/download' =>'forms#download', :via => :get
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
-  match '/share' => 'pages#share'
-  match '/download' =>'forms#download', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

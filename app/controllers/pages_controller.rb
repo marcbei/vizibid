@@ -22,6 +22,14 @@ class PagesController < ApplicationController
   	signed_in_user
 
   	@form = Form.new
-
   end
+
+  def requestcenter
+    signed_in_user
+  end
+
+  def history
+    signed_in_user
+  end
+
 end
