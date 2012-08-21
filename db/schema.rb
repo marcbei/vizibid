@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820031015) do
+ActiveRecord::Schema.define(:version => 20120821054020) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120820031015) do
     t.integer  "user_id"
     t.integer  "num_downloads"
     t.text     "description"
+    t.string   "jurisdiction"
   end
 
   create_table "users", :force => true do |t|

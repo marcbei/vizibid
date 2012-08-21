@@ -7,6 +7,7 @@ class FormsController < ApplicationController
     @form.user_id = current_user.id
     @form.num_downloads = 0
     @form.description = params[:form][:description]
+    @form.jurisdiction = params[:form][:jurisdiction]
     
     if @form.save
       flash[:success] = "Thank you for your contribution!"

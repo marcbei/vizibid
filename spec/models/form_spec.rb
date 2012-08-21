@@ -9,6 +9,7 @@
 #  user_id       :integer
 #  num_downloads :integer
 #  description   :text
+#  jurisdiction  :string(255)
 #
 
 require 'spec_helper'

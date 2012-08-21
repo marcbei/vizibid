@@ -9,9 +9,26 @@
 <!-- Form List -->
 <% if @forms != nil %>
 	
-	<br/>
+	<hr/>
 	<h4>
-	 Results: <%= @forms.count %> documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort by: <%= link_to "Relevance", '#' %> | <%= link_to "Rating", '#' %> | <%= link_to "Date", '#' %></div>
+	 Results: <%= @forms.count %> documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	 <br/><br/>
+	 Sort results by:
+	 <br/><br/>
+	 <ul class="nav nav-pills">
+  		<li class = "active">
+    		<%= link_to "Relevance", '#'%>
+  		</li>
+  		<li>
+  			<%= link_to "Rating", '#' %>
+  		</li>
+  		<li>
+  			<%= link_to "Date", '#' %>
+  		</li>
+	</ul>
+
+	</div>
 	</h4>
 
 	<hr/>

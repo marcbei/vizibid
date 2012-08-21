@@ -132,6 +132,10 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+.jurisdropdown{
+  width: 70px;
+}
+
 .commentfield
 {
   margin-top: 15px;

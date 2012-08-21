@@ -10,10 +10,18 @@
           <% if signed_in? %>
           <ul class="nav nav-pills pull-right">
               <li class="divider-vertical">
-              <li><%= link_to "Search", root_path %></li> 
-              <li><%= link_to "Request Center", requestcenter_path %></li>
-              <li><%= link_to "Share", share_path %></li>
-              <li><%= link_to "History", history_path %></li>
+              <li class="<%= 'active' if current_page?(root_path) %>">
+                <%= link_to "Search", root_path %>
+              </li> 
+              <li class="<%= 'active' if current_page?(requestcenter_path) %>">
+                <%= link_to "Request Center", requestcenter_path %>
+              </li>
+              <li class="<%= 'active' if current_page?(share_path) %>">
+                <%= link_to "Share", share_path %>
+              </li>
+              <li class="<%= 'active' if current_page?(history_path) %>">
+                <%= link_to "History", history_path %>
+              </li>
               <li class="divider-vertical">
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

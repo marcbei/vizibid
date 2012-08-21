@@ -2,7 +2,14 @@
 
 <br/>
 
-<%if f.description%>
+<% if f.jurisdiction %>
+	<em><%= f.jurisdiction %></em>
+<% end %>
+
+<br/>
+
+<% if f.description %>
 	<%= truncante_description(f.description) %>...
 <% end %>
+
 

@@ -9,17 +9,19 @@
 #  user_id       :integer
 #  num_downloads :integer
 #  description   :text
+#  jurisdiction  :string(255)
 #
 
 class Form < ActiveRecord::Base
-  attr_accessible :form, :user_id, :NumDownload, :description
+  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction
 
   mount_uploader :form, FormsUploader
 
   has_many :comments
   belongs_to :user
 
-  validates :form, :presence=>true, :length => {:minimum => 5}
+  validates :form, :presence => true, :length => {:minimum => 5}
+  validates :jurisdiction, :presence => true
 
   def self.search(search)
   	if search

@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+	$('ul.nav.nav-pills li a').click(function() {			
+	    $(this).parent().addClass('active').siblings().removeClass('active');			
+	});
+});
