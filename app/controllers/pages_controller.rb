@@ -26,6 +26,9 @@ class PagesController < ApplicationController
 
   def requestcenter
     signed_in_user
+
+    @form_requests = FormRequest.find(:all, :conditions => [ "fufilled != true"])
+
   end
 
   def history

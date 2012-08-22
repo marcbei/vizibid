@@ -1,0 +1,24 @@
+<%=@i%>. <%= link_to f.name, f %>
+
+<br/>
+
+<% if f.jurisdiction %>
+	<em><%= f.jurisdiction %></em>
+<% end %>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Requested <%= time_ago_in_words(f.created_at) %> ago
+<% if f.anonymous == true %>
+(anonymous)
+<% else %>
+by <%=f.user.name%>
+<% end %>
+
+<br/>
+
+<% if f.description %>
+	<%= truncante_description(f.description) %>...
+<% end %>
+
+
+

@@ -17,6 +17,8 @@
 class FormRequest < ActiveRecord::Base
   attr_accessible :anonymous, :description, :fufilled, :jurisdiction, :keywords, :name
 
+  belongs_to :user
+
   validates :description, :presence => true
   validates :jurisdiction, :presence => true
   validates :name, :presence => true

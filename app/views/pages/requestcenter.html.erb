@@ -1,2 +1,45 @@
 <% provide(:title, 'Request Center') %>
-<h1>Request Center</h1>
+<br/>
+<h3>Request Center</h3>
+<br/>
+<!-- Form Request List -->
+<% if @form_requests != nil %>
+	
+	<h3><%= @form_requests.count %> Outstanding Requests</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br/>
+	 Sort results by:
+	 <br/><br/>
+	 <ul class="nav nav-pills">
+  		<li class = "active">
+    		<%= link_to "Newest", '#'%>
+  		</li>
+  		<li>
+  			<%= link_to "Oldest", '#' %>
+  		</li>
+  		<li>
+  			<%= link_to "A to Z", '#' %>
+  		</li>
+  		 <li>
+  			<%= link_to "Z to A", '#' %>
+  		</li>
+	</ul>
+
+	</h4>
+	<%= link_to "Request a Document", new_form_request_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= link_to "View Your Requests", '#' %>
+	<hr/>
+	<br/>
+
+
+	<% @i = 1 %>
+
+	<% @form_requests.each do |f| %>
+	  <% if f.fufilled != true %>
+	  <tr>
+	    <td><%= render 'layouts/form_request_summary', :f => f, :i => @i %></td>
+	  </tr>
+	  <br/><hr/>
+	  <% @i += 1 %>
+	  <% end %>
+	<% end %>
+<% end %>

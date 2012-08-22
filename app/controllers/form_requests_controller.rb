@@ -9,10 +9,7 @@ class FormRequestsController < ApplicationController
 	def create
 		@form_request = FormRequest.new(params[:form_request])
 		@form_request.user_id = current_user.id
-		#@form_request.description = params[:form_request][:description]
-		#@form_request.keywords = params[:form_request][:keywords]
-		#@form_request.anonymous = params[:form_request][:anonymous]
-		#@form_request.name = params[:form_request][:name]
+		@form_request.fufilled = false
 
 		if @form_request.save
 		  flash[:success] = "Thank you for your request!"
@@ -22,4 +19,9 @@ class FormRequestsController < ApplicationController
 
 		redirect_to requestcenter_path
 	end
+
+	def show
+		@form_request = FormRequest.find(params[:id])
+	end
+
 end
