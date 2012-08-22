@@ -1,9 +1,12 @@
 <% provide(:title, 'Share Forms') %>
+
 <h1>Share Forms</h1>
+<strong><p>Complete and submit this form to upload a new model legal document to Vizibid.</p></strong>
+
 <%= form_for @form, :html => {:multipart => true} do |f| %>
   <div class="field">
   	<%= f.label :Description %>
-  	<%= f.text_area :description, :size => "10x10" %>
+  	<%= f.text_area :description, :size => "10x10", :placeholder => "Describe the document you want, being as specific as possible." %>
   	<%= f.label :Jurisdiction %>
   	<div class = "jurisdropdown">
   		<%= f.select :jurisdiction, options_for_select(us_states) %>
