@@ -1,5 +1,13 @@
 <%=@i%>. <%= link_to f.name, f %>
 
+<% if showstatus ==  "true" %>
+	<% if f.fufilled == true %>
+		&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fufilled</strong>
+	<% else %>
+		&nbsp;&nbsp;&nbsp;&nbsp;<strong>Not Fufilled</strong>
+	<% end %>
+<% end %>
+
 <br/>
 
 <% if f.jurisdiction %>
@@ -8,14 +16,16 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Requested <%= time_ago_in_words(f.created_at) %> ago
-<% if f.anonymous == true %>
-(anonymous)
-<% else %>
-by <%=f.user.name%>
+
+<% if showstatus !=  "true" %>
+	<% if f.anonymous == true %>
+		(anonymous)
+	<% else %>
+		by <%=f.user.name%>
+	<% end %>
 <% end %>
 
 <br/>
-
 <% if f.description %>
 	<%= truncante_description(f.description) %>...
 <% end %>

@@ -27,7 +27,11 @@ class PagesController < ApplicationController
   def requestcenter
     signed_in_user
 
-    @form_requests = FormRequest.find(:all, :conditions => [ "fufilled != true"])
+    if(params[:scope] == "me")
+      @form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}'"])
+    else
+      @form_requests = FormRequest.find(:all, :conditions => [ "fufilled != true"])
+    end
 
   end
 

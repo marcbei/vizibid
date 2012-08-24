@@ -1,0 +1,36 @@
+	<h3>You have <%= @form_requests.count %> requests</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br/>
+	 Sort results by:
+	 <br/><br/>
+	 <ul class="nav nav-pills">
+  		<li class = "active">
+    		<%= link_to "Newest", '#'%>
+  		</li>
+  		<li>
+  			<%= link_to "Oldest", '#' %>
+  		</li>
+  		<li>
+  			<%= link_to "A to Z", '#' %>
+  		</li>
+  		 <li>
+  			<%= link_to "Z to A", '#' %>
+  		</li>
+	</ul>
+
+	</h4>
+	<%= link_to "View All Requests", requestcenter_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= link_to "Request a Document", new_form_request_path %>
+	
+	<hr/>
+	<br/>
+
+
+	<% @i = 1 %>
+
+	<% @form_requests.each do |f| %>
+	  <tr>
+	    <td><%= render 'layouts/form_request_summary', :f => f, :i => @i, :showstatus => 'true' %></td>
+	  </tr>
+	  <br/><hr/>
+	  <% @i += 1 %>
+	<% end %>

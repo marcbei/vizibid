@@ -2,9 +2,10 @@
 
 <br/><br/>
 
-<%= link_to "Back to Request Documents", requestcenter_path %>
-<br/><%= link_to "View Your Requests", '#' %>
-<br/><br/>
+<%= link_to "Back to Requested Documents", requestcenter_path %>
+<br/><%= link_to "View Your Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>
+<br/>
+<br/>
 
 <H3><%= @form_request.name %></H3>
 
