@@ -11,7 +11,9 @@
   	<div class = "jurisdropdown">
   		<%= f.select :jurisdiction, options_for_select(us_states) %>
   	</div>
-    <%= f.file_field :form %>
+      <%= f.label :Keywords %>
+      <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're uploading for seperate by a comma. E.g., contract, divorce, etc." %>
+      <%= f.file_field :form %>
   </div>
   <div class="actions">
     <%= f.submit "Upload", :class => "btn btn-large btn-success"%>

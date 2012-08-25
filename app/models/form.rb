@@ -10,10 +10,11 @@
 #  num_downloads :integer
 #  description   :text
 #  jurisdiction  :string(255)
+#  keywords      :string(255)
 #
 
 class Form < ActiveRecord::Base
-  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction
+  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords
 
   mount_uploader :form, FormsUploader
 

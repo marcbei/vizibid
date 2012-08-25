@@ -12,6 +12,12 @@
 		<strong>Uploaded by:</strong> <%= @user %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
 		<strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
 		<br/><strong>Description:</strong> <%= @form.description %><br/><br/>
+		<% if @form.keywords != nil %>
+			<% if @form.keywords.length > 0 %>
+				<em>Associated Keywords:</em><br/> <%= @form.keywords %></H1>
+				<br/><br/>
+			<% end %>
+		<% end %>
 		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" style="color: red;">Report inappropriate document</a>

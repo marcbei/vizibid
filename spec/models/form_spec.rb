@@ -10,6 +10,7 @@
 #  num_downloads :integer
 #  description   :text
 #  jurisdiction  :string(255)
+#  keywords      :string(255)
 #
 
 require 'spec_helper'
