@@ -9,10 +9,6 @@
 
 <%= render 'layouts/form_request_details' %>
 
-<br/><br/>
-<a href="#" style="color: red;">Report inappropriate request</a>
-<br/><br/>
-
 <% if @form_request.forms.count >0 %>
 <h3>Submissions</h3>
 <% @i = 1 %>
@@ -38,6 +34,9 @@
 			<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
 		<% end %>
 	<% else %>
+		<br/><br/>
+		<a href="#" style="color: red;">Report inappropriate request</a>
+		<br/><br/>
 		<%= button_to "Submit a Document", edit_form_request_path(@form_request.id), :method => :get, :class => "btn btn-info" %>
 	<% end %>
 <% else %>
