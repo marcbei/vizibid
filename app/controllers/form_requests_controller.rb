@@ -24,4 +24,10 @@ class FormRequestsController < ApplicationController
 		@form_request = FormRequest.find(params[:id])
 	end
 
+	def edit
+		@form_request = FormRequest.find(params[:id])
+
+		@form = Form.new
+	end
+
 end

@@ -8,11 +8,17 @@ class FormsController < ApplicationController
     @form.num_downloads = 0
     @form.description = params[:form][:description]
     @form.jurisdiction = params[:form][:jurisdiction]
-    
+
     if @form.save
+      if(params[:requestid] != nil)
+        @form_request = FormRequest.find(params[:requestid])
+
+        @form_request.fufilled = true
+        @form_request.id = @form.id
+        @form_request.save
+      end
       flash[:success] = "Thank you for your contribution!"
     else
-
       flash.now[:error] = "There was a problem with your submission. Please try again."
     end
 

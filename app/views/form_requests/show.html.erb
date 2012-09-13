@@ -7,31 +7,9 @@
 <br/>
 <br/>
 
-<H3><%= @form_request.name %></H3>
-
-<% if @form_request.jurisdiction %>
-	<em><%= @form_request.jurisdiction %></em>
-<% end %>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Requested <%= time_ago_in_words(@form_request.created_at) %> ago
-<% if @form_request.anonymous == true %>
-(anonymous)
-<% else %>
-by <%=@form_request.user.name%>
-<% end %>
+<%= render 'layouts/form_request_details' %>
 
 <br/><br/>
 
-<em>Requester's Description:</em><br/> <%= @form_request.description %>
-
-<br/><br/>
-
-<% if @form_request.keywords.length > 0 %>
-<em>Requester's Suggested Keywords:</em><br/> <%= @form_request.keywords %></H1>
-<% end %>
-
-<br/><br/>
-<button class="btn btn-info" type="button">Fufill Request</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#" style="color: red;">Report inappropriate document</a>
+<%= button_to "Fufill Request", edit_form_request_path(@form_request.id), :method => :get, :class => "btn btn-info" %>
+<a href="#" style="color: red;">Report inappropriate request</a>
