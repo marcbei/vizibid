@@ -23,6 +23,7 @@
 
 <br/><br/>
 <%end%>
+<br/><br/>
 
 <!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
 <% if @form_request.fufilled == false %>
@@ -34,7 +35,6 @@
 			<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
 		<% end %>
 	<% else %>
-		<br/><br/>
 		<a href="#" style="color: red;">Report inappropriate request</a>
 		<br/><br/>
 		<%= button_to "Submit a Document", edit_form_request_path(@form_request.id), :method => :get, :class => "btn btn-info" %>
