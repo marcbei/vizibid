@@ -12,19 +12,20 @@ class FormsController < ApplicationController
     if @form.save
 
       if(params[:requestid] != nil)
-        @form_request = FormRequest.find(params[:requestid].to_i)
 
-        @form_request.fufilled = true
-        @form_request.form_id = @form.id
-        @form_request.save
+        @request_submission = RequestSubmission.new
+
+        @request_submission.form_request_id = params[:requestid].to_s
+        @request_submission.form_id = @form.id
+        @request_submission.save
       end
 
       flash[:success] = "Thank you for your contribution!"
+      redirect_to form_path(@form.id)
     else
-      flash.now[:error] = "There was a problem with your submission. Please try again."
+      flash[:error] = "There was a problem with your submission. Please try again."
+      redirect_to form_create_path
     end
-
-    redirect_to root_path
   end
 
   def show

@@ -1,12 +1,19 @@
 <%=@i%>. <%= link_to f.name, f %>
 
-<% if showstatus ==  "true" %>
+<%# if showstatus ==  "true" %>
 	<% if f.fufilled == true %>
-		&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fufilled</strong>
+		&nbsp;&nbsp;&nbsp;&nbsp;<strong>Request Completed</strong>
 	<% else %>
-		&nbsp;&nbsp;&nbsp;&nbsp;<strong>Not Fufilled</strong>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= f.forms.count %>
+		<% if f.forms.count == 0 %>
+			submissions
+		<%else%>
+			submission
+		<%end%>
+		 
 	<% end %>
-<% end %>
+<%# end %>
 
 <br/>
 
@@ -21,7 +28,7 @@ Requested <%= time_ago_in_words(f.created_at) %> ago
 	<% if f.anonymous == true %>
 		(anonymous)
 	<% else %>
-		by <%=f.user.name%>
+		by <%=link_to f.user.name, user_path(f.user.id)%>
 	<% end %>
 <% end %>
 

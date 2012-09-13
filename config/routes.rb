@@ -16,6 +16,7 @@ Vizibid::Application.routes.draw do
   match '/download' =>'forms#download', :via => :get
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
+  match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

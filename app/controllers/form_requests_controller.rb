@@ -20,14 +20,48 @@ class FormRequestsController < ApplicationController
 		redirect_to requestcenter_path
 	end
 
+	def update
+		@form_request = FormRequest.find(params[:id])
+
+ 		@form_request.update_attributes(params[:form_request])
+		if @form_request.save
+		  flash[:success] = "Edits saved!"
+		else
+		  flash.now[:error] = "There was a problem with your request. Please try again."
+		end
+
+		redirect_to form_request_path(params[:id])
+	end
+
 	def show
 		@form_request = FormRequest.find(params[:id])
 	end
 
 	def edit
+
 		@form_request = FormRequest.find(params[:id])
 
 		@form = Form.new
 	end
 
+	def destroy
+		@form_request = FormRequest.find(params[:id])
+		@form_request.delete
+
+		flash[:success] = "Request deleted!"
+
+		redirect_to requestcenter_path
+	end
+
+	def completerequest
+
+		if(params[:id] != nil)
+			@form_request = FormRequest.find(params[:id].to_i)
+			@form_request.fufilled = true
+			@form_request.save
+			redirect_to form_request_path(params[:id].to_i)
+		else
+			redirect_to requestcenter_path
+		end
+	end
 end

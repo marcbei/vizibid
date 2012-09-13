@@ -7,30 +7,37 @@
 <%= link_to "Request a Document", new_form_request_path %>
 <br/><br/>
 
+
 <h3> Requested Document: </h3>
 <br/>
 <div id = "requestsummary">
-	<%= render 'layouts/form_request_details' %>
+  <% if @form_request.user.id != current_user.id %>
+	  <%= render 'layouts/form_request_details' %>
+  <% else %>
+    <%= render 'layouts/edit_form_request_details' %>
+  <% end %>
 </div>
 
 <br/>
 
-<h3> Your Submission:</h3>
-<br/>
-<%= form_for @form, :html => {:multipart => true} do |f| %>
-  <div class="field">
-  	<%= f.label :Description %>
-  	<%= f.text_area :description, :size => "10x10", :placeholder => "Describe the document being as specific as possible." %>
-  	<%= f.label :Jurisdiction %>
-  	<div class = "jurisdropdown">
-  		<%= f.select :jurisdiction, options_for_select(us_states) %>
-  	</div>
-      <%= f.label :Keywords %>
-      <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're uploading for seperate by a comma. E.g., contract, divorce, etc." %>
-      <%= f.file_field :form %>
-      <%= hidden_field_tag :requestid, @form_request.id.to_s %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Upload", :class => "btn btn-large btn-success" %>
-  </div>
+<% if @form_request.user.id != current_user.id %>
+  <h3> Your Submission:</h3>
+  <br/>
+  <%= form_for @form, :html => {:multipart => true} do |f| %>
+    <div class="field">
+    	<%= f.label :Description %>
+    	<%= f.text_area :description, :size => "10x10", :placeholder => "Describe the document being as specific as possible." %>
+    	<%= f.label :Jurisdiction %>
+    	<div class = "jurisdropdown">
+    		<%= f.select :jurisdiction, options_for_select(us_states) %>
+    	</div>
+        <%= f.label :Keywords %>
+        <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're uploading for seperate by a comma. E.g., contract, divorce, etc." %>
+        <%= f.file_field :form %>
+        <%= hidden_field_tag :requestid, @form_request.id.to_s %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Upload", :class => "btn btn-large btn-success" %>
+    </div>
+  <% end %>
 <% end %>

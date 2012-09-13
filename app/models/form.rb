@@ -20,6 +20,8 @@ class Form < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user
+  has_many :RequestSubmissions
+  has_many :formrequests, :through => :RequestSubmissions
 
   validates :form, :presence => true, :length => {:minimum => 5}
   validates :jurisdiction, :presence => true

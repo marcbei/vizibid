@@ -9,7 +9,7 @@
 	<div class="row">
 		<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
 		<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
-		<strong>Uploaded by:</strong> <%= @user %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
+		<strong>Uploaded by:</strong> <%=link_to @user, user_path(@form.user.id) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
 		<strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
 		<br/><strong>Description:</strong> <%= @form.description %><br/><br/>
 		<% if @form.keywords != nil %>
