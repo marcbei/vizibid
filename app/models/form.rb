@@ -18,10 +18,11 @@ class Form < ActiveRecord::Base
 
   mount_uploader :form, FormsUploader
 
-  has_many :comments
-  belongs_to :user
   has_many :RequestSubmissions
   has_many :formrequests, :through => :RequestSubmissions
+
+  has_many :comments
+  belongs_to :user
 
   validates :form, :presence => true, :length => {:minimum => 5}
   validates :jurisdiction, :presence => true

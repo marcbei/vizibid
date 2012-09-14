@@ -6,19 +6,28 @@
 
 
 <%= form_for @form_request do |fr| %>
-	<%= fr.label :Name %>
-	<%= fr.text_field :name, :placeholder => "Choose a name that will help other users recognize what you're looking for." %>
-  	<%= fr.label :Description %>
-  	<%= fr.text_area :description, :size => "10x10", :placeholder => "Describe the document you want, being as specific as possible." %>
-  	<%= fr.label :Jurisdiction %>
-  	<div class = "jurisdropdown">
+	   Name
+	  <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name that is descriptive of the document you are requesting. Make sure the name will help other users understand what this document is.">?</a></u>
+    <%= fr.text_field :name %>
+  	
+    Description
+  	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs.">?</a></u>
+    <%= fr.text_area :description, :size => "10x10" %>
+  	
+    Jurisdiction
+  	<u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any".">?</a></u>
+    <div class = "jurisdropdown">
   		<%= fr.select :jurisdiction, options_for_select(us_states) %>
   	</div>
-  	<%= fr.label :Keywords %>
-  	<%= fr.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're looking for seperate by a comma. E.g., contract, divorce, etc." %>
-	<div style="display: inline;">
-		<%= fr.check_box :anonymous, :style=>"display: inline;" %>
+
+  	Keywords
+    <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better.">?</a></u>
+  	<%= fr.text_area :keywords, :size => "10x5" %>
+	  
+    <div style="display: inline;">
+		  <%= fr.check_box :anonymous, :style=>"display: inline;" %>
   		<%= fr.label :'Make Request Anonymously', :style=>"display: inline;" %>
+      <u><a href="#" rel="tooltip" data-placement="right" style="display: inline;" title="If this box is checked, your name will not be revealed in connection with your request. This box is checked by default.">?</a></u>
   	</div>
   	<br/><br/>
     <%= fr.submit "Submit Request", :class => "btn btn-large btn-success"%>

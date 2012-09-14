@@ -44,4 +44,10 @@
 	  <br/><hr/>
 	  <% @i += 1 %>
 	<% end %>
+<% else %>
+	<br/>
+	<h3>You have:</h3><br/>
+	<%= link_to current_user.form_requests.where("fufilled != true").count, :controller => "pages", :action => "requestcenter", :scope => "me" %> open requests <br/><br/>
+	<%= link_to current_user.form_requests.where("fufilled = true").count, :controller => "pages", :action => "requestcenter", :scope => "me" %> completed requests <br/><br/>
+	uploaded <%= link_to current_user.forms.count, history_path %> documents<br/>
 <% end %>

@@ -20,3 +20,9 @@ $(document).ready(function() {
 	    $(this).parent().addClass('active').siblings().removeClass('active');			
 	});
 });
+
+ $(document).ready(function () {
+	 if ($("[rel=tooltip]").length) {
+	 $("[rel=tooltip]").tooltip();
+	 }
+});
