@@ -12,6 +12,6 @@
 class RequestSubmission < ActiveRecord::Base
    attr_accessible :formrequest_id, :form_id
 
-   belongs_to :formrequest
+   belongs_to :form_request
    belongs_to :form
 end
