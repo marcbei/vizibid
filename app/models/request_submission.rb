@@ -2,11 +2,11 @@
 #
 # Table name: request_submissions
 #
-#  id             :integer          not null, primary key
-#  formrequest_id :integer
-#  form_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  form_id         :integer
+#  form_request_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class RequestSubmission < ActiveRecord::Base

@@ -26,17 +26,17 @@
   <%= form_for @form, :html => {:multipart => true} do |f| %>
     <div class="field">
     	Description
-    	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs.">?</a></u>
+    	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
       <%= f.text_area :description, :size => "10x10" %>
     	
       Jurisdiction
-      <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any".">?</a></u>
+      <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
     	<div class = "jurisdropdown">
     		<%= f.select :jurisdiction, options_for_select(us_states) %>
     	</div>
         
         Keywords
-        <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better.">?</a></u>
+        <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
         <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're uploading for seperate by a comma. E.g., contract, divorce, etc." %>
         <%= f.file_field :form %>
         <%= hidden_field_tag :requestid, @form_request.id.to_s %>

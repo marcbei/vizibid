@@ -7,7 +7,11 @@
 	<hr/>
 
 	<div class="row">
-		<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
+		<% if @form.name != nil %>
+			<H3><%= @form.name %><H3>
+		<% else %>
+			<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
+		<% end %>
 		<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
 		<strong>Uploaded by:</strong> <%=link_to @user, user_path(@form.user.id) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
 		<%if @form.form_requests.count > 0 %>

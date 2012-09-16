@@ -1,4 +1,9 @@
-<%=@i%>. <%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %>
+<%=@i%>. 
+<% if f.name != nil %>
+	<%= link_to f.name, f %>
+<% else %>
+	<%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %>
+<% end %>
 
 <br/>
 Submitted by: <%= link_to f.user.name, user_path(f.user.id) %>

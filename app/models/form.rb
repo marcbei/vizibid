@@ -11,10 +11,10 @@
 #  description   :text
 #  jurisdiction  :string(255)
 #  keywords      :string(255)
-#
+#  name          :string(255)
 
 class Form < ActiveRecord::Base
-  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords
+  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name
 
   mount_uploader :form, FormsUploader
 
@@ -25,6 +25,7 @@ class Form < ActiveRecord::Base
   belongs_to :user
 
   validates :form, :presence => true, :length => {:minimum => 5}
+  validates :name, :presence => true
   validates :jurisdiction, :presence => true
 
   def self.search(search)
