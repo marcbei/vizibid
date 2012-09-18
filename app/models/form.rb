@@ -33,7 +33,7 @@ class Form < ActiveRecord::Base
 
   def self.search(search)
   	if search
-      	find(:all, :conditions => ['form ILIKE ?', "%#{search}%"])
+      	find(:all, :conditions => ['name ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%"])
   	else
   	    find(:all)
   	end
