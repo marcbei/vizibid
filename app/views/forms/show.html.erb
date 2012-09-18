@@ -20,7 +20,7 @@
 		<strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
 		<strong>Average Rating: </strong> 
 		<% if !@form.average_rating.nan? %>
-			<%= @form.average_rating %> <br/>
+			<%= @form.average_rating %>
 		<% else %>
 			Document has no ratings.
 		<% end %>
@@ -36,12 +36,13 @@
 		<a href="#" style="color: red;">Report inappropriate document</a>
 		<br/><br/>
 		<% if @form.user.id != current_user.id %>
-			<%if current_user_rating(@form.id) != "N/A" %>
-			Your rating:
-			<% else %>
-			Rate this form:
-			<% end %>
-			<br/><br/>
+			<div id = "ratingstext">
+				<%if current_user_rating(@form.id) != "N/A" %>
+				Your rating:<br/><br/>
+				<% else %>
+				Rate this form:<br/><br/>
+				<% end %>
+			</div>
 			<%= render 'layouts/ratings_form' %>
 			<br/><br/>
 		<% end %>
