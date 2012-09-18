@@ -9,6 +9,11 @@
 Submitted by: <%= link_to f.user.name, user_path(f.user.id) %>
 <br/>
 
+
+<% if !f.average_rating.nan? %>
+	Average Rating: <%= f.average_rating %> <br/>
+<% end %>
+
 <% if f.jurisdiction %>
 	<em><%= f.jurisdiction %></em>
 <% end %>

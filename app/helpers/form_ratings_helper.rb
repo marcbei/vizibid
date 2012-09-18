@@ -1,0 +1,2 @@
+module FormRatingsHelper
+end

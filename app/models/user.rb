@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
+  has_many :form_ratings
+  has_many :rated_forms, :through => :form_ratings, :source => :forms
+
   has_many :comments
   has_many :forms
   has_many :form_requests

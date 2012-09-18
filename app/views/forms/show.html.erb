@@ -4,7 +4,7 @@
 
 <div class = "container">
 	<%= render 'layouts/search' %>
-	<hr/>
+	<br/>
 
 	<div class="row">
 		<% if @form.name != nil %>
@@ -18,6 +18,12 @@
 			<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
 		<% end %>
 		<strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
+		<strong>Average Rating: </strong> 
+		<% if !@form.average_rating.nan? %>
+			<%= @form.average_rating %> <br/>
+		<% else %>
+			Document has no ratings.
+		<% end %>
 		<br/><strong>Description:</strong> <%= @form.description %><br/><br/>
 		<% if @form.keywords != nil %>
 			<% if @form.keywords.length > 0 %>
@@ -29,6 +35,16 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" style="color: red;">Report inappropriate document</a>
 		<br/><br/>
+		<% if @form.user.id != current_user.id %>
+			<%if current_user_rating(@form.id) != "N/A" %>
+			Your rating:
+			<% else %>
+			Rate this form:
+			<% end %>
+			<br/><br/>
+			<%= render 'layouts/ratings_form' %>
+			<br/><br/>
+		<% end %>
 		<H3>Comments (<%=@comments.count%>)</H3>
 		<hr/>
 	</div>
@@ -58,7 +74,7 @@
 		<% end %>
 </div>
 </div>
-
+</div>
 
 <!-- modal dialogue for not signed in user???
 
