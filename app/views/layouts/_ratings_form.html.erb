@@ -1,7 +1,4 @@
-<% content_for(:scripts) do %>
-<%= javascript_include_tag 'rating_ballot' %>
-<% end %>
-  
+
   <%= form_for ratings_ballot(@form.id), :remote => true, :html => {:class => 'rating_ballot', :id => 'rating'} do |f| %>
   	<%= f.label "value_1", content_tag(:span, '1'), :class=>"rating", :id=>"1" %>
   	<%= radio_button_tag "rating[value]", 1, current_user_rating(@form.id) == 1, :class => 'rating_button', :id =>"form_rating_value_1" %>
