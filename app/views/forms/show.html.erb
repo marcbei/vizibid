@@ -38,9 +38,9 @@
 		<% if @form.user.id != current_user.id %>
 			<div id = "ratingstext">
 				<%if current_user_rating(@form.id) != "N/A" %>
-				Your rating:<br/><br/>
+					<h3>Your rating:</h3><br/>
 				<% else %>
-				Rate this form:<br/><br/>
+					<h3>Rate this form:</h3><br/>
 				<% end %>
 			</div>
 			<%= render 'layouts/ratings_form' %>
