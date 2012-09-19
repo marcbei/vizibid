@@ -23,8 +23,14 @@ class FormsController < ApplicationController
       flash[:success] = "Thank you for your contribution!"
       redirect_to form_path(@form.id)
     else
+
       flash[:error] = "There was a problem with your submission. Please try again."
-      redirect_to form_create_path
+      
+      if(params[:requestid] != nil)
+        redirect_to edit_form_request_path(params[:requestid].to_s)
+      else
+        redirect_to share_path
+      end
     end
   end
 
