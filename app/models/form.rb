@@ -2,16 +2,16 @@
 #
 # Table name: forms
 #
-#  id            :integer          not null, primary key
-#  form          :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :integer
-#  num_downloads :integer
-#  description   :text
-#  jurisdiction  :string(255)
-#  keywords      :string(255)
-#  name          :string(255)
+#  id           :integer          not null, primary key
+#  form         :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
+#  description  :text
+#  jurisdiction :string(255)
+#  keywords     :string(255)
+#  name         :string(255)
+#
 
 class Form < ActiveRecord::Base
   attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name
@@ -22,7 +22,10 @@ class Form < ActiveRecord::Base
   has_many :form_requests, :through => :RequestSubmissions
 
   has_many :form_ratings
-  has_many :raters, :through => :form_ratings, :source => :users
+  has_many :raters, :through => :form_ratings, :source => :user
+
+  has_many :form_downloads
+  has_many :downloads, :through => :form_downloads, :source => :user
 
   has_many :comments
   belongs_to :user

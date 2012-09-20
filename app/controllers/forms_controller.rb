@@ -5,7 +5,6 @@ class FormsController < ApplicationController
   def create
   	@form = Form.new(params[:form])
     @form.user_id = current_user.id
-    @form.num_downloads = 0
     @form.description = params[:form][:description]
     @form.jurisdiction = params[:form][:jurisdiction]
 
@@ -43,8 +42,11 @@ class FormsController < ApplicationController
 
   def download
     @form = Form.find(params[:id])
-    @form.num_downloads += 1
-    @form.save
+    
+    @formdownload = FormDownload.new
+    @formdownload.user_id = current_user.id
+    @formdownload.form_id = @form.id
+    @formdownload.save
 
     redirect_to @form.form.url
   end

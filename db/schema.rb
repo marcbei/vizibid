@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917010116) do
+ActiveRecord::Schema.define(:version => 20120920001132) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20120917010116) do
   end
 
   add_index "comments", ["form_id", "created_at"], :name => "index_comments_on_form_id_and_created_at"
+
+  create_table "form_downloads", :force => true do |t|
+    t.integer  "form_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "form_ratings", :force => true do |t|
     t.integer  "user_id"
@@ -45,10 +52,9 @@ ActiveRecord::Schema.define(:version => 20120917010116) do
 
   create_table "forms", :force => true do |t|
     t.string   "form"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "user_id"
-    t.integer  "num_downloads"
     t.text     "description"
     t.string   "jurisdiction"
     t.string   "keywords"

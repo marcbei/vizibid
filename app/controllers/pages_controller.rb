@@ -37,6 +37,10 @@ class PagesController < ApplicationController
 
   def history
     signed_in_user
+    @formdownloads = current_user.downloads
+    @fd = current_user.form_downloads
+    @formrequests = current_user.form_requests
+
   end
 
 end

@@ -17,7 +17,7 @@
 		<%if @form.form_requests.count > 0 %>
 			<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
 		<% end %>
-		<strong>Form Downloaded: </strong> <%= @form.num_downloads %> times <br/>
+		<strong>Form Downloaded: </strong> <%= @form.downloads.count %> times <br/>
 		<strong>Average Rating: </strong> 
 		<% if !@form.average_rating.nan? %>
 			<%= @form.average_rating %>
