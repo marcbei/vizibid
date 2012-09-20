@@ -40,6 +40,7 @@ class PagesController < ApplicationController
     @formdownloads = current_user.downloads
     @fd = current_user.form_downloads
     @formrequests = current_user.form_requests
+    @uploadedforms = current_user.forms
 
   end
 

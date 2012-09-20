@@ -10,6 +10,18 @@
 			<% i = i-1 %>
 		<%end%>
 	</ul>
+
+	<h3> Uploaded Documemts </h3><br/>
+	<ul>
+		<% i = @uploadedforms.count-1 %>
+		<% while i  >= 0 %>
+			<li>
+				<%= link_to @uploadedforms[i].name,form_path(@uploadedforms[i].id)%> on <%= time_ago_in_words(@uploadedforms[i].created_at) %> ago</li>
+			</li>
+			<% i = i-1 %>
+		<%end%>
+	</ul>
+
 	
 	<h3> Requests </h3><br/>
 	<ul>

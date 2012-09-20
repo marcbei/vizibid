@@ -15,4 +15,15 @@ module FormHelper
 	        "N/A"
 	    end
 	end
+
+	def document_downloaded()
+		current_user.form_downloads.each do |fd|
+			if(fd.form_id == @form.id)
+				return true
+			end
+		end
+
+		return false
+
+	end
 end
