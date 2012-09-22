@@ -14,6 +14,8 @@ Vizibid::Application.routes.draw do
   match '/history' => 'pages#history'
   match '/share' => 'pages#share'
   match '/signup' => 'users#new'
+  match '/settings' => redirect('/settings/account')
+  match '/settings/:path' => 'pages#settings', :as => :settings
   match '/download' =>'forms#download', :via => :get
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete

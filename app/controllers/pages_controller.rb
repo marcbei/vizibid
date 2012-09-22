@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def home
-  	
   	if signed_in? 
 
       if params[:search] == nil || params[:search].empty?
@@ -41,6 +40,11 @@ class PagesController < ApplicationController
     @fd = current_user.form_downloads
     @formrequests = current_user.form_requests
     @uploadedforms = current_user.forms
+
+  end
+
+  def settings
+    signed_in_user
 
   end
 

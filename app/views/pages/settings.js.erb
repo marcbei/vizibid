@@ -1,0 +1,9 @@
+<% if params[:path] == "password" %>
+	$('div#content').html("<%=j render :partial=> "layouts/password_settings" %>");
+<% elsif params[:path] == "account" %>
+	$('div#content').html("<%=j render :partial=> "layouts/account_settings" %>");
+<% elsif params[:path] == "notifications" %>
+	$('div#content').html("<%=j render :partial=> "layouts/notifications_settings" %>");
+<% elsif params[:path] == "profile" %>
+	$('div#content').html("<%=j render :partial=> "layouts/profile_settings" %>");
+<% end %>

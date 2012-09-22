@@ -21,6 +21,12 @@ $(document).ready(function() {
 	});
 });
 
+$(document).ready(function() {
+    $('ul.nav.nav-list li a').click(function() {           
+        $(this).parent().addClass('active').siblings().removeClass('active');           
+    });
+});
+
  $(document).ready(function () {
 	 if ($("[rel=tooltip]").length) {
 	 $("[rel=tooltip]").tooltip();

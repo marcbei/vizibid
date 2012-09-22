@@ -1,0 +1,30 @@
+<% provide(:title, 'Settings') %>
+
+<div class="row">
+  <div class="span3 bs-docs-sidebar">
+    <div class = "well">
+      <h3><%= link_to current_user.name, user_path(current_user)%></h3>
+      (View my profile page)
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li class= "active"><%= link_to settings_path("account"), :remote => :true do %><i class="icon-chevron-right"></i> Account<% end %></li>
+      <li><%= link_to settings_path("password"), :remote => :true do %><i class="icon-chevron-right"></i> Password<% end %></li>
+      <li><%= link_to settings_path("notifications"), :remote => :true do %><i class="icon-chevron-right"></i> Email Notifications<% end %></li>
+      <li><%= link_to settings_path("profile"), :remote => :true  do %><i class="icon-chevron-right"></i> Profile<% end %></li>
+      </ul>
+  </div>
+
+
+<div id = "content" class= "span5 well">
+  <% if params[:path] == "password" %>
+  <%= render 'layouts/password_settings' %>
+<% elsif params[:path] == "account" %>
+   <%= render 'layouts/account_settings' %>
+<% elsif params[:path] == "notifications" %>
+  <%= render 'layouts/notifications_settings' %>
+<% elsif params[:path] == "profile" %>
+  <%= render 'layouts/profile_settings' %>
+<% end %>
+</div>
+
+</div>

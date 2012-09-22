@@ -20,5 +20,18 @@ class UsersController < ApplicationController
   	else
   		render 'new'
   	end
-  end 
+  end
+
+  def edit
+
+  end
+
+  def update
+
+        #@user = User.find(current_user.id)
+        #@user.email = params[:user][:email]
+        #@user.save
+        redirect_to settings_path("account")
+  end
+
 end
