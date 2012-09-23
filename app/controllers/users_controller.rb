@@ -9,6 +9,19 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    
+    @formdownloads_count = @user.downloads.count
+    if @formdownloads_count == nil
+      @formdownloads_count = 0
+    end
+
+    @formshared_count = @user.forms.count
+    if @formshared_count == nil
+      @formshared_count = 0
+    end
+
+    @formshared = @user.forms
+
   end
 
   def create
