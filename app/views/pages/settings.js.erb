@@ -1,3 +1,15 @@
+//$('.alert').remove()
+
+<%# if flash[:success] %>
+		//$('.container.maincontent').prepend('<div class = "alert alert-success"><%=j flash[:success] %></div>')
+		<%#= flash[:success] = nil %>
+<%# end %>
+
+<%# if flash[:error] %>
+	//	$('.container.maincontent').prepend('<div class = "alert alert-error"><%=j flash[:error] %></div>')
+		<%#= flash[:error] = nil %>
+<%# end %>
+
 <% if params[:path] == "password" %>
 	$('div#content').html("<%=j render :partial=> "layouts/password_settings" %>");
 <% elsif params[:path] == "account" %>

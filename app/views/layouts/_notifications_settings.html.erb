@@ -1,5 +1,20 @@
 <H3>Email notifications</H3><br/>
 
-Activity related to you and your documents <br/><br/>
+<%= form_for(current_user.user_notification) do |f| %>
+	<b>Activity related to you and your documents </b><br/><br/>
+	Email me when:&nbsp&nbsp
+	<%= f.check_box :requests %>
+	<%= f.label :requests, "responses are posted to my requests", :style => "display:inline;" %>
+	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.check_box :forms %>
+	<%= f.label :forms, "comments are posted to my forms", :style => "display:inline;" %>
+	<br/><br/><b>Updates from Vizibid</b><br/></br>
+	Email me with:&nbsp&nbsp
+	<%= f.check_box :news %>
+	<%= f.label :news, "news about Vizibid and feature updates", :style => "display:inline;" %>
+	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.check_box :tips %>
+	<%= f.label :tips, "things about Vizibid I'm missing", :style => "display:inline;" %>
+	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.check_box :surveys %>
+	<%= f.label :surveys, "participation in Vizibid research surveys", :style => "display:inline;" %>
+	<br/><br/><%= f.submit "Save changes", class: "btn btn-info" %>
 
-Updates from Vizibid
+<% end %>

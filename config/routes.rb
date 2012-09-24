@@ -6,6 +6,8 @@ Vizibid::Application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :form_requests
   resources :form_ratings
+  resources :user_details
+  resources :user_notifications
 
   root :to => 'pages#home'
 

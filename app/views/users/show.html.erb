@@ -1,23 +1,34 @@
 <% provide(:title, @user.name) %>
-
+<div class = "container">
+<div class = "row span6">
 <br/><br/>
 <b><%= @user.name %></b>, Vizibid user since <%= @user.created_at.strftime("%B %d, %Y") %>
 <br/>
-<%= mail_to @user.email%>
+Email: <%= mail_to @user.email%>
 <br/>
-(website)
-<br/>
-(location)
-<br/>
-(practice area)
-<br/>
-(bio)
-<br/></br>
+<% if !@user.user_detail.website.nil? %>
+	Website: <%= link_to @user.user_detail.website, @user.user_detail.website %><br/>
+<% end %>
 
+<% if !@user.user_detail.location.nil? %>
+	Location: <%= @user.user_detail.location %><br/>
+<% end %>
+
+<% if !@user.user_detail.practice_area.nil? %>
+	Practice Area: <%= @user.user_detail.practice_area %><br/><br/>
+<% end %>
+
+<% if !@user.user_detail.bio.nil? %>
+	Bio: <%= @user.user_detail.bio %><br/>
+<% end %>
+
+</br>
 <% if @formdownloads_count > 0 %>
 Downloaded <%= @formdownloads_count %> documents
-<br/> <br/>
+<% else %>
+0 documents downloaded
 <% end %>
+<br/> <br/>
 
 <% if @formshared_count > 0 %>
 Shared the following (<%= @formshared_count %>) documents:
@@ -31,5 +42,8 @@ Shared the following (<%= @formshared_count %>) documents:
 		<% i = i-1 %>
 	<%end%>
 </ul>
-
+<% else %>
+0 documents shared
 <% end %>
+</div>
+</div>

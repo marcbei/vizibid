@@ -1,15 +1,13 @@
 <H3>Profile</H3><br/>
-<%= form_for(current_user) do |f| %>
+<%= form_for(current_user.user_detail) do |f| %>
 	<%#= render 'shared/error_messages' %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
 	<%= f.label :location %>
-	<%= f.text_field :name %>
+	<%= f.text_field :location %>
 	<%= f.label :website %>
-	<%= f.text_field :name %>
-	<%= f.label :area, 'Practice Area' %>
-	<%= f.text_field :name %>
+	<%= f.text_field :website %>
+	<%= f.label :practice_area, 'Practice Area' %>
+	<%= f.text_field :practice_area %>
 	<%= f.label :bio %>
-	<%= f.text_area :name, :size => "10x5" %>
+	<%= f.text_area :bio, :size => "10x5" %>
 	<%= f.submit "Save changes", class: "btn btn-info" %>
 <% end %>
