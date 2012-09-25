@@ -59,21 +59,42 @@ class UsersController < ApplicationController
 
         @user = current_user
 
-        if params[:user][:name] != nil
-          @user.name = params[:user][:name]
-        end
+        if params[:account_reset] == "true"
 
-        if params[:user][:email] != nil
-          @user.email = params[:user][:email]
-        end
+          if params[:user][:name] != nil && params[:user][:name] != "" && params[:user][:name] != @user.name
+              @user.name = params[:user][:name]
+          end
 
-        if @user.save
-          flash[:success] = "User details updated"
-        else
-          flash[:error] = "Unable to update user details"
-        end
+          if params[:user][:email] != nil && params[:user][:email] != "" && params[:user][:email] != @user.email
+              @user.email = params[:user][:email]
+          end
 
-        redirect_to settings_path("account")
+          if @user.save
+            sign_in(User.find(@user.id))
+            flash[:success] = "Updated account settings"
+            redirect_to settings_path("account")
+            return
+          else
+            flash[:error] = "Unable to update account settings"
+            redirect_to settings_path("account")
+            return
+          end
+
+        elsif params[:password_reset] == "true"
+         if @user.authenticate(params[:user][:password]) && params[:user][:password].length >= 6 && params[:user][:newpassword].length >= 6 && params[:user][:newpassword_confirmation].length >= 6
+              @user.password = params[:user][:newpassword]
+              @user.password_confirmation = params[:user][:newpassword_confirmation]
+              @user.save
+              sign_in(User.find(@user.id))
+              flash[:success] = "Updated password"
+              redirect_to settings_path("account")
+              return
+          else
+            flash[:error] = "Unable to update password"
+            redirect_to settings_path("account")
+            return
+          end
+
+        end
   end
-
 end
