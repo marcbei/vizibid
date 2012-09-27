@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
   :port                 => 587,
   :domain               => "vizivid.com",
   :user_name            => "marc",
-  :password             => ENV['MAIL_PASSWORD'],
+  :password             => "sub81mit",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
