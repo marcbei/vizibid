@@ -45,7 +45,10 @@ class PagesController < ApplicationController
 
   def settings
     signed_in_user
-
   end
 
+  def feedback
+    signed_in_user
+    @feedback = UserFeedback.new
+  end
 end

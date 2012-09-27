@@ -8,6 +8,7 @@ Vizibid::Application.routes.draw do
   resources :form_ratings
   resources :user_details
   resources :user_notifications
+  resources :user_feedbacks, only: [:new, :create]
 
   root :to => 'pages#home'
 
@@ -15,6 +16,7 @@ Vizibid::Application.routes.draw do
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
   match '/share' => 'pages#share'
+  match '/feedback' => 'pages#feedback'
   match '/signup' => 'users#new'
   match '/settings' => redirect('/settings/account')
   match '/settings/:path' => 'pages#settings', :as => :settings
