@@ -30,6 +30,8 @@ Vizibid::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
+  config.action_mailer.raise_delivery_errors = true
+
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
