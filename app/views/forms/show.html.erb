@@ -1,5 +1,4 @@
 <% provide(:title, 'Form Details')%>
-
 <br/> 
 
 <div class = "container">
@@ -33,7 +32,7 @@
 		<% end %>
 		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" style="color: red;">Report inappropriate document</a>
+		<%= render 'layouts/inappropriate_document_modal', :formid => @form.id %>
 		<br/><br/>
 		<% if @form.user.id != current_user.id && document_downloaded%>
 			<div id = "ratingstext">
@@ -76,17 +75,3 @@
 </div>
 </div>
 </div>
-
-<!-- modal dialogue for not signed in user???
-
-		<a class="btn" data-toggle="modal" href="#myModal" >Launch Modal</a>
-	<div class="modal hide fade" id="myModal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
-    <h3>Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-
- -->

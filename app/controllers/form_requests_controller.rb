@@ -21,6 +21,7 @@ class FormRequestsController < ApplicationController
 	end
 
 	def update
+
 		@form_request = FormRequest.find(params[:id])
 
  		@form_request.update_attributes(params[:form_request])
@@ -38,6 +39,10 @@ class FormRequestsController < ApplicationController
 	end
 
 	def edit
+
+		if(params[:comment] == "comment")
+			# make this show a different form for comments 
+		end
 
 		@form_request = FormRequest.find(params[:id])
 

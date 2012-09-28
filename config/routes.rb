@@ -9,6 +9,7 @@ Vizibid::Application.routes.draw do
   resources :user_details
   resources :user_notifications
   resources :user_feedbacks, only: [:new, :create]
+  resources :inappropriate_documents, only: [:create]
 
   root :to => 'pages#home'
 
@@ -24,6 +25,8 @@ Vizibid::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest
+  match '/form_requests/edit/:id/:comment' => 'form_requests#edit', :as => :requestcomment
+  #match '/inappropriate_documents/:formid' => 'inappropriate_documents#create', :as => :inappropriate_document
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,17 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+  </div>
+  <div class="modal-body">
+    <h3>Click the report document button to report this document as inappropriate. Our team will review this document and take proper action.</h3>
+  </div>
+  <div class="modal-footer">
+    <%= button_to "report document", inappropriate_documents_path(:formid => formid), :class => "btn btn-danger"%><br/>
+    <%= button_to "cancel", "", :class => "btn", :'data-dismiss' => "modal"%>
+    
+  </div>
+</div>
+
+<a style = "color: red;" data-toggle="modal" href="#myModal" >Report inappropriate document</a>
+
+
+<%#= :remote => true, :method => :post, :class => "btn btn-danger", :'data-dismiss' => "modal" %>

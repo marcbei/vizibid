@@ -1,0 +1,2 @@
+module InappropriateDocumentsHelper
+end

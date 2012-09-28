@@ -15,24 +15,6 @@
 //= require bootstrap
 //= require_tree .
 
-$(document).ready(function() {
-	$('ul.nav.nav-pills li a').click(function() {			
-	    $(this).parent().addClass('active').siblings().removeClass('active');			
-	});
-});
-
-$(document).ready(function() {
-    $('ul.nav.nav-list li a').click(function() {           
-        $(this).parent().addClass('active').siblings().removeClass('active');           
-    });
-});
-
- $(document).ready(function () {
-	 if ($("[rel=tooltip]").length) {
-	 $("[rel=tooltip]").tooltip();
-	 }
-});
-
  // Sets up the stars to match the data when the page is loaded.
 $(function () {
     var checkedId = $('form.rating_ballot > input:checked').attr('id');
@@ -57,5 +39,20 @@ $(document).ready(function() {
     // Submits the form (saves data) after user makes a change.
     $('form.rating_ballot').change(function() {
         $('form.rating_ballot').submit();
+    });
+
+    // activates tooltips
+    if ($("[rel=tooltip]").length) {
+        $("[rel=tooltip]").tooltip();
+     }
+
+     // sets the selected navlist <a/> to active and clears the siblings
+    $('ul.nav.nav-list li a').click(function() {           
+        $(this).parent().addClass('active').siblings().removeClass('active');           
+    });
+
+    // sets the selected nav pils item to active
+    $('ul.nav.nav-pills li a').click(function() {           
+        $(this).parent().addClass('active').siblings().removeClass('active');           
     });
 });

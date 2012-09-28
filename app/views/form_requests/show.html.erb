@@ -38,6 +38,7 @@
 		<a href="#" style="color: red;">Report inappropriate request</a>
 		<br/><br/>
 		<%= button_to "Submit a Document", edit_form_request_path(@form_request.id), :method => :get, :class => "btn btn-info" %>
+		<%#= button_to "Submit a Comment", requestcomment_path(@form_request.id, :comment => "comment"), :class => "btn btn-info" %>
 	<% end %>
 <% else %>
 	<h3>Request Completed!</h3>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Document reported as inappropriate</h3>
+    <p>
+      Reported by: <%= @user.name %>, <%= @user.email %><br/><br/>
+    </p>
+    <p>
+      For document: <%= link_to @form.name, form_path(@form) %>
+    </p>
+  </body>
+</html>
