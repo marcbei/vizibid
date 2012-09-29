@@ -9,7 +9,10 @@
       Reported by: <%= @user.name %><br/><br/>
     </p>
     <p>
-      For document: <%= @form.name %>
+      For document: <%= link_to @form.name, forms_url( :only_path => false) %>
+    </p>
+    <p>
+      Reason: <%= @reason %>
     </p>
   </body>
 </html>

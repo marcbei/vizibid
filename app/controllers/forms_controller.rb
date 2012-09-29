@@ -38,6 +38,10 @@ class FormsController < ApplicationController
     @comments = @form.comments
     @comment = current_user.comments.build
     @user = @form.user.name
+
+    @inappropriate_document_report = InappropriateDocument.find_by_user_id_and_form_id(current_user.id, @form.id)
+    @id = InappropriateDocument.new
+
   end
 
   def download

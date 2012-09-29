@@ -9,10 +9,11 @@ class Mailer < ActionMailer::Base
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "New Feedback Received")
   end
 
-  def inappropriate_document_email(user, form)
+  def inappropriate_document_email(user, form, reason)
 
   	@user = user
   	@form = form
+    @reason = reason
 
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Inappropriate document reported")
   end

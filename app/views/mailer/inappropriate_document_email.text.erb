@@ -3,4 +3,6 @@ Document reported as inappropriate
 
 Reported by: <%= @user.name %>
 
-For document: <%= @form.name%>
+For document: <%= link_to @form.name, forms_url( :only_path => false) %>
+
+Reason: <%= @reason %>

@@ -32,9 +32,11 @@
 		<% end %>
 		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<% if @form.user.id != current_user.id && document_downloaded%>
+		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil%>
 			<%= render 'layouts/inappropriate_document_modal', :formid => @form.id %>
 			<br/><br/>
+		<% end %>
+		<% if @form.user.id != current_user.id && document_downloaded%>
 			<div id = "ratingstext">
 				<%if current_user_rating(@form.id) != "N/A" %>
 					<h3>Your rating:</h3><br/>
