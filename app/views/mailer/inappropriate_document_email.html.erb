@@ -6,7 +6,7 @@
   <body>
     <h3>Document reported as inappropriate</h3>
     <p>
-      Reported by: <%= @user.name %><br/>
+      Reported by: <%#= @user.name %><br/>
     </p>
     <p>
       For document: <%= link_to @form.name, form_url(@form, :only_path => false, :host=>'murmuring-chamber-5143.herokuapp.com') %>
