@@ -19,7 +19,7 @@ group :assets do
   gem 'bootstrap-sass', '2.0.0'
 end
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails'
 
 group :test do
   gem 'capybara', '1.1.2'
