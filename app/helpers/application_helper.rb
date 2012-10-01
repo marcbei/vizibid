@@ -9,6 +9,11 @@ module ApplicationHelper
       redirect_to(root_path) unless current_user?(@user)
     end
 
+    def correct_user_with_id(id)
+      @user = User.find(id)
+      redirect_to(root_path) unless current_user?(@user)
+    end
+
      def us_states
       [  
       	['Any', 'Any'], 

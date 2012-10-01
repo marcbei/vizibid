@@ -1,9 +1,12 @@
 class UserDetailsController < ApplicationController
 	
 	before_filter :signed_in_user, only: [:edit, :update]
-	before_filter :correct_user,   only: [:edit, :update]
 
 	def update
+
+		@user_detail = UserDetail.find(params[:id])
+
+		correct_user_with_id(@user_detail.user.id)
 
 		@user = current_user
 
