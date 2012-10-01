@@ -35,8 +35,11 @@
 			<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
 		<% end %>
 	<% else %>
-		<a href="#" style="color: red;">Report inappropriate request</a>
-		<br/><br/>
+		<% if @inappropriate_request_report == nil %>
+			<%= render 'layouts/inappropriate_request_modal', :requestid => @form_request.id %>
+			<br/><br/>
+		<% end %>
+
 		<%= button_to "Submit a Document", edit_form_request_path(@form_request.id), :method => :get, :class => "btn btn-info" %>
 		<%#= button_to "Submit a Comment", requestcomment_path(@form_request.id, :comment => "comment"), :class => "btn btn-info" %>
 	<% end %>

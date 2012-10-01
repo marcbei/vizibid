@@ -36,6 +36,10 @@ class FormRequestsController < ApplicationController
 
 	def show
 		@form_request = FormRequest.find(params[:id])
+
+		@inappropriate_request_report = InappropriateRequest.find_by_user_id_and_request_id(current_user.id, @form_request .id)
+    	@ir = InappropriateRequest.new
+
 	end
 
 	def edit

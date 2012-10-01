@@ -18,4 +18,13 @@ class Mailer < ActionMailer::Base
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Inappropriate document reported")
   end
 
+  def inappropriate_request_email(user, request, reason)
+
+    @user = user
+    @request = request
+    @reason = reason
+    
+    mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Inappropriate request reported")
+  end
+
 end

@@ -1,0 +1,24 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+
+    <h3>Click the report request button to report this request as inappropriate. Our team will review this request and take proper action.</h3><br/>
+
+  	<%= form_for(@ir, :url => inappropriate_requests_path(:requestid => requestid)) do |f| %>
+  		<%= f.radio_button :reason, 'option1', :checked => true  %>
+  		<%= label :reason_option1, "Request contains inappropriate content", :style => "Display: inline;" %>
+  		<br/>
+  		<%= f.radio_button :reason, 'option2' %>
+  		<%= label :reason_option2, "Request description is misleading", :style => "Display: inline;" %>
+  		<br/>
+  		<%= f.radio_button :reason, 'other' %>
+  		<%= label :reason_other, "Other", :style => "Display: inline;" %>
+  		<br/><br/>
+  		<%= f.submit "Report", :class => "btn btn-danger"%>
+  		<%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
+  	<% end %>
+
+  </div>
+
+</div>
+
+<a style = "color: red;" data-toggle="modal" href="#myModal" >Report inappropriate request</a>
