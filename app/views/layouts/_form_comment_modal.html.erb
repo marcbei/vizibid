@@ -1,0 +1,21 @@
+<div id="myModalComment<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-body">
+
+  <h3>Fill in your comment below.<h3><br/>
+  <%= form_for @comment do |f| %>
+    <%= f.hidden_field :parent_id, :value => parent_id %>
+    <%= f.hidden_field :form_id, :value => form_id %>
+    <p>
+      <%= f.text_area :content, :rows => 4 %>
+    </p>
+    <p>
+        <%= f.submit "Post Comment", :class => "btn btn-success" %>
+      <%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
+    </p>
+  <% end %>
+  </div>
+
+</div>
+
+<a data-toggle="modal" href="#myModalComment<%=parent_id%>"" >Reply</a>

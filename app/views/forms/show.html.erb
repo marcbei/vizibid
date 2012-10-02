@@ -45,15 +45,14 @@
 				<% end %>
 			</div>
 			<%= render 'layouts/ratings_form' %>
-			<br/><br/>
 		<% end %>
-		<H3>Comments (<%=@comments.count%>)</H3>
+		<br/><br/><H3>Comments (<%=@comments.count%>)</H3>
 		<hr/>
 	</div>
 
 	<div class = "row">
 		<% if !@form.comments.any? %>
-			<h3>Please let us know what you think of this form. </h3>
+			<h3>Please let us know what you think of this document. </h3>
 		<%end%>
 		<%= form_for(@comment) do |f| %>
 		  	<div class="commentfield">
@@ -64,15 +63,9 @@
 		<% end %>
 
 		<% if @form.comments.any? %>
-		<ul class="comments">
-			<% @form.comments.each do |comment| %>
-				<li>
-					<strong><%= comment.user.name %></strong>
-					<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
-					<span class="content"><%= comment.content %></span>
-				</li>
-			<% end %>
-		</ul>
+			<ul class="comments">
+				<%= nested_comments @form.comments.arrange(:order => :created_at) %>
+			</ul>
 		<% end %>
 </div>
 </div>

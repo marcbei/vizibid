@@ -3,7 +3,7 @@ Vizibid::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :forms
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
   resources :form_requests
   resources :form_ratings
   resources :user_details

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001010443) do
+ActiveRecord::Schema.define(:version => 20121001230250) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(:version => 20121001010443) do
     t.integer  "form_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
   end
 
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
   add_index "comments", ["form_id", "created_at"], :name => "index_comments_on_form_id_and_created_at"
 
   create_table "form_downloads", :force => true do |t|

@@ -1,0 +1,8 @@
+<li>
+	<strong><%= link_to comment.user.name, user_path(comment.user) %></strong>
+	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
+	<span class="content"><%= comment.content %></span><br/>
+    <div class="actions">
+    	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id %>
+	</div>
+</li>

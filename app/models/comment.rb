@@ -8,10 +8,13 @@
 #  form_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  ancestry   :string(255)
 #
 
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :form_id
+  attr_accessible :content, :form_id, :parent_id, :ancestry
+
+  has_ancestry
 
   belongs_to :user
   belongs_to :form
