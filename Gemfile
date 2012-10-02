@@ -3,6 +3,7 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.6'
 
+ gem 'ancestry'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
@@ -16,7 +17,7 @@ group :assets do
   gem 'sass-rails',   '3.2.4'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '2.0.0'
 end
 
 gem 'jquery-rails'
@@ -32,8 +33,6 @@ gem 'pg', '0.12.2'
 
  gem 'carrierwave'
  gem "fog", "~> 1.3.1"
-
- gem 'ancestry'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
