@@ -13,9 +13,30 @@ class CommentsController < ApplicationController
       @comment.content = params[:comment][:content]
 
       if @comment.save
-        flash[:success] = "Thank you for your comment!"
+        if params[:upload] != "yes"
+          flash[:success] = "Thank you for your comment!"
+        end
       else
         flash[:error] = "Sorry, we are unable to save your comment."
+        redirect_to form_path(params[:comment][:form_id])
+        return
+      end
+
+      if params[:upload] == "yes"
+
+        @form = Form.new(params[:form])
+        @form.form = params[:form][:form]
+        @form.user_id = current_user.id
+        @form.sourcecomment_id = @comment.id
+
+        if @form.save
+          flash[:success] = "Thank you for your comment and document!"
+        else
+          @comment.destroy
+          #flash[:error] = @form.errors.count
+          @form.errors.each{|attr,msg| flash[:error] = "#{attr} - #{msg} "}
+          #flash[:error] = "Sorry, we are unable to save your comment."
+        end
       end
 
       redirect_to form_path(params[:comment][:form_id])

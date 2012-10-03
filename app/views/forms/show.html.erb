@@ -54,13 +54,7 @@
 		<% if !@form.comments.any? %>
 			<h3>Please let us know what you think of this document. </h3>
 		<%end%>
-		<%= form_for(@comment) do |f| %>
-		  	<div class="commentfield">
-		    	<%= f.text_area :content, placeholder: "Compose new comment...", :size=>"1x7" %>
-		  	</div>
-		  	<%= hidden_field_tag(:form_id, @form.id) %>
-		  	<%= f.submit "Save", class: "btn btn-medium btn-primary" %>
-		<% end %>
+		<%= render 'layouts/form_comment_modal', :parent_id => nil, :form_id => @form.id, :button => true %>
 
 		<% if @form.comments.any? %>
 			<ul class="comments">

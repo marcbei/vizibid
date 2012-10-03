@@ -2,20 +2,49 @@
   
   <div class="modal-body">
 
-  <h3>Fill in your comment below.<h3><br/>
-  <%= form_for @comment do |f| %>
+  <h3>Fill in your comment below.<h3>
+  <%= form_for @comment, :html => {:multipart => true}  do |f| %>
     <%= f.hidden_field :parent_id, :value => parent_id %>
     <%= f.hidden_field :form_id, :value => form_id %>
     <p>
-      <%= f.text_area :content, :rows => 4 %>
-    </p>
+      <%= f.text_area :content, :rows => 2 %>
+      <%= check_box_tag :upload, 'yes', false, :class => 'upload' %>
+      <%= label_tag :uploadtag, "Upload a document", :style => "Display: inline;" %>
+      <div class="uploadform">
+
+      <%= fields_for @newform do |nf| %>
+      <div class="field">
+        Name of Document
+        <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name for this document that will help other users understand what this document is. Be specific."><i class="icon-question-sign"></i></a></u>
+        <%= nf.text_field :name %>
+        Description
+        <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+        <%= nf.text_area :description, :size => "10x2"%>
+        Jurisdiction
+        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+        <div class = "jurisdropdown">
+          <%= nf.select :jurisdiction, options_for_select(us_states) %>
+        </div>
+          Keywords
+          <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+          <%= nf.text_area :keywords, :size => "5x2"%>
+          <%= nf.file_field :form %>
+      </div>
+      <% end %>
+    </div>
+        </p>
     <p>
-        <%= f.submit "Post Comment", :class => "btn btn-success" %>
-      <%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
+      <div class="btn-group">
+      <%= f.submit "Submit", :class => "btn btn-success", :style => "margin-right:5px;" %>
+      <%= button_to "Cancel", "", :class => "btn cancelcomment", :'data-dismiss' => "modal" %>
+      </div>
     </p>
   <% end %>
   </div>
-
 </div>
 
-<a data-toggle="modal" href="#myModalComment<%=parent_id%>"" >Reply</a>
+<% if button == true %>
+  <button class = "btn btn-large"><a style = "text-decoration:none;" data-toggle="modal" href="#myModalComment<%=parent_id%>" />New Comment</button>
+<% else %>
+  <a data-toggle="modal" href="#myModalComment<%=parent_id%>" >Reply</a>
+<% end %>

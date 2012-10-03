@@ -21,6 +21,8 @@ $(function () {
     $('form.rating_ballot > label[for=' + checkedId + ']').prevAll().andSelf().addClass('bright');
 });
 
+//$(#)
+
 $(document).ready(function() {
     // Makes stars glow on hover.
     $('form.rating_ballot > label').hover(
@@ -54,5 +56,17 @@ $(document).ready(function() {
     // sets the selected nav pils item to active
     $('ul.nav.nav-pills li a').click(function() {           
         $(this).parent().addClass('active').siblings().removeClass('active');           
+    });
+
+    $('.uploadform').hide();
+    $('.upload').attr('checked', false);
+
+    $('.upload').click (function() {
+       $('.uploadform').toggle();
+    });
+
+    $('.cancelcomment').click (function() {
+        $('.uploadform').hide();
+        $('.upload').attr('checked', false);
     });
 });

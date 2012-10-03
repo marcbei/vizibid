@@ -13,9 +13,11 @@
   		<%= f.radio_button :reason, 'other' %>
   		<%= label :reason_other, "Other", :style => "Display: inline;" %>
   		<br/><br/>
-  		<%= f.submit "Report", :class => "btn btn-danger"%>
-  		<%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
-  	<% end %>
+      <div class="btn-group">
+  		  <%= f.submit "Report", :class => "btn btn-danger", :style => "margin-right:5px;"%>
+  		  <%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
+  	  </div>
+    <% end %>
 
   </div>
 
