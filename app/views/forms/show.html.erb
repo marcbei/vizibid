@@ -52,7 +52,7 @@
 
 	<div class = "row">
 		<% if !@form.comments.any? %>
-			<h3>Please let us know what you think of this document. </h3>
+			<h3>Please let us know what you think of this document. </h3><br/>
 		<%end%>
 		<%= render 'layouts/form_comment_modal', :parent_id => nil, :form_id => @form.id, :button => true %>
 
