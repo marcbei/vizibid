@@ -33,9 +33,7 @@ class CommentsController < ApplicationController
           flash[:success] = "Thank you for your comment and document!"
         else
           @comment.destroy
-          #flash[:error] = @form.errors.count
-          @form.errors.each{|attr,msg| flash[:error] = "#{attr} - #{msg} "}
-          #flash[:error] = "Sorry, we are unable to save your comment."
+          flash[:error] = "Sorry, we are unable to save your comment."
         end
       end
 
