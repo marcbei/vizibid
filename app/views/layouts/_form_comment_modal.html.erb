@@ -44,7 +44,7 @@
 </div>
 
 <% if button == true %>
-  <B><a style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >New Comment</a></B>
+  <B><a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >New Comment</a></B>
 <% else %>
-  <a data-toggle="modal" href="#myModalComment<%=parent_id%>" >Reply</a>
+  <a class = "commentmodallink" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Reply</a>
 <% end %>

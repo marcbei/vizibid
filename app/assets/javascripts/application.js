@@ -65,8 +65,18 @@ $(document).ready(function() {
        $('.uploadform').toggle();
     });
 
-    $('.cancelcomment').click (function() {
+    $('.commentmodallink').click (function() {
         $('.uploadform').hide();
         $('.upload').attr('checked', false);
     });
+
+    $('.commentonly').click (function() {
+       $('.responsedocform').toggle();
+    });
+
+    $('.requestresponselink').click (function() {
+        $('.responsedocform').show();
+        $('.commentonly').attr('checked', false);
+    });
+
 });

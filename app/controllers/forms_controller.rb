@@ -3,31 +3,55 @@ class FormsController < ApplicationController
   before_filter :signed_in_user
 
   def create
-  	@form = Form.new(params[:form])
-    @form.user_id = current_user.id
-    @form.description = params[:form][:description]
-    @form.jurisdiction = params[:form][:jurisdiction]
 
-    if @form.save
+    if(params[:requestid] != nil)
 
-      if(params[:requestid] != nil)
-
-        @request_submission = RequestSubmission.new
-
-        @request_submission.form_request_id = params[:requestid].to_s
-        @request_submission.form_id = @form.id
-        @request_submission.save
+      @request_submission = RequestSubmission.new
+      @request_submission.form_request_id = params[:requestid]
+      @request_submission.comment = params[:request_submission][:comment]
+      @request_submission.user_id = current_user.id
+      @request_submission.parent_id = params[:parent_id]
+      
+      if !@request_submission.save
+        flash[:error] = "There was a problem with your submission. Please try again."
+        redirect_to form_request_path(params[:requestid])
+        return
       end
 
-      flash[:success] = "Thank you for your contribution!"
-      redirect_to form_path(@form.id)
+      if params[:commentonly] == "yes" || params[:form][:name].empty?
+        flash[:success] = "Thank you for your contribution!"
+        redirect_to form_request_path(params[:requestid])
+        return
+      else
+        @form = Form.new(params[:form])
+        @form.user_id = current_user.id
+        @form.description = params[:form][:description]
+        @form.jurisdiction = params[:form][:jurisdiction]
+
+        if @form.save
+          flash[:success] = "Thank you for your contribution!"
+          @request_submission.form_id = @form.id
+          @request_submission.save
+          redirect_to form_request_path(params[:requestid])
+        else
+          @request_submission.destroy
+          flash[:error] = "There was a problem with your submission. Please try again."
+          redirect_to form_request_path(params[:requestid])
+        end
+      end
+
     else
 
-      flash[:error] = "There was a problem with your submission. Please try again."
-      
-      if(params[:requestid] != nil)
-        redirect_to edit_form_request_path(params[:requestid].to_s)
+      @form = Form.new(params[:form])
+      @form.user_id = current_user.id
+      @form.description = params[:form][:description]
+      @form.jurisdiction = params[:form][:jurisdiction]
+
+      if @form.save
+        flash[:success] = "Thank you for your contribution!"
+        redirect_to form_path(@form.id)
       else
+        flash[:error] = "There was a problem with your submission. Please try again."
         redirect_to share_path
       end
     end

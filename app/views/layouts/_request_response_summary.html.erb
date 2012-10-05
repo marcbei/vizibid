@@ -1,0 +1,18 @@
+<% user = User.find_by_id(f.user_id) %>
+
+<li>
+	<strong><%= link_to user.name, user_path(user) %></strong>
+	<span class="timestamp"><%= time_ago_in_words(f.created_at) %> ago</span><br/>
+	<% if f.comment != nil %>
+		<span class="content"><%= f.comment %></span><br/>
+	<% else %>
+		<span class="content"><%= f.form.description %></span><br/>
+	<% end %>
+	<% if f.form %>
+		<em>associate document:</em> <%= link_to f.form.name, form_path(f.form) %>
+	<% end %>
+	<div class="actions">
+    	<%= render 'layouts/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>
+	</div>
+</li>
+

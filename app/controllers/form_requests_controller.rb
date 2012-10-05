@@ -36,17 +36,16 @@ class FormRequestsController < ApplicationController
 
 	def show
 		@form_request = FormRequest.find(params[:id])
+		@requestsubmissions = @form_request.RequestSubmissions
 
 		@inappropriate_request_report = InappropriateRequest.find_by_user_id_and_request_id(current_user.id, @form_request .id)
     	@ir = InappropriateRequest.new
 
+    	@form = Form.new
+    	@requestresponse = RequestSubmission.new
 	end
 
 	def edit
-
-		if(params[:comment] == "comment")
-			# make this show a different form for comments 
-		end
 
 		@form_request = FormRequest.find(params[:id])
 
