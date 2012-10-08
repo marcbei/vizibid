@@ -1,10 +1,28 @@
+<% if comment.score == nil %>
+	<% score = 0 %>
+<% else %>
+	<% score = comment.score %>
+<% end %>
+
 <li>
-	<strong><%= link_to comment.user.name, user_path(comment.user) %></strong>
+	<% if comment.user.id != current_user.id %>
+		<%= link_to comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => "votearrow"  do %>
+			&nbsp;<i class="icon-chevron-up"></i>
+		<% end %>
+	<% end %>
+	<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
 	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
-	<span class="content"><%= comment.content %></span><br/>
+	<% if comment.user.id != current_user.id %>
+		<%= link_to comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => "votearrow" do %>
+		&nbsp;<i class="icon-chevron-down"></i>
+		<% end %>
+	<% end %>
+	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= score %> points </span>
+	<br/>
+	&nbsp;&nbsp;<%= comment.content %><br/>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
 	<% if associatedform != nil%>
-		<span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/><br/>
+		<br/><span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>
 	<% end %>
     <div class="actions">
     	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>

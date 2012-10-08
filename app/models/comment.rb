@@ -9,6 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  ancestry   :string(255)
+#  score      :integer
 #
 
 class Comment < ActiveRecord::Base
@@ -18,6 +19,9 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :form
+
+  has_many :comment_votes
+  has_many :commenters, :through => :comment_votes, :source => :user
 
   validates :content, presence: true, length: { maximum: 400 }
   validates :user_id, presence: true

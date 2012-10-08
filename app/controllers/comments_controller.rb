@@ -1,5 +1,8 @@
+
 class CommentsController < ApplicationController
   
+  include CommentHelper
+
   before_filter :signed_in_user
 
   def create
@@ -56,6 +59,33 @@ class CommentsController < ApplicationController
   def new
     @comment = current_user.comments.new(:parent_id => params[:parent_id], :form_id => params[:form_id])
     
+  end
+
+  def update
+
+      # todo: check to make sure user hasn't commented on this before
+      if !user_has_voted(params[:id])
+        @commentvote = CommentVote.new
+        @commentvote.user_id = current_user.id
+        @commentvote.comment_id = params[:id] 
+        
+        if params[:vote] == "pos"
+          @commentvote.value = 1
+        elsif params[:vote] == "neg"
+          @commentvote.value = -1
+        end
+
+        @commentvote.save
+
+        update_comment_score(params[:id])
+
+        @comment = Comment.find(params[:id])
+
+      end 
+      
+      respond_to do |format|
+          format.js  
+      end
   end
 
   def destroy

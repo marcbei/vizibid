@@ -1,0 +1,1 @@
+$('.commentscore<%=@comment.id%>').replaceWith("<span class=\"commentscore<%=@comment.id%>\" style=\"color: #999;\"><%= escape_javascript(@comment.score.to_s) %> points </span>");
