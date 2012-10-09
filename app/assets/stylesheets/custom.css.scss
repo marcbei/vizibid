@@ -223,7 +223,33 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
   margin-left: 0px;
 }
 
+.votearrow{
+    color: black;
+    text-decoration: none;
+}
+
 .votearrow:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.votearrowup{
+    color: #44dd00;
+    text-decoration: none;
+}
+
+.votearrowup:hover{
+    color: #44dd00;
+    text-decoration: none;
+}
+
+.votearrowdown{
+    color: red;
+    text-decoration: none;
+}
+
+.votearrowdown:hover{
+    color: red;
     text-decoration: none;
 }
 

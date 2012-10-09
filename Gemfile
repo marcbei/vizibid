@@ -36,6 +36,8 @@ gem 'pg', '0.12.2'
  gem 'carrierwave'
  gem "fog", "~> 1.3.1"
 
+ gem 'font-awesome-rails'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

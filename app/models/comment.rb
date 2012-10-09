@@ -13,7 +13,7 @@
 #
 
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :form_id, :parent_id, :ancestry
+  attr_accessible :content, :form_id, :parent_id, :ancestry, :score
 
   has_ancestry
 

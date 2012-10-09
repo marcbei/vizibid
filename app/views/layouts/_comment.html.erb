@@ -4,22 +4,30 @@
 	<% score = comment.score %>
 <% end %>
 
+<% cv = CommentVote.find_by_comment_id_and_user_id(comment.id, current_user.id) %>
+<% if cv == nil %>
+	<% classvoteup = "votearrow" %>
+	<% classvotedown = "votearrow" %>
+<% elsif cv.value == 1 %>
+	<% classvoteup = "votearrowup" %>
+	<% classvotedown = "votearrow" %>
+<% else %>
+	<% classvoteup = "votearrow" %>
+	<% classvotedown = "votearrowdown" %>
+<% end %>
+
 <li>
-	<% if comment.user.id != current_user.id %>
-		<%= link_to comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => "votearrow"  do %>
-			&nbsp;<i class="icon-chevron-up"></i>
-		<% end %>
+	<%= link_to comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => classvoteup, :id => "voteup#{comment.id}"  do %>
+		&nbsp;<i class="icon-arrow-up"></i>
 	<% end %>
 	<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
 	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
-	<% if comment.user.id != current_user.id %>
-		<%= link_to comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => "votearrow" do %>
-		&nbsp;<i class="icon-chevron-down"></i>
-		<% end %>
+	<%= link_to comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => classvotedown, :id => "votedown#{comment.id}" do %>
+	&nbsp;<i class="icon-arrow-down"></i>
 	<% end %>
 	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= score %> points </span>
-	<br/>
-	&nbsp;&nbsp;<%= comment.content %><br/>
+	<br/><br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.content %><br/>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
 	<% if associatedform != nil%>
 		<br/><span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>

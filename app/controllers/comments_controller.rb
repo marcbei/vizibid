@@ -40,6 +40,13 @@ class CommentsController < ApplicationController
         end
       end
 
+      @commentvote = CommentVote.new
+      @commentvote.user_id = current_user.id
+      @commentvote.comment_id = @comment.id
+      @commentvote.value = 1
+      @commentvote.save
+      update_comment_score(@comment.id)
+
       redirect_to form_path(params[:comment][:form_id])
 
     else
@@ -52,19 +59,28 @@ class CommentsController < ApplicationController
         flash[:error] = "Sorry, we are unable to save your comment."
       end
 
+      @commentvote = CommentVote.new
+      @commentvote.user_id = current_user.id
+      @commentvote.comment_id = @comment.id
+      @commentvote.value = 1
+      @commentvote.save
+      update_comment_score(@comment.id)
+
       redirect_to form_path(@comment.form_id)
     end
   end
 
   def new
     @comment = current_user.comments.new(:parent_id => params[:parent_id], :form_id => params[:form_id])
+
     
   end
 
   def update
 
-      # todo: check to make sure user hasn't commented on this before
-      if !user_has_voted(params[:id])
+      @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
+
+      if @commentvote == nil
         @commentvote = CommentVote.new
         @commentvote.user_id = current_user.id
         @commentvote.comment_id = params[:id] 
@@ -76,12 +92,29 @@ class CommentsController < ApplicationController
         end
 
         @commentvote.save
+      else
+        if(@commentvote.value == 1)
+          if(params[:vote] == "pos")
+            @commentvote.destroy
+          else
+            @commentvote.value = -1
+            @commentvote.save
+          end
+        elsif(@commentvote.value == -1)
+          if(params[:vote] == "neg")
+            @commentvote.destroy
+          else
+            @commentvote.value = 1
+            @commentvote.save
+          end
+        end
+      end
 
-        update_comment_score(params[:id])
-
-        @comment = Comment.find(params[:id])
-
-      end 
+      # refresh the data
+      update_comment_score(params[:id])
+        
+      @comment = Comment.find(params[:id])
+      @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
       
       respond_to do |format|
           format.js  

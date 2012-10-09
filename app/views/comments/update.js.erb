@@ -1,1 +1,22 @@
+
+
 $('.commentscore<%=@comment.id%>').replaceWith("<span class=\"commentscore<%=@comment.id%>\" style=\"color: #999;\"><%= escape_javascript(@comment.score.to_s) %> points </span>");
+
+$('#voteup<%=@comment.id%>').removeClass('votearrow');
+$('#voteup<%=@comment.id%>').removeClass('votearrowup');
+$('#voteup<%=@comment.id%>').removeClass('votearrowdown');
+$('#votedown<%=@comment.id%>').removeClass('votearrow');
+$('#votedown<%=@comment.id%>').removeClass('votearrowup');
+$('#votedown<%=@comment.id%>').removeClass('votearrowdown');
+
+
+<% if @commentvote == nil %>
+	$('#voteup<%=@comment.id%>').addClass("votearrow");
+	$('#votedown<%=@comment.id%>').addClass("votearrow");
+<% elsif @commentvote.value == 1 %>
+	$('#voteup<%=@comment.id%>').addClass("votearrowup");
+	$('#votedown<%=@comment.id%>').addClass("votearrow");
+<% else %>
+	$('#voteup<%=@comment.id%>').addClass("votearrow");
+	$('#votedown<%=@comment.id%>').addClass("votearrowdown" );
+<% end %>

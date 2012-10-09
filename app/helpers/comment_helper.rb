@@ -10,14 +10,4 @@ module CommentHelper
 
 		comment.save
 	end
-
-	def user_has_voted(comment_id)
-		@commentvote = CommentVote.find_by_comment_id_and_user_id(comment_id, current_user.id)
-
-		if @commentvote == nil
-			return false
-		else
-			return true
-		end
-	end
 end
