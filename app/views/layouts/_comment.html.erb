@@ -30,7 +30,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.content %><br/>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
 	<% if associatedform != nil%>
-		<br/><span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>
+		<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>
 	<% end %>
     <div class="actions">
     	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>
