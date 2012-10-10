@@ -18,7 +18,6 @@
 
 	<h3> Shared Documemts </h3>
 	<% if @uploadedforms.count > 0 %>
-	<br/>
 	<ul>
 		<% i = @uploadedforms.count-1 %>
 		<% while i  >= 0 %>
@@ -34,17 +33,37 @@
 	
 	<h3> Requests </h3>
 	<% if @formrequests.count > 0 %>
-	<br/>
-	<ul>
-		<% i = @formrequests.count-1 %>
-		<% while i  >= 0 %>
-			<li>
-				<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
-			</li>
-			<% i = i-1 %>
-		<%end%>
-	</ul>
+		<ul>
+			<% i = @formrequests.count-1 %>
+			<% while i  >= 0 %>
+				<li>
+					<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
+				</li>
+				<% i = i-1 %>
+			<%end%>
+		</ul>
 	<% else %>
 		0 requests<br/><br/>
 	<% end %>
+
+	<h3> Comments </h3>
+	<% if @comments.count > 0 %>
+		<ul>
+			<% i = @comments.count-1 %>
+			<% cform_id = -1 %>
+			<% while i  >= 0 %>
+				<% if cform_id != @comments[i].form.id %>
+					<%= link_to @comments[i].form.name, form_path(@comments[i].form) %>
+				<% end %>
+				<li>
+					<%= truncante_description(@comments[i].content) %>
+				</li>
+				<% cform_id = @comments[i].form.id %>
+				<% i = i-1 %>
+			<%end%>
+		</ul>
+	<% else %>
+		0 comments <br/><br/>
+	<% end %> 
+
 </div>

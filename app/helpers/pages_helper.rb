@@ -3,7 +3,7 @@ module PagesHelper
       	words = description.split(' ')
 
       	if(words.count > 40)
-      		return words[0..40].join(' ')
+      		return words[0..40].join(' ') + "..."
       	else
       		return description
       	end

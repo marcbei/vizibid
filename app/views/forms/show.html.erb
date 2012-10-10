@@ -51,10 +51,12 @@
 	</div>
 
 	<div class = "row">
+		<%= render 'layouts/form_comment_modal', :parent_id => nil, :form_id => @form.id, :button => true %>
 		<% if !@form.comments.any? %>
 			<h3>Please let us know what you think of this document. </h3><br/>
+		<%else%>
+			<br/><br/>Sort by: <%= select_tag :'Sorted By', options_for_select(options_for_comment_sort), :class => "commentsort" %><br/>
 		<%end%>
-		<%= render 'layouts/form_comment_modal', :parent_id => nil, :form_id => @form.id, :button => true %>
 
 		<% if @form.comments.any? %>
 			<ul class="comments">

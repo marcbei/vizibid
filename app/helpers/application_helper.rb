@@ -14,6 +14,14 @@ module ApplicationHelper
       redirect_to(root_path) unless current_user?(@user)
     end
 
+    def options_for_comment_sort
+       [
+        ['Oldest', 'Oldest'],
+        ['Newest', 'Newest'],
+        ['Top', 'Top']
+       ]
+    end
+
      def us_states
       [  
       	['Any', 'Any'], 
