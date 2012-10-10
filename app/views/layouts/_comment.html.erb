@@ -20,7 +20,9 @@
 	<%= link_to comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => classvoteup, :id => "voteup#{comment.id}"  do %>
 		&nbsp;<i class="icon-arrow-up"></i>
 	<% end %>
-	<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
+	<% if comment.user != nil %>
+		<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
+	<% end %>
 	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
 	<%= link_to comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => classvotedown, :id => "votedown#{comment.id}" do %>
 	&nbsp;<i class="icon-arrow-down"></i>
@@ -33,6 +35,11 @@
 		<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>
 	<% end %>
     <div class="actions">
-    	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>
+    	<% if comment.user != nil %>
+	    	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>
+	    	<% if comment.user.id == current_user.id %>
+	    		&nbsp;&nbsp;&nbsp;<%= link_to "Delete", comment_path(comment, :form_id => @form.id), :method => :delete %>
+	    	<% end %>
+    	<% end %>
 	</div>
 </li>

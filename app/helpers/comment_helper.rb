@@ -10,4 +10,15 @@ module CommentHelper
 
 		comment.save
 	end
+
+	def delete_comment(comment)
+		parent = comment.parent
+		comment.destroy
+		
+		if parent != nil && parent.content == "[Deleted]" && parent.is_childless?
+			parent.destroy
+		else
+			comment.destroy
+		end
+	end
 end

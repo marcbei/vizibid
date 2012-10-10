@@ -13,7 +13,7 @@ $('#votedown<%=@comment.id%>').removeClass('votearrowdown');
 <% if @commentvote == nil %>
 	$('#voteup<%=@comment.id%>').addClass("votearrow");
 	$('#votedown<%=@comment.id%>').addClass("votearrow");
-<% elsif @commentvote.value == 1 %>
+<% elsif @commentvote.value == 1 || @comment.user.id == current_user.id  %>
 	$('#voteup<%=@comment.id%>').addClass("votearrowup");
 	$('#votedown<%=@comment.id%>').addClass("votearrow");
 <% else %>

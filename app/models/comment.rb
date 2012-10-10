@@ -24,7 +24,6 @@ class Comment < ActiveRecord::Base
   has_many :commenters, :through => :comment_votes, :source => :user
 
   validates :content, presence: true, length: { maximum: 400 }
-  validates :user_id, presence: true
   validates :form_id, presence: true
 
 end

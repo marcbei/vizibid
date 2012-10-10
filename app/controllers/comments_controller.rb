@@ -78,43 +78,49 @@ class CommentsController < ApplicationController
 
   def update
 
-      @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
+      if params[:id] != nil
+        @comment = Comment.find(params[:id])
+        @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
 
-      if @commentvote == nil
-        @commentvote = CommentVote.new
-        @commentvote.user_id = current_user.id
-        @commentvote.comment_id = params[:id] 
-        
-        if params[:vote] == "pos"
-          @commentvote.value = 1
-        elsif params[:vote] == "neg"
-          @commentvote.value = -1
-        end
+        if @comment.user.id != current_user.id
 
-        @commentvote.save
-      else
-        if(@commentvote.value == 1)
-          if(params[:vote] == "pos")
-            @commentvote.destroy
-          else
-            @commentvote.value = -1
+          if @commentvote == nil
+            @commentvote = CommentVote.new
+            @commentvote.user_id = current_user.id
+            @commentvote.comment_id = params[:id] 
+            
+            if params[:vote] == "pos"
+              @commentvote.value = 1
+            elsif params[:vote] == "neg"
+              @commentvote.value = -1
+            end
+
             @commentvote.save
-          end
-        elsif(@commentvote.value == -1)
-          if(params[:vote] == "neg")
-            @commentvote.destroy
           else
-            @commentvote.value = 1
-            @commentvote.save
+            if(@commentvote.value == 1)
+              if(params[:vote] == "pos")
+                @commentvote.destroy
+              else
+                @commentvote.value = -1
+                @commentvote.save
+              end
+            elsif(@commentvote.value == -1)
+              if(params[:vote] == "neg")
+                @commentvote.destroy
+              else
+                @commentvote.value = 1
+                @commentvote.save
+              end
+            end
           end
+
+          # refresh the data
+          update_comment_score(params[:id])
+          @comment = Comment.find(params[:id])
+          @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
+
         end
       end
-
-      # refresh the data
-      update_comment_score(params[:id])
-        
-      @comment = Comment.find(params[:id])
-      @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
       
       respond_to do |format|
           format.js  
@@ -123,5 +129,16 @@ class CommentsController < ApplicationController
 
   def destroy
 
+    @comment = Comment.find(params[:id])
+
+    if @comment.has_children?
+      @comment.content = "[Deleted]"
+      @comment.user_id = nil
+      @comment.save
+    else
+      delete_comment(@comment)
+    end
+
+    redirect_to form_path(params[:form_id])
   end
 end
