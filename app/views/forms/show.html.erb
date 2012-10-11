@@ -55,18 +55,18 @@
 		<% if !@form.comments.any? %>
 			<h3>Please let us know what you think of this document. </h3><br/>
 		<%else%>
-			<br/><br/>
-				<div class="btn-group">
-				  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-				    Sort by:
-				    <span class="caret"></span>
-				  </a>
-				  <ul class="dropdown-menu">
-				    <li><%= link_to :top, form_path(@form, :sorted_by => "top")%></li>
-				    <li><%= link_to :newest, form_path(@form, :sorted_by => "new")%></li>
-				    <li><%= link_to :oldest, form_path(@form, :sorted_by => "old")%></li>
-				  </ul>
-				</div>
+			<br/><br/>Sort by:
+		 	<ul class="nav nav-pills">
+			    <li 
+			    <% if @sort_by == "top" || @sort_by == nil %>
+			    class = "active" <% end %>><%= link_to :top, form_path(@form, :sorted_by => "top")%></li>
+			    <li
+			    <% if @sort_by == "new" %>
+			    class = "active" <% end %>><%= link_to :newest, form_path(@form, :sorted_by => "new")%></li>
+			    <li
+			    <% if @sort_by == "old" %>
+			    class = "active" <% end %>><%= link_to :oldest, form_path(@form, :sorted_by => "old")%></li>
+		  	</ul>
 		<%end%>
 
 		<% if @form.comments.any? %>
