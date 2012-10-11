@@ -16,9 +16,9 @@ module ApplicationHelper
 
     def options_for_comment_sort
        [
-        ['Oldest', 'Oldest'],
+        ['Top', 'Top'],
         ['Newest', 'Newest'],
-        ['Top', 'Top']
+        ['Oldest', 'Oldest'],
        ]
     end
 

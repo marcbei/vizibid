@@ -58,6 +58,14 @@ class FormsController < ApplicationController
   end
 
   def show
+
+    @sorted = "top"
+    if params[:sorted_by] == "new"
+      @sort_by = "new"
+    elsif params[:sorted_by] == "old"
+      @sort_by = "old"
+    end 
+
     @form = Form.find(params[:id])
     @comments = @form.comments
     @comment = current_user.comments.build
@@ -79,5 +87,4 @@ class FormsController < ApplicationController
 
     redirect_to @form.form.url
   end
-
 end

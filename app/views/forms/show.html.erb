@@ -55,12 +55,29 @@
 		<% if !@form.comments.any? %>
 			<h3>Please let us know what you think of this document. </h3><br/>
 		<%else%>
-			<br/><br/>Sort by: <%= select_tag :'Sorted By', options_for_select(options_for_comment_sort), :class => "commentsort" %><br/>
+			<br/><br/>
+				<div class="btn-group">
+				  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				    Sort by:
+				    <span class="caret"></span>
+				  </a>
+				  <ul class="dropdown-menu">
+				    <li><%= link_to :top, form_path(@form, :sorted_by => "top")%></li>
+				    <li><%= link_to :newest, form_path(@form, :sorted_by => "new")%></li>
+				    <li><%= link_to :oldest, form_path(@form, :sorted_by => "old")%></li>
+				  </ul>
+				</div>
 		<%end%>
 
 		<% if @form.comments.any? %>
 			<ul class="comments">
-				<%= nested_comments @form.comments.arrange(:order => :created_at) %>
+				<% if @sort_by == "new" %>
+					<%= nested_comments @form.comments.arrange(:order => "created_at desc") %>
+				<% elsif @sort_by == "old" %>
+					<%= nested_comments @form.comments.arrange(:order => "created_at asc") %>
+				<% else %>
+					<%= nested_comments @form.comments.arrange(:order => "score desc") %>
+				<% end %>
 			</ul>
 		<% end %>
 </div>
