@@ -1,4 +1,5 @@
 class FormRequestsController < ApplicationController
+	include FormRequestsHelper
 
 	before_filter :signed_in_user
 
@@ -59,6 +60,22 @@ class FormRequestsController < ApplicationController
 		flash[:success] = "Request deleted!"
 
 		redirect_to requestcenter_path
+	end
+
+	def destroy_response
+
+		@response = RequestSubmission.find(params[:id])
+
+	    if @response.has_children?
+	      @response.comment = "[Deleted]"
+	      @response.user_id = nil
+	      @response.save
+	    else
+	      delete_response(@response)
+	    end
+
+		redirect_to form_request_path(params[:requestid])
+
 	end
 
 	def completerequest

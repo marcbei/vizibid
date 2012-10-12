@@ -22,6 +22,5 @@ class RequestSubmission < ActiveRecord::Base
 
    validates :comment, :presence => true
    validates :form_request_id, :presence => true
-   validates :user_id, :presence => true
 
 end

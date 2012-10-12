@@ -1,7 +1,9 @@
 <% user = User.find_by_id(f.user_id) %>
 
 <li>
-	<strong><%= link_to user.name, user_path(user) %></strong>
+	<% if user != nil %>
+		<strong><%= link_to user.name, user_path(user) %></strong>
+	<% end %>
 	<span class="timestamp"><%= time_ago_in_words(f.created_at) %> ago</span><br/>
 	<% if f.comment != nil %>
 		<span class="content"><%= f.comment %></span><br/>
@@ -13,6 +15,9 @@
 	<% end %>
 	<div class="actions">
     	<%= render 'layouts/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>
+    	<% if current_user.id == f.user_id %>
+    		&nbsp;&nbsp;&nbsp;<%= link_to :Delete, deleteresponse_path(f.id, :requestid => f.form_request_id.to_s) %>
+    	<% end %>
 	</div>
 </li>
 

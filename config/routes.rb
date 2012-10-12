@@ -27,6 +27,7 @@ Vizibid::Application.routes.draw do
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest
   match '/form_requests/edit/:id/:comment' => 'form_requests#edit', :as => :requestcomment
+  match '/deleteresponse/:id' => 'form_requests#destroy_response', :as => :deleteresponse
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
