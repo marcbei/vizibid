@@ -1,5 +1,8 @@
 $('.comments').replaceWith("<%= escape_javascript(render 'layouts/form_comments' )%>");
 
+$('.commentmodallink').off('click');
+$('.upload').off('click');
+
 $('.uploadform').hide();
 $('.upload').attr('checked', false);
 
