@@ -5,7 +5,10 @@ class PagesController < ApplicationController
       if params[:search] == nil || params[:search].empty?
         @forms = nil
       else
-        @forms = Form.search(params[:search])
+        @search = Form.search do
+          fulltext params[:search]
+        end
+        @forms = @search.results
       end
 
   	else

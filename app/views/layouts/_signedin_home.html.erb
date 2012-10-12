@@ -10,33 +10,7 @@
 <% if @forms != nil %>
 	
 	<hr/>
-	<h4>
-	 Results: <%= @forms.count %> documents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-	 <br/><br/>
-	 Sort results by:
-	 <br/><br/>
-	 <ul class="nav nav-pills">
-  		<li class = "active">
-    		<%= link_to "Relevance", '#'%>
-  		</li>
-  		<li>
-  			<%= link_to "Rating", '#' %>
-  		</li>
-  		<li>
-  			<%= link_to "Date", '#' %>
-  		</li>
-	</ul>
-
-	</div>
-	</h4>
-
-	<hr/>
-	<br/>
-
-
 	<% @i = 1 %>
-
 	<% @forms.each do |f| %>
 	  <tr>
 	    <td><%= render 'layouts/form_summary', :f => f, :i => @i %></td>

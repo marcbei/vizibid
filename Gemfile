@@ -38,6 +38,10 @@ gem 'pg', '0.12.2'
 
  gem 'font-awesome-rails'
 
+ gem 'sunspot_rails'
+ gem 'progress_bar'
+ gem 'sunspot_solr'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

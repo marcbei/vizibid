@@ -35,12 +35,16 @@ class Form < ActiveRecord::Base
   validates :name, :presence => true
   validates :jurisdiction, :presence => true
 
-  def self.search(search)
-  	if search
-      	find(:all, :conditions => ['name ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%"])
-  	else
-  	    find(:all)
-  	end
+  searchable do
+    text :name, :boost => 5
+    text :keywords, :boost => 3
+    text :description, :jurisdiction
+    text :user do
+      user.name
+    end
+    text :comments do
+      comments.map(&:content)
+    end
   end
   
   def average_rating
