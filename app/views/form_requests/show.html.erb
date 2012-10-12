@@ -30,8 +30,8 @@
 	<h3>Request Completed!</h3>
 <% end %>
 <br/><br/>
+<h3>Responses (<%= @requestsubmissions.count %>)</h3>
 <% if @requestsubmissions.count >0 %>
-	<h3>Responses</h3>
 	<ul class = "comments" >
 		<%= nested_request_responses @requestsubmissions.arrange(:order => :created_at)  %>
 	</ul>
