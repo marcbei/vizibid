@@ -1,0 +1,13 @@
+$('.comments').replaceWith("<%= escape_javascript(render 'layouts/form_comments' )%>");
+
+$('.uploadform').hide();
+$('.upload').attr('checked', false);
+
+$('.upload').click (function() {
+   $('.uploadform').toggle();
+});
+
+$('.commentmodallink').click (function() {
+    $('.uploadform').hide();
+    $('.upload').attr('checked', false);
+});

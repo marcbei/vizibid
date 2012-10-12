@@ -1,0 +1,9 @@
+<ul class="comments">
+	<% if @sort_by == "new" %>
+		<%= nested_comments @form.comments.arrange(:order => "created_at desc") %>
+	<% elsif @sort_by == "old" %>
+		<%= nested_comments @form.comments.arrange(:order => "created_at asc") %>
+	<% else %>
+		<%= nested_comments @form.comments.arrange(:order => "score desc") %>
+	<% end %>
+</ul>

@@ -75,6 +75,11 @@ class FormsController < ApplicationController
     @inappropriate_document_report = InappropriateDocument.find_by_user_id_and_form_id(current_user.id, @form.id)
     @id = InappropriateDocument.new
 
+    respond_to do |format|
+          format.js  
+          format.html
+      end
+
   end
 
   def download

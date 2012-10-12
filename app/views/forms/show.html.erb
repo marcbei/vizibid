@@ -59,26 +59,18 @@
 		 	<ul class="nav nav-pills">
 			    <li 
 			    <% if @sort_by == "top" || @sort_by == nil %>
-			    class = "active" <% end %>><%= link_to :top, form_path(@form, :sorted_by => "top")%></li>
+			    class = "active" <% end %>><%= link_to :top, form_path(@form, :sorted_by => "top"), :remote => true%></li>
 			    <li
 			    <% if @sort_by == "new" %>
-			    class = "active" <% end %>><%= link_to :newest, form_path(@form, :sorted_by => "new")%></li>
+			    class = "active" <% end %>><%= link_to :newest, form_path(@form, :sorted_by => "new"), :remote => true%></li>
 			    <li
 			    <% if @sort_by == "old" %>
-			    class = "active" <% end %>><%= link_to :oldest, form_path(@form, :sorted_by => "old")%></li>
+			    class = "active" <% end %>><%= link_to :oldest, form_path(@form, :sorted_by => "old"), :remote => true%></li>
 		  	</ul>
 		<%end%>
 
 		<% if @form.comments.any? %>
-			<ul class="comments">
-				<% if @sort_by == "new" %>
-					<%= nested_comments @form.comments.arrange(:order => "created_at desc") %>
-				<% elsif @sort_by == "old" %>
-					<%= nested_comments @form.comments.arrange(:order => "created_at asc") %>
-				<% else %>
-					<%= nested_comments @form.comments.arrange(:order => "score desc") %>
-				<% end %>
-			</ul>
+			<%= render 'layouts/form_comments' %>
 		<% end %>
 </div>
 </div>
