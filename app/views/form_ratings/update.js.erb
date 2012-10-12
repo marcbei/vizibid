@@ -1,1 +1,9 @@
 $('div#ratingstext').replaceWith("<h3>Your rating:</h3><br/>");
+
+<% if !@form.average_rating.nan? %>
+	<% @rating = @form.average_rating.to_s %>
+<% else %>
+	<% @rating = "Document has no ratings." %>
+<% end %>
+
+$('.averagerating').replaceWith("<div class=\"averagerating\" style=\"Display: inline;\"> <%= escape_javascript(@rating) %> </div>");

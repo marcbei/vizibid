@@ -84,12 +84,19 @@ class FormsController < ApplicationController
 
   def download
     @form = Form.find(params[:id])
+    @form_file_name = File.basename(@form.form.to_s)
     
     @formdownload = FormDownload.new
     @formdownload.user_id = current_user.id
     @formdownload.form_id = @form.id
     @formdownload.save
 
-    redirect_to @form.form.url
+    open(@form.form.url) {|form|
+      tmpfile = Tempfile.new("temp#{@form_file_name}")
+      File.open(tmpfile.path, 'wb') do |f| 
+        f.write form.read
+      end 
+      send_file tmpfile.path, :filename =>  @form_file_name
+    }   
   end
 end
