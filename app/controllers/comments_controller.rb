@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
 
-    if(params[:comment][:form_id] != nil && params[:comment][:parent_id] != nil)
+    if(params[:comment][:form_id] != nil && params[:comment][:parent_id] != "-1" )
 
       @comment = Comment.new
       @comment.user_id = current_user.id
@@ -50,8 +50,11 @@ class CommentsController < ApplicationController
       redirect_to form_path(params[:comment][:form_id])
 
     else
-      @comment = current_user.comments.build(params[:comment])
-      @comment.form_id = params[:form_id]
+      @comment = current_user.comments.new
+      @comment.form_id = params[:comment][:form_id]
+      @comment.user_id = current_user.id
+      @comment.parent_id = nil
+      @comment.content = params[:comment][:content]
       
       if @comment.save
         flash[:success] = "Thank you for your comment!"
