@@ -1,37 +1,19 @@
-	<h3><%= @form_requests.count %> Outstanding Requests</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<br/>
-	 Sort results by:
-	 <br/><br/>
-	 <ul class="nav nav-pills">
-  		<li class = "active">
-    		<%= link_to "Newest", '#'%>
-  		</li>
-  		<li>
-  			<%= link_to "Oldest", '#' %>
-  		</li>
-  		<li>
-  			<%= link_to "A to Z", '#' %>
-  		</li>
-  		 <li>
-  			<%= link_to "Z to A", '#' %>
-  		</li>
-	</ul>
-
-	</h4>
-	<%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<%= link_to "Request a Document", new_form_request_path %>
-	<hr/>
-	<br/>
-
-
-	<% @i = 1 %>
-
-	<% @form_requests.each do |f| %>
-	  <% if f.fufilled != true %>
+<%= form_tag requestcenter_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search], :placeholder => "Search Requests", :class => "searchbox"%>
+	<%= submit_tag "Search", :class => "btn btn-info" %>
+<% end %>
+<%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "Request a Document", new_form_request_path %>
+<hr/>
+<% @i = 1 %>
+<% @form_requests.each do |f| %>
+  <% if f.fufilled != true %>
 	  <tr>
 	    <td><%= render 'layouts/form_request_summary', :f => f, :i => @i, :showstatus => 'false' %></td>
 	  </tr>
-	  <br/><hr/>
 	  <% @i += 1 %>
+	  <% if @i < @form_requests.count+1 %>
+	  	  <hr/>
 	  <% end %>
-	<% end %>
+  <% end %>
+<% end %>

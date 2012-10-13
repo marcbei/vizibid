@@ -32,7 +32,15 @@ class PagesController < ApplicationController
     if(params[:scope] == "me")
       @form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}'"])
     else
-      @form_requests = FormRequest.find(:all, :conditions => [ "fufilled != true"])
+      if params[:search] == nil || params[:search].empty?
+        @form_requests = FormRequest.find(:all, :conditions => [ "fufilled != true"])
+      else
+        @search = FormRequest.search do
+          with(:fufilled, false)
+          fulltext params[:search]
+        end
+        @form_requests = @search.results
+      end
     end
 
   end

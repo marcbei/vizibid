@@ -15,8 +15,10 @@
 	  <tr>
 	    <td><%= render 'layouts/form_summary', :f => f, :i => @i %></td>
 	  </tr>
-	  <br/><hr/>
 	  <% @i += 1 %>
+	  <% if @i < @forms.count+1 %>
+	  	  <hr/>
+	  <% end %>
 	<% end %>
 <% else %>
 	<br/>

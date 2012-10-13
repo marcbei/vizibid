@@ -26,4 +26,10 @@ class FormRequest < ActiveRecord::Base
   validates :jurisdiction, :presence => true
   validates :name, :presence => true
 
+   searchable do
+    text :name, :boost => 5
+    text :keywords, :boost => 3
+    text :description, :jurisdiction
+    boolean :fufilled
+  end
 end
