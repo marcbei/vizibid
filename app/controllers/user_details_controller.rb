@@ -26,6 +26,22 @@ class UserDetailsController < ApplicationController
 			@user.user_detail.bio = params[:user_detail][:bio]
 		end
 
+		if !params[:user_detail][:show_comments].nil? && !params[:user_detail][:show_comments].empty?
+			@user.user_detail.show_comments = params[:user_detail][:show_comments]
+		end
+
+		if !params[:user_detail][:show_uploaded].nil? && !params[:user_detail][:show_uploaded].empty?
+			@user.user_detail.show_uploaded = params[:user_detail][:show_uploaded]
+		end
+
+		if !params[:user_detail][:show_downloaded].nil? && !params[:user_detail][:show_downloaded].empty?
+			@user.user_detail.show_downloaded = params[:user_detail][:show_downloaded]
+		end
+
+		if !params[:user_detail][:show_requests].nil? && !params[:user_detail][:show_requests].empty?
+			@user.user_detail.show_requests = params[:user_detail][:show_requests]
+		end
+
 		if @user.user_detail.save
 			flash[:success] = "Profile settings updated"
 		else

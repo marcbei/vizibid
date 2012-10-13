@@ -1,49 +1,103 @@
 <% provide(:title, @user.name) %>
 <div class = "container">
-<div class = "row span6">
-<br/><br/>
-<b><%= @user.name %></b>, Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %>
-<br/>
-Email: <%= mail_to @user.email%>
-<br/>
-<% if !@user.user_detail.website.nil? %>
-	Website: <%= link_to @user.user_detail.website, @user.user_detail.website %><br/>
-<% end %>
+	<div class = "row span6">
+	<br/>
+	<b><%= @user.name %></b>, Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %>
+	<br/>
+	Email: <%= mail_to @user.email%>
+	<br/>
+	<% if !@user.user_detail.website.nil? %>
+		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %>
+	<% end %>
+	<br/>
+	<% if !@user.user_detail.location.nil? %>
+		Location: <%= @user.user_detail.location %><br/>
+	<% end %>
 
-<% if !@user.user_detail.location.nil? %>
-	Location: <%= @user.user_detail.location %><br/>
-<% end %>
+	<% if !@user.user_detail.practice_area.nil? %>
+		Practice Area: <%= @user.user_detail.practice_area %><br/><br/>
+	<% end %>
 
-<% if !@user.user_detail.practice_area.nil? %>
-	Practice Area: <%= @user.user_detail.practice_area %><br/><br/>
-<% end %>
+	<% if !@user.user_detail.bio.nil? %>
+		Bio: <%= @user.user_detail.bio %><br/>
+	<% end %>
 
-<% if !@user.user_detail.bio.nil? %>
-	Bio: <%= @user.user_detail.bio %><br/>
-<% end %>
+	<% if @user.user_detail.show_downloaded %>
+		<% if @formdownloads_count > 0 %>
+			Downloaded the following (<%= @formdownloads_count %>) documents
+			<ul>
+			<% i = @formdownloads_count-1 %>
+			<% while i  >= 0 %>
+				<li>
+					<%= link_to @formdownloads[i].name, form_path(@formdownloads[i].id)%> on <%= time_ago_in_words(@formdownloads_a[i].created_at) %> ago</li>
+				</li>
+				<% i = i-1 %>
+			<%end%>
+			</ul>
+		<% else %>
+			0 documents downloaded
+		<% end %>
+		<br/>
+	<% end %>
 
-</br>
-<% if @formdownloads_count > 0 %>
-Downloaded <%= @formdownloads_count %> documents
-<% else %>
-0 documents downloaded
-<% end %>
-<br/> <br/>
+	<% if @user.user_detail.show_comments %>
+		<% if @comments.count > 0 %>
+		Posted the following (<%= @comments.count %>) comments:
+		<ul>
+			<% i = @comments.count-1 %>
+			<% cform_id = -1 %>
+			<% while i  >= 0 %>
+				<% if cform_id != @comments[i].form.id %>
+					<%= link_to @comments[i].form.name, form_path(@comments[i].form) %>
+				<% end %>
+				<li>
+					<%= truncante_description(@comments[i].content) %>
+				</li>
+				<% cform_id = @comments[i].form.id %>
+				<% i = i-1 %>
+			<%end%>
+		</ul>
+	<% else %>
+		0 comments
+	<% end %> 
+		<br/>
+	<% end %>
 
-<% if @formshared_count > 0 %>
-Shared the following (<%= @formshared_count %>) documents:
+	<% if @user.user_detail.show_uploaded %>
+		<% if @formshared_count > 0 %>
+			Shared the following (<%= @formshared_count %>) documents:
+			<ul>
+				<% i = @formshared_count-1 %>
+				<% while i  >= 0 %>
+					<li>
+						<%= link_to @formshared[i].name, form_path(@formshared[i].id)%> on <%= time_ago_in_words(@formshared[i].created_at) %> ago</li>
+					</li>
+					<% i = i-1 %>
+				<%end%>
+			</ul>
+		<% else %>
+			0 documents shared
+		<% end %>
+		<br/>
+	<% end %>
 
-<ul>
-	<% i = @formshared_count-1 %>
-	<% while i  >= 0 %>
-		<li>
-			<%= link_to @formshared[i].name, form_path(@formshared[i].id)%> on <%= time_ago_in_words(@formshared[i].created_at) %> ago</li>
-		</li>
-		<% i = i-1 %>
-	<%end%>
-</ul>
-<% else %>
-0 documents shared
-<% end %>
-</div>
+	<% if @user.user_detail.show_requests %>
+		<% if @formrequests.count > 0 %>
+		Made the following (<%= @formrequests.count %>) requests:
+		<ul>
+			<% i = @formrequests.count-1 %>
+			<% while i  >= 0 %>
+				<li>
+					<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
+				</li>
+				<% i = i-1 %>
+			<%end%>
+		</ul>
+	<% else %>
+		0 requests
+	<% end %>
+		<br/>
+	<% end %>
+
+	</div>
 </div>
