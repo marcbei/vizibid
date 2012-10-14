@@ -38,8 +38,10 @@ class User < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }, :on => :create
+  validates :password, presence: true, length: { minimum: 6 , maximum: 35}, :on => :create
   validates :password_confirmation, presence: true, :on => :create
+  validates_format_of :password, :with => /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){6,35}$/
+
 
   def send_password_reset
     self.password_reset_token = SecureRandom.urlsafe_base64
