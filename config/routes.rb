@@ -1,5 +1,7 @@
 Vizibid::Application.routes.draw do
 
+  get "password_resets/new"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :forms
@@ -11,6 +13,7 @@ Vizibid::Application.routes.draw do
   resources :user_feedbacks, only: [:new, :create]
   resources :inappropriate_documents, only: [:create]
   resources :inappropriate_requests, only: [:create]
+  resources :password_resets
 
   root :to => 'pages#home'
 
