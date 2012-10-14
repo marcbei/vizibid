@@ -9,7 +9,6 @@
 	<% if !@user.user_detail.website.nil? %>
 		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %>
 	<% end %>
-	<br/>
 	<% if !@user.user_detail.location.nil? %>
 		Location: <%= @user.user_detail.location %><br/>
 	<% end %>
@@ -21,7 +20,7 @@
 	<% if !@user.user_detail.bio.nil? %>
 		Bio: <%= @user.user_detail.bio %><br/>
 	<% end %>
-
+	<br/>
 	<% if @user.user_detail.show_downloaded %>
 		<% if @formdownloads_count > 0 %>
 			Downloaded the following (<%= @formdownloads_count %>) documents
