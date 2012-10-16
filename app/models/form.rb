@@ -36,8 +36,8 @@ class Form < ActiveRecord::Base
   validates :jurisdiction, :presence => true
 
   searchable do
-    text :name, :boost => 5
-    text :keywords, :boost => 3
+    text :name, :boost => 3
+    text :keywords, :boost => 2
     text :description, :jurisdiction
     text :user do
       user.name
