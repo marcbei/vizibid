@@ -25,26 +25,28 @@
 			Document has no ratings.
 		<% end %>
 		</div>
-		</div>
-		<br/><strong>Description:</strong> <%= @form.description %><br/><br/>
-		<% if @form.keywords != nil %>
-			<% if @form.keywords.length > 0 %>
-				<em>Associated Keywords:</em><br/> <%= @form.keywords %></H1>
-				<br/><br/>
-			<% end %>
+		<% if @form.description != nil && @form.description.length > 0 %>
+			<br/><br/><strong>Description:</strong> <%= @form.description %>
 		<% end %>
+		<br/><br/>
+		<% if @form.keywords != nil && @form.keywords.length > 0 %>
+			<em>Associated Keywords:</em><br/> <%= @form.keywords %></H1>
+			<br/><br/>
+		<% end %>
+
 		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :target => "_blank"%> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil%>
 			<%= render 'layouts/inappropriate_document_modal', :formid => @form.id %>
-			<br/><br/>
 		<% end %>
+		<br/>
+		<h4>(<%= @form.form.to_s.split('.').last %> format)</h4>
 		<% if @form.user.id != current_user.id && document_downloaded%>
 			<div id = "ratingstext">
 				<%if current_user_rating(@form.id) != "N/A" %>
-					<h3>Your rating:</h3><br/>
+					<br/><h3>Your rating:</h3><br/>
 				<% else %>
-					<h3>Rate this form:</h3><br/>
+					<br/><h3>Rate this form:</h3><br/>
 				<% end %>
 			</div>
 			<%= render 'layouts/ratings_form' %>
