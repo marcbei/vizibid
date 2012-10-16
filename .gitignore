@@ -15,5 +15,3 @@ doc/
 .project
 .DS_Store
 .idea
-
-vendor/bundle
