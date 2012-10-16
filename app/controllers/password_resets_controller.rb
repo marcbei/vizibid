@@ -10,7 +10,6 @@ class PasswordResetsController < ApplicationController
 	  	
 	  redirect_to root_url, :notice => "Email sent with password reset instructions."
 	  
-	  end
 	end
 
 	def edit
