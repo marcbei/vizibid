@@ -20,7 +20,7 @@
 		<strong>Average Rating: </strong> 
 		<div class = "averagerating" style="Display: inline;">
 		<% if !@form.average_rating.nan? %>
-			<%= @form.average_rating %>
+			<%= @form.average_rating.round(2) %>
 		<% else %>
 			Document has no ratings.
 		<% end %>
