@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 , maximum: 35}, :on => :create
   validates :password_confirmation, presence: true, :on => :create
-  validates_format_of :password, :with => /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){6,35}$/
+  validates_format_of :password, :with => /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){6,35}$/, :on => :create
 
 
   def send_password_reset
