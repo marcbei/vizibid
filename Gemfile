@@ -42,7 +42,7 @@ gem 'pg', '0.12.2'
  gem 'progress_bar'
  gem 'sunspot_solr'
 
- gem "ruby-filemagic", "~> 0.4.2"
+ #gem "ruby-filemagic", "~> 0.4.2"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
