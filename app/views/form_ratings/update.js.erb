@@ -1,7 +1,7 @@
 $('div#ratingstext').replaceWith("<br/><h3>Your rating:</h3><br/>");
 
 <% if !@form.average_rating.nan? %>
-	<% @rating = @form.average_rating.to_s %>
+	<% @rating = @form.average_rating.round(2) %>
 <% else %>
 	<% @rating = "Document has no ratings." %>
 <% end %>
