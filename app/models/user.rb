@@ -2,19 +2,24 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
-#  name                   :string(255)
-#  email                  :string(255)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  password_digest        :string(255)
-#  remember_token         :string(255)
-#  password_reset_token   :string(255)
-#  password_reset_sent_at :datetime
+#  id                         :integer          not null, primary key
+#  name                       :string(255)
+#  email                      :string(255)
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  password_digest            :string(255)
+#  remember_token             :string(255)
+#  password_reset_token       :string(255)
+#  password_reset_sent_at     :datetime
+#  verification_token         :string(255)
+#  verification_token_sent_at :datetime
+#  bar_number                 :integer
+#  state_licensed             :string(255)
+#  verified                   :boolean
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :id, :email, :name, :password, :password_confirmation
+  attr_accessible :id, :email, :name, :password, :password_confirmation, :verification_token, :verification_token_sent_at, :bar_number, :state_licensed, :verified
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -41,7 +46,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 , maximum: 35}, :on => :create
   validates :password_confirmation, presence: true, :on => :create
   validates_format_of :password, :with => /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){6,35}$/, :on => :create
-
+  validates :bar_number,  presence: true
+  validates :state_licensed,  presence: true
 
   def send_password_reset
     self.password_reset_token = SecureRandom.urlsafe_base64

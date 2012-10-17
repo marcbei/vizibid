@@ -14,11 +14,10 @@ module ApplicationHelper
       redirect_to(root_path) unless current_user?(@user)
     end
 
-    def options_for_comment_sort
+    def options_for_state_licensed
        [
-        ['Top', 'Top'],
-        ['Newest', 'Newest'],
-        ['Oldest', 'Oldest'],
+        ['Oregon', 'Oregon'],
+        ['Washington', 'Washington'],
        ]
     end
 

@@ -65,6 +65,9 @@
 
 				<%= f.text_field :name, :placeholder => "name" %>
 				<%= f.text_field :email, :placeholder => "email" %>
+				<%= f.label "State Licensed" %>
+				<%= f.select :state_licensed, options_for_select(options_for_state_licensed) %>
+				<%= f.password_field :bar_number, :placeholder => "bar id number" %>
 				<%= f.password_field :password, :placeholder => "password" %>
 	      		<%= f.password_field :password_confirmation, :placeholder => "repeat password" %>
 

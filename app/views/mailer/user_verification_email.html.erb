@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>
+      To verify your account click the link below.<br/>
+    </p>
+    <p>
+      <%= verify_url(@user.verification_token) %>
+    </p>
+  </body>
+</html>

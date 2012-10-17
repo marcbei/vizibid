@@ -32,4 +32,9 @@ class Mailer < ActionMailer::Base
     mail(:to => user.email, :subject => "Password Reset")
   end
 
+  def user_verification_email(user, emailaddress)
+    @user = user
+    mail(:to => "marc@vizibid.com", :subject => "Vizibid Verification")
+  end
+
 end

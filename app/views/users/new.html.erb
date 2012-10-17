@@ -12,6 +12,12 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
+			<%= f.label "State Licensed" %>
+			<%= f.select :state_licensed, options_for_select(options_for_state_licensed) %>
+	
+			<%= f.label "Bar ID number" %>
+			<%= f.password_field :bar_number %>
+	
 			<%= f.label :password %>
 			<%= f.password_field :password %>
 

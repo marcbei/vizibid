@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
   before_filter :signed_in_user, only: [:edit, :update]
   before_filter :correct_user,   only: [:edit, :update]
@@ -30,6 +31,10 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(params[:user])
+    @user.verified = false
+    @user.verification_token = SecureRandom.urlsafe_base64
+    @user.verification_token_sent_at = Time.zone.now
+
   	if @user.save
       
       @user_details = UserDetail.new
@@ -48,15 +53,30 @@ class UsersController < ApplicationController
       @user_notifications.surveys = true
       
       if @user_details.save && @user_notifications.save
-        flash[:success] = "Welcome to Vizibid!"
-        sign_in @user
-  		  redirect_to root_path
+        verify_user(@user)
       else
         render 'new'
       end
   	else
   		render 'new'
   	end
+  end
+
+  def verify
+
+    @user = User.find_by_verification_token(params[:id])
+    
+    if @user.verification_token_sent_at < 24.hours.ago
+      flash[:error] = "It has been over 24 hours since you signed up. Please try again."
+      @user.destroy
+      redirect_to root_path
+    else
+      @user.verified = true
+      @user.save
+      flash[:success] = "Welcome to Vizibid!"
+      sign_in @user
+      redirect_to root_path
+    end
   end
 
   def edit
