@@ -34,7 +34,7 @@ class Mailer < ActionMailer::Base
 
   def user_verification_email(user, emailaddress)
     @user = user
-    mail(:to => "marc@vizibid.com", :subject => "Vizibid Verification")
+    mail(emailaddress, :subject => "Vizibid Verification")
   end
 
 end
