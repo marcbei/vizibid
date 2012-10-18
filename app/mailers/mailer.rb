@@ -34,7 +34,13 @@ class Mailer < ActionMailer::Base
 
   def user_verification_email(user, emailaddress)
     @user = user
-    mail(emailaddress, :subject => "Vizibid Verification")
+
+    if !emailaddress.to_s.empty?
+      mail(:to => emailaddress, :subject => "Vizibid Verification")
+    else 
+      @manual = true
+      mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Vizibid Verification")
+    end
   end
 
 end

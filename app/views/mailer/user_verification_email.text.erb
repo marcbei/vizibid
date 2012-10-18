@@ -1,3 +1,10 @@
 To verify your account click the link below.
 
 <%= verify_url(@user.verification_token) %>
+
+<% if @manual == true %>
+ Name: <%= @user.name %>
+ Email: <%= @user.email %>
+ Bar Number: <%= @user.bar_number %>
+ State: <%= @user.state_licensed %>
+<% end %>
