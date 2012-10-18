@@ -5,14 +5,17 @@ module UsersHelper
 
 	def verify_user(user)
 
+		emailaddress = ""
 		if user.state_licensed.downcase == "washington"
 			emailaddress = verify_washington_user(user)
-			flash[:success] = "Verification email has been sent to the email address that is registered with your state's bar association."
 		elsif user.state_licensed.downcase == "oregon"
 			emailaddress = verify_oregon_user(user)
-			flash[:success] = "Verification email has been sent to the email address that is registered with your state's bar association."
-		else
+		end
+
+		if emailaddress.to_s.empty?
 			flash[:success] = "Verification email will be sent to the email address that you have signed-up with."
+		else
+			flash[:success] = "Verification email has been sent to the email address that is registered with your state's bar association."
 		end
 
 		Mailer.user_verification_email(user, emailaddress).deliver		

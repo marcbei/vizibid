@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 , maximum: 35}, :on => :create
   validates :password_confirmation, presence: true, :on => :create
   validates_format_of :password, :with => /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){6,35}$/, :on => :create
-  validates :bar_number,  presence: true
+  validates :bar_number,  presence: true, length: { maximum: 9 }
   validates :state_licensed,  presence: true
 
   def send_password_reset
