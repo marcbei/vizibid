@@ -11,6 +11,7 @@
       <%= verify_url(@user.verification_token) %>
     </p>
     <% if @manual == true %>
+      <h3>User Info</h3>
        Name: <%= @user.name %><br/>
        Email: <%= @user.email %><br/>
        Bar Number: <%= @user.bar_number %><br/>
