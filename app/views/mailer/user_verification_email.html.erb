@@ -11,10 +11,10 @@
       <%= verify_url(@user.verification_token) %>
     </p>
     <% if @manual == true %>
-      <%= @user.name %>
-      <%= @user.email %>
-      <%= @user.bar_number %>
-      <%= @user.state_licensed %>
+       Name: <%= @user.name %><br/>
+       Email: <%= @user.email %><br/>
+       Bar Number: <%= @user.bar_number %><br/>
+       State: <%= @user.state_licensed %><br/>
     <% end %>
   </body>
 </html>
