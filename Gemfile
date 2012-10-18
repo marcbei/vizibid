@@ -12,6 +12,8 @@ gem 'ancestry'
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
   gem 'annotate', '2.5.0'
+  gem 'rush'
+  gem 'daemons'
 end
 
 
