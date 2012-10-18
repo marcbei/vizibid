@@ -3,7 +3,11 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.6'
 
- gem 'ancestry'
+gem 'delayed_job_active_record'
+
+gem "hirefire"
+
+gem 'ancestry'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
@@ -42,7 +46,7 @@ gem 'pg', '0.12.2'
  gem 'progress_bar'
  gem 'sunspot_solr'
  gem 'nokogiri'
- gem 'delayed_job_active_record'
+
 
  #gem "ruby-filemagic", "~> 0.4.2"
 
