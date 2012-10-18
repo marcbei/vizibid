@@ -5,8 +5,12 @@
 	Email me when:&nbsp&nbsp
 	<%= f.check_box :requests %>
 	<%= f.label :requests, "responses are posted to my requests", :style => "display:inline;" %>
-	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= f.check_box :forms %>
+	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<%= f.check_box :forms %>
 	<%= f.label :forms, "comments are posted to my forms", :style => "display:inline;" %>
+	<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<%= f.check_box :downloads %>
+	<%= f.label :downloads, "when I download a new document", :style => "display:inline;" %>
 	<br/><br/><b>Updates from Vizibid</b><br/></br>
 	Email me with:&nbsp&nbsp
 	<%= f.check_box :news %>

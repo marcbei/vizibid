@@ -51,6 +51,7 @@ class UsersController < ApplicationController
       @user_notifications.news = true
       @user_notifications.tips = true
       @user_notifications.surveys = true
+      @user_notifications.downloads = true
       
       if @user_details.save && @user_notifications.save
         verify_user(@user)

@@ -11,10 +11,11 @@
 #  surveys    :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  downloads  :boolean
 #
 
 class UserNotification < ActiveRecord::Base
-  attr_accessible :user_id, :forms, :news, :requests, :surveys, :tips
+  attr_accessible :user_id, :forms, :news, :requests, :surveys, :tips, :downloads
 
   belongs_to :user
 

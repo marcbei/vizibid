@@ -47,6 +47,12 @@ class CommentsController < ApplicationController
       @commentvote.save
       update_comment_score(@comment.id)
 
+      @rootform = Form.find(params[:comment][:form_id])
+      @formowner = User.find(@rootform.user.id)
+      if @formowner.user_notification.forms == true && current_user.id != @formowner.id
+        Mailer.doc_comment_mail(current_user, @rootform, @formowner, @comment).deliver 
+      end
+
       redirect_to form_path(params[:comment][:form_id])
 
     else
@@ -69,14 +75,18 @@ class CommentsController < ApplicationController
       @commentvote.save
       update_comment_score(@comment.id)
 
+      @rootform = Form.find(params[:comment][:form_id])
+      @formowner = User.find(@rootform.user.id)
+      if @formowner.user_notification.forms == true && current_user.id != @formowner.id
+        Mailer.doc_comment_mail(current_user, @rootform, @formowner, @comment).deliver 
+      end
+
       redirect_to form_path(@comment.form_id)
     end
   end
 
   def new
     @comment = current_user.comments.new(:parent_id => params[:parent_id], :form_id => params[:form_id])
-
-    
   end
 
   def update

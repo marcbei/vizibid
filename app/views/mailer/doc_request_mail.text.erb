@@ -1,0 +1,6 @@
+New response to your request received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%=link_to @request.name, form_request_url(@request)%>
+
+Comment: <%= @requestsubmission.comment %>
+<% if @requestsubmission.form_id != 0 && @requestsubmission.form_id != nil %>
+	<%= link_to "Associated doucment", form_url(@requestsubmission.form_id) %>
+<% end %>

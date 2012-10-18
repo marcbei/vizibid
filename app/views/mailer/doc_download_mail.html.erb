@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3><%= @user.name %>, Thank you for your download!</h3>
+    <p>
+      Please remember to rate the document and share your experience with the Vizibid community. You can also share revisions to this document.<br/><br/>
+    </p>
+    <p>
+      <%= link_to @form.name, form_url(@form) %>
+    </p>
+  </body>
+</html>

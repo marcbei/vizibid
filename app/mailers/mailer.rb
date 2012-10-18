@@ -43,4 +43,28 @@ class Mailer < ActionMailer::Base
     end
   end
 
+  def doc_download_mail(user, form)
+    @user = user
+    @form = form
+    mail(:to => user.email, :subject => "Thank you for your download")
+  end
+
+  def doc_comment_mail(current_user, rootform, formowner, comment)
+    @currentuser = current_user
+    @form = rootform
+    @formowner = formowner
+    @comment = comment
+
+    mail(:to => @formowner.email, :subject => "New comment on your document")
+  end
+
+  def doc_request_mail(current_user, request, requestowner, request_submission)
+    @currentuser = current_user
+    @request = request
+    @requestowner = requestowner
+    @requestsubmission = request_submission
+
+    mail(:to => @requestowner.email, :subject => "New submission on your document request")
+  end
+
 end

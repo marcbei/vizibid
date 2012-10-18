@@ -18,8 +18,17 @@ class FormsController < ApplicationController
         return
       end
 
+      @request = FormRequest.find(params[:requestid])
+      @requestowner = User.find(@request.user.id)
+
       if params[:commentonly] == "yes" || params[:form][:name].empty?
         flash[:success] = "Thank you for your contribution!"
+
+        #send mail
+        if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
+          Mailer.doc_request_mail(current_user, @request, @requestowner, @request_submission).deliver 
+        end
+
         redirect_to form_request_path(params[:requestid])
         return
       else
@@ -32,6 +41,12 @@ class FormsController < ApplicationController
           flash[:success] = "Thank you for your contribution!"
           @request_submission.form_id = @form.id
           @request_submission.save
+
+          #sendmail
+          if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
+            Mailer.doc_request_mail(current_user, @request, @requestowner, @request_submission).deliver 
+          end
+
           redirect_to form_request_path(params[:requestid])
         else
           @request_submission.destroy
@@ -97,7 +112,11 @@ class FormsController < ApplicationController
         f.write form.read
       end 
       send_file tmpfile.path, :filename =>  @form_file_name
-    }   
+    }
+
+    if current_user.user_notification.downloads == true
+      Mailer.doc_download_mail(current_user, @form).deliver  
+    end   
 
   end
 end
