@@ -5,7 +5,7 @@ gem 'rails', '3.2.6'
 
 gem 'delayed_job_active_record'
 
-gem "hirefire"
+gem "workless", "~> 1.1.1"
 
 gem 'ancestry'
 

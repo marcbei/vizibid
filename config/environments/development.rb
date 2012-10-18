@@ -38,4 +38,8 @@ Vizibid::Application.configure do
   config.default_host = 'localhost:3000'
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
+  config.after_initialize do 
+    Delayed::Job.scaler = :local
+  end
+
 end

@@ -68,4 +68,8 @@ Vizibid::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.default_host = 'murmuring-chamber-5143.herokuapp.com'
   config.action_mailer.default_url_options = { :host => "murmuring-chamber-5143.herokuapp.com" }
+
+  config.after_initialize do 
+    Delayed::Job.scaler = :heroku_cedar
+  end
 end
