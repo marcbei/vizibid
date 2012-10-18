@@ -26,7 +26,7 @@ class InappropriateDocumentsController < ApplicationController
 
 		if @inappropriate_document.save
 			flash[:success] = "Thank your for your report!"
-			Mailer.inappropriate_document_email(@user, @form, @reason).deliver
+			Mailer.delay.inappropriate_document_email(@user, @form, @reason)
 		else
 			flash[:error] = "Sorry, we did mot receive your report."
 		end

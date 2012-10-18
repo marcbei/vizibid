@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
       @rootform = Form.find(params[:comment][:form_id])
       @formowner = User.find(@rootform.user.id)
       if @formowner.user_notification.forms == true && current_user.id != @formowner.id
-        Mailer.doc_comment_mail(current_user, @rootform, @formowner, @comment).deliver 
+        Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
       end
 
       redirect_to form_path(params[:comment][:form_id])
@@ -78,7 +78,7 @@ class CommentsController < ApplicationController
       @rootform = Form.find(params[:comment][:form_id])
       @formowner = User.find(@rootform.user.id)
       if @formowner.user_notification.forms == true && current_user.id != @formowner.id
-        Mailer.doc_comment_mail(current_user, @rootform, @formowner, @comment).deliver 
+        Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
       end
 
       redirect_to form_path(@comment.form_id)

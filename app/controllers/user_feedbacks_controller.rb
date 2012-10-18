@@ -10,7 +10,7 @@ class UserFeedbacksController < ApplicationController
 
 		if @userfeedback.save
 			flash[:success] = "Feedback submitted. Thank you."
-			Mailer.feedback_email(current_user, @userfeedback.subject, @userfeedback.comment).deliver
+			Mailer.delay.feedback_email(current_user, @userfeedback.subject, @userfeedback.comment)
 			redirect_to root_path
 		else
 			flash[:error] = "Unable to submit your feedback."

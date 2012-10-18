@@ -26,7 +26,7 @@ class InappropriateRequestsController < ApplicationController
 
 		if @inappropriate_request.save
 			flash[:success] = "Thank your for your report!"
-			Mailer.inappropriate_request_email(@user, @request, @reason).deliver
+			Mailer.delay.inappropriate_request_email(@user, @request, @reason)
 		else
 			flash[:error] = "Sorry, we did mot receive your report."
 		end

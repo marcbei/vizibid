@@ -26,7 +26,7 @@ class FormsController < ApplicationController
 
         #send mail
         if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
-          Mailer.doc_request_mail(current_user, @request, @requestowner, @request_submission).deliver 
+          Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
         end
 
         redirect_to form_request_path(params[:requestid])
@@ -44,7 +44,7 @@ class FormsController < ApplicationController
 
           #sendmail
           if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
-            Mailer.doc_request_mail(current_user, @request, @requestowner, @request_submission).deliver 
+            Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
           end
 
           redirect_to form_request_path(params[:requestid])
@@ -115,7 +115,7 @@ class FormsController < ApplicationController
     }
 
     if current_user.user_notification.downloads == true
-      Mailer.doc_download_mail(current_user, @form).deliver  
+      Mailer.delay.doc_download_mail(current_user, @form)  
     end   
 
   end

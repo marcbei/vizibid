@@ -42,6 +42,7 @@ gem 'pg', '0.12.2'
  gem 'progress_bar'
  gem 'sunspot_solr'
  gem 'nokogiri'
+ gem 'delayed_job_active_record'
 
  #gem "ruby-filemagic", "~> 0.4.2"
 

@@ -18,7 +18,7 @@ module UsersHelper
 			flash[:success] = "Verification email has been sent to the email address that is registered with your state's bar association."
 		end
 
-		Mailer.user_verification_email(user, emailaddress).deliver		
+		Mailer.delay.user_verification_email(user, emailaddress)		
 
 		redirect_to root_path
 
