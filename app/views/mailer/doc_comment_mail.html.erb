@@ -7,9 +7,6 @@
     <p>New comment received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%= link_to @form.name, form_url(@form)%></p>
     <p>
       Comment: <%= @comment.content %><br/><br/>
-      <% if @comment.form_id != 0 && @comment.form_id != nil %>
-		<%= link_to "Associated doucment", form_url(@comment.form_id) %>
-	  <% end %>
     </p>
   </body>
 </html>
