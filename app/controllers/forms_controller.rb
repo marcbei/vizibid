@@ -106,34 +106,16 @@ class FormsController < ApplicationController
     @formdownload.form_id = @form.id
     @formdownload.save
 
-   # open(@form.form.url) {|form|
-   #   tmpfile = Tempfile.new("temp#{@form_file_name}")
-   #   File.open(tmpfile.path, 'wb') do |f| 
-   #     f.write form.read
-   #   end 
-   #   send_file tmpfile.path, :filename =>  @form_file_name
-   # }
-
-    if current_user.user_notification.downloads == true
-      Mailer.delay.doc_download_mail(current_user, @form)  
-    end  
-  end
-
-  respond_to do |format|
-      format.js  
-  end
-
-  def actualdownload
-
-        @form = Form.find(params[:id])
-    @form_file_name = File.basename(@form.form.to_s)
-  open(@form.form.url) {|form|
+    open(@form.form.url) {|form|
       tmpfile = Tempfile.new("temp#{@form_file_name}")
       File.open(tmpfile.path, 'wb') do |f| 
         f.write form.read
       end 
       send_file tmpfile.path, :filename =>  @form_file_name
     }
-  end
 
+    if current_user.user_notification.downloads == true
+      Mailer.delay.doc_download_mail(current_user, @form)  
+    end  
+  end
 end

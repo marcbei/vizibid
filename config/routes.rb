@@ -1,7 +1,5 @@
 Vizibid::Application.routes.draw do
 
-  get "password_resets/new"
-
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :forms
@@ -17,6 +15,7 @@ Vizibid::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  match 'password_resets/new' => 'password_resets#new', :via => :get
   match '/about' => 'pages#about'
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
@@ -26,7 +25,6 @@ Vizibid::Application.routes.draw do
   match '/settings' => redirect('/settings/account')
   match '/settings/:path' => 'pages#settings', :as => :settings
   match '/download' =>'forms#download', :via => :get
-  match '/adownload/:id' =>'forms#actualdownload', :via => :get, :as => :adownload
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest

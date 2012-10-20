@@ -16,7 +16,7 @@
 		<%if @form.form_requests.count > 0 %>
 			<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
 		<% end %>
-		<strong>Form Downloaded: </strong><strong class = "downloadcount"> <%= @form.downloads.count %> </strong>times <br/>
+		<strong>Form Downloaded: </strong><%= @form.downloads.count %> times <br/>
 		<strong>Average Rating: </strong> 
 		<div class = "averagerating" style="Display: inline;">
 		<% if !@form.average_rating.nan? %>
@@ -34,7 +34,7 @@
 			<br/><br/>
 		<% end %>
 
-		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink", :remote => true %> 
+		<%= link_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink" %> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil%>
 			<%= render 'layouts/inappropriate_document_modal', :formid => @form.id %>
