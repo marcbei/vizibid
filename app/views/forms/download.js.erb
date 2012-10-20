@@ -1,0 +1,4 @@
+
+$('.downloadcount').replaceWith("<strong class = \"downloadcount\"> <%= @form.downloads.count %> </strong>");
+
+ $.get("<%= adownload_path(@form) %>");

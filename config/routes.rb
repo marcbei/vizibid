@@ -26,6 +26,7 @@ Vizibid::Application.routes.draw do
   match '/settings' => redirect('/settings/account')
   match '/settings/:path' => 'pages#settings', :as => :settings
   match '/download' =>'forms#download', :via => :get
+  match '/adownload/:id' =>'forms#actualdownload', :via => :get, :as => :adownload
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest
