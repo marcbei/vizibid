@@ -4,8 +4,7 @@
 	<h1>History</h1>
 	<h3> Downloaded Documents </h3>
 	<% if @formdownloads.count > 0 %>
-	<br/>
-	<ul>
+	<ul class="unstyled">
 		<% i = @formdownloads.count-1 %>
 		<% while i  >= 0 %>
 			<li><%= link_to @formdownloads[i].name, form_path(@formdownloads[i].id)%> on <%= time_ago_in_words(@fd[i].created_at) %> ago</li>
@@ -18,7 +17,7 @@
 
 	<h3> Shared Documemts </h3>
 	<% if @uploadedforms.count > 0 %>
-	<ul>
+	<ul class="unstyled">
 		<% i = @uploadedforms.count-1 %>
 		<% while i  >= 0 %>
 			<li>
@@ -33,7 +32,7 @@
 	
 	<h3> Requests </h3>
 	<% if @formrequests.count > 0 %>
-		<ul>
+		<ul class="unstyled">
 			<% i = @formrequests.count-1 %>
 			<% while i  >= 0 %>
 				<li>
@@ -48,7 +47,7 @@
 
 	<h3> Comments </h3>
 	<% if @comments.count > 0 %>
-		<ul>
+		<ul class="unstyled">
 			<% i = @comments.count-1 %>
 			<% cform_id = -1 %>
 			<% while i  >= 0 %>
@@ -56,7 +55,7 @@
 					<%= link_to @comments[i].form.name, form_path(@comments[i].form) %>
 				<% end %>
 				<li>
-					<%= truncante_description(@comments[i].content) %>
+					<%= truncante_description(@comments[i].content) %> on <%= time_ago_in_words(@comments[i].created_at) %> ago
 				</li>
 				<% cform_id = @comments[i].form.id %>
 				<% i = i-1 %>
