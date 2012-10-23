@@ -1,0 +1,12 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px;">
+	<div class="modal-header">
+		<%= link_to "x", {:controller => "forms", :action =>"show", :id => form.id}, :class => "closebutton" %>
+	</div>
+	<div class="modal-body">
+		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink" %> 
+		<br/>
+		<h4>(<%= form.form.to_s.split('.').last %> format)</h4>
+	</div>
+</div>
+
+ <a class= "downloadlink" data-toggle="modal" href="#myModal" >Download</a>

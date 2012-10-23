@@ -264,3 +264,13 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 .commentsort{
   width: 100px;
 }
+
+.closebutton{
+  text-decoration: none;
+  color: gray;
+}
+
+.closebutton:hover{
+    text-decoration: none;
+    color: gray;  
+}
