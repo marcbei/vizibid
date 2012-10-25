@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
   	if signed_in? 
-
+      @feedback = UserFeedback.new
       if params[:search] == nil || params[:search].empty?
         @forms = nil
       else
@@ -10,7 +10,6 @@ class PagesController < ApplicationController
         end
         @forms = @search.results
       end
-      @feedback = UserFeedback.new
   	else
   		@user = User.new
   	end

@@ -7,7 +7,10 @@
         <%= f.text_field :subject%>
         <%= f.label :comments %>
         <%= f.text_area :comment, :size => "5x10" %>
-        <%= f.submit :submit, :class => "btn btn-success" %>
+        <div class="btn-group">
+          <%= f.submit :submit, :class => "btn btn-success", :style => "margin-right:5px;"%>
+          <%= button_to "Cancel", "", :class => "btn btn-danger", :'data-dismiss' => "modal" %>
+        </div>
       <% end %>
   </div>
 

@@ -14,7 +14,7 @@ class UserFeedbacksController < ApplicationController
 			redirect_to root_path
 		else
 			flash[:error] = "Unable to submit your feedback."
-			redirect_to feedback_path
+			redirect_to root_path
 		end
 	end
 
