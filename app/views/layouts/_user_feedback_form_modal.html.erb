@@ -1,0 +1,19 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <br/>
+      <strong><p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p></strong>
+      <%= form_for(@feedback) do |f| %>
+        <%= f.label :subject %>
+        <%= f.text_field :subject%>
+        <%= f.label :comments %>
+        <%= f.text_area :comment, :size => "5x10" %>
+        <%= f.submit :submit, :class => "btn btn-success" %>
+      <% end %>
+  </div>
+
+</div>
+
+<div class = "offset7">
+  Your feedback is valuable!&nbsp;&nbsp;
+  <a style = "color: green;" data-toggle="modal" href="#myModal" >Send us a suggestion</a>
+</div>

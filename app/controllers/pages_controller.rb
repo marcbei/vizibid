@@ -10,7 +10,7 @@ class PagesController < ApplicationController
         end
         @forms = @search.results
       end
-
+      @feedback = UserFeedback.new
   	else
   		@user = User.new
   	end
@@ -57,10 +57,5 @@ class PagesController < ApplicationController
 
   def settings
     signed_in_user
-  end
-
-  def feedback
-    signed_in_user
-    @feedback = UserFeedback.new
   end
 end
