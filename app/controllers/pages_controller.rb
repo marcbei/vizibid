@@ -46,12 +46,12 @@ class PagesController < ApplicationController
 
   def history
     signed_in_user
-    @formdownloads = current_user.downloads
-    @fd = current_user.form_downloads
-    @formrequests = current_user.form_requests
-    @uploadedforms = current_user.forms
-    @comments = current_user.comments
 
+    @formdownloads = current_user.downloads.order("created_at asc")
+    @fd = current_user.form_downloads.order("created_at asc")
+    @formrequests = current_user.form_requests.order("created_at asc")
+    @uploadedforms = current_user.forms.order("created_at asc")
+    @comments = current_user.comments.order("created_at desc").group_by{|c| c.form_id}
   end
 
   def settings

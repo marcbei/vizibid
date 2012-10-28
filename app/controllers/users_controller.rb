@@ -11,21 +11,22 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     
-    @formdownloads = @user.downloads
+    @formdownloads = @user.downloads.order("created_at asc")
     @formdownloads_a = FormDownload.find_all_by_user_id(@user.id)
     @formdownloads_count = @user.downloads.count
     if @formdownloads_count == nil
       @formdownloads_count = 0
     end
 
-    @formshared = @user.forms
+    @formshared = @user.forms.order("created_at asc")
     @formshared_count = @user.forms.count
     if @formshared_count == nil
       @formshared_count = 0
     end
 
-    @formrequests = @user.form_requests
-    @comments = @user.comments
+    @formrequests = @user.form_requests.order("created_at asc")
+    @commentcount = current_user.comments.count
+    @comments = current_user.comments.order("created_at desc").group_by{|c| c.form_id}
 
   end
 

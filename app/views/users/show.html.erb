@@ -40,22 +40,23 @@
 	<% end %>
 
 	<% if @user.user_detail.show_comments %>
-		<% if @comments.count > 0 %>
-		Posted the following (<%= @comments.count %>) comments:
-		<ul>
-			<% i = @comments.count-1 %>
-			<% cform_id = -1 %>
-			<% while i  >= 0 %>
-				<% if cform_id != @comments[i].form.id %>
-					<%= link_to @comments[i].form.name, form_path(@comments[i].form) %>
-				<% end %>
-				<li>
-					<%= truncante_description(@comments[i].content) %>
-				</li>
-				<% cform_id = @comments[i].form.id %>
-				<% i = i-1 %>
-			<%end%>
+		<% if @commentcount > 0 %>
+		Posted the following (<%= @commentcount %>) comments:
+			<% showformname = true %>
 		</ul>
+		<h3> Comments </h3>
+		<ul class="unstyled">
+		<% @comments.each do |formid, comments|%>
+			<% comments.each do |comment| %>
+				<% if showformname %>
+					<%= link_to comment.form.name, form_path(formid) %>
+					<% showformname = false %>		
+				<% end %>
+					<li><%= truncante_description(comment.content) %> on <%= time_ago_in_words(comment.created_at) %> ago </li>
+			<% end %>
+			<% showformname = true %>
+		<% end %>
+		</ul> 
 	<% else %>
 		0 comments
 	<% end %> 

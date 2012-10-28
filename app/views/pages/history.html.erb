@@ -45,21 +45,21 @@
 		0 requests<br/><br/>
 	<% end %>
 
+	<% showformname = true %>
+	</ul>
 	<h3> Comments </h3>
 	<% if @comments.count > 0 %>
 		<ul class="unstyled">
-			<% i = @comments.count-1 %>
-			<% cform_id = -1 %>
-			<% while i  >= 0 %>
-				<% if cform_id != @comments[i].form.id %>
-					<%= link_to @comments[i].form.name, form_path(@comments[i].form) %>
+		<% @comments.each do |formid, comments|%>
+			<% comments.each do |comment| %>
+				<% if showformname %>
+					<%= link_to comment.form.name, form_path(formid) %>
+					<% showformname = false %>		
 				<% end %>
-				<li>
-					<%= truncante_description(@comments[i].content) %> on <%= time_ago_in_words(@comments[i].created_at) %> ago
-				</li>
-				<% cform_id = @comments[i].form.id %>
-				<% i = i-1 %>
-			<%end%>
+					<li><%= truncante_description(comment.content) %> on <%= time_ago_in_words(comment.created_at) %> ago </li>
+			<% end %>
+			<% showformname = true %>
+		<% end %>
 		</ul>
 	<% else %>
 		0 comments <br/><br/>
