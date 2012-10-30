@@ -26,10 +26,12 @@ module UsersHelper
 
 	def verify_washington_user(user)
 		emailaddress = ""
+		splitname = user.name.split(' ')
+		index = splitname.length-1
+		lastname = splitname[index].to_s.downcase
 		doc = Nokogiri::HTML(open("http://www.mywsba.org/default.aspx?tabid=178&RedirectTabId=177&Usr_ID=#{user.bar_number}"))
 		divs = doc.css("div.inner")
-		if (divs.text.include? "Active") && (divs.text.include? user.bar_number.to_s)
-			
+		if (divs.text.include? "Active") && (divs.text.include? user.bar_number.to_s) && (divs.text.downcase.include? lastname)
 			doc.css('a.link-copy').each do |email|
 				if email.text.include? '@'
 					emailaddress = email.text
@@ -42,10 +44,12 @@ module UsersHelper
 
 	def verify_oregon_user(user)
 		emailaddress = ""
-		doc = Nokogiri::HTML(open("http://www.osbar.org/members/display.asp?b=#{user.bar_number}&s=1&aw="))
+		splitname = user.name.split(' ')
+		index = splitname.length-1
+		lastname = splitname[index].to_s.downcase
+		doc = Nokogiri::HTML(open("http://www.osbar.org/members/display.asp?b=#{user.bar_number}"))
 		divs = doc.css("table.whiteheader") 
-		if (divs.text.include? "Active") && (divs.text.include? user.bar_number)
-			
+		if (divs.text.include? "Active") && (divs.text.include? user.bar_number.to_s) && (divs.text.downcase.include? lastname)
 			divs.css('a.mlink').each do |email|
 				if email.text.include? '@'
 					emailaddress = email.text
