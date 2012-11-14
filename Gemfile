@@ -37,20 +37,21 @@ end
 gem 'pg', '0.12.2'
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt-ruby', '~> 3.0.1'
+gem 'bcrypt-ruby', '~> 3.0.1'
 
- gem 'carrierwave'
- gem "fog", "~> 1.3.1"
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
 
- gem 'font-awesome-rails'
+gem 'font-awesome-rails'
 
- gem 'sunspot_rails'
- gem 'progress_bar'
- gem 'sunspot_solr'
- gem 'nokogiri'
+gem 'sunspot_rails'
+gem 'progress_bar'
+gem 'sunspot_solr'
+gem 'nokogiri'
+gem 'client_side_validations'
+gem 'database_cleaner'
 
-
- #gem "ruby-filemagic", "~> 0.4.2"
+#gem "ruby-filemagic", "~> 0.4.2"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
