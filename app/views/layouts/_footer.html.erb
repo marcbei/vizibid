@@ -1,10 +1,23 @@
 <footer class="footer">
   <nav>
-    <ul>
-      <li><%= link_to "About Vizibid", about_path %></li>
-      <li><%= link_to "Blog", '#' %></li> 
-      <li><%= link_to "Privacy & Terms", '#' %></li>
-      <li>Vizibid &copy; 2012</li>
+    <ul class="span2">
+      <li class="footerli"><h3 class="footertitle">About</h3></li>
+      <li class="footerli"><%= link_to "Why Vizibid", why_path %></li> 
+      <li class="footerli"><%= link_to "About Us", about_path %></li>
+      <li class="footerli"><%= link_to "Contact Us", contactus_path %></li> 
+      <li class="footerli"><%= link_to "Privacy & Terms", '#' %></li>
     </ul>
+    <ul class="span3">
+      <li class="footerli"><h3 class="footertitle">More</h3></li>
+      <li class="footerli"><%= link_to "Blog", '#' %></li> 
+      <li class="footerli"><%= link_to "Friend us on Facebook", "http://www.facebook.com/Vizibid", :target => "_blank" %></li>
+      <li class="footerli"><%= link_to "Follow us on Twitter", "https://twitter.com/vizibid", :target => "_blank" %></li> 
+    </ul>
+    <p class="pull-right footerp">
+    	Vizibid &copy; 2012<br/>
+    	email us: <a href="mailto:info@vizibid.com">info@vizibid.com</a>
+    </p>
+
   </nav>
 </footer>
+

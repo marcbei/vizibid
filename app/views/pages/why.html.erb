@@ -1,0 +1,36 @@
+<% provide(:title, 'Why Vizibid?') %>
+<br/>
+<div class="row">
+	<div class = "span8">
+		<p class="lead">
+			<span class = "bluetext">Lawyers who are in solo practice or small firms do not have a good way to acquire good legal forms.</span><br/><br/>
+			This is because good legal forms are:
+			<br/><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(a) hard to find,<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(b) expensive to obtain, and<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(c) difficult to use without guidance.<br/>
+			<br/>
+			Most attorneys use some combination of the following methods to acquire model forms for legal documents: 
+			<br/><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(a) searching a Westlaw or similar database,<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(b) searching for forms in the law library<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(c) asking colleagues for forms<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(d) using your firm’s in house form library<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(e) drafting forms from scratch<br/> 
+			<br/>
+			These methods work, but each one comes at a high cost. Either you are paying that cost, or your client is paying it.<br/><br/>
+			<span class = "bluetext">We are building the solution!</span><br/><br/>
+			Vizbid provides:
+			<br/><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(a) an increased variety of forms that are easy to find<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(b) at a lower cost than other methods of acquiring forms<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;(c) with features such as commentary and ratings from colleagues<br/> 
+			&nbsp;&nbsp;&nbsp;&nbsp;(d) constantly updated, upgraded forms (non-stagnant)<br/>
+		</p>
+	</div>
+	<div class = "span3 offset1">
+		<% if !signed_in? %>
+			<%= render 'layouts/sign_up_form' %>
+		<% end %>
+	</div>
+</div>

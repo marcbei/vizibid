@@ -17,6 +17,8 @@ Vizibid::Application.routes.draw do
 
   match 'password_resets/new' => 'password_resets#new', :via => :get
   match '/about' => 'pages#about'
+  match '/contactus' => 'pages#contactus'
+  match '/why' => 'pages#why'
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
   match '/share' => 'pages#share'

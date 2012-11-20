@@ -1,0 +1,21 @@
+<% provide(:title, 'Contact Us') %>
+<br/>
+<div class="row">
+	<div class = "span8">
+		<p class="lead">Need to talk to us?</p>
+		<p class= "sixteentext">
+			email us with feedback or suggestions: <a href="mailto:info@vizibid.com">info@vizibid.com</a>
+		<p/>
+		<p class= "sixteentext">
+			Facebook: <%= link_to "http://www.facebook.com/Vizibid", "http://www.facebook.com/Vizibid", :target => "_blank" %>
+		</p>
+		<p class= "sixteentext">
+			Twitter: <%= link_to "https://twitter.com/vizibid", "https://twitter.com/vizibid", :target => "_blank" %>
+		</p>
+	</div>
+	<div class = "span3 offset1">
+		<% if !signed_in? %>
+			<%= render 'layouts/sign_up_form' %>
+		<% end %>
+	</div>
+</div>
