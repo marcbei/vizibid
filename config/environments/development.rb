@@ -40,6 +40,7 @@ Vizibid::Application.configure do
 
   config.after_initialize do 
     Delayed::Job.scaler = :local
+    Delayed::Worker.delay_jobs = false
   end
 
 end
