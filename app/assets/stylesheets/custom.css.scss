@@ -99,7 +99,7 @@ footer {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
+  border-top: 2px solid #eaeaea;
   color: #999;
   font-size: 75%;
   a {
@@ -273,4 +273,32 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 .closebutton:hover{
     text-decoration: none;
     color: gray;  
+}
+
+.footerli
+{
+    float: left;
+    clear: left;
+    font-size: 16px;
+
+}
+
+.footertitle
+{
+  color: #0070c0;
+}
+
+.footerp
+{
+    font-size: 14px;
+    color: black; 
+}
+
+.bluetext
+{
+  color: #0070c0;
+}
+
+.sixteentext{
+  font-size: 16px;
 }
