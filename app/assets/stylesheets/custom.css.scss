@@ -1,3 +1,14 @@
+$navbarLinkColor: #000000;
+$navbarLinkBackgroundActive: #000;
+$navbarLinkBackgroundHover: #000000;
+$navbarLinkColorHover: #000;
+$navbarLinkColorActive: #000;
+$navbarText: #000000;
+$navbarBackgroundHighlight: #fff;
+$navbarBackground: #fff;
+$navbarText: #000000;
+
+
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -15,7 +26,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 section {
@@ -80,11 +91,6 @@ p {
 #logo:hover {
   color: #0070c0;
   text-decoration: none;
-}
-
-/* todo: this is weird */
-.nsignedout {
-  margin-top: -60px;
 }
 
 footer {
@@ -280,7 +286,11 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
     float: left;
     clear: left;
     font-size: 16px;
+}
 
+.headerli
+{
+    font-size: 16px;
 }
 
 .footertitle
