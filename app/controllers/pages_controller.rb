@@ -16,6 +16,21 @@ class PagesController < ApplicationController
   end
 
   def about
+    if !signed_in?
+      @user = User.new
+    end
+  end
+
+  def contactus
+    if !signed_in?
+      @user = User.new
+    end
+  end
+
+  def why
+    if !signed_in?
+      @user = User.new
+    end
   end
 
   def share
