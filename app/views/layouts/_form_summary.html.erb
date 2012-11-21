@@ -6,8 +6,10 @@
 <% end %>
 
 <br/>
-Submitted by: <%= link_to f.user.name, user_path(f.user.id) %>
-<br/>
+<% if f.user != nil %>
+	Submitted by: <%= link_to f.user.name, user_path(f.user.id) %>
+	<br/>
+<% end %>
 
 
 <% if !f.average_rating.nan? %>
