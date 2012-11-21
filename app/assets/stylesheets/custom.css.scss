@@ -93,20 +93,13 @@ p {
   text-decoration: none;
 }
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
-}
-
 /* footer */
 
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 2px solid #eaeaea;
-  color: #999;
+  border-top: 1px solid #000;
+  color: #000;
   font-size: 75%;
   a {
     color: #555;
@@ -126,6 +119,10 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+.footernav{
+  margin-top: 10px;
 }
 
 /* forms */
@@ -311,4 +308,14 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 
 .sixteentext{
   font-size: 16px;
+}
+
+.bottomborder{
+  border-bottom: 1px solid black;
+}
+
+.navbar .nav > li > a:hover {
+  background-color: transparent;
+  color: black;
+  text-decoration: underline;
 }

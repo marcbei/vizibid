@@ -1,13 +1,13 @@
 <% if signed_in? %>
-  <header class="navbar navbar-fixed-top">
+  <header class="navbar navbar-fixed-top bottomborder">
 <% else %>
-  <header class="navbar">
+  <header class="navbar bottomborder">
 <% end %>
   <div class="navbar-inner">
     <div class="container">
       <% if signed_in? %>
         <nav>
-        <%= link_to image_tag("logo200x58.jpg", :style => "margin-top: 20px;", :size=>"100x29"), root_path, :id => "logo" %>   
+        <%= link_to image_tag("logo200x58.jpg", :style => "margin-top: 20px; ", :size=>"100x29"), root_path, :id => "logo" %>   
           <ul class="nav pull-right" style = "margin-top: 20px;">
               <li class="divider-vertical">
               <li class="<%#= 'active' if current_page?(root_path) %>">
@@ -24,7 +24,7 @@
               </li>
               <li class="divider-vertical">
               <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:black;">
+                <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:black;">
                   <%= @current_user.name %> <span style="color:black; border-top-color:black;" class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -41,8 +41,8 @@
             </ul>
           </nav>
         <% else %>
-          <nav style = "margin-top: 20px; position:relative; left: -100px">
-          <%= link_to image_tag("logo200x58.jpg", :size=>"150x43"), root_path%>
+          <nav style = "margin-top: 20px;">
+          <%= link_to image_tag("logo200x58.jpg", :size=>"100x29"), root_path%>
           <ul class="nav pull-right">
             <li class="headerli">
               <%= link_to "Why Vizibid", why_path %>

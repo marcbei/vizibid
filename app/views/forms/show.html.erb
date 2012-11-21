@@ -1,5 +1,5 @@
 <% provide(:title, 'Form Details')%>
-<br/> 
+<br/> <br/> 
 
 <div class = "container">
 	<%= render 'layouts/search' %>
@@ -19,11 +19,11 @@
 		<strong>Form Downloaded: </strong><%= @form.downloads.count %> times <br/>
 		<strong>Average Rating: </strong> 
 		<div class = "averagerating" style="Display: inline;">
-		<% if !@form.average_rating.nan? %>
-			<%= @form.average_rating.round(2) %>
-		<% else %>
-			Document has no ratings.
-		<% end %>
+			<% if !@form.average_rating.nan? %>
+				<%= @form.average_rating.round(2) %>
+			<% else %>
+				Document has no ratings.
+			<% end %>
 		</div>
 		<% if @form.description != nil && @form.description.length > 0 %>
 			<br/><br/><strong>Description:</strong> <%= @form.description %>
@@ -76,6 +76,5 @@
 		<% if @form.comments.any? %>
 			<%= render 'layouts/form_comments' %>
 		<% end %>
-</div>
-</div>
+	</div>
 </div>

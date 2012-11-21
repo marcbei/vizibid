@@ -12,6 +12,7 @@
 <!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
 <% if @form_request.fufilled == false %>
 	<% if @form_request.user.id == current_user.id %>
+		<br/><br/>
 		<%= button_to "Edit Request", edit_form_request_path(@form_request.id), :class => "btn btn-info", :method => :get %>
 		<% if @form_request.forms.count >0 %>
 			<%= button_to "Complete Request", completerequest_path(@form_request.id), :class => "btn btn-success" %>
@@ -20,6 +21,7 @@
 		<% end %>
 	<% else %>
 		<% if @inappropriate_request_report == nil %>
+			<br/><br/>
 			<%= render 'layouts/inappropriate_request_modal', :requestid => @form_request.id %>
 			<br/><br/>
 		<% end %>
@@ -29,7 +31,6 @@
 <% else %>
 	<h3>Request Completed!</h3>
 <% end %>
-<br/><br/>
 <h3>Responses (<%= @requestsubmissions.count %>)</h3>
 <% if @requestsubmissions.count >0 %>
 	<ul class = "comments" >
