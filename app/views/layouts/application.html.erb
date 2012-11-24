@@ -12,7 +12,7 @@
 	<%= render 'layouts/header' %>
 	<div class = "container maincontent" <% if signed_in? %>style="margin-top: 60px;" <% end %>>
 		<% flash.each do |key, value| %>
-		<div class="alert alert-<%= key %>">
+		<div class="alert alert-<%= key %>" style="margin-top: 25px;">
 			<button type="button" class="close alert-<%= key %> flashclose" data-dismiss="alert" style = "border: none;">×</button>
   			<div><%= value %></div>
 		</div>
