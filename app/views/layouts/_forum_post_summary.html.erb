@@ -1,0 +1,3 @@
+<%= link_to f.title, forum_post_path(f) %>
+<br/>
+submitted <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, f.user %>

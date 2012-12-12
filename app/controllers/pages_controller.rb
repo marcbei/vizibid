@@ -69,6 +69,15 @@ class PagesController < ApplicationController
     @comments = current_user.comments.order("created_at desc").group_by{|c| c.form_id}
   end
 
+  def forum
+
+    signed_in_user
+
+    @forumposts = ForumPost.order("created_at desc").all
+    @forumpost = ForumPost.new
+
+  end
+
   def settings
     signed_in_user
   end
