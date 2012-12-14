@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :forms
   has_many :form_requests
+  has_many :forum_posts
+  has_many :forum_comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

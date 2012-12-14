@@ -1,0 +1,6 @@
+
+<% @comments.each do |c| %>
+	<%= c.content %><br/>
+	<%= time_ago_in_words(c.created_at)%> ago by <%= link_to(c.user.name, c.user) %>
+	<hr/>
+<% end %>

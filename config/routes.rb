@@ -13,6 +13,7 @@ Vizibid::Application.routes.draw do
   resources :inappropriate_requests, only: [:create]
   resources :password_resets
   resources :forum_posts
+  resources :forum_comments
 
   root :to => 'pages#home'
 

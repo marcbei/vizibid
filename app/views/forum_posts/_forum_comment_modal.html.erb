@@ -1,0 +1,18 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <%= form_for(@forumcomment) do |f| %>
+        <%= f.label :Comment %>
+        <%= f.text_area :content, :size => "10x5" %>
+        <%= f.hidden_field :post_id, :value => @post.id %>
+      <br/>
+      <div class="btn-group">
+        <%= f.submit "Submit", :class => "btn btn-success", :style => "margin-right:5px;"%>
+        <%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+<a style = "color: green;" data-toggle="modal" href="#myModal" >New Comment</a>

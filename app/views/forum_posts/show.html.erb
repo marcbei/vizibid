@@ -1,3 +1,24 @@
+<% provide(:title, 'Forum Post')%>
+
 <br/><br/>
-<%= @post.title %><br/>
-<%= @post.message %>
+<div class = "row">
+	<h3><%= @post.title %></h3>
+	submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to @post.user.name, @post.user %><br/><br/>
+	<% if !@post.message.nil? && !@post.message.empty? %> 
+		<div class = "well span6">
+			<h3><%= @post.message %></h3><br/>
+		</div>
+	<% end %>
+</div>
+
+<%= render 'forum_posts/forum_comment_modal' %>
+
+<% if @post.forum_comments.count > 0 %>
+ 	<br/><br/><%= pluralize(@post.forum_comments.count, 'comment') %>
+<% end %>
+
+<hr/>
+
+<% if @post.forum_comments.count > 0 %>
+	<%= render 'forum_posts/forum_post_comments' %>
+<% end %>
