@@ -14,7 +14,7 @@
 		<em>associate document:</em> <%= link_to f.form.name, form_path(f.form) %>
 	<% end %>
 	<div class="actions">
-    	<%= render 'layouts/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>
+    	<%= render 'form_requests/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>
     	<% if current_user.id == f.user_id %>
     		&nbsp;&nbsp;&nbsp;<%= link_to :Delete, deleteresponse_path(f.id, :requestid => f.form_request_id.to_s) %>
     	<% end %>

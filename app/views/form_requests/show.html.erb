@@ -7,7 +7,7 @@
 <br/>
 <br/>
 
-<%= render 'layouts/form_request_details' %>
+<%= render 'form_requests/form_request_details' %>
 
 <!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
 <% if @form_request.fufilled == false %>
@@ -22,11 +22,11 @@
 	<% else %>
 		<% if @inappropriate_request_report == nil %>
 			<br/><br/>
-			<%= render 'layouts/inappropriate_request_modal', :requestid => @form_request.id %>
+			<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
 			<br/><br/>
 		<% end %>
 
-		<%= render 'layouts/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id %>
+		<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id %>
 	<% end %>
 <% else %>
 	<h3>Request Completed!</h3>

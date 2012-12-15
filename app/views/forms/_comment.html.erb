@@ -36,7 +36,7 @@
 	<% end %>
     <div class="actions">
     	<% if comment.user != nil %>
-	    	<%= render 'layouts/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>
+	    	<%= render 'forms/form_comment_modal', :parent_id => comment.id, :form_id => @form.id, :button => false %>
 	    	<% if comment.user.id == current_user.id %>
 	    		&nbsp;&nbsp;&nbsp;<%= link_to "Delete", comment_path(comment, :form_id => @form.id), :method => :delete %>
 	    	<% end %>

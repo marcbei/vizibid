@@ -6,9 +6,9 @@
 <% if @form_requests != nil %>
 
 	<%if params[:scope] == "me" %>
-		<%= render 'layouts/requestcenter_my_requests' %>
+		<%= render 'pages/requestcenter_partials/requestcenter_my_requests' %>
 	<% else %>
-		<%= render 'layouts/requestcenter_all_requests' %>
+		<%= render 'pages/requestcenter_partials/requestcenter_all_requests' %>
 	<% end %>
 
 <% end %>

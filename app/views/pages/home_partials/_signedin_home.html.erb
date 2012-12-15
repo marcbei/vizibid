@@ -1,12 +1,12 @@
 <br/><br/><br/>
-<%= render 'layouts/user_feedback_form_modal' %>
+<%= render 'pages/home_partials/user_feedback_form_modal' %>
 <br/><br/>
 <H3>Find a model legal document</H3>
 
 <br/> 
 
 <!-- Search Box -->
-<%= render 'layouts/search' %>
+<%= render 'forms/search' %>
 
 <!-- Form List -->
 <% if @forms != nil %>
@@ -15,7 +15,7 @@
 	<% @i = 1 %>
 	<% @forms.each do |f| %>
 	  <tr>
-	    <td><%= render 'layouts/form_summary', :f => f, :i => @i %></td>
+	    <td><%= render 'forms/form_summary', :f => f, :i => @i %></td>
 	  </tr>
 	  <% @i += 1 %>
 	  <% if @i < @forms.count+1 %>

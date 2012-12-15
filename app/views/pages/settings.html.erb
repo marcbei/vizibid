@@ -17,13 +17,13 @@
 
 <div id = "content" class= "span5 well">
 <% if params[:path] == "password" %>
-  <%= render 'layouts/password_settings' %>
+  <%= render 'pages/settings_partials/password_settings' %>
 <% elsif params[:path] == "account" %>
-   <%= render 'layouts/account_settings' %>
+   <%= render 'pages/settings_partials/account_settings' %>
 <% elsif params[:path] == "notifications" %>
-  <%= render 'layouts/notifications_settings' %>
+  <%= render 'pages/settings_partials/notifications_settings' %>
 <% elsif params[:path] == "profile" %>
-  <%= render 'layouts/profile_settings' %>
+  <%= render 'pages/settings_partials/profile_settings' %>
 <% end %>
 </div>
 

@@ -11,11 +11,11 @@ $('.alert').remove()
 <%# end %>
 
 <% if params[:path] == "password" %>
-	$('div#content').html("<%=j render :partial=> "layouts/password_settings" %>");
+	$('div#content').html("<%=j render :partial=> "pages/settings_partials/password_settings" %>");
 <% elsif params[:path] == "account" %>
-	$('div#content').html("<%=j render :partial=> "layouts/account_settings" %>");
+	$('div#content').html("<%=j render :partial=> "pages/settings_partials/account_settings" %>");
 <% elsif params[:path] == "notifications" %>
-	$('div#content').html("<%=j render :partial=> "layouts/notifications_settings" %>");
+	$('div#content').html("<%=j render :partial=> "pages/settings_partials/notifications_settings" %>");
 <% elsif params[:path] == "profile" %>
-	$('div#content').html("<%=j render :partial=> "layouts/profile_settings" %>");
+	$('div#content').html("<%=j render :partial=> "pages/settings_partials/profile_settings" %>");
 <% end %>

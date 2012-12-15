@@ -2,7 +2,7 @@
   <div class="modal-body">
     <br/>
       <strong><p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p></strong>
-      <%= form_for(@feedback) do |f| %>
+      <%= form_for @feedback do |f| %>
         <%= f.label :subject %>
         <%= f.text_field :subject%>
         <%= f.label :comments %>

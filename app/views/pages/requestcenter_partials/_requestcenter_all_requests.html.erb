@@ -9,7 +9,7 @@
 <% @form_requests.each do |f| %>
   <% if f.fufilled != true %>
 	  <tr>
-	    <td><%= render 'layouts/form_request_summary', :f => f, :i => @i, :showstatus => 'false' %></td>
+	    <td><%= render 'form_requests/form_request_summary', :f => f, :i => @i, :showstatus => 'false' %></td>
 	  </tr>
 	  <% @i += 1 %>
 	  <% if @i < @form_requests.count+1 %>

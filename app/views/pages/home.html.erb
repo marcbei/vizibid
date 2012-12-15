@@ -2,8 +2,8 @@
 
 <div class = "container-fluid">
 	<% if signed_in? %>
-		<%= render 'layouts/signedin_home' %>
+		<%= render 'pages/home_partials/signedin_home' %>
 	<% else %>
-		<%= render 'layouts/default_home' %>
+		<%= render 'pages/home_partials/default_home' %>
 	<% end %>
 </div>

@@ -2,7 +2,7 @@
 <br/> <br/> 
 
 <div class = "container">
-	<%= render 'layouts/search' %>
+	<%= render 'forms/search' %>
 	<br/>
 
 	<div class="row">
@@ -34,10 +34,10 @@
 			<br/><br/>
 		<% end %>
 
-		<%= render 'layouts/form_download_modal', :form => @form %>
+		<%= render 'forms/form_download_modal', :form => @form %>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil%>
-			<%= render 'layouts/inappropriate_document_modal', :formid => @form.id %>
+			<%= render 'forms/inappropriate_document_modal', :formid => @form.id %>
 		<% end %>
 		
 		<% if @form.user.id != current_user.id && document_downloaded%>
@@ -48,14 +48,14 @@
 					<br/><h3>Rate this form:</h3><br/>
 				<% end %>
 			</div>
-			<%= render 'layouts/ratings_form' %>
+			<%= render 'forms/ratings_form' %>
 		<% end %>
 		<br/><br/><H3>Comments (<%=@comments.count%>)</H3>
 		<hr/>
 	</div>
 
 	<div class = "row">
-		<%= render 'layouts/form_comment_modal', :parent_id => -1, :form_id => @form.id, :button => true %>
+		<%= render 'forms/form_comment_modal', :parent_id => -1, :form_id => @form.id, :button => true %>
 		<% if !@form.comments.any? %>
 			<h3>Please let us know what you think of this document. </h3><br/>
 		<%else%>
@@ -74,7 +74,7 @@
 		<%end%>
 
 		<% if @form.comments.any? %>
-			<%= render 'layouts/form_comments' %>
+			<%= render 'forms/form_comments' %>
 		<% end %>
 	</div>
 </div>

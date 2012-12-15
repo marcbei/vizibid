@@ -9,12 +9,12 @@
 	<%= submit_tag "Search", :class => "btn btn-info" %>
 <% end %>
 
-<%= render 'layouts/forum_post_modal' %><br/>
+<%= render 'pages/forum_partials/forum_post_modal' %><br/>
 <hr/>
 <% @i = 1 %>
 <% @forumposts.each do |f| %>
   <tr>
-    <td><%= render 'layouts/forum_post_summary', :f => f %></td>
+    <td><%= render 'pages/forum_partials/forum_post_summary', :f => f %></td>
   </tr>
   <% @i += 1 %>
   <% if @i < @forumposts.count+1 %>

@@ -11,9 +11,9 @@
 <br/>
 <div id = "requestsummary">
   <% if @form_request.user.id != current_user.id %>
-	  <%= render 'layouts/form_request_details' %>
+	  <%= render 'form_requests/form_request_details' %>
   <% else %>
-    <%= render 'layouts/edit_form_request_details' %>
+    <%= render 'form_requests/edit_form_request_details' %>
   <% end %>
 </div>
 
