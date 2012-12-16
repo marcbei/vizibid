@@ -8,10 +8,13 @@
 #  user_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  ancestry      :string(255)
 #
 
 class ForumComment < ActiveRecord::Base
-  attr_accessible :content, :post_id, :user_id, :forum_post_id
+  attr_accessible :content, :post_id, :user_id, :forum_post_id, :parent_id, :ancestry
+
+  has_ancestry
 
   belongs_to :user
   belongs_to :forum_post
