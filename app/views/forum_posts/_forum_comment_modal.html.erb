@@ -1,9 +1,10 @@
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModal<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-body">
     <%= form_for(@forumcomment) do |f| %>
         <%= f.label :Comment %>
         <%= f.text_area :content, :size => "10x5" %>
         <%= f.hidden_field :post_id, :value => @post.id %>
+        <%= f.hidden_field :parent_id, :value => parent_id %>
       <br/>
       <div class="btn-group">
         <%= f.submit "Submit", :class => "btn btn-success", :style => "margin-right:5px;"%>
@@ -15,4 +16,8 @@
 
 </div>
 
-<a style = "color: green;" data-toggle="modal" href="#myModal" >New Comment</a>
+<% if reply != true %>
+  <a style = "color: green;" data-toggle="modal" href="#myModal<%=parent_id%>" >New Comment</a>
+<% else %>
+  <a data-toggle="modal" href="#myModal<%=parent_id%>" >Reply</a>
+<% end %>

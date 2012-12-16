@@ -11,7 +11,7 @@
 	<% end %>
 </div>
 
-<%= render 'forum_posts/forum_comment_modal' %>
+<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 
 <% if @post.forum_comments.count > 0 %>
  	<br/><br/><%= pluralize(@post.forum_comments.count, 'comment') %>
@@ -19,6 +19,6 @@
 
 <hr/>
 
-<% if @post.forum_comments.count > 0 %>
-	<%= render 'forum_posts/forum_post_comments' %>
+<% if @post.forum_comments.any?  %>
+	<%= nested_comments @post.forum_comments.arrange(:order => "created_at desc") %>
 <% end %>

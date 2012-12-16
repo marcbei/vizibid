@@ -14,6 +14,10 @@ class ForumCommentsController < ApplicationController
 	@forum_comment.user_id = current_user.id
 	@forum_comment.content = params[:forum_comment][:content]
 	@forum_comment.forum_post_id = params[:forum_comment][:post_id]
+	
+	if params[:forum_comment][:parent_id].to_i != -1
+		@forum_comment.parent_id = params[:forum_comment][:parent_id]
+	end
 
 	if @forum_comment.save
 		flash[:success] = "Thank you for your contribution!"

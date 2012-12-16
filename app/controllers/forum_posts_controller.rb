@@ -28,7 +28,7 @@ class ForumPostsController < ApplicationController
 	def show
 		@post = ForumPost.find(params[:id])
 		@forumcomment = ForumComment.new
-		@comments = @post.forum_comments.order("created_at desc")
+		@comments = @post.forum_comments
 	end
 
 end
