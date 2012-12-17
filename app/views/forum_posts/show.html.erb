@@ -20,5 +20,5 @@
 <hr/>
 
 <% if @post.forum_comments.any?  %>
-	<%= nested_comments @post.forum_comments.arrange(:order => "created_at desc") %>
+	<%= nested_forum_comments @post.forum_comments.arrange(:order => "created_at desc") %>
 <% end %>

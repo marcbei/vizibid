@@ -26,9 +26,9 @@ module FormHelper
 		return false
 	end
 
-	def nested_comments(comments)
+	def nested_form_comments(comments)
 		comments.map do |comment, sub_comments|
-      		render('forms/comment', :comment => comment) + content_tag(:div, nested_comments(sub_comments), :class => "nested_comments")
+      		render('forms/comment', :comment => comment) + content_tag(:div, nested_form_comments(sub_comments), :class => "nested_comments")
     	end.join.html_safe
 	end
 end
