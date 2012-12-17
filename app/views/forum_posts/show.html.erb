@@ -6,19 +6,36 @@
 	submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to @post.user.name, @post.user %><br/><br/>
 	<% if !@post.message.nil? && !@post.message.empty? %> 
 		<div class = "well span6">
-			<h3><%= @post.message %></h3><br/>
+			<h3><%= @post.message %></h3>
 		</div>
 	<% end %>
 </div>
 
+<% if @post.forum_comments.count > 0 %>
+ 	<%= pluralize(@post.forum_comments.count, 'comment') %>
+<% end %>
+
+<hr/>
 <%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 
-<% if @post.forum_comments.count > 0 %>
- 	<br/><br/><%= pluralize(@post.forum_comments.count, 'comment') %>
+<% if @post.forum_comments.any?  %>
+	<br/><br/>
+	Sort by:
+	<ul class="nav nav-pills">
+    <li 
+    <% if @sort_by == "top" || @sort_by == nil %>
+    class = "active" <% end %>><%= link_to :top, forum_post_path(@post, :sorted_by => "top"), :remote => true%></li>
+    <li
+    <% if @sort_by == "new" %>
+    class = "active" <% end %>><%= link_to :newest, forum_post_path(@post, :sorted_by => "new"), :remote => true%></li>
+    <li
+    <% if @sort_by == "old" %>
+    class = "active" <% end %>><%= link_to :oldest, forum_post_path(@post, :sorted_by => "old"), :remote => true%></li>
+	</ul>
 <% end %>
 
 <hr/>
 
 <% if @post.forum_comments.any?  %>
-	<%= nested_forum_comments @post.forum_comments.arrange(:order => "created_at desc") %>
+	<%= render 'forum_posts/forum_comments' %>
 <% end %>

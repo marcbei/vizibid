@@ -26,9 +26,22 @@ class ForumPostsController < ApplicationController
 	end
 
 	def show
+
+		@sorted = "top"
+	    if params[:sorted_by] == "new"
+	      @sort_by = "new"
+	    elsif params[:sorted_by] == "old"
+	      @sort_by = "old"
+	    end 
+
 		@post = ForumPost.find(params[:id])
 		@forumcomment = ForumComment.new
 		@comments = @post.forum_comments
+
+		respond_to do |format|
+          format.js  
+          format.html
+      	end
 	end
 
 end
