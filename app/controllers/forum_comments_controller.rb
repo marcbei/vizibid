@@ -28,4 +28,18 @@ class ForumCommentsController < ApplicationController
   	redirect_to forum_post_path(params[:forum_comment][:post_id])
   end
 
+  def delete_forum_comment
+    @comment = ForumComment.find(params[:id])
+
+    if @comment.has_children?
+      @comment.content = "[Deleted]"
+      @comment.user_id = nil
+      @comment.save
+    else
+      delete_comment(@comment)
+    end
+
+    redirect_to forum_post_path(params[:forumpostid])
+  end
+
  end

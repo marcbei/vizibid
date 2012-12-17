@@ -36,6 +36,8 @@ Vizibid::Application.routes.draw do
   match '/form_requests/edit/:id/:comment' => 'form_requests#edit', :as => :requestcomment
   match '/deleteresponse/:id' => 'form_requests#destroy_response', :as => :deleteresponse
   match '/verify/:id' => 'users#verify', :as => :verify
+  match '/deleteforumcomment/:id' => 'forum_comments#delete_forum_comment', :as => :deleteforumcomment
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
