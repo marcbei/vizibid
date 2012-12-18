@@ -27,7 +27,7 @@
 	<%= link_to comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => classvotedown, :id => "votedown#{comment.id}" do %>
 	&nbsp;<i class="icon-arrow-down"></i>
 	<% end %>
-	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= score %> points </span>
+	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= pluralize(score, 'point') %>  </span>
 	<br/><br/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.content %><br/>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
