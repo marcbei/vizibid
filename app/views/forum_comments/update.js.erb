@@ -1,6 +1,6 @@
 
 
-$('.commentscore<%=@comment.id%>').replaceWith("<span class=\"commentscore<%=@comment.id%>\" style=\"color: #999;\"><%= escape_javascript(pluralize(@comment.score, 'point')) %> </span>");
+$('.commentscore<%=@comment.id%>').replaceWith("<span class=\"commentscore<%=@comment.id%>\" style=\"color: #999;\"><%= escape_javascript(pluralize(@comment.score, 'point')) %>  </span>");
 
 $('#voteup<%=@comment.id%>').removeClass('votearrow');
 $('#voteup<%=@comment.id%>').removeClass('votearrowup');
@@ -18,5 +18,5 @@ $('#votedown<%=@comment.id%>').removeClass('votearrowdown');
 	$('#votedown<%=@comment.id%>').addClass("votearrow");
 <% else %>
 	$('#voteup<%=@comment.id%>').addClass("votearrow");
-	$('#votedown<%=@comment.id%>').addClass("votearrowdown" );
+	$('#votedown<%=@comment.id%>').addClass("votearrowdown");
 <% end %>

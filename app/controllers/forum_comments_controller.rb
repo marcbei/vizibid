@@ -1,5 +1,6 @@
 class ForumCommentsController < ApplicationController
-  
+  include ForumCommentHelper
+
   before_filter :signed_in_user
 
   def create
@@ -25,6 +26,13 @@ class ForumCommentsController < ApplicationController
 		flash[:error] = "Unable to create your comment."
 	end
 
+    @commentvote = ForumCommentVote.new
+  	@commentvote.user_id = current_user.id
+  	@commentvote.comment_id = @forum_comment.id
+  	@commentvote.value = 1
+  	@commentvote.save
+  	update_forum_comment_score(@forum_comment.id)
+
   	redirect_to forum_post_path(params[:forum_comment][:post_id])
   end
 
@@ -40,6 +48,57 @@ class ForumCommentsController < ApplicationController
     end
 
     redirect_to forum_post_path(params[:forumpostid])
+  end
+
+  def update
+
+	  if params[:id] != nil
+	    @comment = ForumComment.find(params[:id])
+	    @commentvote = ForumCommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
+
+	    if @comment.user.id != current_user.id
+
+	      if @commentvote == nil
+	        @commentvote = ForumCommentVote.new
+	        @commentvote.user_id = current_user.id
+	        @commentvote.comment_id = params[:id] 
+	        
+	        if params[:vote] == "pos"
+	          @commentvote.value = 1
+	        elsif params[:vote] == "neg"
+	          @commentvote.value = -1
+	        end
+
+	        @commentvote.save
+	       else
+	         if(@commentvote.value == 1)
+	           if(params[:vote] == "pos")
+	             @commentvote.destroy
+	           else
+	             @commentvote.value = -1
+	             @commentvote.save
+	           end
+	         elsif(@commentvote.value == -1)
+	           if(params[:vote] == "neg")
+	             @commentvote.destroy
+	           else
+	             @commentvote.value = 1
+	             @commentvote.save
+	           end
+	         end
+	       end
+
+	       # refresh the data
+	       update_forum_comment_score(params[:id])
+	       @comment = ForumComment.find(params[:id])
+	       @commentvote = ForumCommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
+
+	     end
+	   end
+
+  	respond_to do |format|
+          format.js  
+      end
   end
 
  end

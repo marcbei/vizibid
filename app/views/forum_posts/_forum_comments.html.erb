@@ -4,7 +4,6 @@
 	<% elsif @sort_by == "old" %>
 		<%= nested_forum_comments @post.forum_comments.arrange(:order => "created_at asc") %>
 	<% else %>
-		<%= nested_forum_comments @post.forum_comments.arrange(:order => "created_at asc") %>
-		<%#= nested_forum_comments @post.forum_comments.arrange(:order => "score desc") %>
+		<%= nested_forum_comments @post.forum_comments.arrange(:order => "score desc") %>
 	<% end %>
 </ul>

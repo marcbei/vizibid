@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216022104) do
+ActiveRecord::Schema.define(:version => 20121218223350) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(:version => 20121216022104) do
     t.integer  "sourcecomment_id"
   end
 
+  create_table "forum_comment_votes", :force => true do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "forum_comments", :force => true do |t|
     t.text     "content"
     t.integer  "forum_post_id"
@@ -96,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20121216022104) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "ancestry"
+    t.integer  "score"
   end
 
   create_table "forum_posts", :force => true do |t|
