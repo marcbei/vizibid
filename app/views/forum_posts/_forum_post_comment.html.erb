@@ -15,34 +15,34 @@
 	<% classvoteup = "votearrow" %>
 	<% classvotedown = "votearrowdown" %>
 <% end %>
+
 <li>
-<%= link_to forum_comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => classvoteup, :id => "voteup#{comment.id}"  do %>
-	&nbsp;<i class="icon-arrow-up"></i>
-<% end %>
-
-<% if comment.user != nil %>
-	<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
-<% end %>
-
-<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
-
-<%= link_to forum_comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => classvotedown, :id => "votedown#{comment.id}" do %>
-	&nbsp;<i class="icon-arrow-down"></i>
-<% end %>
-
-<span class="commentscore<%=comment.id%>" style="color: #999;"><%= pluralize(score, 'point') %>  </span>
-<br/><br/>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= comment.content %>
-<div class="actions">
-	<% if comment.user != nil %>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    	<%= render 'forum_posts/forum_comment_modal', :parent_id => comment.id, :reply => true %>
-    	<% if comment.user.id == current_user.id %>
-    		&nbsp;&nbsp;&nbsp;<%= link_to :Delete, deleteforumcomment_path(comment.id, :forumpostid => comment.forum_post_id.to_s) %>
-    	<% end %>
+	<%= link_to forum_comment_path(comment.id, :vote => "pos"), :method => :put, :remote => true, :class => classvoteup, :id => "voteup#{comment.id}"  do %>
+		&nbsp;<i class="icon-arrow-up"></i>
 	<% end %>
-</div>
-<hr/>
+
+	<% if comment.user != nil %>
+		<strong><%= link_to comment.user.name, user_path(comment.user), :class => "commentusername" %></strong>
+	<% end %>
+
+	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>
+
+	<%= link_to forum_comment_path(comment.id, :vote => "neg"), :method => :put, :remote => true, :class => classvotedown, :id => "votedown#{comment.id}" do %>
+		&nbsp;<i class="icon-arrow-down"></i>
+	<% end %>
+
+	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= pluralize(score, 'point') %>  </span>
+	<br/><br/>
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= comment.content %>
+	<div class="actions">
+		<% if comment.user != nil %>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    	<%= render 'forum_posts/forum_comment_modal', :parent_id => comment.id, :reply => true %>
+	    	<% if comment.user.id == current_user.id %>
+	    		&nbsp;&nbsp;&nbsp;<%= link_to :Delete, deleteforumcomment_path(comment.id, :forumpostid => comment.forum_post_id.to_s) %>
+	    	<% end %>
+		<% end %>
+	</div>
 </li>
