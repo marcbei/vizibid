@@ -10,7 +10,13 @@ class UsersController < ApplicationController
 
   def show
     name = params[:name].gsub('_', ' ')
-  	@user = User.find_by_name(name)
+  	@user = User.all(:conditions => ['name ILIKE ?', name]).first
+
+    if @user == nil
+      flash[:error] = "No user exists for the specified url."
+      redirect_to root_path
+      return
+    end
     
     @formdownloads = @user.downloads.order("created_at asc")
     @formdownloads_a = FormDownload.find_all_by_user_id(@user.id)
@@ -26,8 +32,8 @@ class UsersController < ApplicationController
     end
 
     @formrequests = @user.form_requests.order("created_at asc")
-    @commentcount = current_user.comments.count
-    @comments = current_user.comments.order("created_at desc").group_by{|c| c.form_id}
+    @commentcount = @user.comments.count
+    @comments = @user.comments.order("created_at desc").group_by{|c| c.form_id}
 
   end
 
