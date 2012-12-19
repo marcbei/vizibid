@@ -23,7 +23,7 @@
 
 	<% if comment.user != nil %>
 		<% name = comment.user.name.gsub(' ', '_') %>
-		<strong><%= link_to comment.user.name, usershow_path(name), :class => "commentusername" %></strong>
+		<strong><%= link_to comment.user.name, usershow_path(name.downcase), :class => "commentusername" %></strong>
 	<% end %>
 
 	<span class="timestamp"><%= time_ago_in_words(comment.created_at) %> ago</span><br/>

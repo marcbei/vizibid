@@ -10,7 +10,7 @@ Requested <%= time_ago_in_words(@form_request.created_at) %> ago
 (anonymous)
 <% else %>
 <% name = @form_request.user.name.gsub(' ', '_') %>
-by <%=link_to @form_request.user.name, usershow_path(name)%>
+by <%=link_to @form_request.user.name, usershow_path(name.downcase)%>
 <% end %>
 
 <br/><br/>

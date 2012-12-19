@@ -4,7 +4,7 @@
   <div class="span3 bs-docs-sidebar">
     <div class = "well">
       <% name = current_user.name.gsub(' ', '_') %>
-      <h3><%= link_to current_user.name, usershow_path(name)%></h3>
+      <h3><%= link_to current_user.name, usershow_path(name.downcase)%></h3>
       (View my profile page)
     </div>
     <ul class="nav nav-list bs-docs-sidenav">
