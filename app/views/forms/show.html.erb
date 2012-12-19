@@ -12,7 +12,8 @@
 			<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
 		<% end %>
 		<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
-		<strong>Uploaded by:</strong> <%=link_to @user, user_path(@form.user.id) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
+		<% name = @form.user.name.gsub(' ', '_') %>
+		<strong>Uploaded by:</strong> <%=link_to @user, usershow_path(name) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
 		<%if @form.form_requests.count > 0 %>
 			<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
 		<% end %>

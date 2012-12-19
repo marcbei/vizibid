@@ -3,7 +3,8 @@
 <br/><br/>
 <div class = "row">
 	<h3><%= @post.title %></h3>
-	submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to @post.user.name, @post.user %><br/><br/>
+	<% name = @post.user.name.gsub(' ', '_') %>
+	submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to @post.user.name, usershow_path(name)%><br/><br/>
 	<% if !@post.message.nil? && !@post.message.empty? %> 
 		<div class = "well span6">
 			<h3><%= @post.message %></h3>

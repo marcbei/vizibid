@@ -7,7 +7,8 @@
 
 <br/>
 <% if f.user != nil %>
-	Submitted by: <%= link_to f.user.name, user_path(f.user.id) %>
+	<% name = f.user.name.gsub(' ', '_') %>
+	Submitted by: <%= link_to f.user.name, usershow_path(name) %>
 	<br/>
 <% end %>
 

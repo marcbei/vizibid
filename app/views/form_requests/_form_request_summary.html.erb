@@ -28,7 +28,8 @@ Requested <%= time_ago_in_words(f.created_at) %> ago
 	<% if f.anonymous == true %>
 		(anonymous)
 	<% else %>
-		by <%=link_to f.user.name, user_path(f.user.id)%>
+		<% name = f.user.name.gsub(' ', '_') %>
+		by <%=link_to f.user.name, usershow_path(name)%>
 	<% end %>
 <% end %>
 

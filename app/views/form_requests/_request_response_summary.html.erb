@@ -2,7 +2,8 @@
 
 <li>
 	<% if user != nil %>
-		<strong><%= link_to user.name, user_path(user) %></strong>
+		<% name = user.name.gsub(' ', '_') %>
+		<strong><%= link_to user.name, usershow_path(name) %></strong>
 	<% end %>
 	<span class="timestamp"><%= time_ago_in_words(f.created_at) %> ago</span><br/>
 	<% if f.comment != nil %>

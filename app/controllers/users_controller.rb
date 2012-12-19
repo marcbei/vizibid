@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    name = params[:name].gsub('_', ' ')
+  	@user = User.find_by_name(name)
     
     @formdownloads = @user.downloads.order("created_at asc")
     @formdownloads_a = FormDownload.find_all_by_user_id(@user.id)
