@@ -10,8 +10,7 @@
 
 <!-- Form List -->
 <% if @forms != nil %>
-	
-	<hr/>
+	<h3><%= pluralize(@forms.count, 'result') %>:</h3><br/>
 	<% @i = 1 %>
 	<% @forms.each do |f| %>
 	  <tr>

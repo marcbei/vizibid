@@ -4,8 +4,13 @@
 <% end %>
 <%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <%= link_to "Request a Document", new_form_request_path %>
-<hr/>
 <% @i = 1 %>
+<br/><br/>
+<% if @search != nil %>
+	<h3><%= pluralize(@form_requests.count, 'result') %>:</h3><br/>
+<% else %>
+	<h3><%= @form_requests.count %> open requests:</h3><br/>
+<% end %>
 <% @form_requests.each do |f| %>
   <% if f.fufilled != true %>
 	  <tr>

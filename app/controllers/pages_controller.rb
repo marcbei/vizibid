@@ -73,7 +73,15 @@ class PagesController < ApplicationController
 
     signed_in_user
 
-    @forumposts = ForumPost.order("created_at desc").all
+      if params[:search] == nil || params[:search].empty?
+        @forumposts = nil
+      else
+        @search = ForumPost.search do
+          fulltext params[:search]
+        end
+        @forumposts = @search.results
+      end
+
     @forumpost = ForumPost.new
 
   end

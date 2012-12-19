@@ -17,4 +17,15 @@ class ForumPost < ActiveRecord::Base
 
   has_many :forum_comments
 
+  searchable do
+    text :title, :boost => 3
+    text :message, :boost => 2
+    text :user do
+      user.name
+    end
+    text :forum_comments do
+      forum_comments.map(&:content)
+    end
+  end
+
 end
