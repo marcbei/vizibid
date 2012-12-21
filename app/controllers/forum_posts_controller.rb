@@ -17,12 +17,12 @@ class ForumPostsController < ApplicationController
 		
 		if @forum_post.save
 			flash[:success] = "Thank you for your contribution!"
+			redirect_to forum_post_path(@forum_post)
+			return
 		else
 			flash[:error] = "Unable to create your post."
+			redirect_to forum_path
 		end
-
-		redirect_to forum_path
-
 	end
 
 	def show
