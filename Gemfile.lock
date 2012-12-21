@@ -37,6 +37,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     bootstrap-sass (2.0.0)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -194,6 +196,7 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    will_paginate (3.0.3)
     workless (1.1.1)
       delayed_job (>= 2.0.7)
       heroku-api
@@ -211,6 +214,7 @@ DEPENDENCIES
   annotate (= 2.5.0)
   bcrypt-ruby (~> 3.0.1)
   bootstrap-sass (= 2.0.0)
+  bootstrap-will_paginate
   capybara (= 1.1.2)
   carrierwave
   client_side_validations
@@ -231,4 +235,5 @@ DEPENDENCIES
   sunspot_rails
   sunspot_solr
   uglifier (= 1.2.3)
+  will_paginate
   workless (~> 1.1.1)

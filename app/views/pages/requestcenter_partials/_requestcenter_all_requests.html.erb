@@ -7,14 +7,15 @@
 <% @i = 1 %>
 <br/><br/>
 <% if @search != nil %>
-	<h3><%= pluralize(@form_requests.count, 'result') %>:</h3><br/>
+	<h3><%= pluralize(@total_requests, 'result') %>:</h3><br/>
 <% else %>
-	<h3><%= @form_requests.count %> open requests:</h3><br/>
+	<h3><%= pluralize(@total_requests, 'open request')%></h3><br/>
 <% end %>
+
 <% @form_requests.each do |f| %>
   <% if f.fufilled != true %>
 	  <tr>
-	    <td><%= render 'form_requests/form_request_summary', :f => f, :i => @i, :showstatus => 'false' %></td>
+	    <td><%= render 'form_requests/form_request_summary', :f => f, :showstatus => 'false' %></td>
 	  </tr>
 	  <% @i += 1 %>
 	  <% if @i < @form_requests.count+1 %>
@@ -22,3 +23,5 @@
 	  <% end %>
   <% end %>
 <% end %>
+
+<%= will_paginate(@form_requests) %>

@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  
+  require 'will_paginate/array'
+
   def home
   	if signed_in? 
       @feedback = UserFeedback.new
@@ -9,6 +12,8 @@ class PagesController < ApplicationController
           fulltext params[:search]
         end
         @forms = @search.results
+        @total_forms = @forms.count
+        @forms = @forms.paginate(:page => params[:page], :per_page => 5)
       end
   	else
   		@user = User.new
@@ -54,8 +59,12 @@ class PagesController < ApplicationController
           fulltext params[:search]
         end
         @form_requests = @search.results
+
       end
     end
+
+    @total_requests = @form_requests.count
+    @form_requests = @form_requests.paginate(:page => params[:page], :per_page => 5)
 
   end
 
@@ -73,14 +82,19 @@ class PagesController < ApplicationController
 
     signed_in_user
 
-      if params[:search] == nil || params[:search].empty?
-        @forumposts = nil
-      else
-        @search = ForumPost.search do
-          fulltext params[:search]
-        end
-        @forumposts = @search.results
+    if params[:search] == nil || params[:search].empty?
+      @forumposts = nil
+    else
+      @search = ForumPost.search do
+        fulltext params[:search]
       end
+      @forumposts = @search.results
+    end
+
+    if @forumposts != nil
+      @total_posts = @forumposts.count
+      @forumposts = @forumposts.paginate(:page => params[:page], :per_page => 5)
+    end
 
     @forumpost = ForumPost.new
 

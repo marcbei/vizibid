@@ -13,7 +13,7 @@
 <% @i = 1 %>
 <% if @forumposts != nil %>
 	<br/>
-	<h3><%= pluralize(@forumposts.count, 'result') %>:</h3><br/>
+	<h3><%= pluralize(@total_posts, 'result') %>:</h3><br/>
 	<% @forumposts.each do |f| %>
 	  <tr>
 	    <td><%= render 'pages/forum_partials/forum_post_summary', :f => f %></td>
@@ -23,4 +23,6 @@
 	  	  <hr/>
 	  <% end %>
 	<% end %>
+	<%= will_paginate(@forumposts) %>
 <% end %>
+

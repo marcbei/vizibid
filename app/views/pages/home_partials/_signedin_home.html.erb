@@ -10,17 +10,18 @@
 
 <!-- Form List -->
 <% if @forms != nil %>
-	<h3><%= pluralize(@forms.count, 'result') %>:</h3><br/>
+	<h3><%= pluralize(@total_forms, 'result') %>:</h3><br/>
 	<% @i = 1 %>
 	<% @forms.each do |f| %>
 	  <tr>
-	    <td><%= render 'forms/form_summary', :f => f, :i => @i %></td>
+	    <td><%= render 'forms/form_summary', :f => f %></td>
 	  </tr>
 	  <% @i += 1 %>
 	  <% if @i < @forms.count+1 %>
 	  	  <hr/>
 	  <% end %>
 	<% end %>
+	<%= will_paginate(@forms) %>
 <% else %>
 	<br/>
 	<h3>You have:</h3><br/>
