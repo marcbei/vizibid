@@ -17,7 +17,7 @@
 #
 
 class UserDetail < ActiveRecord::Base
-  attr_accessible :bio, :location, :practice_area, :user_id, :website, :show_comments, :show_uploaded, :show_downloaded, :show_requests
+  attr_accessible :bio, :location, :practice_area, :user_id, :website, :show_comments, :show_uploaded, :show_requests
 
   belongs_to :user
 
