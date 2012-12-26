@@ -3,6 +3,25 @@ module UsersHelper
 	require 'nokogiri'
 	require 'open-uri'
 
+	def set_permissions(user, access_code)
+
+		@user_permission = UserPermission.new
+ 		@user_permission.user_id = user.id
+
+		# this represents a paid account
+		if(access_code == 712)
+			@user_permission.role_id = 2
+		# this represents a limited user
+		elsif(access_code == 801)
+			@user_permission.role_id = 3
+		# this is a default (free account)
+		else
+			@user_permission.role_id = 1
+		end
+
+		@user_permission.save
+	end
+
 	def verify_user(user)
 
 		emailaddress = ""

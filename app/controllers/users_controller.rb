@@ -43,7 +43,6 @@ class UsersController < ApplicationController
       @user_details.user_id = @user.id
       @user_details.show_comments = false
       @user_details.show_uploaded = true
-      @user_details.show_downloaded = true
       @user_details.show_requests = true
       
       @user_notifications = UserNotification.new
@@ -56,6 +55,7 @@ class UsersController < ApplicationController
       @user_notifications.downloads = true
       
       if @user_details.save && @user_notifications.save
+        set_permissions(@user, params[:accesscode])
         verify_user(@user)
       else
         render 'new'

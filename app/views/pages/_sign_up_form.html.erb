@@ -21,6 +21,7 @@
 		<%= f.password_field :bar_number, :placeholder => "bar id number" %>
 		<%= f.password_field :password, :placeholder => "password" %>
   		<%= f.password_field :password_confirmation, :placeholder => "repeat password" %>
+  		<%= text_field_tag :accesscode, nil, :placeholder => "access code (optional)" %>
 
   		<%= f.submit "Sign Up For Vizibid", class: "btn btn-warning" %>
 	<% end %>

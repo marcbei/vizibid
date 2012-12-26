@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222005201) do
+ActiveRecord::Schema.define(:version => 20121226033503) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -143,6 +143,13 @@ ActiveRecord::Schema.define(:version => 20121222005201) do
 
   add_index "request_submissions", ["ancestry"], :name => "index_request_submissions_on_ancestry"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "access_code"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "user_details", :force => true do |t|
     t.integer  "user_id"
     t.string   "location"
@@ -174,6 +181,13 @@ ActiveRecord::Schema.define(:version => 20121222005201) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "downloads"
+  end
+
+  create_table "user_permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
