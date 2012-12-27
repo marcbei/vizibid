@@ -1,13 +1,18 @@
 <% provide(:title, 'Form Request Details')%>
 
 <br/><br/>
-
 <%= link_to "Back to Requested Documents", requestcenter_path %>
-<br/><%= link_to "View Your Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>
+<br/>
+<% if @permitted_user %>
+	<%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>
+<% else %>
+	<%= render 'layouts/noaccess_modal', :type =>"myreqs" %>
+<% end %>
 <br/>
 <br/>
 
 <%= render 'form_requests/form_request_details' %>
+<br/><br/>
 
 <!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
 <% if @form_request.fufilled == false %>
@@ -20,20 +25,22 @@
 			<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
 		<% end %>
 	<% else %>
-		<% if @inappropriate_request_report == nil %>
-			<br/><br/>
-			<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
-			<br/><br/>
-		<% end %>
+		<% if @permitted_user %>
+			<% if @inappropriate_request_report == nil %>
+				<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
+				<br/><br/>
+			<% end %>
 
-		<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id %>
+			<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id %><br/><br/>
+		<% end %>
 	<% end %>
 <% else %>
 	<h3>Request Completed!</h3>
 <% end %>
 <h3>Responses (<%= @requestsubmissions.count %>)</h3>
-<% if @requestsubmissions.count >0 %>
+<% if @requestsubmissions.count >0 && @permitted_user %>
 	<ul class = "comments" >
 		<%= nested_request_responses @requestsubmissions.arrange(:order => :created_at)  %>
 	</ul>
 <%end%>
+<hr/>

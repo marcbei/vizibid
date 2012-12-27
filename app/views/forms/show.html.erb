@@ -2,7 +2,7 @@
 <br/> <br/> 
 
 <div class = "container">
-	<%= render 'forms/search' %>
+	<%= render 'forms/search'%>
 	<br/>
 
 	<div class="row">
@@ -37,11 +37,11 @@
 
 		<%= render 'forms/form_download_modal', :form => @form %>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil%>
+		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil && @pemitted_user == true %>
 			<%= render 'forms/inappropriate_document_modal', :formid => @form.id %>
 		<% end %>
 		
-		<% if @form.user.id != current_user.id && document_downloaded%>
+		<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
 			<div id = "ratingstext">
 				<%if current_user_rating(@form.id) != "N/A" %>
 					<br/><h3>Your rating:</h3><br/>
@@ -55,27 +55,29 @@
 		<hr/>
 	</div>
 
-	<div class = "row">
-		<%= render 'forms/form_comment_modal', :parent_id => -1, :form_id => @form.id, :button => true %>
-		<% if !@form.comments.any? %>
-			<h3>Please let us know what you think of this document. </h3><br/>
-		<%else%>
-			<br/><br/>Sort by:
-		 	<ul class="nav nav-pills">
-			    <li 
-			    <% if @sort_by == "top" || @sort_by == nil %>
-			    class = "active" <% end %>><%= link_to :top, form_path(@form, :sorted_by => "top"), :remote => true%></li>
-			    <li
-			    <% if @sort_by == "new" %>
-			    class = "active" <% end %>><%= link_to :newest, form_path(@form, :sorted_by => "new"), :remote => true%></li>
-			    <li
-			    <% if @sort_by == "old" %>
-			    class = "active" <% end %>><%= link_to :oldest, form_path(@form, :sorted_by => "old"), :remote => true%></li>
-		  	</ul>
-		<%end%>
+	<% if @pemitted_user %>
+		<div class = "row">
+			<%= render 'forms/form_comment_modal', :parent_id => -1, :form_id => @form.id, :button => true %>
+			<% if !@form.comments.any? %>
+				<h3>Please let us know what you think of this document. </h3><br/>
+			<%else%>
+				<br/><br/>Sort by:
+			 	<ul class="nav nav-pills">
+				    <li 
+				    <% if @sort_by == "top" || @sort_by == nil %>
+				    class = "active" <% end %>><%= link_to :top, form_path(@form, :sorted_by => "top"), :remote => true%></li>
+				    <li
+				    <% if @sort_by == "new" %>
+				    class = "active" <% end %>><%= link_to :newest, form_path(@form, :sorted_by => "new"), :remote => true%></li>
+				    <li
+				    <% if @sort_by == "old" %>
+				    class = "active" <% end %>><%= link_to :oldest, form_path(@form, :sorted_by => "old"), :remote => true%></li>
+			  	</ul>
+			<%end%>
 
-		<% if @form.comments.any? %>
-			<%= render 'forms/form_comments' %>
+			<% if @form.comments.any? %>
+				<%= render 'forms/form_comments' %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

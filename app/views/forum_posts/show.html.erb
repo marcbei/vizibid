@@ -17,9 +17,9 @@
 <% end %>
 
 <hr/>
-<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 
-<% if @post.forum_comments.any?  %>
+<% if @post.forum_comments.any? && @permitted_user %>
+	<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 	<br/><br/>
 	Sort by:
 	<ul class="nav nav-pills">
@@ -35,6 +35,6 @@
 	</ul>
 <% end %>
 
-<% if @post.forum_comments.any?  %>
+<% if @post.forum_comments.any? && @permitted_user %>
 	<%= render 'forum_posts/forum_comments' %>
 <% end %>

@@ -9,7 +9,12 @@
 	<%= submit_tag "Search", :class => "btn btn-info" %>
 <% end %>
 
-<%= render 'pages/forum_partials/forum_post_modal' %><br/>
+<% if @permitted_user %>
+	<%= render 'pages/forum_partials/forum_post_modal' %><br/>
+<% else %>
+	<%= render 'layouts/noaccess_modal.html.erb', :type => "forum_post" %><br/>
+<% end %>
+
 <% @i = 1 %>
 <% if @forumposts != nil %>
 	<br/>

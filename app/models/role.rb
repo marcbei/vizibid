@@ -15,4 +15,7 @@ class Role < ActiveRecord::Base
   has_many :user_permissions
   has_many :users, :through => :user_permissions, :source => :user
 
+  has_many :form_permissions
+  has_many :forms, :through => :form_permissions, :source => :form
+
 end

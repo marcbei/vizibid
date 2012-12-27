@@ -2,8 +2,19 @@
 	<%= text_field_tag :search, params[:search], :placeholder => "Search Requests", :class => "searchbox"%>
 	<%= submit_tag "Search", :class => "btn btn-info" %>
 <% end %>
-<%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= link_to "Request a Document", new_form_request_path %>
+
+<% if @permitted_user %>
+	<%= link_to "View My Requests", :controller => "pages", :action => "requestcenter", :scope => "me" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<% else %>
+	<%= render 'layouts/noaccess_modal', :type =>"myreqs" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<% end %>
+
+<% if @permitted_user %>
+	<%= link_to "Request a Document", new_form_request_path %>
+<% else %>
+	<%= render 'layouts/noaccess_modal', :type =>"request" %>
+<% end %>
+
 <% @i = 1 %>
 <br/><br/>
 <% if @search != nil %>

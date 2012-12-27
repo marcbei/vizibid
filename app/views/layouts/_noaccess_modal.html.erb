@@ -1,0 +1,18 @@
+<% if type == "download" %>
+	<a class= "downloadlink" data-toggle="modal" href="#noaccessModal_<%=type%>" data-backdrop="static" >Download</a>
+<% elsif type == "request" %>
+	<a data-toggle="modal" href="#noaccessModal_<%= type %>" data-backdrop="static" >Request a Document</a>
+<% elsif type == "myreqs" %>
+	<a data-toggle="modal" href="#noaccessModal_<%= type %>" data-backdrop="static" >View My Requests</a>
+<% elsif type == "forum_post" %>
+	<a style = "color: green;" data-toggle="modal" href="#noaccessModal_<%= type %>" >New Post</a>
+<% end %>
+
+<div id="noaccessModal_<%= type %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px;">
+	<div class="modal-header">
+		<a href = "" type="button" class="close" data-dismiss="modal" aria-hidden="true">X</a>
+	</div>
+	<div class="modal-body">
+		<h3>You are not permitted to access this feature. Please upgrade your account to gain access.</h3>
+	</div>
+</div>

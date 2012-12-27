@@ -38,6 +38,8 @@ class ForumPostsController < ApplicationController
 		@forumcomment = ForumComment.new
 		@comments = @post.forum_comments
 
+		@permitted_user = check_permissions(nil)
+
 		respond_to do |format|
           format.js  
           format.html

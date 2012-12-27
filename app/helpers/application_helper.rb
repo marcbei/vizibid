@@ -140,4 +140,52 @@ module ApplicationHelper
         end
     end
 
+    def check_permissions(form)
+
+        allowed =false
+
+        user_pay = false
+        user_nonpay = false
+        user_special = false
+        form_special = false
+
+        if form != nil
+            current_user.user_permissions.each{|u| 
+                if u.role_id == 2 
+                    user_pay = true
+                elsif u.role_id == 1
+                    user_nonpay = true
+                elsif u.role_id == 3
+                      user_special = true
+                end
+            }
+
+            form.form_permissions.each{|p| 
+                if p.role_id == 3
+                    form_special = true
+                end
+            }
+
+            if form_special == true && user_special == true
+                allowed = true
+            elsif user_pay == true
+                allowed = true
+            end
+
+        else
+            current_user.user_permissions.each{|p| 
+                if p.role_id == 2 
+                    user_pay = true 
+                    break
+                end
+            }
+
+            if user_pay == true
+                allowed = true
+            end
+
+        end
+
+        return allowed
+    end
 end

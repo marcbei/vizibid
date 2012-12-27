@@ -9,4 +9,8 @@
 	</div>
 </div>
  
- <a class= "downloadlink" data-toggle="modal" href="#downloadformModal" data-backdrop="static" data-keyboard="false" >Download</a>
+ <% if @pemitted_user %>
+ 	<a class= "downloadlink" data-toggle="modal" href="#downloadformModal" data-backdrop="static" data-keyboard="false" >Download</a>
+<% else %>
+	<%= render 'layouts/noaccess_modal.html.erb', :type => "download" %>
+ <% end %>

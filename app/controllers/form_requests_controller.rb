@@ -4,6 +4,13 @@ class FormRequestsController < ApplicationController
 	before_filter :signed_in_user
 
 	def new
+
+		if check_permissions(nil) != true
+		    flash[:error] = "You don't have access to this feature. Please upgrade your account."
+		    redirect_to root_path
+	    	return
+	    end
+
 		@form_request = FormRequest.new
 	end
 
@@ -44,6 +51,8 @@ class FormRequestsController < ApplicationController
 
     	@form = Form.new
     	@requestresponse = RequestSubmission.new
+
+    	@permitted_user = check_permissions(nil)
 	end
 
 	def edit

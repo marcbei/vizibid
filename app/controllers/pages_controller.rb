@@ -42,6 +42,12 @@ class PagesController < ApplicationController
   	# make sure the user is signed in
   	signed_in_user
 
+    if check_permissions(nil) != true
+      flash[:error] = "You don't have access to this feature. Please upgrade your account."
+      redirect_to root_path
+      return
+    end
+
   	@form = Form.new
   end
 
@@ -63,6 +69,7 @@ class PagesController < ApplicationController
       end
     end
 
+    @permitted_user = check_permissions(nil)
     @total_requests = @form_requests.count
     @form_requests = @form_requests.paginate(:page => params[:page], :per_page => 5)
 
@@ -97,6 +104,7 @@ class PagesController < ApplicationController
     end
 
     @forumpost = ForumPost.new
+    @permitted_user = check_permissions(nil)
 
   end
 

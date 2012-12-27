@@ -28,6 +28,9 @@ class Form < ActiveRecord::Base
   has_many :form_downloads
   has_many :downloads, :through => :form_downloads, :source => :user
 
+  has_many :form_permissions
+  has_many :permissions, :through => :form_permissions, :source => :role
+
   has_many :comments
   belongs_to :user
 
