@@ -13,14 +13,16 @@
 </div>
 
 <% if @post.forum_comments.count > 0 %>
- 	<%= pluralize(@post.forum_comments.count, 'comment') %>
+ 	<%= pluralize(@post.forum_comments.count, 'comment') %>	<br/><br/>
+<% end %>
+
+<% if @permitted_user %>
+	<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 <% end %>
 
 <hr/>
 
 <% if @post.forum_comments.any? && @permitted_user %>
-	<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
-	<br/><br/>
 	Sort by:
 	<ul class="nav nav-pills">
     <li 
