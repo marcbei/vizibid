@@ -9,6 +9,13 @@ class Mailer < ActionMailer::Base
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "New Feedback Received")
   end
 
+  def upload_failed_virus_scan_email(user, form)
+    @user = user
+    @form = form
+
+    mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Attempted upload failed virus scan")
+  end
+
   def inappropriate_document_email(user, form, reason)
 
   	@user = user

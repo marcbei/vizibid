@@ -9,6 +9,7 @@ class PagesController < ApplicationController
         @forms = nil
       else
         @search = Form.search do
+          with(:approved, true)
           fulltext params[:search]
         end
         @forms = @search.results

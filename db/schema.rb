@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226051743) do
+ActiveRecord::Schema.define(:version => 20121230032841) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121226051743) do
     t.string   "keywords"
     t.string   "name"
     t.integer  "sourcecomment_id"
+    t.boolean  "approved"
   end
 
   create_table "forum_comment_votes", :force => true do |t|

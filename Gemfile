@@ -52,6 +52,7 @@ gem 'sunspot_solr'
 gem 'nokogiri'
 gem 'client_side_validations'
 gem 'database_cleaner'
+gem 'json'
 
 #gem "ruby-filemagic", "~> 0.4.2"
 

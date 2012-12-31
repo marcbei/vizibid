@@ -12,10 +12,11 @@
 #  keywords         :string(255)
 #  name             :string(255)
 #  sourcecomment_id :integer
+#  approved         :boolean
 #
 
 class Form < ActiveRecord::Base
-  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name, :sourcecomment_id
+  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name, :sourcecomment_id, :approved
 
   mount_uploader :form, FormsUploader
 
@@ -48,6 +49,7 @@ class Form < ActiveRecord::Base
     text :comments do
       comments.map(&:content)
     end
+    boolean :approved
   end
   
   def average_rating
