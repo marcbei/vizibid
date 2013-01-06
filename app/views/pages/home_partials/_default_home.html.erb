@@ -1,53 +1,31 @@
-<div class = "row">
-	<div class="span8">
-		<!--<h1>Welcome to Vizibid!</h1>
-		<h2>Vizibid helps lawyers find, share, rate, and comment on model forms for legal documents. </h2>-->
-		<br/>
-		<div id="myCarousel" class="carousel slide">
-		  <!-- Carousel items -->
-		  <div class="carousel-inner">
-		    <div class="active item">
-		    	<%= image_tag("Slide01.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide02.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide03.jpg") %>
-		    </div>
-		      <div class="item">
-		    	<%= image_tag("Slide04.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide05.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide06.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide07.jpg") %>
-		    </div>
-		      <div class="item">
-		    	<%= image_tag("Slide08.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide09.jpg") %>
-		    </div>
-		    <div class="item">
-		    	<%= image_tag("Slide10.jpg") %>
-		    </div>
-		     <div class="item">
-		    	<%= image_tag("Slide11.jpg") %>
-		    </div>
-		  </div>
-		  <!-- Carousel nav -->
-		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		</div>
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-	</div>
-	<br/>
-	<div class="span3">
-		<%= render 'pages/sign_up_form' %>
-	</div>
-</div>
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="span4">
+          <h2>The legal documents site for lawyers.</h2>
+          <p>All members of Vizibid are confirmed to be bar licensed attorneys so that you can trust us for quality. Find documents by searching and get your questions answered. Save time and money.</p>
+          <p><%= link_to("Learn More", why_path, :class=>"btn") %></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <h2>Participate in the community.</h2>
+          <p>Vizibid is the only site for lawyers only that allows collaboration. Help other members of the community 
+          	by rating and commenting on documents, fulfill requests and participate in the forum. </p>
+          <p><%= link_to("Learn More", why_path, :class=>"btn") %></p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+        	<%= render 'pages/sign_up_form' %>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
+     </div>
+
+
+
+	<!--div class="span3"-->
+		<%#= render 'pages/sign_up_form' %>
+	<!--/div-->

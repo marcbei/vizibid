@@ -1,15 +1,17 @@
-<% if signed_in? %>
-  <header class="navbar navbar-fixed-top bottomborder">
+<% if @home == true %>
+  <header>
 <% else %>
-  <header class="navbar bottomborder">
+  <header style = "height: 70px; color: gray; background-color: gray;">
 <% end %>
-  <div class="navbar-inner">
+
+  <div class="navbar-wrapper">
     <div class="container">
+      <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
       <% if signed_in? %>
         <nav>
-        <%= link_to image_tag("logo200x58.jpg", :style => "margin-top: 20px; ", :size=>"100x29"), root_path, :id => "logo" %>   
-          <ul class="nav pull-right" style = "margin-top: 20px;">
-              <li class="divider-vertical">
+          <a class="brand" href="<%=root_path%>">Vizibid</a>   
+          <ul class="nav pull-right">
               <li class="<%#= 'active' if current_page?(root_path) %>">
                 <%= link_to "Find Documents", root_path %>
               </li> 
@@ -29,10 +31,9 @@
               <li class="<%#= 'active' if current_page?(history_path) %>">
                 <%= link_to "History", history_path %>
               </li>
-              <li class="divider-vertical">
               <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:black;">
-                  <%= @current_user.name %> <span style="color:black; border-top-color:black;" class="caret"></span>
+                <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:white;">
+                  <%= @current_user.name %> <span style="color:white; border-top-color:white;" class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <% if check_permissions(nil) %>
@@ -47,13 +48,15 @@
                   </li>
                 </ul>
               </li>
-              <li class="divider-vertical">
             </ul>
           </nav>
         <% else %>
-          <nav style = "margin-top: 20px;">
-          <%= link_to image_tag("logo200x58.jpg", :size=>"100x29"), root_path%>
+        <nav>
+          <a class="brand" href="<%=root_path%>">Vizibid</a>
           <ul class="nav pull-right">
+            <li class="headerli">
+              <%= render 'sessions/sign_in_modal' %>
+            </li>
             <li class="headerli">
               <%= link_to "Why Vizibid", why_path %>
             </li>
@@ -63,6 +66,46 @@
           </ul>  
           </nav>
         <% end %>
+      </div>
     </div>
   </div>
+</div>
+<% if !signed_in? && @home %>
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <%= image_tag("Slide1.jpg") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 style = "text-align: left;">Find model legal documents quickly</h1>
+              <p class="lead">by searching our database of documents and viewing comments and suggestions.</p>
+              <%= link_to("Learn More", why_path, :class=>"btn btn-large btn-info") %>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("Slide1.jpg") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 style = "text-align: left;">Participate</h1>
+              <p class="lead">answer and ask questions, share documents, comment and rate forms.</p>
+              <%= link_to("Learn More", why_path, :class=>"btn btn-large btn-info") %>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("Slide1.jpg") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1 style = "text-align: left;">Earn credits</h1>
+              <p class="lead">by actively participating</p>
+              <%= link_to("Learn More", why_path, :class=>"btn btn-large btn-info") %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+<% end %>
 </header>

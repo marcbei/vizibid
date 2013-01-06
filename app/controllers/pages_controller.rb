@@ -17,6 +17,7 @@ class PagesController < ApplicationController
         @forms = @forms.paginate(:page => params[:page], :per_page => 5)
       end
   	else
+      @home = true
   		@user = User.new
   	end
   end

@@ -1,7 +1,7 @@
 <% provide(:title, 'About') %>
 <br/>
 <div class="row">
-	<div class = "span8">
+	<div class = "span8 offset1">
 		<p class="lead bluetext">
 			Vizibid’s mission is to improve access to legal services through various improvements in the technologies lawyers use in their day-to-day operations.
 		</p>
@@ -20,10 +20,5 @@ Forrest received his JD from Seattle University School of Law and his bachelor�
 			Marc is a professional software engineer at Microsoft in Seattle, Washington with diverse development experience ranging from low-level computer architecture and compilers to application platforms and web services. At Vizibid, Marc is in charge of product and business strategy development.
 Marc is currently completing his master’s degree in computer science and engineering at the University of Washington, and he received his bachelor’s degree in computer science and music engineering from the University of Miami(FL).
 		</p>
-	</div>
-	<div class = "span3 offset1">
-		<% if !signed_in? %>
-			<%= render 'pages/sign_up_form' %>
-		<% end %>
 	</div>
 </div>
