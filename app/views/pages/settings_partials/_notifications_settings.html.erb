@@ -2,17 +2,17 @@
 
 <%= form_for(current_user.user_notification) do |f| %>
 	<b>Activity related to you and your documents </b><br/><br/>
-	Email me when:&nbsp;&nbsp;
+	Email me when:&nbsp;&nbsp;&nbsp;
 	<%= f.check_box :requests %>
 	<%= f.label :requests, "responses are posted to my requests", :style => "display:inline;" %>
-	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<%= f.check_box :forms %>
 	<%= f.label :forms, "comments are posted to my forms", :style => "display:inline;" %>
-	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<%= f.check_box :downloads %>
 	<%= f.label :downloads, "I download a new document", :style => "display:inline;" %>
 	<br/><br/><b>Updates from Vizibid</b><br/></br>
-	Email me with:&nbsp;&nbsp;
+	Email me with:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<%= f.check_box :news %>
 	<%= f.label :news, "news about Vizibid and feature updates", :style => "display:inline;" %>
 	<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :tips %>
