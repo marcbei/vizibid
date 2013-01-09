@@ -19,9 +19,8 @@
 	<%= render 'forum_posts/forum_comment_modal', :parent_id => -1, :reply => false %>
 <% end %>
 
-<hr/>
-
 <% if @post.forum_comments.any? && @permitted_user %>
+	<hr/>
 	Sort by:
 	<ul class="nav nav-pills">
     <li 
