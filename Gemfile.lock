@@ -36,8 +36,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (2.2.2.0)
-      sass (~> 3.2)
+    bootstrap-sass (2.0.0)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.0.4)
@@ -214,7 +213,7 @@ DEPENDENCIES
   ancestry
   annotate (= 2.5.0)
   bcrypt-ruby (~> 3.0.1)
-  bootstrap-sass (~> 2.2.2.0)
+  bootstrap-sass (= 2.0.0)
   bootstrap-will_paginate
   capybara (= 1.1.2)
   carrierwave
@@ -233,7 +232,7 @@ DEPENDENCIES
   rails (= 3.2.6)
   rspec-rails (= 2.10.0)
   rush
-  sass-rails (~> 3.2)
+  sass-rails (= 3.2.4)
   sunspot_rails
   sunspot_solr
   uglifier (= 1.2.3)
