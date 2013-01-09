@@ -84,6 +84,4 @@ $(document).ready(function() {
         $('.modal').removeClass('fade');
     }
 
-}
-
 });
