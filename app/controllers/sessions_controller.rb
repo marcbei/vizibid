@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
 			sign_in user
 			redirect_to root_path
 		else
-			flash[:error] = "Invalid email/password combination."
-			redirect_to root_path
+			redirect_to signin_path
 		end
 	end
 

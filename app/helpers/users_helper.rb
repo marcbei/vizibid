@@ -39,7 +39,7 @@ module UsersHelper
 
 		Mailer.delay.user_verification_email(user, emailaddress)		
 
-		redirect_to root_path
+		redirect_to signin_path
 
 	end
 
