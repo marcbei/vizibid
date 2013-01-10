@@ -121,8 +121,8 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 5px;
-  height: auto;
-  @include box_sizing;
+  height: 30px;
+  margin-bottom: 10px;
 }
 
 .jurisdropdown{
@@ -158,9 +158,9 @@ input, textarea, select, .uneditable-input {
   @extend .error;
  }
 
-/* todo: fix this so the negative margin is not needed */
  .searchbox {
     width: 500px;
+    margin-top: 10px;
   }
 
 
