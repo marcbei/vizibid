@@ -78,10 +78,4 @@ $(document).ready(function() {
         $('.responsedocform').show();
         $('.commentonly').attr('checked', false);
     });
-
-    if ( $.browser.msie ) { // if IE and version is greater 9
-        if($.browser.version > 9)
-        $('.modal').removeClass('fade');
-    }
-
 });
