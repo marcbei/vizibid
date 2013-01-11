@@ -322,7 +322,7 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
-  background-color: gray;
+  background-color: #666666;
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
@@ -357,7 +357,7 @@ color: white;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle{
-  background-color: gray;
+  background-color: #666666;
 }
 
 
