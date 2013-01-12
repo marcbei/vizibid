@@ -1,16 +1,13 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
-    <br/>
-      <strong><p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p></strong>
+  <div class="well">
+      <p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p>
       <%= form_for @feedback do |f| %>
         <%= f.label :subject %>
         <%= f.text_field :subject%>
         <%= f.label :comments %>
         <%= f.text_area :comment, :size => "5x10" %>
-        <div class="btn-group">
-          <%= f.submit :submit, :class => "btn btn-success", :style => "margin-right:5px;"%>
-          <%= button_to "Cancel", "", :class => "btn btn-danger", :'data-dismiss' => "modal" %>
-        </div>
+        <%= f.submit :submit, :class => "btn btn-info", :style => "margin-right:5px;"%>
+        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
       <% end %>
   </div>
 

@@ -1,7 +1,7 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
+  <div class="well">
 
-    <h3>Click the report document button to report this document as inappropriate. Our team will review this document and take proper action.</h3><br/>
+    <p>Click the report document button to report this document as inappropriate. Our team will review this document and take proper action.</p>
 
   	<%= form_for(@id, :url => inappropriate_documents_path(:formid => formid)) do |f| %>
   		<%= f.radio_button :reason, 'option1', :checked => true  %>
@@ -13,10 +13,8 @@
   		<%= f.radio_button :reason, 'other' %>
   		<%= label :reason_other, "Other", :style => "Display: inline;" %>
   		<br/><br/>
-      <div class="btn-group">
-  		  <%= f.submit "Report", :class => "btn btn-danger", :style => "margin-right:5px;"%>
-  		  <%= button_to "Cancel", "", :class => "btn", :'data-dismiss' => "modal" %>
-      </div>
+  		<%= f.submit "Report", :class => "btn btn-danger", :style => "margin-right:5px;"%>
+  		<%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
   	<% end %>
 
   </div>

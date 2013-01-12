@@ -11,25 +11,24 @@
 <br/>
 
 <%= render 'form_requests/form_request_details' %>
-<br/><br/>
+<br/>
 
 <!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
 <% if @form_request.fufilled == false %>
 	<% if @form_request.user.id == current_user.id %>
-		<br/><br/>
-		<%= button_to "Edit Request", edit_form_request_path(@form_request.id), :class => "btn btn-info", :method => :get %>
+		<%= button_to "Edit Request", edit_form_request_path(@form_request.id), :class => "btn", :method => :get %>
 		<% if @form_request.forms.count >0 %>
-			<%= button_to "Complete Request", completerequest_path(@form_request.id), :class => "btn btn-success" %>
+			<%= button_to "Complete Request", completerequest_path(@form_request.id), :class => "btn btn-info" %>
 		<% else %>
 			<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
 		<% end %>
 	<% else %>
 		<% if @permitted_user %>
 			<% if @inappropriate_request_report == nil %>
+				<br/>
 				<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
 				<br/><br/>
 			<% end %>
-
 			<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id %><br/><br/>
 		<% end %>
 	<% end %>

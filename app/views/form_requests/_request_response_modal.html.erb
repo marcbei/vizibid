@@ -1,5 +1,5 @@
 <div id="myModalResponse<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-body">
+    <div class="well">
     <div class="field">
     <%= form_for @form, :html => {:multipart => true} do |f| %>
     <%= hidden_field_tag :requestid, fr_id %>
@@ -7,7 +7,7 @@
     <%= fields_for @requestresponse do |rr| %>
         Comment
         <%= rr.text_area :comment, :rows => 2 %>
-        <%= check_box_tag :commentonly, 'yes', false, :class => 'commentonly' %>
+        <%= check_box_tag :commentonly, 'yes', false, :class => 'commentonly', :style => "margin-bottom: 7px;" %>
         <%= label_tag :commentonly, "comment only", :style => "Display: inline;" %><br/>
     <% end %>
     <div class = "responsedocform">
@@ -32,8 +32,8 @@
     </div>
     <div class="actions">
       <div class="btn-group">
-        <%= f.submit "Submit", :class => "btn btn-success", :style => "margin-right:5px;" %>
-        <%= button_to "Cancel", "", :class => "btn cancelresponse", :'data-dismiss' => "modal" %>
+        <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
+        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
       </div>
     </div>
   <% end %>

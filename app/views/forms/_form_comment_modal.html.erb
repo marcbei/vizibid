@@ -1,14 +1,14 @@
 <div id="myModalComment<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   
-  <div class="modal-body">
+  <div class="well">
 
-  <h3>Fill in your comment below.<h3>
+  <p>Fill in your comment below<p>
   <%= form_for @comment, :html => {:multipart => true}  do |f| %>
     <%= f.hidden_field :parent_id, :value => parent_id %>
     <%= f.hidden_field :form_id, :value => form_id %>
     <p>
       <%= f.text_area :content, :rows => 2 %>
-      <%= check_box_tag :upload, 'yes', false, :class => 'upload' %>
+      <%= check_box_tag :upload, 'yes', false, :class => 'upload', :style => "margin-bottom: 7px;" %>
       <%= label_tag :uploadtag, "Upload a document", :style => "Display: inline;" %>
       <div class="uploadform">
 
@@ -35,8 +35,8 @@
         </p>
     <p>
       <div class="btn-group">
-      <%= f.submit "Submit", :class => "btn btn-success", :style => "margin-right:5px;" %>
-      <%= button_to "Cancel", "", :class => "btn cancelcomment", :'data-dismiss' => "modal" %>
+        <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
+        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
       </div>
     </p>
   <% end %>
