@@ -1,7 +1,7 @@
 <% if @home == true %>
   <header>
 <% else %>
-  <header style = "height: 70px; color: gray; background-color: #666666;">
+  <header style = "height: 80px; color: gray; background-color: #666666;">
 <% end %>
 
   <div class="navbar-wrapper">
@@ -54,15 +54,11 @@
         <nav>
           <a class="brand" href="<%=root_path%>">Vizibid</a>
           <ul class="nav pull-right">
-            <li class="headerli">
-              <%= render 'sessions/sign_in_modal' %>
-            </li>
-            <li class="headerli">
-              <%= link_to "Why Vizibid", why_path %>
-            </li>
-            <li class="headerli">
-              <%= link_to "Contact Us", contactus_path %>
-            </li>
+            <% if @sign_in_page != true %>
+              <li class="headerli">
+                <%= render 'sessions/sign_in_modal' %>
+              </li>
+            <% end %>
           </ul>  
           </nav>
         <% end %>
