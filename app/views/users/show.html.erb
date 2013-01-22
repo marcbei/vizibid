@@ -7,7 +7,7 @@
 	Email: <%= mail_to @user.email%>
 	<br/>
 	<% if !@user.user_detail.website.nil? %>
-		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %>
+		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %><br/>
 	<% end %>
 	<% if !@user.user_detail.location.nil? %>
 		Location: <%= @user.user_detail.location %><br/>
