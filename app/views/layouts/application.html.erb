@@ -11,13 +11,15 @@
 <body>
 	<%= render 'layouts/header' %>
 	<div class = "container maincontent" style="margin-top: 20px;" >
+		
 		<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>" style="margin-top: 5px; margin-bottom: 15px;">
 				<button type="button" class="close alert-<%= key %> flashclose" data-dismiss="alert" style = "border: none;">×</button>
 	  			<div><%= value %></div>
 			</div>
 		<% end %>
-		
+		<%= render 'pages/home_partials/user_feedback_form_modal' %>
+		<br/>
 		<%= yield %>
 		
 		<!-- this is required so the modal is in the maincontent div -->

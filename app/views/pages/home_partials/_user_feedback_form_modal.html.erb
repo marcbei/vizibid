@@ -1,4 +1,5 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <% @feedback = UserFeedback.new %>
   <div class="well">
       <p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p>
       <%= form_for @feedback do |f| %>

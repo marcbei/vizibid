@@ -1,3 +1,4 @@
+$baseFontFamily: Georgia, "Times New Roman", Times, serif;
 
 @import "bootstrap";
 
@@ -341,7 +342,7 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 .navbar .nav > li > a {
   padding: 30px 12px;
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   text-shadow: none;
 }
 
