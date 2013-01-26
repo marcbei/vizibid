@@ -18,8 +18,11 @@
 	  			<div><%= value %></div>
 			</div>
 		<% end %>
-		<%= render 'pages/home_partials/user_feedback_form_modal' %>
-		<br/>
+		<% if signed_in? %>
+			<%= render 'pages/home_partials/user_feedback_form_modal' %>
+			<br/>
+		<% end %>
+		
 		<%= yield %>
 		
 		<!-- this is required so the modal is in the maincontent div -->

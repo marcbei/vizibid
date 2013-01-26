@@ -1,8 +1,5 @@
 <% provide(:title, 'Forum') %>
-<h3>Forum</h3>
-<br/>
 
-<!-- todo: make search work -->
 <%= form_tag forum_path, :method => 'get' do %>
 	<%= text_field_tag :search, params[:search], :placeholder => "Search Posts", :class => "searchbox"%>
 	<%= submit_tag "Search", :class => "btn btn-info" %>
