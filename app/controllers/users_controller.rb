@@ -56,7 +56,7 @@ class UsersController < ApplicationController
       
       if @user_details.save && @user_notifications.save
         set_permissions(@user, params[:accesscode])
-        verify_user(@user)
+        #verify_user(@user)
       else
         render 'new'
       end
