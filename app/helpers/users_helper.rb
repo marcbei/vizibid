@@ -9,10 +9,10 @@ module UsersHelper
  		@user_permission.user_id = user.id
 
 		# this represents a paid account
-		if(access_code == 712)
+		if(access_code == '712')
 			@user_permission.role_id = 2
 		# this represents a limited user
-		elsif(access_code == 801)
+		elsif(access_code == '801')
 			@user_permission.role_id = 3
 		# this is a default (free account)
 		else
