@@ -30,7 +30,7 @@
 	<% end %>
 	<span class="commentscore<%=comment.id%>" style="color: #999;"><%= pluralize(score, 'point') %>  </span>
 	<br/><br/>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= comment.content %><br/>
+	<div class = "formCommentContent"><%= comment.content %></div>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
 	<% if associatedform != nil%>
 		<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>

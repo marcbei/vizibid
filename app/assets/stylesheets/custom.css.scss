@@ -179,12 +179,17 @@ input, textarea, select, .uneditable-input {
 .content {
   display: block;
 }
+
 .timestamp {
   color: $grayLight;
 }
 
 .downloadlink{
    font-size: 25px;
+}
+
+.formCommentContent{
+  width: 800px; margin-left: 19px;
 }
 
 #requestsummary{
