@@ -1,4 +1,4 @@
-<% provide(:title, 'Share Forms') %>
+<% provide(:title, 'Share Documents') %>
 
 <strong><p>Complete and submit this form to upload a new model legal document to Vizibid.</p></strong>
 <div class = "row">
@@ -13,7 +13,7 @@
       	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
       	<%= f.text_area :description, :size => "10x10"%>
       	Jurisdiction
-        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select &#34;Any&#34;."><i class="icon-question-sign"></i></a></u>
       	<div class = "jurisdropdown">
       		<%= f.select :jurisdiction, options_for_select(us_states)%>
       	</div>
