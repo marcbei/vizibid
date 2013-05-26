@@ -50,8 +50,14 @@ class Form < ActiveRecord::Base
       comments.map(&:content)
     end
     boolean :approved
+
+    attachment :document_attachment
   end
   
+  def document_attachment
+    "#{form.url}"
+  end
+
   def average_rating
     @value = 0
     self.form_ratings.each do |rating|

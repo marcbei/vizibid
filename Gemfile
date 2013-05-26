@@ -46,9 +46,12 @@ gem "fog", "~> 1.3.1"
 
 gem 'font-awesome-rails'
 
-gem 'sunspot_rails'
+gem 'sunspot', :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_solr', :git => "git://github.com/sunspot/sunspot.git"
+gem 'sunspot_rails', :git => "git://github.com/sunspot/sunspot.git", :require => "sunspot_rails"
+gem 'sunspot_cell', :git => 'git://github.com/zheileman/sunspot_cell.git'
+gem 'sunspot_cell_jars'
 gem 'progress_bar'
-gem 'sunspot_solr'
 gem 'nokogiri'
 gem 'client_side_validations'
 gem 'database_cleaner'
