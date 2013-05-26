@@ -16,6 +16,9 @@
 #
 
 class Form < ActiveRecord::Base
+
+  require 'open-uri'
+
   attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name, :sourcecomment_id, :approved
 
   mount_uploader :form, FormsUploader
@@ -55,7 +58,7 @@ class Form < ActiveRecord::Base
   end
   
   def document_attachment
-    "#{form.url}"
+    URI.parse(form.url)
   end
 
   def average_rating
