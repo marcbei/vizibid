@@ -2,7 +2,7 @@
 	<div class="well">
 		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink" %> 
 		<br/>
-		<h4>(<%= form.form.to_s.split('.').last %> format)</h4><br/>
+		<h4>(<%= (form.form.to_s.split('.').last).split('?')[0] %> format)</h4><br/>
 		<%= button_to "Done", {:controller => "forms", :action =>"show", :id => form.id}, :class => "btn btn-info", :method => :get %>
 	</div>
 </div>

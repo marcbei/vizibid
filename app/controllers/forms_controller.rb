@@ -129,7 +129,7 @@ class FormsController < ApplicationController
 
   def download
     @form = Form.find(params[:id])
-    @form_file_name = File.basename(@form.form.to_s)
+    @form_file_name = File.basename(@form.form.to_s.split('?')[0])
     
     @formdownload = FormDownload.new
     @formdownload.user_id = current_user.id
