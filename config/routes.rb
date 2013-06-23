@@ -23,7 +23,7 @@ Vizibid::Application.routes.draw do
   match '/why' => 'pages#why'
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
-  match '/forum' => 'pages#forum'
+#  match '/forum' => 'pages#forum'
   match '/share' => 'pages#share'
   match '/feedback' => 'pages#feedback'
   match '/signup' => 'users#new'
