@@ -1,7 +1,7 @@
 <% if @home == true %>
   <header>
 <% else %>
-  <header style = "height: 80px; color: gray; background-color: #666666;">
+  <header style = "height: 85px; color: gray; background-color: #666666;">
 <% end %>
 
   <div class="navbar-wrapper">
@@ -10,7 +10,7 @@
       <div class="navbar-inner">
       <% if signed_in? %>
         <nav>
-          <a class="brand" href="<%=root_path%>">Vizibid</a>   
+          <a class="brand" href="<%=root_path%>"><img src="/assets/vizibid-white.png" width = "201" height="49"/></a>   
           <ul class="nav pull-right">
               <li class="<%#= 'active' if current_page?(root_path) %>">
                 <%= link_to "Find Documents", root_path %>
@@ -52,7 +52,7 @@
           </nav>
         <% else %>
         <nav>
-          <a class="brand" href="<%=root_path%>">Vizibid</a> 
+          <a class="brand" href="<%=root_path%>"><img src="/assets/vizibid-white.png" width = "221" height="54"/></a> 
           <ul class="nav pull-right">
             <% if @sign_in_page != true %>
               <li class="headerli">
