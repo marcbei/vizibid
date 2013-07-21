@@ -1,4 +1,4 @@
-$baseFontFamily: Georgia, "Times New Roman", Times, serif;
+$baseFontFamily: Arial, Sans-Serif;
 
 @import "bootstrap";
 
@@ -40,7 +40,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-  font-family: "Times New Roman";
+  font-family: "Arial";
 }
 
 h1 {
@@ -71,7 +71,7 @@ p {
   margin-right: 10px;
   font-size: 2.5em;
   color: #fff;
-  font-family: "Times New Roman";
+  font-family: "Arial";
   letter-spacing: -1px;
   padding-top: 9px;
   padding-bottom: 9px;
