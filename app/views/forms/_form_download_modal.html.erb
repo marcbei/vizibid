@@ -1,13 +1,9 @@
 <div id="downloadformModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px; margin: -250px 0 0 -150px;">
 	<div class="well">
-
-		<%= button_to "Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "btn btn-info" do %> <i class="icon-download-alt"></i>&nbsp;&nbsp;&nbsp;Download<% end %>
-			
-		<%= button_to "Done", {:controller => "forms", :action =>"show", :id => form.id}, :class => "btn", :method => :get %>
-
-		<%= link_to "Download", :class => "btn btn-info", :controller => "forms", :action =>"download", :id => @form.id, :method => :post do %> <i class="icon-download-alt"></i>&nbsp;&nbsp;&nbsp;Download<% end %>
-
-		<h4>(<%= (form.form.to_s.split('.').last).split('?')[0] %> format)</h4>
+    	<h4>(<%= (form.form.to_s.split('.').last).split('?')[0] %> format)</h4>
+ 		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "btn btn-info" %>
+ 		<br/><br/>
+	   	<%= button_to "Done", {:controller => "forms", :action =>"show", :id => form.id}, :class => "btn", :method => :get %>
 	</div>
 </div>
  
