@@ -1,9 +1,13 @@
 <div id="downloadformModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:300px; margin: -250px 0 0 -150px;">
 	<div class="well">
-		<%= link_to "Click to Download", {:controller => "forms", :action =>"download", :id => @form.id}, :class => "downloadlink" %> 
-		<br/>
-		<h4>(<%= (form.form.to_s.split('.').last).split('?')[0] %> format)</h4><br/>
-		<%= button_to "Done", {:controller => "forms", :action =>"show", :id => form.id}, :class => "btn btn-info", :method => :get %>
+
+		<%= button_to "Download", :controller => "forms", :action =>"download", :id => @form.id, :class => "btn btn-info" %>
+			
+		<%= button_to "Done", {:controller => "forms", :action =>"show", :id => form.id}, :class => "btn", :method => :get %>
+
+		<%= link_to "Download", :class => "btn btn-info", :controller => "forms", :action =>"download", :id => @form.id, :methood => :post do %> <i class="icon-download-alt"></i>&nbsp;&nbsp;&nbsp;Download<% end %>
+
+		<h4>(<%= (form.form.to_s.split('.').last).split('?')[0] %> format)</h4>
 	</div>
 </div>
  
