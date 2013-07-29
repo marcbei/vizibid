@@ -7,100 +7,55 @@ class CommentsController < ApplicationController
 
   def create
 
-    if(params[:comment][:form_id] != nil && params[:comment][:parent_id] != "-1" )
-
-      @comment = Comment.new
-      @comment.user_id = current_user.id
-      @comment.form_id = params[:comment][:form_id]
-      @comment.parent_id = params[:comment][:parent_id]
-      @comment.content = params[:comment][:content]
-
-      if @comment.save
-        if params[:upload] != "yes"
-          flash[:success] = "Thank you for your comment!"
-        end
-      else
-        flash[:error] = "Sorry, we are unable to save your comment."
-        redirect_to form_path(params[:comment][:form_id])
-        return
-      end
-
-      if params[:upload] == "yes"
-
-        @form = Form.new(params[:form])
-        @form.form = params[:form][:form]
-        @form.user_id = current_user.id
-        @form.sourcecomment_id = @comment.id
-
-        if @form.save
-          flash[:success] = "Thank you for your comment and document!"
-        else
-          @comment.destroy
-          flash[:error] = "Sorry, we are unable to save your comment."
-        end
-      end
-
-      @commentvote = CommentVote.new
-      @commentvote.user_id = current_user.id
-      @commentvote.comment_id = @comment.id
-      @commentvote.value = 1
-      @commentvote.save
-      update_comment_score(@comment.id)
-
-      @rootform = Form.find(params[:comment][:form_id])
-      @formowner = User.find(@rootform.user.id)
-      if @formowner.user_notification.forms == true && current_user.id != @formowner.id
-        Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
-      end
-
-      redirect_to form_path(params[:comment][:form_id])
-
-    else
-      @comment = current_user.comments.new
-      @comment.form_id = params[:comment][:form_id]
-      @comment.user_id = current_user.id
-      @comment.parent_id = nil
-      @comment.content = params[:comment][:content]
-      
-      if @comment.save
-        if params[:upload] != "yes"
-          flash[:success] = "Thank you for your comment!"
-        end
-      else
-        flash[:error] = "Sorry, we are unable to save your comment."
-        redirect_to form_path(params[:comment][:form_id])
-        return
-      end
-
-      if params[:upload] == "yes"
-        @form = Form.new(params[:form])
-        @form.form = params[:form][:form]
-        @form.user_id = current_user.id
-        @form.sourcecomment_id = @comment.id
-
-        if @form.save
-          flash[:success] = "Thank you for your comment and document!"
-        else
-          @comment.destroy
-          flash[:error] = "Sorry, we are unable to save your comment."
-        end
-      end
-
-      @commentvote = CommentVote.new
-      @commentvote.user_id = current_user.id
-      @commentvote.comment_id = @comment.id
-      @commentvote.value = 1
-      @commentvote.save
-      update_comment_score(@comment.id)
-
-      @rootform = Form.find(params[:comment][:form_id])
-      @formowner = User.find(@rootform.user.id)
-      if @formowner.user_notification.forms == true && current_user.id != @formowner.id
-        Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
-      end
-
-      redirect_to form_path(@comment.form_id)
+    # set the appropriate parent id
+    if params[:comment][:parent_id] == "-1"
+      params[:comment][:parent_id] = nil
     end
+
+    # create the new comment
+    @comment = Comment.new(:user_id => current_user.id, :form_id => params[:comment][:form_id], 
+      :parent_id => params[:comment][:parent_id], :content => params[:comment][:content])
+
+    # save the comment
+    if @comment.save
+      if params[:upload] != "yes"
+        flash[:success] = "Thank you for your comment!"
+      end
+    else
+      flash[:error] = "Sorry, we are unable to save your comment."
+      redirect_to form_path(params[:comment][:form_id])
+      return
+    end
+
+    # upload the associated document
+    if params[:upload] == "yes"
+
+      @form = Form.new(params[:form], :form => params[:form][:form], :user_id => current_user.id, :sourcecomment_id => @comment.id)
+
+      if @form.save
+        flash[:success] = "Thank you for your comment and document!"
+      else
+        @comment.destroy
+        flash[:error] = "Sorry, we are unable to save your comment."
+      end
+    end
+
+    # create the associated comment vote for this new comment
+    @commentvote = CommentVote.new(:user_id => current_user.id, :comment_id => @comment.id, :value => 1)
+    @commentvote.save
+    
+    # REFACTOR: move this into the model on save?
+    update_comment_score(@comment.id)
+
+    # send the owner of the root document a notiication of the new comment if they are subscribed
+    @rootform = Form.find(params[:comment][:form_id])
+    @formowner = User.find(@rootform.user.id)
+    if @formowner.user_notification.forms == true && current_user.id != @formowner.id
+      Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
+    end
+
+    redirect_to form_path(params[:comment][:form_id])
+
   end
 
   def new
