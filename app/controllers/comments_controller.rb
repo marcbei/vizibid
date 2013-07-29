@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
       if @form.save
         flash[:success] = "Thank you for your comment and document!"
       else
+        # destroy the comment of the form did not save
         @comment.destroy
         flash[:error] = "Sorry, we are unable to save your comment."
       end
@@ -45,12 +46,13 @@ class CommentsController < ApplicationController
     @commentvote.save
     
     # REFACTOR: move this into the model on save?
-    update_comment_score(@comment.id)
+    update_comment_score(@comment.id)     
 
     # send the owner of the root document a notiication of the new comment if they are subscribed
     @rootform = Form.find(params[:comment][:form_id])
+    # REFACTOR: is this line needed or uis user attached to form?
     @formowner = User.find(@rootform.user.id)
-    if @formowner.user_notification.forms == true && current_user.id != @formowner.id
+    if @rootform.user.user_notification.forms == true && current_user.id != @formowner.id
       Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
     end
 
@@ -72,17 +74,22 @@ class CommentsController < ApplicationController
 
           if @commentvote == nil
             @commentvote = CommentVote.new
+            
+            # REFACTOR THIS TO 1 line
             @commentvote.user_id = current_user.id
             @commentvote.comment_id = params[:id] 
             
+            # make this a helper
             if params[:vote] == "pos"
               @commentvote.value = 1
             elsif params[:vote] == "neg"
               @commentvote.value = -1
             end
+            #
 
             @commentvote.save
           else
+            # REFACTOR - make this a method in the helper
             if(@commentvote.value == 1)
               if(params[:vote] == "pos")
                 @commentvote.destroy
@@ -101,7 +108,10 @@ class CommentsController < ApplicationController
           end
 
           # refresh the data
+          # REFACTOR: move this into the model on save?
           update_comment_score(params[:id])
+          
+          # REFACTOR - why are these 2 lines needed?
           @comment = Comment.find(params[:id])
           @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
 
