@@ -45,15 +45,12 @@ class CommentsController < ApplicationController
     @commentvote = CommentVote.new(:user_id => current_user.id, :comment_id => @comment.id, :value => 1)
     @commentvote.save
     
-    # REFACTOR: move this into the model on save?
     update_comment_score(@comment.id)     
 
     # send the owner of the root document a notiication of the new comment if they are subscribed
     @rootform = Form.find(params[:comment][:form_id])
-    # REFACTOR: is this line needed or uis user attached to form?
-    @formowner = User.find(@rootform.user.id)
-    if @rootform.user.user_notification.forms == true && current_user.id != @formowner.id
-      Mailer.delay.doc_comment_mail(current_user, @rootform, @formowner, @comment) 
+    if @rootform.user.user_notification.forms == true && current_user.id != @rootform.user.id
+      Mailer.delay.doc_comment_mail(current_user, @rootform, @rootform.user, @comment) 
     end
 
     redirect_to form_path(params[:comment][:form_id])
@@ -65,57 +62,26 @@ class CommentsController < ApplicationController
   end
 
   def update
+      @comment = Comment.find(params[:id])
 
-      if params[:id] != nil
-        @comment = Comment.find(params[:id])
+      # ensure we have a comment id and that the owner of the comment isn't trying to
+      # vote on their own comment
+      if params[:id] != nil && @comment.user.id != current_user.id
+        
         @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
 
-        if @comment.user.id != current_user.id
-
-          if @commentvote == nil
-            @commentvote = CommentVote.new
-            
-            # REFACTOR THIS TO 1 line
-            @commentvote.user_id = current_user.id
-            @commentvote.comment_id = params[:id] 
-            
-            # make this a helper
-            if params[:vote] == "pos"
-              @commentvote.value = 1
-            elsif params[:vote] == "neg"
-              @commentvote.value = -1
-            end
-            #
-
-            @commentvote.save
-          else
-            # REFACTOR - make this a method in the helper
-            if(@commentvote.value == 1)
-              if(params[:vote] == "pos")
-                @commentvote.destroy
-              else
-                @commentvote.value = -1
-                @commentvote.save
-              end
-            elsif(@commentvote.value == -1)
-              if(params[:vote] == "neg")
-                @commentvote.destroy
-              else
-                @commentvote.value = 1
-                @commentvote.save
-              end
-            end
-          end
-
-          # refresh the data
-          # REFACTOR: move this into the model on save?
-          update_comment_score(params[:id])
-          
-          # REFACTOR - why are these 2 lines needed?
-          @comment = Comment.find(params[:id])
-          @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
-
+        # create a new comment vote if it doesn't exist and update the data
+        if @commentvote == nil 
+          @commentvote = CommentVote.new(:user_id => current_user.id, :comment_id => params[:id]) 
+          set_new_commentvote_score(params[:vote], @commentvote)
+        else
+          set_existing_commentvote_score(params[:vote], @commentvote)
         end
+
+        # refresh the data
+        update_comment_score(params[:id])
+        @comment = Comment.find(params[:id])
+        @commentvote = CommentVote.find_by_comment_id_and_user_id(params[:id], current_user.id)
       end
       
       respond_to do |format|
@@ -127,6 +93,8 @@ class CommentsController < ApplicationController
 
     @comment = Comment.find(params[:id])
 
+    # delete the comment if it doesn't have children otherwise
+    # nil out the comment to preserve the overall acomment structure
     if @comment.has_children?
       @comment.content = "[Deleted]"
       @comment.user_id = nil

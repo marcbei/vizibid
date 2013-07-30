@@ -21,4 +21,34 @@ module CommentHelper
 			comment.destroy
 		end
 	end
+
+	def set_new_commentvote_score(vote, commentvote)
+
+		if vote == "pos"
+			commentvote.value = 1
+		elsif vote == "neg"
+			commentvote.value = -1
+		end
+
+		commentvote.save
+	end
+
+	def set_existing_commentvote_score(vote, commentvote)
+	    
+	    if(commentvote.value == 1)
+	      if(vote == "pos")
+	        commentvote.destroy
+	      else
+	        commentvote.value = -1
+	        commentvote.save
+	      end
+	    elsif(commentvote.value == -1)
+	      if(vote == "neg")
+	        commentvote.destroy
+	      else
+	        commentvote.value = 1
+	        commentvote.save
+	      end
+	    end
+	end
 end
