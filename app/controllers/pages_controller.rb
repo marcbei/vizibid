@@ -40,7 +40,6 @@ class PagesController < ApplicationController
   end
 
   def share
-  	# make sure the user is signed in
   	signed_in_user
 
     if check_permissions(nil) != true
