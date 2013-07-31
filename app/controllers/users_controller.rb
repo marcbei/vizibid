@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # pull data for the profile page
     name = params[:name].gsub('_', ' ')
   	@user = User.all(:conditions => ['name ILIKE ?', name]).first
     
@@ -32,54 +33,48 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.new(params[:user])
+  	# create the user
+    @user = User.new(params[:user])
     @user.verified = false
     @user.verification_token = SecureRandom.urlsafe_base64
     @user.verification_token_sent_at = Time.zone.now
 
   	if @user.save
+      # create the default user details and notifications
+      @user_details = UserDetail.new(:user_id => @user.id, :show_comments => false, 
+        :show_uploaded => true, :show_requests => true)
       
-      @user_details = UserDetail.new
-      @user_details.user_id = @user.id
-      @user_details.show_comments = false
-      @user_details.show_uploaded = true
-      @user_details.show_requests = true
-      
-      @user_notifications = UserNotification.new
-      @user_notifications.user_id = @user.id
-      @user_notifications.requests = true
-      @user_notifications.forms = true
-      @user_notifications.news = true
-      @user_notifications.tips = true
-      @user_notifications.surveys = true
-      @user_notifications.downloads = true
+      @user_notifications = UserNotification.new(:user_id => @user.id, :requests => true,
+        :forms => true, :news => true, :tips => true, :surveys => true, :downloads => true)
       
       if @user_details.save && @user_notifications.save
+        # set permissions
         set_permissions(@user, params[:accesscode])
+        
+        # verify the user
         verify_user(@user)
-      else
-        render 'new'
+        return
       end
-  	else
-  		render 'new'
   	end
+
+    render 'new'
   end
 
   def verify
-
+    # verify the user
     @user = User.find_by_verification_token(params[:id])
     
     if @user.verification_token_sent_at < 24.hours.ago
       flash[:error] = "It has been over 24 hours since you signed up. Please try again."
       @user.destroy
-      redirect_to root_path
     else
       @user.verified = true
       @user.save
       flash[:success] = "Welcome to Vizibid!"
       sign_in @user
-      redirect_to root_path
     end
+
+    redirect_to root_path
   end
 
   def edit
@@ -90,6 +85,7 @@ class UsersController < ApplicationController
 
         @user = current_user
 
+        # update username and/or email address
         if params[:account_reset] == "true"
 
           if params[:user][:name] != nil && params[:user][:name] != "" && params[:user][:name] != @user.name
@@ -103,14 +99,12 @@ class UsersController < ApplicationController
           if @user.save
             sign_in(User.find(@user.id))
             flash[:success] = "Updated account settings"
-            redirect_to settings_path("account")
-            return
+            
           else
             flash[:error] = "Unable to update account settings"
-            redirect_to settings_path("account")
-            return
           end
-
+          
+        # update password
         elsif params[:password_reset] == "true"
          if @user.authenticate(params[:user][:password]) && params[:user][:password].length >= 6 && params[:user][:newpassword].length >= 6 && params[:user][:newpassword_confirmation].length >= 6
               @user.password = params[:user][:newpassword]
@@ -118,14 +112,11 @@ class UsersController < ApplicationController
               @user.save
               sign_in(User.find(@user.id))
               flash[:success] = "Updated password"
-              redirect_to settings_path("account")
-              return
           else
             flash[:error] = "Unable to update password"
-            redirect_to settings_path("account")
-            return
           end
-
         end
+
+        redirect_to settings_path("account")
   end
 end
