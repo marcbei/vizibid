@@ -4,7 +4,6 @@ class FormRequestsController < ApplicationController
 	before_filter :signed_in_user
 
 	def new
-
 		if check_permissions(nil) != true
 		    flash[:error] = "You don't have access to this feature. Please upgrade your account."
 		    redirect_to root_path
@@ -28,10 +27,9 @@ class FormRequestsController < ApplicationController
 	end
 
 	def update
-
 		@form_request = FormRequest.find(params[:id])
-
  		@form_request.update_attributes(params[:form_request])
+		
 		if @form_request.save
 		  flash[:success] = "Edits saved!"
 		else
@@ -55,23 +53,19 @@ class FormRequestsController < ApplicationController
 	end
 
 	def edit
-
 		@form_request = FormRequest.find(params[:id])
-
 		@form = Form.new
 	end
 
 	def destroy
 		@form_request = FormRequest.find(params[:id])
 		@form_request.delete
-
 		flash[:success] = "Request deleted!"
 
 		redirect_to requestcenter_path
 	end
 
 	def destroy_response
-
 		@response = RequestSubmission.find(params[:id])
 
 	    if @response.has_children?
@@ -87,7 +81,6 @@ class FormRequestsController < ApplicationController
 	end
 
 	def completerequest
-
 		if(params[:id] != nil)
 			@form_request = FormRequest.find(params[:id].to_i)
 			@form_request.fufilled = true
