@@ -14,8 +14,9 @@ class FormRequestsController < ApplicationController
 	end
 
 	def create
-		@form_request = FormRequest.new(params[:form_request], :user_id => current_user.id,
-			:fufilled => false)
+		@form_request = FormRequest.new(params[:form_request])
+		@form_request.user_id = current_user.id
+		@form_request.fufilled = false
 
 		if @form_request.save
 		  flash[:success] = "Thank you for your request!"
