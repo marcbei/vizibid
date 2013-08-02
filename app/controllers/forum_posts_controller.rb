@@ -1,3 +1,6 @@
+### This code is not used and is not being maintained.
+### Marc Beitchman 8/2/2013
+
 class ForumPostsController < ApplicationController
 
 	before_filter :signed_in_user

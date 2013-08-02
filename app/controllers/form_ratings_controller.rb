@@ -6,31 +6,28 @@ class FormRatingsController < ApplicationController
 		@form = Form.find_by_id(params[:formid])
 		@formrating = current_user.form_ratings.find_by_form_id(@form.id)
 		
+		# make sure the user isn't trying to rate their own for,
 		if(current_user.id == @form.user.id)
 			flash[:error] = "You cannot rate your own form."
 			redirect_to form_path(@form)
-		# kind of a hack, form should really reload and submit a put instead of post, oh well
-		elsif @formrating  != nil
-			@formrating.value = params[:rating][:value]
-            if@formrating.save
-                respond_to do |format|
-                    format.html { redirect_to form_path(@form), :notice => "Your rating has been updated" }
-                    format.js
-                end
-            end
-		else
-			@formrating = FormRating.new
-			@formrating.form_id = @form.id
-			@formrating.user_id = current_user.id
-			@formrating.value = params[:rating][:value]
-
-			if(@formrating.save)
-				respond_to do |format|
-                        format.html { redirect_to form_path(@form), :notice => "Your rating has been saved" }
-                        format.js
-                end
-            end
 		end
+		
+		# kind of a hack, form should really reload and submit a put instead of post to handle rating updates
+		if @formrating  != nil
+			@formrating.value = params[:rating][:value]
+		# create a new rating
+		else
+			@formrating = FormRating.new(:form_id => @form.id, :user_id => current_user.id, 
+				:value => params[:rating][:value])
+		end
+
+        if @formrating.save
+	        respond_to do |format|
+	            format.html { redirect_to form_path(@form), :notice => "Your rating has been updated" }
+	            format.js
+	        end
+    	end
+
 	end
 
 	def update
