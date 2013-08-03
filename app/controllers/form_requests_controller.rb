@@ -1,4 +1,5 @@
 class FormRequestsController < ApplicationController
+	
 	include FormRequestsHelper
 
 	before_filter :signed_in_user

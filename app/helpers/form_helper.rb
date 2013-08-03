@@ -62,12 +62,13 @@ module FormHelper
 		request["Content-Type"] = "application/x-www-form-urlencoded, boundary=#{boundary}"
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+
+		## enable this do do virus scan
 		#request.basic_auth("d50cff87d2414c70b312461bac787dfd", "sYMTxSJP3")
-
 		#response = http.request(request)
-
 		#parsed_response = JSON.parse(response.body)
 		status = "clean" #parsed_response["status"]
+		## end
 
 		if status == "clean"
 			logger.debug "clean file"
@@ -79,5 +80,87 @@ module FormHelper
 			Mailer.delay.upload_failed_virus_scan_email(current_user, form)
 			return false
 		end
+	end
+
+	def save_form(form_params)
+
+      @form = Form.new(form_params)
+      @form.user_id = current_user.id
+      @form.description = form_params[:description]
+      @form.jurisdiction = form_params[:jurisdiction]
+
+      if @form.save
+        # scan the form for viruses
+        if virus_scan(@form) != true
+            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+            redirect_to share_path
+        end
+
+        flash[:success] = "Thank you for your contribution!"
+        redirect_to form_path(@form.id)
+      else
+        flash[:error] = "There was a problem with your submission. Please try again."
+        redirect_to share_path
+      end
+	end
+
+	def save_request(paramsx)
+
+	  # create a new request submission
+      @request_submission = RequestSubmission.new(:form_request_id => params[:requestid], 
+        :comment => params[:request_submission][:comment], :user_id => current_user.id,
+        :parent_id => params[:parent_id])
+      
+      # save the request submission
+      if !@request_submission.save
+        flash[:error] = "There was a problem with your submission. Please try again."
+        redirect_to form_request_path(params[:requestid])
+        return
+      end
+
+      @request = FormRequest.find(params[:requestid])
+      @requestowner = User.find(@request.user.id)
+
+      # if the request submission doesn't have a form associated, send mail and redirect to the original request
+      if params[:commentonly] == "yes" || params[:form][:name].empty?
+        flash[:success] = "Thank you for your contribution!"
+
+        #send mail
+        if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
+          Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
+        end
+
+      # the request submission has a form submission so save the form
+      else
+        @form = Form.new(params[:form])
+        @form.user_id = current_user.id
+        @form.description = params[:form][:description]
+        @form.jurisdiction = params[:form][:jurisdiction]
+
+        # save the form
+        if @form.save
+          flash[:success] = "Thank you for your contribution!"
+          @request_submission.form_id = @form.id
+          @request_submission.save
+
+          # scan the form for viruses
+          if virus_scan(@form) != true
+            @request_submission.destroy
+            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+            redirect_to form_request_path(params[:requestid])
+          end
+
+          #sendmail
+          if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
+            Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
+          end
+        else
+          @request_submission.destroy
+          flash[:error] = "There was a problem with your submission. Please try again."
+        end
+      end
+
+      redirect_to form_request_path(params[:requestid])
+
 	end
 end

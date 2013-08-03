@@ -8,89 +8,11 @@ class FormsController < ApplicationController
 
     # handle the case where the form is a assoicated with a request
     if(params[:requestid] != nil)
-
-      # create a new request submission
-      @request_submission = RequestSubmission.new
-      @request_submission.form_request_id = params[:requestid]
-      @request_submission.comment = params[:request_submission][:comment]
-      @request_submission.user_id = current_user.id
-      @request_submission.parent_id = params[:parent_id]
-      
-      # save the request submission
-      if !@request_submission.save
-        flash[:error] = "There was a problem with your submission. Please try again."
-        redirect_to form_request_path(params[:requestid])
-        return
-      end
-
-      @request = FormRequest.find(params[:requestid])
-      @requestowner = User.find(@request.user.id)
-
-      # if the request submission doesn't have a form associated, send mail and redirect to the original request
-      if params[:commentonly] == "yes" || params[:form][:name].empty?
-        flash[:success] = "Thank you for your contribution!"
-
-        #send mail
-        if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
-          Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
-        end
-
-        redirect_to form_request_path(params[:requestid])
-        return
-      # the request submission has a form submission so save the form
-      else
-        @form = Form.new(params[:form])
-        @form.user_id = current_user.id
-        @form.description = params[:form][:description]
-        @form.jurisdiction = params[:form][:jurisdiction]
-
-        # save the form
-        if @form.save
-          flash[:success] = "Thank you for your contribution!"
-          @request_submission.form_id = @form.id
-          @request_submission.save
-
-          # scan the form for viruses
-          if virus_scan(@form) != true
-            @request_submission.destroy
-            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to form_request_path(params[:requestid])
-          end
-
-          #sendmail
-          if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
-            Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
-          end
-
-          redirect_to form_request_path(params[:requestid])
-        else
-          @request_submission.destroy
-          flash[:error] = "There was a problem with your submission. Please try again."
-          redirect_to form_request_path(params[:requestid])
-        end
-      end
+      # maybe this makes more sense to be in form_requests controller
+      save_request(params)
     # this handles an uploaaded form not associated with a request
     else
-
-      @form = Form.new(params[:form])
-      @form.user_id = current_user.id
-      @form.description = params[:form][:description]
-      @form.jurisdiction = params[:form][:jurisdiction]
-
-      if @form.save
-        # scan the form for viruses
-        res = virus_scan(@form)
-        if res != true
-            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to share_path
-        end
-
-        flash[:success] = "Thank you for your contribution!"
-        redirect_to form_path(@form.id)
-      else
-        flash[:error] = "There was a problem with your submission. Please try again."
-        redirect_to share_path
-      end
+      save_form(params[:form])
     end
   end
 
@@ -131,9 +53,7 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
     @form_file_name = File.basename(@form.form.to_s.split('?')[0])
     
-    @formdownload = FormDownload.new
-    @formdownload.user_id = current_user.id
-    @formdownload.form_id = @form.id
+    @formdownload = FormDownload.new(:user_id => current_user.id, :form_id => @form.id)
     @formdownload.save
 
     open(@form.form.url) {|form|
