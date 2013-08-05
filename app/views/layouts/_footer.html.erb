@@ -1,23 +1,25 @@
 <footer class="footer">
-  <nav class= "footernav">
-    <ul class="span2">
-      <li class="footerli"><h3 class="footertitle">About</h3></li>
-      <li class="footerli"><%= link_to "Why Vizibid", why_path %></li> 
-      <li class="footerli"><%= link_to "About Us", about_path %></li>
-      <li class="footerli"><%= link_to "Contact Us", contactus_path %></li> 
-      <li class="footerli"><%= link_to "Privacy & Terms", '#' %></li>
-    </ul>
-    <ul class="span3">
-      <li class="footerli"><h3 class="footertitle">More</h3></li>
-      <li class="footerli"><%= link_to "Blog", '#' %></li> 
-      <li class="footerli"><%= link_to "Friend us on Facebook", "http://www.facebook.com/Vizibid", :target => "_blank" %></li>
-      <li class="footerli"><%= link_to "Follow us on Twitter", "https://twitter.com/vizibid", :target => "_blank" %></li> 
-    </ul>
-    <p class="pull-right footerp">
-    	Vizibid &copy; 2012<br/>
-    	email us: <a href="mailto:info@vizibid.com">info@vizibid.com</a>
-    </p>
-
-  </nav>
+  <div class="main_footer_div">
+    <div class="footer_social_links">
+      <span class="footer_social_span">
+        Follow Us:&nbsp;
+        <a href="http://www.facebook.com/Vizibid" target="_blank"><i class="icon-facebook-sign icon-large" style="color: white;"></i></a> &nbsp;
+        <a href="https://twitter.com/vizibid" target="_blank"><i class="icon-twitter icon-large" style="color: white;"></i></a> &nbsp;
+        <a href="http://www.linkedin.com/company/vizibid" target="_blank"><i class="icon-linkedin icon-large" style="color: white;"></i></a> &nbsp;
+      </span>
+    </div>
+    <div class="footer_main_links">
+      <span>
+        <%= link_to "Support", root_path %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to "About Us", about_path %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to "Blog", root_path %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to "Privacy Policy", root_path %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to "Terms Of Use", root_path %>
+      </span>
+    </div>
+    <div class="footer_copyright">
+      <span class="footer_copyright_span">Vizibid &copy; 2013</span>
+    </div>
+  </div>
 </footer>
 

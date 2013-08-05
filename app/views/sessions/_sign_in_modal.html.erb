@@ -1,8 +1,8 @@
 <!--a data-toggle="modal" href="#signin" data-backdrop="static" >Sign In</a-->
 
 		<%= form_for(:session, url: sessions_path) do |f| %>
-			<%= f.text_field :email, :placeholder => "email", :style => "width: 130px; margin-top: 15px;" %>
-			<%= f.password_field :password, :placeholder => "password", :style => "width: 100px; margin-top: 15px;"  %>
+			<%= f.text_field :email, :placeholder => "email", :style => "width: 150px; margin-top: 15px;" %>
+			<%= f.password_field :password, :placeholder => "password", :style => "width: 110px; margin-top: 15px;"  %>
 
 			<%= f.submit "Sign in", class: "btn btn-info btn-small" %>
 		<% end %>

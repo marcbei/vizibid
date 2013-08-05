@@ -7,8 +7,8 @@
   <div class="navbar-wrapper">
     <div class="container">
       <div class="navbar navbar-text">
-      <div class="navbar-inner">
       <% if signed_in? %>
+      <div class="navbar-inner">
         <nav>
           <a class="brand" href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>   
           <ul class="nav pull-right">
@@ -50,6 +50,7 @@
               </li>
             </ul>
           </nav>
+        </div>
         <% else %>
         <nav>
           <a class="brand" href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a> 
@@ -62,46 +63,7 @@
           </ul>  
           </nav>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
-<% if !signed_in? && @home %>
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <%= image_tag("home_gradient.jpg") %>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1 style = "text-align: left;">Find model legal documents quickly</h1>
-              <p class="lead">by searching our database of documents and viewing comments and suggestions.</p>
-              <%= link_to("Learn More", why_path, :class=>"btn  btn-info") %>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag("home_gradient.jpg") %>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1 style = "text-align: left;">Participate</h1>
-              <p class="lead">answer and ask questions, share, comment and rate documents.</p>
-              <%= link_to("Learn More", why_path, :class=>"btn  btn-info") %>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag("home_gradient.jpg") %>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1 style = "text-align: left;">Earn credits</h1>
-              <p class="lead">for contributing to the community</p>
-              <%= link_to("Learn More", why_path, :class=>"btn  btn-info") %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
-<% end %>
 </header>

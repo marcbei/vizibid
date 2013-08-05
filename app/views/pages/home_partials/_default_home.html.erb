@@ -1,23 +1,9 @@
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+<img src="/assets/image.jpg" class="full-screen"/>
 
-    <div class="container marketing">
+<div class="default_home_main_content">
+	<h1>Collaborative Documents For Lawyers</h1>
+	<a data-toggle="modal" href="#signupModal" class="btn btn-success btn-large signup">Try it for free!</a>
+	<h4><a href="">Learn More...</a></h4>
+</div>
 
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="span4">
-          <h2>The legal documents site for lawyers.</h2>
-          <p>All members of Vizibid are confirmed to be bar licensed attorneys so that you can trust us for quality. Find documents by searching and get your questions answered. Save time and money.</p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <h2>Participate in the community.</h2>
-          <p>Vizibid is the only site for lawyers only that allows collaboration. Help other members of the community 
-          	by rating and commenting on documents, fulfill requests and participate in the forum. </p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-        	<%= render 'pages/sign_up_form' %>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
-
-     </div>
+<%= render 'pages/home_partials/sign_up_form_modal' %>

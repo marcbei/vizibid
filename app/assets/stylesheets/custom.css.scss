@@ -84,37 +84,6 @@ p {
   text-decoration: none;
 }
 
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #000;
-  color: #000;
-  font-size: 75%;
-  a {
-    color: #555;
-    &:hover { 
-      color: #222;
-    }
-  }  
-  small { 
-    float: left; 
-  }
-  ul {
-    float: center;
-    list-style: none;
-    text-align: center;
-    li {
-      display: inline;
-      margin-left: 10px;
-    }
-  }
-}
-
-.footernav{
-  margin-top: 10px;
-}
 
 /* forms */
 
@@ -274,13 +243,6 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
     color: gray;  
 }
 
-.footerli
-{
-    float: left;
-    clear: left;
-    font-size: 16px;
-}
-
 .footertitle
 {
   color: #0070c0;
@@ -432,4 +394,87 @@ color: white;
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.full-screen {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 95%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  background-color: #000;
+  font-size: 12px;
+}
+
+.footer_main_links{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+  a{
+    color: white;
+  }
+}
+
+.footer_social_links{
+  display: inline-block;
+  width: 33%;
+}
+
+.footer_social_span{
+  margin-left: 20px;
+  float: none;
+}
+
+.footer_copyright{
+  display: inline-block;
+  width: 33%;
+  text-align: right;
+}
+
+.footer_copyright_span
+{
+  margin-right: 20px;
+  float: none;
+}
+
+.main_footer_div{
+  margin-top: 3px;
+}
+
+/* main content panel */
+
+.default_home_main_content{
+  position: absolute;
+  width: 500px;
+  top: 90px;
+  left: 80px;
+
+  a, h1{
+    color: white;
+  }
+
+  a.signup{
+    position: relative;
+    left: 35%
+  }
+
+  h4{
+    position: relative;
+    left: 38%
+  }
+}
+
+
 

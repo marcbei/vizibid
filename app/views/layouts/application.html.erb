@@ -18,6 +18,7 @@
 	  			<div><%= value %></div>
 			</div>
 		<% end %>
+
 		<% if signed_in? %>
 			<%= render 'pages/home_partials/user_feedback_form_modal' %>
 			<br/>
@@ -28,10 +29,9 @@
 		<!-- this is required so the modal is in the maincontent div -->
 		<%= render 'layouts/noaccess_share_modal' %>
 		<%#= render 'sessions/sign_in_modal_body' %>
-
-		<%= render 'layouts/footer' %>
 		
-		<%= debug(params) if Rails.env.development? %>
+		<%#= debug(params) if Rails.env.development? %>
 	</div>
+	<%= render 'layouts/footer' %>
 </body>
 </html>

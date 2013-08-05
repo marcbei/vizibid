@@ -1,0 +1,19 @@
+<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class = "well">
+		<strong class = "pull-left">Sign Up and Try It For Free</strong> <br/><br/>
+		<%= form_for(@user, :validate => true) do |f| %>
+
+			<%= f.text_field :name, :placeholder => "name" %>
+			<%= f.text_field :email, :placeholder => "email" %>
+			<%= f.label "State Licensed", :class => "pull-left" %>
+			<%= f.select :state_licensed, options_for_select(options_for_state_licensed) %>
+			<%= f.text_field :bar_number, :placeholder => "bar id number" %>
+			<%= f.password_field :password, :placeholder => "password" %>
+	  		<%= f.password_field :password_confirmation, :placeholder => "repeat password" %>
+	  		<%= text_field_tag :accesscode, nil, :placeholder => "access code (optional)" %>
+	  		<br/>
+	  		<%= f.submit "Sign Up For Vizibid", class: "btn btn-info pull-left" %>
+	  		<br/>
+		<% end %>
+	</div>
+</div>
