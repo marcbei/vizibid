@@ -1,24 +1,59 @@
 <!-- Search Box -->
 <%= render 'forms/search' %>
-
-<!-- Form List -->
-<% if @forms != nil %>
-	<h3><%= pluralize(@total_forms, 'result') %>:</h3><br/>
-	<% @i = 1 %>
-	<% @forms.each do |f| %>
-	  <tr>
-	    <td><%= render 'forms/form_summary', :f => f %></td>
-	  </tr>
-	  <% @i += 1 %>
-	  <% if @i < @forms.count+1 %>
-	  	  <hr/>
-	  <% end %>
-	<% end %>
-	<%= will_paginate(@forms) %>
-<% else %>
-	<br/>
-	<h3>You have:</h3><br/>
-	<%= link_to current_user.form_requests.where("fufilled != true").count, :controller => "pages", :action => "requestcenter", :scope => "me" %> open requests <br/><br/>
-	<%= link_to current_user.form_requests.where("fufilled = true").count, :controller => "pages", :action => "requestcenter", :scope => "me" %> completed requests <br/><br/>
-	shared <%= link_to current_user.forms.count, history_path %> documents<br/>
-<% end %>
+<div class="row">
+	<!-- tabbable window panes -->
+	<div class= "span8">
+		<div class="tabbable"> 
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a href="#tab1" data-toggle="tab">Contribute</a></li>
+		    <li><a href="#tab2" data-toggle="tab">Add a Request</a></li>
+		    <li><a href="#tab3" data-toggle="tab">Followed Docs</a></li>
+		    <li><a href="#tab4" data-toggle="tab">Subscriptions</a></li>
+		  </ul>
+		  <div class="tab-content">
+		    <div class="tab-pane active" id="tab1">
+		      <div class = "row">
+		      	<div class= "span4">
+		      		Do you have these documents?
+		      		<ul style="list-style-type:none">
+		      			<li>Request 1</li>
+		      			<li>Request 2</li>
+		      			<li>Request 3</li>
+		      			<li>Request 4</li>
+		      			<li>Request 5</li>
+		      			<li><a href="#">See More +</a></li>
+		      		<ul>
+		      	</div>
+		      	<div class= "span3">
+		      		<em>[Upload documents to your folder.]</em><br/><br/><br/><br/>
+		      		<em>[Community Contribution Stats]</em>
+		      	</div>
+		      </div>
+		    </div>
+		    <div class="tab-pane" id="tab2">
+		      <p>Add a request.</p>
+		    </div>
+		    <div class="tab-pane" id="tab3">
+		      <p>Followed Docs.</p>
+		    </div>
+		    <div class="tab-pane" id="tab4">
+		      <p>Subscriptions.</p>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	<div class="span3" style="border: 1px solid #ddd;">
+		<h4 style="padding-left: 10px;">Your Dashboard</h4>
+		<p>
+			<ol>
+				<li>num docs uploaded</li>
+				<li>num comments</li>
+				<li>doc updates</li>
+				<li>comment upvotes</li>
+			</ol>
+		</p>
+		<p class="center">
+			<em>[Your Contribution Stats]</em>
+		</p>
+	</div>
+</div>

@@ -1,10 +1,5 @@
 <%= form_tag root_path, :method => 'get' do %>
-	<%= text_field_tag :search, params[:search], :placeholder => "Search Documents", :class => "searchbox"%>
+	<%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "searchbox"%>
 	<%= submit_tag "Search", :class => "btn btn-info" %>
-<% end %>
-<p> <em> Can't find what you're looking for? </em>
-<% if check_permissions(nil) %>
- 	<%= link_to "Request a Document", new_form_request_path %></p>
- <% else %>
- 	<%= render 'layouts/noaccess_modal.html.erb', :type => "request" %>
+	<B><span style="margin-left: 10px"><a style="color: black;" href="#">filters</a></span></B><span class="caret" style="margin-top: 20px; margin-left: 5px;"></span>
 <% end %>
