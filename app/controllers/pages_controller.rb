@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   require 'will_paginate/array'
 
   def home
+    @home = true
   	if signed_in? 
       if params[:search] == nil || params[:search].empty?
         @forms = nil
@@ -16,7 +17,6 @@ class PagesController < ApplicationController
         @forms = @forms.paginate(:page => params[:page], :per_page => 5)
       end
   	else
-      @home = true
   		@user = User.new
   	end
   end

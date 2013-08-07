@@ -1,5 +1,14 @@
 <img src="/assets/image.jpg" class="full-screen"/>
 
+<div class="navbar navbar-signedin navbar-fixed-top">
+	<div class="container">
+		<a class = "pull-left "href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>
+		<span class="pull-right">
+	    	<%= render 'sessions/sign_in_modal' %>
+	  	</span>
+	</div>
+</div>
+
 <div class="default_home_main_content">
 	<h1>Collaborative Documents For Lawyers</h1>
 	<a data-toggle="modal" href="#signupModal" class="btn btn-success btn-large signup">Try It Free!</a>

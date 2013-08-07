@@ -64,27 +64,6 @@ p {
   line-height: 1.7em;
 }
 
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 2.5em;
-  color: #fff;
-  font-family: "Arial";
-  letter-spacing: -1px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-#logo:hover {
-  color: #0070c0;
-  text-decoration: none;
-}
-
-
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -270,64 +249,39 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
-.navbar-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  margin-top: 0px;
-  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-}
-.navbar-wrapper .navbar {
-
-}
-
 /* Remove border and change up box shadow for more contrast */
 .navbar .navbar-inner {
   border: 0;
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
-  background-color: #666666;
+  background-color: #000;
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
 }
 
-/* Downsize the brand/project name a bit */
-.navbar .brand {
-  padding: 18px 10px 8px; /* Increase vertical padding to match navbar links */
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+.navbar-signed-links {
+  margin-top: 12px;
   color: white;
+  a{
+    color: white;
+    font-size: 13px;
+
+  }
 }
 
-/* Navbar links: increase padding for taller navbar */
-.navbar .nav > li > a {
-  padding: 30px 12px;
-  color: white;
-  font-size: 15px;
-  text-shadow: none;
-}
+.header-signin-form{
+  form{
+    margin-bottom: -8px;
+    margin-top: -6px;
+  }
 
-.navbar .nav > li > a:hover {
-background-color: transparent;
-color: white;
-text-decoration: underline;
+  a{
+    font-size: 11px;
+    color: white;
+  }
 }
-
-.navbar .nav > li > a:focus {
-background-color: transparent;
-color: white;
-}
-
-.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle{
-  background-color: #666666;
-}
-
 
 .full-screen {
   z-index: -999;
@@ -409,6 +363,4 @@ footer {
     left: 37%
   }
 }
-
-
 
