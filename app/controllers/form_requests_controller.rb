@@ -25,7 +25,7 @@ class FormRequestsController < ApplicationController
 		  flash.now[:error] = "There was a problem with your request. Please try again."
 		end
 
-		redirect_to requestcenter_path
+		redirect_to root_path
 	end
 
 	def update

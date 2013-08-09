@@ -3,7 +3,7 @@
 <div class="row-fluid">
 	<!-- tabbable window panes -->
 	<div class= "span8">
-		<!-- Form List -->
+		<!-- Search Results -->
 		<% if @forms != nil %>
 			<h3><%= pluralize(@total_forms, 'result') %>:</h3><br/>
 				<% @i = 1 %>
@@ -21,35 +21,19 @@
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">
 			    <li class="active"><a href="#tab1" data-toggle="tab">Contribute</a></li>
-			    <li><a href="#tab2" data-toggle="tab">Add a Request</a></li>
-			    <li><a href="#tab3" data-toggle="tab">Followed Docs</a></li>
+			    <li><a href="#tab2" data-toggle="tab">Your Requests</a></li>
+			    <li><a href="#tab3" data-toggle="tab">Followed Documents</a></li>
 			    <li><a href="#tab4" data-toggle="tab">Subscriptions</a></li>
 			  </ul>
 			  <div class="tab-content">
 			    <div class="tab-pane active" id="tab1">
-			      <div class = "row-fluid">
-			      	<div class= "span7">
-			      		Do you have these documents?
-			      		<ul style="list-style-type:none">
-			      			<li>Request 1</li>
-			      			<li>Request 2</li>
-			      			<li>Request 3</li>
-			      			<li>Request 4</li>
-			      			<li>Request 5</li>
-			      			<li><a href="#">See More +</a></li>
-			      		<ul>
-			      	</div>
-			      	<div class= "span5">
-			      		<em>[Upload documents to your folder.]</em><br/><br/><br/><br/>
-			      		<em>[Community Contribution Stats]</em>
-			      	</div>
-			      </div>
+			      <%= render 'pages/home_partials/contribute_tab_pane' %>
 			    </div>
 			    <div class="tab-pane" id="tab2">
-			      <p>Add a request.</p>
+			      <%= render 'pages/home_partials/your_requests_tab_pane' %>
 			    </div>
 			    <div class="tab-pane" id="tab3">
-			      <p>Followed Docs.</p>
+			      <%= render 'pages/home_partials/followed_documents_tab_pane' %>
 			    </div>
 			    <div class="tab-pane" id="tab4">
 			      <p>Subscriptions.</p>
