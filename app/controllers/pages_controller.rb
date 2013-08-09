@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   def home
     @home = true
   	if signed_in? 
-      @form_request = FormRequest.new
       if params[:search] == nil || params[:search].empty?
         @forms = nil
       else
