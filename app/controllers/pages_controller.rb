@@ -7,6 +7,17 @@ class PagesController < ApplicationController
   	if signed_in? 
       if params[:search] == nil || params[:search].empty?
         @forms = nil
+
+        if params[:tab] == "requested"
+          # call helper to get appropriate data
+        elsif params[:tab] == "requested"
+          # call helper to get appropriate data
+        elsif params[:tab] == "subscription"
+          # call helper to get appropriate data
+        else
+          # call helper to get appropriate data
+        end 
+
       else
         @search = Form.search do
           with(:approved, true)
@@ -19,6 +30,12 @@ class PagesController < ApplicationController
   	else
   		@user = User.new
   	end
+
+    respond_to do |format|
+      format.js  
+      format.html
+    end
+
   end
 
   def about

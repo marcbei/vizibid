@@ -1,0 +1,21 @@
+$('.contribute').removeClass("active")
+$('.requests').removeClass("active")
+$('.followed').removeClass("active")
+$('.subscription').removeClass("active")
+
+
+<% if params[:tab] == "contribute" %>
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/contribute_tab_pane' )%>");
+	$('.contribute').addClass("active")
+<% elsif params[:tab] == "requests" %>
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/your_requests_tab_pane' )%>");
+	$('.requests').addClass("active")
+<% elsif params[:tab] == "followed" %>
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/followed_documents_tab_pane' )%>");
+	$('.followed').addClass("active")
+<% else%>
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/subscription_tab_pane' )%>");
+	$('.subscription').addClass("active")
+<% end %>
+
+<!-- update dashboard data -->

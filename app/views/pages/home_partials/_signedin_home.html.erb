@@ -20,24 +20,13 @@
 		<% else %>
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">
-			    <li class="active"><a href="#tab1" data-toggle="tab">Contribute</a></li>
-			    <li><a href="#tab2" data-toggle="tab">Your Requests</a></li>
-			    <li><a href="#tab3" data-toggle="tab">Followed Documents</a></li>
-			    <li><a href="#tab4" data-toggle="tab">Subscriptions</a></li>
+			    <li class="contribute active"><%= link_to :Contribute, root_path(:tab => "contribute"), :remote => true%></li>
+			    <li class="requests"><%= link_to :"Your Requests", root_path(:tab => "requests"), :remote => true%></li>
+			    <li class="followed"><%= link_to :"Followed Documents", root_path(:tab => "followed"), :remote => true%></li>
+			    <li class="subscription"><%= link_to :Subscriptions, root_path(:tab => "subscription"), :remote => true%></li>
 			  </ul>
-			  <div class="tab-content">
-			    <div class="tab-pane active" id="tab1">
+			  <div class="tab-content-root">
 			      <%= render 'pages/home_partials/contribute_tab_pane' %>
-			    </div>
-			    <div class="tab-pane" id="tab2">
-			      <%= render 'pages/home_partials/your_requests_tab_pane' %>
-			    </div>
-			    <div class="tab-pane" id="tab3">
-			      <%= render 'pages/home_partials/followed_documents_tab_pane' %>
-			    </div>
-			    <div class="tab-pane" id="tab4">
-			      <p>Subscriptions.</p>
-			    </div>
 			  </div>
 			</div>
 		<% end %>
