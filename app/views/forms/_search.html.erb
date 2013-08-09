@@ -1,6 +1,8 @@
-<%= form_tag root_path, :method => 'get' do %>
-	<%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "searchbox"%>
-	<%= submit_tag "Search", :class => "btn btn-info" %>
-	<B><span style="margin-left: 10px"><a style="color: black;" href="#">filters</a></span></B><span class="caret" style="margin-top: 20px; margin-left: 5px;"></span>
-	<span style="margin-left: 40px"><%= render 'form_requests/new_form_request_modal' %></span>
-<% end %>
+<div style ="display:inline-block;">
+	<%= form_tag root_path, :method => 'get' do %>
+		<%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "searchbox"%>
+		<%= submit_tag "Search", :class => "btn btn-info" %>
+	<% end %>
+</div>
+<B><span style="margin-left: 10px"><a style="color: black;" href="#">filters</a></span></B><span class="caret" style="margin-top: 20px; margin-left: 5px;"></span>
+<span style="margin-left: 40px"><%= render 'form_requests/new_form_request_modal' %></span>
