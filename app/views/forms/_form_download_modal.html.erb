@@ -8,7 +8,7 @@
 </div>
  
  <% if @pemitted_user %>
- 	<a class= "downloadlink" data-toggle="modal" href="#downloadformModal" data-backdrop="static" data-keyboard="false" >Download</a>
+ 	<a class= "btn btn-success" data-toggle="modal" href="#downloadformModal" data-backdrop="static" data-keyboard="false" style="width: 85px;" >Download</a>
 <% else %>
 	<%= render 'layouts/noaccess_modal.html.erb', :type => "download" %>
  <% end %>

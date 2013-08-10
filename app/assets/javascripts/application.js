@@ -88,4 +88,8 @@ $(document).ready(function() {
         $('.follow-button-following').html("following");
         $('.follow-button-following').css("color", "white");
     });
+
+    $('.disabled').click(function(event){
+        event.preventDefault();
+      });
 });

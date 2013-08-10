@@ -132,10 +132,6 @@ input, textarea, select, .uneditable-input {
   color: $grayLight;
 }
 
-.downloadlink{
-   font-size: 25px;
-}
-
 .formCommentContent{
   width: 800px; margin-left: 19px;
 }
@@ -197,10 +193,6 @@ form.rating_ballot label.rating.glow { background-image: url('star-dim.png'); }
 
 .votearrowdown:hover{
     color: red;
-    text-decoration: none;
-}
-
-.commentmodallink:hover{
     text-decoration: none;
 }
 

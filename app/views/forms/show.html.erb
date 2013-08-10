@@ -4,63 +4,65 @@
 	<%= render 'forms/search'%>
 	<br/>
 
-	<div class="row">
-		<% if @form.name != nil %>
-			<H3><%= @form.name %><H3>
-		<% else %>
-			<H3><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H3><br/>
-		<% end %>
-		<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
-		<% name = @form.user.name.gsub(' ', '_') %>
-		<strong>Uploaded by:</strong> <%=link_to @user, usershow_path(name.downcase) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
-		<%if @form.form_requests.count > 0 %>
-			<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
-		<% end %>
-		<strong>Form Downloaded: </strong><%= @form.downloads.count %> times <br/>
-		<strong>Average Rating: </strong> 
-		<div class = "averagerating" style="Display: inline;">
-			<% if !@form.average_rating.nan? %>
-				<%= @form.average_rating.round(2) %>
+	<div class="row-fluid">
+		<div class = "span8">
+			<% if @form.name != nil %>
+				<H4><%= @form.name %></H4>
 			<% else %>
-				Document has no ratings.
+				<H4><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H4><br/>
 			<% end %>
-		</div>
-		<% if @form.description != nil && @form.description.length > 0 %>
-			<br/><br/><strong>Description:</strong> <%= @form.description %>
-		<% end %>
-		<br/><br/>
-		<% if @form.keywords != nil && @form.keywords.length > 0 %>
-			<em>Associated Keywords:</em><br/> <%= @form.keywords %></H1>
-			<br/><br/>
-		<% end %>
-
-		<%= render 'form_follows/form_follow_button', :formid => @form.id, :following => @following %>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<%= render 'forms/form_download_modal', :form => @form %>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil && @pemitted_user == true %>
-			<%= render 'forms/inappropriate_document_modal', :formid => @form.id %>
-		<% end %>
-		
-		<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
-			<div id = "ratingstext">
-				<%if current_user_rating(@form.id) != "N/A" %>
-					<br/><h3>Your rating:</h3><br/>
+			<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
+			<% name = @form.user.name.gsub(' ', '_') %>
+			<strong>Uploaded by:</strong> <%=link_to @user, usershow_path(name.downcase) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
+			<%if @form.form_requests.count > 0 %>
+				<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
+			<% end %>
+			<strong>Form Downloaded: </strong><%= @form.downloads.count %> times <br/>
+			<strong>Average Rating: </strong> 
+			<div class = "averagerating" style="Display: inline;">
+				<% if !@form.average_rating.nan? %>
+					<%= @form.average_rating.round(2) %>
 				<% else %>
-					<br/><h3>Rate this form:</h3><br/>
+					Document has no ratings.
 				<% end %>
 			</div>
-			<%= render 'forms/ratings_form' %>
-		<% end %>
-		<br/><br/><H3>Comments (<%=@comments.count%>)</H3>
-		<hr/>
+			<% if @form.description != nil && @form.description.length > 0 %>
+				<br/><br/><strong>Description:</strong> <%= @form.description %>
+			<% end %>
+			<br/><br/>
+			<% if @form.keywords != nil && @form.keywords.length > 0 %>
+				<em>Associated Keywords:</em><br/> <%= @form.keywords %></H1>
+				<br/><br/>
+			<% end %>
+
+			<%= render 'forms/form_download_modal', :form => @form %>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%= render 'form_follows/form_follow_button', :formid => @form.id, :following => @following %>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<% if @form.user.id != current_user.id && @inappropriate_document_report == nil && @pemitted_user == true %>
+				<%= render 'forms/inappropriate_document_modal', :formid => @form.id %>
+			<% end %>
+			
+			<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
+				<div id = "ratingstext">
+					<%if current_user_rating(@form.id) != "N/A" %>
+						<br/><h4>Your rating:</h4>
+					<% else %>
+						<br/><h4>Rate this form:</h4>
+					<% end %>
+				</div>
+				<%= render 'forms/ratings_form' %>
+			<% end %>
+			<br/><br/><H4>Comments (<%=@comments.count%>)</H4>
+			<hr/>
+		</div>
 	</div>
 
 	<% if @pemitted_user %>
-		<div class = "row">
+		<div class = "row-fluid">
 			<%= render 'forms/form_comment_modal', :parent_id => -1, :form_id => @form.id, :button => true %>
 			<% if !@form.comments.any? %>
-				<h3>Please let us know what you think of this document. </h3><br/>
+				<h4>Please let us know what you think of this document. </h4><br/>
 			<%else%>
 				<br/><br/>Sort by:
 			 	<ul class="nav nav-pills">

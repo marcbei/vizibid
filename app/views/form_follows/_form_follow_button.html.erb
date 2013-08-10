@@ -1,4 +1,6 @@
-<% if following == false %>
+<% if @form.user.id == current_user.id%>
+	<a href="", class="btn btn-info disabled", style="width: 85px;">following</a>
+<% elsif following == false %>
 	<%= link_to :"follow", followform_path(formid), :remote => true, :class => "btn follow-button", :style => "width: 85px;" %>
 <% else %>
 	<%= link_to :"following", followform_path(formid), :remote => true, :class => "btn btn-info follow-button follow-button-following", :style => "width: 85px;" %>
