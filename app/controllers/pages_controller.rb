@@ -8,9 +8,9 @@ class PagesController < ApplicationController
       if params[:search] == nil || params[:search].empty?
         @forms = nil
 
-        if params[:tab] == "requested"
-          # call helper to get appropriate data
-        elsif params[:tab] == "requested"
+        if params[:tab] == "requests"
+          @form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}'"])
+        elsif params[:tab] == "followed"
           # call helper to get appropriate data
         elsif params[:tab] == "subscription"
           # call helper to get appropriate data
