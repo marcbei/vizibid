@@ -9,7 +9,7 @@ class FormRequestsController < ApplicationController
 		if params[:scope] == "open"
 			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
 		elsif params[:scope] == "fulfilled"
-			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled == true"])
+			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
 		end
 
 		respond_to do |format|

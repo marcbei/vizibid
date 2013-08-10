@@ -3,7 +3,7 @@
   	<%= render 'form_requests/new_form_request_modal' %>
   	<ul class="nav nav-pills pull-right">
   	  <li class="active"><%= link_to :"Open Requests", form_requests_path(@form, :scope => "open"), :remote => true %></li>
-  	  <li><%= link_to :"Open Requests", form_requests_path(@form, :scope => "fulfilled"), :remote => true %></li>
+  	  <li><%= link_to :"Fulfilled Requests", form_requests_path(@form, :scope => "fulfilled"), :remote => true %></li>
   	</ul>
   </div>
   <br/>
