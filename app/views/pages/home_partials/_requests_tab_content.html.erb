@@ -1,0 +1,18 @@
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs span4">
+    <% i = 0 %>
+    <% form_requests.each do |f| %>
+      <li class="<% if i == 0 %> active <% end %>"><a href="#r<%= i %>" data-toggle="tab"><%= f.name %></a></li>
+      <% i = i + 1 %>
+    <%end%>
+  </ul>
+  <div class="tab-content span7">
+    <% i = 0 %>
+    <% form_requests.each do |f| %>
+      <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
+        <p><%= f.description %></p>
+      </div>
+      <% i = i + 1 %>
+    <% end %>
+  </div>
+</div>

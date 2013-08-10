@@ -4,6 +4,20 @@ class FormRequestsController < ApplicationController
 
 	before_filter :signed_in_user
 
+	def index
+
+		if params[:scope] == "open"
+			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
+		elsif params[:scope] == "fulfilled"
+			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled == true"])
+		end
+
+		respond_to do |format|
+			format.js
+		end
+
+	end
+
 	def new
 		if check_permissions(nil) != true
 		    flash[:error] = "You don't have access to this feature. Please upgrade your account."

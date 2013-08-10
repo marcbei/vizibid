@@ -2,27 +2,12 @@
   <div>
   	<%= render 'form_requests/new_form_request_modal' %>
   	<ul class="nav nav-pills pull-right">
-  	  <li class="active"><a href="#">Open Requests</a></li>
-  	  <li><a href="#">Fulfilled Requests</a></li>
+  	  <li class="active"><%= link_to :"Open Requests", form_requests_path(@form, :scope => "open"), :remote => true %></li>
+  	  <li><%= link_to :"Open Requests", form_requests_path(@form, :scope => "fulfilled"), :remote => true %></li>
   	</ul>
   </div>
   <br/>
-  <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs span4">
-      <% i = 0 %>
-      <% @form_requests.each do |f| %>
-        <li class="<% if i == 0 %> active <% end %>"><a href="#r<%= i %>" data-toggle="tab"><%= f.name %></a></li>
-        <% i = i + 1 %>
-      <%end%>
-    </ul>
-    <div class="tab-content span7">
-      <% i = 0 %>
-      <% @form_requests.each do |f| %>
-        <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
-          <p><%= f.description %></p>
-        </div>
-        <% i = i + 1 %>
-      <% end %>
-    </div>
+  <div class="request-content">
+    <%= render 'home_partials/requests_tab_content', :form_requests => @form_requests %>
   </div>
 </div>
