@@ -1,20 +1,52 @@
 <div class = "request-content">
-  <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs span4">
-      <% i = 0 %>
-      <% form_requests.each do |f| %>
-        <li class="<% if i == 0 %> active <% end %>"><a href="#r<%= i %>" data-toggle="tab"><%= f.name %></a></li>
-        <% i = i + 1 %>
-      <%end%>
-    </ul>
-    <div class="tab-content span7">
-      <% i = 0 %>
-      <% form_requests.each do |f| %>
-        <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
-          <p><%= f.description %></p>
-        </div>
-        <% i = i + 1 %>
-      <% end %>
+  <br/>
+  <% if form_requests.count > 0 %>
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs span4">
+        <% i = 0 %>
+        <% form_requests.each do |f| %>
+          <li class="<% if i == 0 %> active <% end %>">
+            <a href="#r<%= i %>" data-toggle="tab"><%= f.name %></a>
+          </li>
+          <% i = i + 1 %>
+        <%end%>
+      </ul>
+      <div class="tab-content span7">
+        <% i = 0 %>
+        <% form_requests.each do |f| %>
+          <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
+            <p>
+              On <%= f.created_at.to_datetime.strftime("%B %u, %Y") %> you requested:
+                <div style="border: solid #ccc 1px;">
+                  <%= f.description %>
+                </div>
+                <div style="margin-top: 10px;">
+                  Jurisdiction: <%= f.jurisdiction %>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Practice Area: [TODO]
+                </div>
+                <% if f.fufilled == false %>
+                  <div style="margin-top: 10px;">
+                    <%= link_to "Edit", "", :class => "btn btn-info btn-mini", :style => "width: 40px;" %>
+                    <%= link_to "Delete", "", :class => "btn btn-danger btn-mini", :style => "width: 40px;" %>
+                  </div>
+                <% end %>
+            </p>
+            <% if f.RequestSubmissions.count > 0 && f.fufilled == false %>
+              <p style="margin-top: 30px; border-bottom: 1px solid black;">
+                  Responses (<%= f.RequestSubmissions.count %>)
+              </p>
+            <% end %>
+          </div>
+          <% i = i + 1 %>
+        <% end %>
+      </div>
     </div>
-  </div>
+    <% else %>
+      <% if @open_req == true %>
+        You have no open requests.
+      <% else %>
+        You have no fulfilled requests.
+      <% end %>
+    <% end %>
 </div>

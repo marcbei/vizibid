@@ -7,9 +7,11 @@ class FormRequestsController < ApplicationController
 	def index
 
 		if params[:scope] == "open"
-			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
+			@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
+			@open_req = true
 		elsif params[:scope] == "fulfilled"
-			@form_requests = FormRequest.find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
+			@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
+			@open_req = false
 		end
 
 		respond_to do |format|
