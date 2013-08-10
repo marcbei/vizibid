@@ -35,6 +35,7 @@ Vizibid::Application.routes.draw do
   match '/verify/:id' => 'users#verify', :as => :verify
   match '/deleteforumcomment/:id' => 'forum_comments#delete_forum_comment', :as => :deleteforumcomment
   match ':name' => 'users#show', :as => :usershow
+  match '/follow/:id' => 'form_follows#update', :via => :get, :as => :followform
 
 
   # The priority is based upon order of creation:

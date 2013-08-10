@@ -78,4 +78,14 @@ $(document).ready(function() {
         $('.responsedocform').show();
         $('.commentonly').attr('checked', false);
     });
+
+    $('div').delegate("a.follow-button-following", "mouseover" ,function(){
+        $('.follow-button-following').html("unfollow");
+        $('.follow-button-following').css("color", "black");
+    });
+
+    $('div').delegate("a.follow-button-following", "mouseout", function(){
+        $('.follow-button-following').html("following");
+        $('.follow-button-following').css("color", "white");
+    });
 });

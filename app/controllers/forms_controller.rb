@@ -35,6 +35,13 @@ class FormsController < ApplicationController
     @comments = @form.comments
     @comment = current_user.comments.build
     @user = @form.user.name
+    @followingForm = FormFollow.find_by_form_id_and_user_id(params[:id], current_user.id)
+    if @followingForm == nil
+      @following = false
+    else
+      @following = true
+    end
+
     @newform = Form.new
 
     @inappropriate_document_report = InappropriateDocument.find_by_user_id_and_form_id(current_user.id, @form.id)

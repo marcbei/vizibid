@@ -34,6 +34,8 @@
 			<br/><br/>
 		<% end %>
 
+		<%= render 'form_follows/form_follow_button', :formid => @form.id, :following => @following %>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<%= render 'forms/form_download_modal', :form => @form %>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<% if @form.user.id != current_user.id && @inappropriate_document_report == nil && @pemitted_user == true %>
