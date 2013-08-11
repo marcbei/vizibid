@@ -94,8 +94,9 @@ class FormRequestsController < ApplicationController
 	      delete_response(@response)
 	    end
 
-		redirect_to form_request_path(params[:requestid])
-
+		respond_to do |format|
+			format.js
+		end
 	end
 
 	def completerequest

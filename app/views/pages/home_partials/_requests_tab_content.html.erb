@@ -36,11 +36,11 @@
               <p style="margin-top: 30px; border-bottom: 1px solid black;">
                   Responses (<%= f.RequestSubmissions.count %>)
                   <% f.RequestSubmissions.each do |rs| %>
-                    <div style="margin-top: 5px;"> 
+                    <div style="margin-top: 5px;" class = "rs-<%=f.RequestSubmissions.id%>"> 
                       <%= link_to rs.comment, form_path(rs.form) %>
                       <div class = "pull-right"> 
                         <button class= "btn btn-success btn-mini">Accept</button>
-                        <button class= "btn btn-danger btn-mini" style="margin-right: 5px;">Reject</button>
+                        <%= link_to :Reject, deleteresponse_path(:id => f.RequestSubmissions.id), :remote => true, :class=> "btn btn-danger btn-mini", :style=>"margin-right: 5px;", :method => :delete %>
                       </div>
                     </div>
                   <% end %>
