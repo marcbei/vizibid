@@ -1,4 +1,4 @@
 
 <%j f = FormRequest.find(params[:form_id]) %>
 
-$('.rs-<%=j params[:id] %>').replace(<%=j render 'form_requests/show_request_submissions', :f => f  %>)
+$('.rs-<%=j params[:id] %>').replaceWith("<%= escape_javascript(render 'form_requests/show_request_submissions', :f => f  )%>" )
