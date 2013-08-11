@@ -16,7 +16,7 @@
         <% form_requests.each do |f| %>
           <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
             <p>
-              On <%= f.created_at.to_datetime.strftime("%B %u, %Y") %> you requested:
+              On <%= f.created_at.to_datetime.strftime("%B %d, %Y") %> you requested:
                 <div style="border: solid #ccc 1px; padding: 5px 5px 5px 5px;">
                   <%= f.description %>
                 </div>
