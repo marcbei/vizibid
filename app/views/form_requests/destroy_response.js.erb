@@ -1,2 +1,4 @@
 
-$('.rs-<%=j params[:id] %>').remove()
+<%j f = FormRequest.find(params[:form_id]) %>
+
+$('.rs-<%=j params[:id] %>').replace(<%=j render 'form_requests/show_request_submissions', :f => f  %>)

@@ -1,0 +1,18 @@
+<div class="requestdetails">
+  <% if f.RequestSubmissions.count > 0 && f.fufilled == false %>
+    <p style="margin-top: 30px; border-bottom: 1px solid black;">
+        Responses (<%= f.RequestSubmissions.count %>)
+        <% f.RequestSubmissions.each do |rs| %>
+          <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
+            <%= link_to rs.comment, form_path(rs.form) %>
+            <div class = "pull-right"> 
+              <button class= "btn btn-success btn-mini">Accept</button>
+              <%= link_to :Reject, deleteresponse_path(:id => rs.id, :form_id => f.id), :remote => true, :class=> "btn btn-danger btn-mini", :style=>"margin-right: 5px;", :method => :delete %>
+            </div>
+          </div>
+        <% end %>
+    </p>
+  <% elsif f.RequestSubmissions.count == 0 && f.fufilled == false  %>
+    There are no responses to your request at this time.
+  <% end %>
+</div>
