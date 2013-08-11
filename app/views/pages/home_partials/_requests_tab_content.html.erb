@@ -36,9 +36,15 @@
               <p style="margin-top: 30px; border-bottom: 1px solid black;">
                   Responses (<%= f.RequestSubmissions.count %>)
                   <% f.RequestSubmissions.each do |rs| %>
-                    <div> <%= link_to rs.comment, form_path(rs.form) %> </div>
+                    <div style="margin-top: 5px;"> 
+                      <%= link_to rs.comment, form_path(rs.form) %> 
+                      <button class= "btn btn-success btn-mini pull-right">Accept</button>
+                      <button class= "btn btn-danger btn-mini pull-right" style="margin-right: 5px;">Reject</button>
+                    </div>
                   <% end %>
               </p>
+            <% else %>
+              There are no responses to your request at this time.
             <% end %>
           </div>
           <% i = i + 1 %>
