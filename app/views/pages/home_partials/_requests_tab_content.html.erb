@@ -37,9 +37,11 @@
                   Responses (<%= f.RequestSubmissions.count %>)
                   <% f.RequestSubmissions.each do |rs| %>
                     <div style="margin-top: 5px;"> 
-                      <%= link_to rs.comment, form_path(rs.form) %> 
-                      <button class= "btn btn-success btn-mini pull-right">Accept</button>
-                      <button class= "btn btn-danger btn-mini pull-right" style="margin-right: 5px;">Reject</button>
+                      <%= link_to rs.comment, form_path(rs.form) %>
+                      <div class = "pull-right"> 
+                        <button class= "btn btn-success btn-mini">Accept</button>
+                        <button class= "btn btn-danger btn-mini" style="margin-right: 5px;">Reject</button>
+                      </div>
                     </div>
                   <% end %>
               </p>
