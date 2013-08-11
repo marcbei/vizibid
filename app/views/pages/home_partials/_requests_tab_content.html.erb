@@ -35,6 +35,9 @@
             <% if f.RequestSubmissions.count > 0 && f.fufilled == false %>
               <p style="margin-top: 30px; border-bottom: 1px solid black;">
                   Responses (<%= f.RequestSubmissions.count %>)
+                  <% f.RequestSubmissions.each do |rs| %>
+                    <div> <%= link_to rs.comment, form_path(rs.form) %> </div>
+                  <% end %>
               </p>
             <% end %>
           </div>
