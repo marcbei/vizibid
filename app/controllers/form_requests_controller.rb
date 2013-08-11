@@ -77,6 +77,11 @@ class FormRequestsController < ApplicationController
 
 	def destroy
 		@form_request = FormRequest.find(params[:id])
+
+		if @form_request.RequestSubmissions != nil
+			@form_request.RequestSubmissions.destroy_all
+		end
+
 		@form_request.delete
 		flash[:success] = "Request deleted!"
 
