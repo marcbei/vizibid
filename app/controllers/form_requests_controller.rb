@@ -54,7 +54,7 @@ class FormRequestsController < ApplicationController
 		  flash.now[:error] = "There was a problem with your request. Please try again."
 		end
 
-		redirect_to form_request_path(params[:id])
+		redirect_to root_path
 	end
 
 	def show
@@ -73,8 +73,6 @@ class FormRequestsController < ApplicationController
 	def edit
 		@form_request = FormRequest.find(params[:id])
 		@form = Form.new
-
-		redirect_to root_path
 	end
 
 	def destroy
