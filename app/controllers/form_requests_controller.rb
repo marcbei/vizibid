@@ -73,6 +73,8 @@ class FormRequestsController < ApplicationController
 	def edit
 		@form_request = FormRequest.find(params[:id])
 		@form = Form.new
+
+		redirect_to root_path
 	end
 
 	def destroy
@@ -80,7 +82,7 @@ class FormRequestsController < ApplicationController
 		@form_request.delete
 		flash[:success] = "Request deleted!"
 
-		redirect_to requestcenter_path
+		redirect_to root_path
 	end
 
 	def destroy_response

@@ -5,7 +5,7 @@
 	<div class= "span8">
 		<!-- Search Results -->
 		<% if @forms != nil %>
-			<h3><%= pluralize(@total_forms, 'result') %>:</h3><br/>
+			<h4><%= pluralize(@total_forms, 'result') %>:</h4><br/>
 				<% @i = 1 %>
 				<% @forms.each do |f| %>
 				<tr>

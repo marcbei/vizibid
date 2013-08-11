@@ -1,0 +1,34 @@
+<div id="editformmodal<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="well">
+		<%= form_for formrequest do |fr| %>
+		    Name
+		    <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name that is descriptive of the document you are requesting. Make sure the name will help other users understand what this document is."><i class="icon-question-sign"></i></a></u>
+		    <%= fr.text_field :name%>
+		    
+		    Description
+		    <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+		    <%= fr.text_area :description, :size => "10x10"%>
+		    
+		    Jurisdiction
+		    <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+		    <div class = "jurisdropdown">
+		        <%= fr.select :jurisdiction, options_for_select(us_states) %>
+		    </div>
+		    
+		    Keywords
+		    <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+		    <%= fr.text_area :keywords, :size => "10x5" %>
+
+		    <div style="display: inline;">
+		        <%= fr.check_box :anonymous, :style=>"display: inline;" %>
+		        <%= fr.label :'Make Request Anonymously', :style=>"display: inline;" %>
+		        <u><a href="#" rel="tooltip" data-placement="right" style="display: inline;" title="If this box is checked, your name will not be revealed in connection with your request. This box is checked by default."><i class="icon-question-sign"></i></a></u>
+		    </div>
+		    <br/><br/>
+		    <%= fr.submit "Submit", :class => "btn btn-success"%>
+		    <%= fr.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
+		<% end %>
+	</div>
+</div>
+
+<a class = "btn btn-info btn-mini" style = "width: 40px;" data-toggle="modal" href="#editformmodal<%=formrequest.id%>" >Edit</a>
