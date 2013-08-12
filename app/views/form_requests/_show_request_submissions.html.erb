@@ -5,8 +5,8 @@
         <% f.RequestSubmissions.each do |rs| %>
           <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
             <%= link_to rs.comment, form_path(rs.form) %>
-            <div class = "pull-right"> 
-              <button class= "btn btn-success btn-mini">Accept</button>
+            <div class = "pull-right">
+              <%= link_to :Accept, completerequest_path(:id => rs.id, :form_id => f.id), :remote => true, :class=> "btn btn-success btn-mini" %>
               <%= link_to :Reject, deleteresponse_path(:id => rs.id, :form_id => f.id), :remote => true, :class=> "btn btn-danger btn-mini", :style=>"margin-right: 5px;", :method => :delete %>
             </div>
           </div>

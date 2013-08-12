@@ -32,7 +32,15 @@
                   </div>
                 <% end %>
             </p>
-            <%= render 'form_requests/show_request_submissions', :f => f %>
+            <% if f.fufilled == false %>
+              <%= render 'form_requests/show_request_submissions', :f => f %>
+            <% else %>
+              <% f.RequestSubmissions.each do |rs| %>
+                <% if rs.completed == true %>
+                  Request completed by: <%= link_to rs.Form.name, form_path(rs.Form) %> 
+                <% end %>
+              <% end %>
+            <% end %>
           </div>
           <% i = i + 1 %>
         <% end %>

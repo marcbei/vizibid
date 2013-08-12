@@ -9,13 +9,11 @@
 #  updated_at      :datetime         not null
 #  comment         :text
 #  user_id         :integer
-#  ancestry        :string(255)
+#  accepted        :boolean
 #
 
 class RequestSubmission < ActiveRecord::Base
-   attr_accessible :form_request_id, :form_id, :comment, :user_id, :ancestry, :parent_id
-
-   has_ancestry
+   attr_accessible :form_request_id, :form_id, :comment, :user_id, :parent_id, :accepted
 
    belongs_to :form_request
    belongs_to :form

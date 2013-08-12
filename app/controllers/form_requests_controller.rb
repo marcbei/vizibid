@@ -78,10 +78,6 @@ class FormRequestsController < ApplicationController
 	def destroy
 		@form_request = FormRequest.find(params[:id])
 
-		if @form_request.RequestSubmissions != nil
-			@form_request.RequestSubmissions.destroy_all
-		end
-
 		@form_request.delete
 		flash[:success] = "Request deleted!"
 
@@ -105,13 +101,19 @@ class FormRequestsController < ApplicationController
 	end
 
 	def completerequest
-		if(params[:id] != nil)
-			@form_request = FormRequest.find(params[:id].to_i)
-			@form_request.fufilled = true
-			@form_request.save
-			redirect_to form_request_path(params[:id].to_i)
-		else
-			redirect_to requestcenter_path
+
+		@form_request = FormRequest.find(params[:form_id])
+		@form_request.fufilled = true
+		@form_request.save
+
+		@response = RequestSubmission.find(params[:id])
+		@response.accepted = true
+
+		# refresh the data
+		@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
+
+		respond_to do |format|
+			format.js
 		end
 	end
 end
