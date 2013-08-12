@@ -108,8 +108,7 @@ module FormHelper
 
 	  # create a new request submission
       @request_submission = RequestSubmission.new(:form_request_id => params[:requestid], 
-        :comment => params[:request_submission][:comment], :user_id => current_user.id,
-        :parent_id => params[:parent_id])
+        :comment => params[:request_submission][:comment], :user_id => current_user.id)
       
       # save the request submission
       if !@request_submission.save
