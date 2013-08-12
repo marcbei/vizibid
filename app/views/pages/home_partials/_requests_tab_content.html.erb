@@ -37,7 +37,7 @@
             <% else %>
               <% f.RequestSubmissions.each do |rs| %>
                 <% if rs.accepted == true %>
-                  Request fulfilled by: <%= link_to rs.Form.name, form_path(rs.Form.id) %> 
+                  Request fulfilled by: <%= link_to rs.form.name, form_path(rs.form) %> 
                 <% end %>
               <% end %>
             <% end %>
