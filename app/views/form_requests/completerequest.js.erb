@@ -1,1 +1,4 @@
+$(".fulfilled-requests").removeClass('active');
+$(".open-requests").addClass('active');
+
 $('.request-content').replaceWith("<%= escape_javascript(render 'pages/home_partials/requests_tab_content', :form_requests => @form_requests)%>");

@@ -111,8 +111,9 @@ class FormRequestsController < ApplicationController
 		@response.save
 
 		# refresh the data
-		@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
-
+		@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
+		@open_req = true
+		
 		respond_to do |format|
 			format.js
 		end
