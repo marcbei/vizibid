@@ -36,9 +36,4 @@
 	<h3>Request Completed!</h3>
 <% end %>
 <h3>Responses (<%= @requestsubmissions.count %>)</h3>
-<% if @requestsubmissions.count >0 && @permitted_user %>
-	<ul class = "comments" >
-		<%= nested_request_responses @requestsubmissions.arrange(:order => :created_at)  %>
-	</ul>
-<%end%>
 <hr/>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809215526) do
+ActiveRecord::Schema.define(:version => 20130812014030) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -153,10 +153,8 @@ ActiveRecord::Schema.define(:version => 20130809215526) do
     t.datetime "updated_at",      :null => false
     t.text     "comment"
     t.integer  "user_id"
-    t.string   "ancestry"
+    t.boolean  "accepted"
   end
-
-  add_index "request_submissions", ["ancestry"], :name => "index_request_submissions_on_ancestry"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
