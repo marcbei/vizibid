@@ -108,6 +108,7 @@ class FormRequestsController < ApplicationController
 
 		@response = RequestSubmission.find(params[:id])
 		@response.accepted = true
+		@response.save
 
 		# refresh the data
 		@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"])
