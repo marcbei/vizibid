@@ -19,6 +19,8 @@ class CommentsController < ApplicationController
     # save the comment
     if @comment.save
       if params[:upload] != "yes"
+        @form = Form.find(params[:comment][:form_id])
+        @form.touch
         flash[:success] = "Thank you for your comment!"
       end
     else

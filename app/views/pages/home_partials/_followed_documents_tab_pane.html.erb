@@ -18,9 +18,21 @@
               <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-info" %>
             </div>
             <div style = "margin-top: 10px;">
-              updated <%= time_ago_in_words(ff.form.created_at) %> ago <br/>
-              <% name = ff.form.user.name.gsub(' ', '_') %>
-              shared by <%= link_to ff.form.user.name, usershow_path(name.downcase) %>
+
+              <p>
+                <b>Activity:</b><br/>
+                <% comments = ff.form.comments.order(:updated_at).reverse.first(5) %>
+                <% comments.each do |c| %>
+                  <% name = c.user.name.gsub(' ', '_') %>
+
+                  <% if Form.find(:all, :conditions => ["sourcecomment_id = '#{c.form.id}'"]).count > 0 %>
+                    Comment with iteration from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                  <% else %>
+                    Comment from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                  <% end %>
+                  <hr/>
+                <% end %>
+              </p>
             </div>
            </div>
            <% i = i + 1 %>
