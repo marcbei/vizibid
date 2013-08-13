@@ -12,7 +12,7 @@ class PagesController < ApplicationController
           @form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
           @open_req = true
         elsif params[:tab] == "followed"
-          # call helper to get appropriate data
+          @followedforms = FormFollow.order("created_at DESC").find(:all, :conditions => ["user_id = '#{current_user.id}'"])
         elsif params[:tab] == "subscription"
           # call helper to get appropriate data
         else

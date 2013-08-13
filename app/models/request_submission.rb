@@ -17,6 +17,7 @@ class RequestSubmission < ActiveRecord::Base
 
    belongs_to :form_request
    belongs_to :form
+   belongs_to :user
 
    validates :comment, :presence => true
    validates :form_request_id, :presence => true
