@@ -4,7 +4,7 @@
         Responses (<%= f.RequestSubmissions.count %>)
         <% f.RequestSubmissions.each do |rs| %>
           <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
-            <%= link_to rs.comment, form_path(rs.form) %>
+            <%= link_to rs.comment, form_path(rs.form) %> <%= by rs.user.name %>
             <div style="margin-top: 7px;">
               <%= link_to :Approve, root_path, :class=> "btn btn-success btn-mini" %>
             </div>
