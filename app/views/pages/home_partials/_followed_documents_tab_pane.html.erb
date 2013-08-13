@@ -20,8 +20,12 @@
             <div style = "margin-top: 10px;">
 
               <p>
-                <b>Activity:</b><br/>
                 <% comments = ff.form.comments.order(:updated_at).reverse.first(5) %>
+                <% if comments.count > 0 %>
+                  <b>Activity:</b><br/>
+                <% else %>
+                    This document has no comments or iterations associated with it yet.
+                <% end %>
                 <% comments.each do |c| %>
                   <% name = c.user.name.gsub(' ', '_') %>
 
