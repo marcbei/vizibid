@@ -35,15 +35,7 @@
                   </div>
                 <% end %>
             </p>
-            <% if f.fufilled == false %>
-              <%= render 'form_requests/show_request_submissions', :f => f %>
-            <% else %>
-              <% f.RequestSubmissions.each do |rs| %>
-                <% if rs.accepted == true %>
-                  Request fulfilled by: <%= link_to rs.form.name, form_path(rs.form) %> 
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render 'form_requests/show_request_submissions', :f => f %>
           </div>
           <% i = i + 1 %>
         <% end %>

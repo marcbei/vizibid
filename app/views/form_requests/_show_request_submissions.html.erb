@@ -4,9 +4,11 @@
         Responses (<%= f.RequestSubmissions.count %>)
         <% f.RequestSubmissions.each do |rs| %>
           <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
-            <%= link_to rs.comment, form_path(rs.form) %> <%= by rs.user.name %>
+            <%= link_to rs.comment, form_path(rs.form) %> 
             <div style="margin-top: 7px;">
-              <%= link_to :Approve, root_path, :class=> "btn btn-success btn-mini" %>
+              <% if rs.accepted == false %>
+                <%= link_to :Approve, approveresponse_path(:id => rs.id, :form_id => f), :class=> "btn btn-success btn-mini", :remote => true %>
+              <% end %>
             </div>
           </div>
         <% end %>

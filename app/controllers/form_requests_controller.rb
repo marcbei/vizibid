@@ -114,4 +114,15 @@ class FormRequestsController < ApplicationController
 			format.js
 		end
 	end
+
+	def approveresponse
+		@response = RequestSubmission.find(params[:id])
+		@response.accepted = true
+		@response.save
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 end
