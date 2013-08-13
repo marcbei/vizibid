@@ -19,7 +19,8 @@
             </div>
             <div style = "margin-top: 10px;">
               updated <%= time_ago_in_words(ff.form.created_at) %> ago <br/>
-              shared by <%= link_to ff.form.user.name, user_path(ff.form.user) %>
+              <% name = ff.form.user.name.gsub(' ', '_') %>
+              shared by <%= link_to ff.form.user.name, usershow_path(name.downcase) %>
             </div>
            </div>
            <% i = i + 1 %>

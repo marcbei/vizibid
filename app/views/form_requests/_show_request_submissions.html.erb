@@ -6,7 +6,8 @@
           <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
             <%= link_to rs.comment, form_path(rs.form) %> 
             <br/>
-            by: <%= link_to rs.user.name, user_path(rs.user) %>
+            <% name = rs.user.name.gsub(' ', '_') %>
+            by: <%= link_to rs.user.name, usershow_path(name.downcase) %>
             <div style="margin-top: 7px;">
               <% if rs.accepted == false %>
                 <%= link_to :Approve, approveresponse_path(:id => rs.id, :form_id => f), :class=> "btn btn-success btn-mini", :remote => true %>
