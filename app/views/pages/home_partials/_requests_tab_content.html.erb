@@ -30,6 +30,9 @@
                     <%= render 'form_requests/edit_request_modal', :formrequest => f %>
                     <%= render 'form_requests/delete_request_modal', :formrequest => f %>
                   </div>
+                  <div style="margin-top: 10px;">
+                     <%= link_to :"Set Fulfilled", completerequest_path(:id => f.id), :remote => true, :class=> "btn btn-success" %>                  
+                  </div>
                 <% end %>
             </p>
             <% if f.fufilled == false %>

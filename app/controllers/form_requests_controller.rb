@@ -102,13 +102,9 @@ class FormRequestsController < ApplicationController
 
 	def completerequest
 
-		@form_request = FormRequest.find(params[:form_id])
+		@form_request = FormRequest.find(params[:id])
 		@form_request.fufilled = true
 		@form_request.save
-
-		@response = RequestSubmission.find(params[:id])
-		@response.accepted = true
-		@response.save
 
 		# refresh the data
 		@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
