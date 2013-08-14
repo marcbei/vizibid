@@ -12,4 +12,5 @@ class PracticeArea < ActiveRecord::Base
   attr_accessible :practice_area
 
   has_many :forms
+  has_many :form_requests
 end
