@@ -18,7 +18,6 @@
               <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-info" %>
             </div>
             <div style = "margin-top: 10px;">
-
               <p>
                 <% comments = ff.form.comments.order(:updated_at).reverse.first(5) %>
                 <% if comments.count > 0 %>
@@ -26,17 +25,17 @@
                 <% else %>
                     This document has no comments or iterations associated with it yet.
                 <% end %>
-                <% comments.each do |c| %>
-                  <% name = c.user.name.gsub(' ', '_') %>
-
-                  <% if Form.find(:all, :conditions => ["sourcecomment_id = '#{c.form.id}'"]).count > 0 %>
-                    Comment with iteration from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
-                  <% else %>
-                    Comment from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
-                  <% end %>
-                  <hr/>
-                <% end %>
               </p>
+              <% comments.each do |c| %>
+                <% name = c.user.name.gsub(' ', '_') %>
+
+                <% if Form.find(:all, :conditions => ["sourcecomment_id = '#{c.id}'"]).count > 0 %>
+                  Comment with iteration from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                <% else %>
+                  Comment from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                <% end %>
+                <hr style="margin-top: 7px; margin-bottom: 7px"/>
+              <% end %>
             </div>
            </div>
            <% i = i + 1 %>
