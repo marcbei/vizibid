@@ -15,7 +15,7 @@
 #
 
 class FormRequest < ActiveRecord::Base
-  attr_accessible :anonymous, :description, :fufilled, :jurisdiction, :keywords, :name, :form_id, :user_id
+  attr_accessible :anonymous, :description, :fufilled, :jurisdiction, :keywords, :name, :form_id, :user_id, :practice_area_id
 
   belongs_to :user
   belongs_to :practice_area

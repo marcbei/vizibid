@@ -14,6 +14,13 @@ module ApplicationHelper
       redirect_to(root_path) unless current_user?(@user)
     end
 
+    def practice_areas
+    [
+        ['business law (temp)', 1],
+        ['family law (temp)', 2]
+    ]
+    end
+
     def options_for_state_licensed
     [
         ['Alabama', 'Alabama'],
