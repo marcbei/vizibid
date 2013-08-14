@@ -96,6 +96,10 @@ module FormHelper
             redirect_to share_path
         end
 
+        # opt in the user to following their own form
+        @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
+        @form_follow.save
+
         flash[:success] = "Thank you for your contribution!"
         redirect_to form_path(@form.id)
       else
@@ -104,7 +108,7 @@ module FormHelper
       end
 	end
 
-	def save_request(paramsx)
+	def save_request(params)
 
 	  # create a new request submission
       @request_submission = RequestSubmission.new(:form_request_id => params[:requestid], 
@@ -148,6 +152,11 @@ module FormHelper
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
             redirect_to form_request_path(params[:requestid])
           end
+
+
+		  # opt in the user to following their own form
+		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
+		  @form_follow.save
 
           #sendmail
           if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
