@@ -4,7 +4,7 @@
       <ul class="nav nav-tabs span4">
         <% i = 0 %>
         <% @followedforms.each do |ff| %>
-          <% if ff.comments.count > 0 %>
+          <% if ff.form.comments.count > 0 %>
             <li class="<% if i == 0 %> active <% end %>">
               <a href="#r<%= i %>" data-toggle="tab"><%= ff.form.name %></a>
             </li>
@@ -15,7 +15,7 @@
       <div class="tab-content span7">
         <% i = 0 %>
         <% @followedforms.each do |ff| %>
-          <% if ff.comments.count > 0 %>
+          <% if ff.form.comments.count > 0 %>
             <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
             <div>
               <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-info" %>
