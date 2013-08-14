@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812014030) do
+ActiveRecord::Schema.define(:version => 20130814151207) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130812014030) do
     t.string   "name"
     t.integer  "sourcecomment_id"
     t.boolean  "approved"
+    t.integer  "practice_area_id"
   end
 
   create_table "forum_comment_votes", :force => true do |t|
@@ -144,6 +145,12 @@ ActiveRecord::Schema.define(:version => 20130812014030) do
     t.text     "reason"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "practice_areas", :force => true do |t|
+    t.string   "practice_area"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "request_submissions", :force => true do |t|

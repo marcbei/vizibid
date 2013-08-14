@@ -13,6 +13,7 @@
 #  name             :string(255)
 #  sourcecomment_id :integer
 #  approved         :boolean
+#  practice_area_id :integer
 #
 
 class Form < ActiveRecord::Base
@@ -37,6 +38,8 @@ class Form < ActiveRecord::Base
 
   has_many :comments
   belongs_to :user
+
+  belongs_to :practice_area
 
   validates :form, :presence => true
   validates :name, :presence => true
