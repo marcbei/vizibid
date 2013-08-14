@@ -108,6 +108,31 @@ module FormHelper
       end
 	end
 
+	def save_form_with_source_comment_id(form_params, source_comment_id)
+
+      @form = Form.new(form_params)
+      @form.user_id = current_user.id
+      @form.description = form_params[:description]
+      @form.jurisdiction = form_params[:jurisdiction]
+      @form.sourcecomment_id = source_comment_id 
+
+      if @form.save
+        # scan the form for viruses
+        if virus_scan(@form) != true
+            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+            redirect_to share_path
+        end
+
+        # opt in the user to following their own form
+        @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
+        @form_follow.save
+
+        return true
+      else
+        return false
+      end
+	end
+
 	def save_request(params)
 
 	  # create a new request submission

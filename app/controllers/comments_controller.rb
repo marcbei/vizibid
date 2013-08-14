@@ -2,6 +2,7 @@
 class CommentsController < ApplicationController
   
   include CommentHelper
+  include FormHelper
 
   before_filter :signed_in_user
 
@@ -32,9 +33,7 @@ class CommentsController < ApplicationController
     # upload the associated document
     if params[:upload] == "yes"
 
-      @form = Form.new(params[:form], :form => params[:form][:form], :user_id => current_user.id, :sourcecomment_id => @comment.id)
-
-      if @form.save
+      if save_form_with_source_comment_id(params[:form], @comment.id)
         flash[:success] = "Thank you for your comment and document!"
       else
         # destroy the comment of the form did not save
