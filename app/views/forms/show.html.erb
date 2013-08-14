@@ -14,9 +14,6 @@
 			<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
 			<% name = @form.user.name.gsub(' ', '_') %>
 			<strong>Uploaded by:</strong> <%=link_to @user, usershow_path(name.downcase) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
-			<%if @form.form_requests.count > 0 %>
-				<strong>Associated with request: <%= link_to @form.form_requests.first.name, form_request_path(@form.form_requests.first.id) %><strong/><br/>
-			<% end %>
 			<strong>Form Downloaded: </strong><%= @form.downloads.count %> times <br/>
 			<strong>Average Rating: </strong> 
 			<div class = "averagerating" style="Display: inline;">
