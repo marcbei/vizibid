@@ -11,8 +11,8 @@
 			<% else %>
 				<H4><%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H4><br/>
 			<% end %>
-			<% if @form.practice_area != nil %>
-				<strong>Practice Area: </strong> <%= @form.practice_area %> <br/>
+			<% if @form.practice_area.practice_area != nil %>
+				<strong>Practice Area: </strong> <%= @form.practice_area.practice_area %> <br/>
 			<% end %>
 			<strong>Jurisdiction: </strong> <%= @form.jurisdiction %> <br/>
 			<% name = @form.user.name.gsub(' ', '_') %>
