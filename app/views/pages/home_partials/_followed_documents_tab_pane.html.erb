@@ -4,21 +4,19 @@
       <ul class="nav nav-tabs span4">
         <% i = 0 %>
         <% @followedforms.each do |ff| %>
-          <% if ff.form.comments.count > 0 %>
-            <li class="<% if i == 0 %> active <% end %>">
-              <a href="#r<%= i %>" data-toggle="tab"><%= ff.form.name %></a>
-            </li>
-            <% i = i + 1 %>
-          <% end %>
+          <li class="<% if i == 0 %> active <% end %>">
+            <a href="#r<%= i %>" data-toggle="tab"><%= ff.form.name %></a>
+          </li>
+          <% i = i + 1 %>
         <% end %>
       </ul>
       <div class="tab-content span7">
         <% i = 0 %>
         <% @followedforms.each do |ff| %>
-          <% if ff.form.comments.count > 0 %>
             <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
             <div>
-              <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-info" %>
+              <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-success" %>
+                <%= link_to :"Unfollow", unfollowform_path(ff.form.id), :remote => true, :class => "btn btn-info" %>
             </div>
             <div style = "margin-top: 10px;">
               <% comments = ff.form.comments.order(:updated_at).reverse.first(5) %>
@@ -40,7 +38,6 @@
             </div>
            </div>
            <% i = i + 1 %>
-          <% end %>
         <% end %>
       </div>
     </div>

@@ -17,6 +17,16 @@ class FormFollowsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
 
+	def unfollow
+		@followingForm = FormFollow.find_by_form_id_and_user_id(params[:id], current_user.id)
+		if @followingForm != nil
+			@followingForm.destroy
+		end
+
+		respond_to do |format|
+			format.js
+		end
 	end
 end
