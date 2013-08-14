@@ -1,3 +1,22 @@
 <div class="tab-content-root">
-subscription tab pane
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th class="span4">Document</th>
+			<th>Jurisdiction</th>
+			<th>Practice Area</th>
+		</tr>
+	</thead>
+	<% @subscribedforms.each do |f| %>
+		<tr>
+			<td><%= link_to f.name, form_path(f) %></td>
+			<td><%= f.jurisdiction %></td>
+			<td>
+				<% if f.practice_area != nil %>
+					<%= f.practice_area.practice_area %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>
 </div>

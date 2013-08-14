@@ -14,7 +14,8 @@ class PagesController < ApplicationController
         elsif params[:tab] == "followed"
           @followedforms = FormFollow.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).sort_by{|f| f.form.updated_at}.reverse
         elsif params[:tab] == "subscription"
-          # call helper to get appropriate data
+          # scope this to practice area
+          @subscribedforms = Form.order("updated_at desc").find(:all)
         else
           # call helper to get appropriate data
         end 
