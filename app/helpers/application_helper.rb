@@ -16,8 +16,8 @@ module ApplicationHelper
 
     def practice_areas
     [
-        ['business law (temp)', 1],
-        ['family law (temp)', 2]
+        ['family law (temp)', 1],
+        ['business law (temp)', 2]
     ]
     end
 
