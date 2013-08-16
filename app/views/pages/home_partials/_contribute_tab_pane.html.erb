@@ -2,10 +2,10 @@
 	<div class = "row-fluid">
 		<div class= "span7">
 			Do you have these documents?
-			<ul style="list-style-type:none">
+			<ul style="list-style-type:none; margin: 0 0 0 0">
 				<% @subscribedformrequests.each do |fr| %>
 					<% if fr.user_id != current_user.id %>
-						<li><%= link_to fr.name, form_requests_path(fr)  %></li>
+						<li><%= link_to fr.name, form_request_path(fr)  %></li>
 					<% end %>
 				<% end %>
 			<ul>
