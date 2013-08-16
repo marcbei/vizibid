@@ -88,6 +88,7 @@ module FormHelper
       @form.user_id = current_user.id
       @form.description = form_params[:description]
       @form.jurisdiction = form_params[:jurisdiction]
+      @form.practice_area_id = form_params[:practice_area_id]
 
       if @form.save
         # scan the form for viruses
@@ -115,6 +116,7 @@ module FormHelper
       @form.description = form_params[:description]
       @form.jurisdiction = form_params[:jurisdiction]
       @form.sourcecomment_id = source_comment_id 
+      @form.practice_area_id = form_params[:practice_area_id]
 
       if @form.save
         # scan the form for viruses

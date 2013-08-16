@@ -16,7 +16,7 @@ class PagesController < ApplicationController
         elsif params[:tab] == "subscription"
           @subscribedforms = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
-          @subscribedforms = @subscribedforms.sort_by(&:updated_at)
+          @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
         else
           # call helper to get appropriate data
         end 
