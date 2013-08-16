@@ -10,7 +10,13 @@
 	</thead>
 	<% @subscribedforms.each do |f| %>
 		<tr>
-			<td><%= link_to f.name, form_path(f) %></td>
+			<td>
+				<% name = f.user.name.gsub(' ', '_') %>
+				<%= link_to f.name, form_path(f) %><br/>
+				<div style="font-size: 12px;">
+					uploaded <%= time_ago_in_words(f.created_at) %> by <%= link_to f.user.name, usershow_path(name) %>
+				</div>
+			</td>
 			<td><%= f.jurisdiction %></td>
 			<td>
 				<% if f.practice_area != nil %>
