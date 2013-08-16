@@ -24,7 +24,7 @@
               <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:white;">
                 <%= @current_user.name %> <span style="color:white; border-top-color:white;" class="caret"></span>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu pull-right">
                 <% name = current_user.name.gsub(' ', '_') %>
                 <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
                 <li><%= link_to "Settings", settings_path("account") %></li>
