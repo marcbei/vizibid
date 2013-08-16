@@ -4,6 +4,23 @@ class FormsController < ApplicationController
   
   before_filter :signed_in_user
   
+  def index
+
+    @subscribedforms = Array.new
+    UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
+
+    if params[:sort] == "recent"
+      @subscribedforms = @subscribedforms.sort_by(&:created_at).reverse
+    elsif params[:sort] == "acitivty"
+      @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
+    end
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
   def create
 
     # handle the case where the form is a assoicated with a request

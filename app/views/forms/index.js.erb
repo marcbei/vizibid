@@ -1,0 +1,9 @@
+<% if params[:sort] == "recent" %>
+	$(".active-forms-subscribed").removeClass('active');
+	$(".recent-forms-subscribed").addClass('active');
+<% elsif params[:sort] == "activity" %>
+	$(".recent-forms-subscribed").removeClass('active');
+	$(".active-forms-subscribed").addClass('active');
+<% end %>
+
+$('.subscription-content').replaceWith("<%= escape_javascript(render 'pages/home_partials/subscribed_forms_table')%>");
