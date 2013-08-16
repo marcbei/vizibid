@@ -1,9 +1,10 @@
 <div class="tab-content-root">
 	<div>
 		<%= render 'pages/home_partials/manage_subscriptions_modal' %>
+		
 		<ul class="nav nav-pills pull-right">
 	  	  <li class="recent-forms-subscribed active"><%= link_to :"Recent", forms_path(:sort => "recent"), :remote => true %></li>
-	  	  <li class="active-forms-subscribed"><%= link_to :"Activity", forms_path(:sort => "activity"), :remote => true %></li>
+	  	  <li class="active-forms-subscribed"><%= link_to :"Active", forms_path(:sort => "activity"), :remote => true %></li>
 	  	</ul>
 	</div>
 	  <div class="subscription-content">

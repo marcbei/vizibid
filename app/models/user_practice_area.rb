@@ -2,11 +2,11 @@
 #
 # Table name: user_practice_areas
 #
-#  id              :integer          not null, primary key
-#  user_id         :integer
+#  id               :integer          not null, primary key
+#  user_id          :integer
 #  practice_area_id :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class UserPracticeArea < ActiveRecord::Base
