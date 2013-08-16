@@ -13,4 +13,8 @@ class PracticeArea < ActiveRecord::Base
 
   has_many :forms
   has_many :form_requests
+
+  has_many :user_practice_areas
+  has_many :users, :through => :user_practice_areas
+
 end

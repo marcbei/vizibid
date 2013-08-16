@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   has_many :user_permissions
   has_many :permissions, :through => :user_permissions, :source => :role
 
+  has_many :user_practice_areas
+  has_many :practice_areas, :through => :user_practice_areas
+
   has_many :comments
   has_many :forms
   has_many :form_requests

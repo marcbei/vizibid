@@ -34,12 +34,12 @@ Vizibid::Application.routes.draw do
   match '/deleteresponse/:id' => 'form_requests#destroy_response', :as => :deleteresponse
   match '/verify/:id' => 'users#verify', :as => :verify
   match '/deleteforumcomment/:id' => 'forum_comments#delete_forum_comment', :as => :deleteforumcomment
-  match ':name' => 'users#show', :as => :usershow
+  match '/practicearea' => 'user_practice_areas#update', :via => :post, :as => :practicearea
   match '/follow/:id' => 'form_follows#update', :via => :get, :as => :followform
   match '/unfollow/:id' => 'form_follows#unfollow', :via => :get, :as => :unfollowform
   match '/approveresponse/:id' => 'form_requests#approveresponse', :via => :get, :as => :approveresponse
 
-
+  match ':name' => 'users#show', :as => :usershow
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
