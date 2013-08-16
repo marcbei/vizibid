@@ -19,6 +19,9 @@ class PagesController < ApplicationController
           @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
         else
           # call helper to get appropriate data
+          @subscribedformrequests = Array.new
+          UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
+          @subscribedformrequests = @subscribedformrequests.sort_by(&:created_at).reverse
         end 
 
       else
