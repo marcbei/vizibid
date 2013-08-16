@@ -1,0 +1,23 @@
+<div class="dashboard"  style="border: 1px solid #ddd;">
+	<h4 style="padding-left: 10px;">Your Dashboard</h4>
+	<p>
+		<span style="padding-left: 10px;">You have:</span>
+		<ul>
+			<li>
+				uploaded <%= pluralize(current_user.forms.count, "document") %>
+			</li>
+			<li>
+				submitted <%= pluralize(current_user.comments.count,"comment") %> 
+			</li>
+			<li>
+				submitted <%= pluralize(current_user.form_requests.count, "request") %> 
+			</li>
+			<li>
+				replied to <%= pluralize(current_user.request_submissions.count, "request") %> 
+			</li>
+			<li>
+				subscribed to <%= pluralize(current_user.practice_areas.count, "practice area") %> 
+			</li>
+		</ul>
+	</p>
+</div>

@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :forms
+  has_many :request_submissions
   has_many :form_requests
   has_many :forum_posts
   has_many :forum_comments
