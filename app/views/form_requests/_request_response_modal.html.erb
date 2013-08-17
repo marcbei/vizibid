@@ -1,7 +1,7 @@
 <div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="well">
       <strong>
-        <p>Form Request: <%= formrequest.name %><br/>
+        <p><%= formrequest.name %><br/>
           <% if formrequest.anonymous == false %>
             Requested by <%= formrequest.user.name %> <%= time_ago_in_words(formrequest.created_at)%> ago
           <% else %>
