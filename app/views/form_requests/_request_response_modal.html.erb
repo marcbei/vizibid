@@ -3,9 +3,9 @@
       <strong>
         <p>Form Request: <%= formrequest.name %><br/>
           <% if formrequest.anonymous == false %>
-            Request by <%= formrequest.user.name %>
+            Requested by <%= formrequest.user.name %> <%= time_ago_in_words(formrequest.created_at)%> ago
           <% else %>
-            Anonymous request
+            Anonymous request <%= time_ago_in_words(formrequest.created_at)%> ago
           <% end %>
         </p>
       </strong>
