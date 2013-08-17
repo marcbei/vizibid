@@ -6,6 +6,7 @@
 				<% @subscribedformrequests.each do |fr| %>
 					<% if fr.user_id != current_user.id %>
 						<li><%= link_to fr.name, form_request_path(fr)  %></li>
+						<%= render 'form_requests/request_response_modal', formrequest => fr %>
 					<% end %>
 				<% end %>
 			<ul>

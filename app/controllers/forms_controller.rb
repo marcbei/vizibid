@@ -27,6 +27,7 @@ class FormsController < ApplicationController
     if(params[:requestid] != nil)
       # maybe this makes more sense to be in form_requests controller
       save_request(params)
+      redirect_to root_path
     # this handles an uploaaded form not associated with a request
     else
       save_form(params[:form])

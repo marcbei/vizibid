@@ -1,48 +1,41 @@
-<div id="myModalResponse<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="well">
-    <div class="field">
-    <%= form_for @form, :html => {:multipart => true} do |f| %>
-    <%= hidden_field_tag :requestid, fr_id %>
-    <%= hidden_field_tag :parent_id, parent_id %>
-    <%= fields_for @requestresponse do |rr| %>
-        Comment
-        <%= rr.text_area :comment, :rows => 2 %>
-        <%= check_box_tag :commentonly, 'yes', false, :class => 'commentonly', :style => "margin-bottom: 7px;" %>
-        <%= label_tag :commentonly, "comment only", :style => "Display: inline;" %><br/>
-    <% end %>
-    <div class = "responsedocform">
-      Name of Document
-      <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name for this document that will help other users understand what this document is. Be specific."><i class="icon-question-sign"></i></a></u>
-      <%= f.text_field :name %>
+      <div class="field">
+      <%= form_for @form, :html => {:multipart => true} do |f| %>
+        <%= hidden_field_tag :requestid, formrequest.id %>
+        <%= fields_for @requestresponse do |rr| %>
+            Comment
+            <%= rr.text_area :comment, :rows => 2 %>
+        <% end %>
+        <div class = "responsedocform">
+          Name of Document
+          <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name for this document that will help other users understand what this document is. Be specific."><i class="icon-question-sign"></i></a></u>
+          <%= f.text_field :name %>
 
-      Description
-      <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
-      <%= f.text_area :description, :size => "10x2" %>
-      
-      Jurisdiction
-      <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
-      <div class = "jurisdropdown">
-        <%= f.select :jurisdiction, options_for_select(us_states) %>
-      </div>
-        
-        Keywords
-        <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
-        <%= f.text_area :keywords, :size => "10x2" %>
-        <%= f.file_field :form %>
+          Description
+          <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+          <%= f.text_area :description, :size => "10x2" %>
+          
+          Jurisdiction
+          <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+          <div class = "jurisdropdown">
+            <%= f.select :jurisdiction, options_for_select(us_states) %>
+          </div>
+            
+            Keywords
+            <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+            <%= f.text_area :keywords, :size => "10x2" %>
+            <%= f.file_field :form %>
+        </div>
+        <div class="actions">
+          <div class="btn-group">
+            <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
+            <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="actions">
-      <div class="btn-group">
-        <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
-        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
-      </div>
-    </div>
-  <% end %>
-  </div>
   </div>
 </div>
 
-<% if button == true %>
-  <B><a class = "requestresponselink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalResponse<%=parent_id%>" >New Response</a></B>
-<% else %>
-  <a class = "requestresponselink" data-toggle="modal" href="#myModalResponse<%=parent_id%>" >Reply</a>
-<% end %>
+<a class = "requestresponselink" data-toggle="modal" href="#myModalResponse<%=formrequest.id%>" ><%= formrequest.name %></a>

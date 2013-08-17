@@ -63,21 +63,7 @@ $(document).ready(function() {
 
     $('.upload').click (function() {
        $('.uploadform').toggle();
-    });
-
-    $('.commentmodallink').click (function() {
-        $('.uploadform').hide();
-        $('.upload').attr('checked', false);
-    });
-
-    $('.commentonly').click (function() {
-       $('.responsedocform').toggle();
-    });
-
-    $('.requestresponselink').click (function() {
-        $('.responsedocform').show();
-        $('.commentonly').attr('checked', false);
-    });
+    })
 
     $('div').delegate("a.follow-button-following", "mouseover" ,function(){
         $('.follow-button-following').html("unfollow");
