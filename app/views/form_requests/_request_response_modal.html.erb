@@ -1,11 +1,14 @@
 <div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="well">
-          <strong><p>Form Request: <%= formrequest.name %></p></strong>
+      <strong>
+        <p>Form Request: <%= formrequest.name %><br/>
           <% if formrequest.anonymous == false %>
             Request by <%= formrequest.user.name %>
           <% else %>
             Anonymous request
           <% end %>
+        </p>
+      </strong>
       <div class="field">
       <%= form_for @form, :html => {:multipart => true} do |f| %>
         <%= hidden_field_tag :requestid, formrequest.id %>
