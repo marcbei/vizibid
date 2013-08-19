@@ -6,7 +6,7 @@
 			<ul style="list-style-type:none; margin: 0 0 0 0">
 				<% @subscribedformrequests.each do |fr| %>
 					<!-- don't show users requests -->
-					<% if fr.user_id != current_user.id %>
+					<% if fr.user_id == current_user.id %>
 						<% next %>
 					<% end %>
 
