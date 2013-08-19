@@ -23,7 +23,11 @@ class PagesController < ApplicationController
           @requestresponse = RequestSubmission.new
           @subscribedformrequests = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
-          @subscribedformrequests = @subscribedformrequests.sort_by(&:created_at).reverse
+
+          @subscribedformrequests = @subscribedformrequests.shuffle
+          if @subscribedformrequests.count > 15 
+            @subscribedformrequests = @subscribedformrequests.first(15)
+          end
         end 
 
       else

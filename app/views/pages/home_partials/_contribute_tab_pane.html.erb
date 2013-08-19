@@ -4,9 +4,25 @@
 			<div style="margin-bottom: 7px;">Do you have these documents?</div>
 			<ul style="list-style-type:none; margin: 0 0 0 0">
 				<% @subscribedformrequests.each do |fr| %>
+					<!-- don't show users requests -->
 					<% if fr.user_id != current_user.id %>
-						<%= render 'form_requests/request_response_modal', :formrequest => fr %><br/>
+						<% next %>
 					<% end %>
+
+					<!-- don't show requests the user has already replied to -->
+					<% fr.RequestSubmissions.each do |rs| %>
+						<% if rs.user_id == current_user.id %>
+							<% skip_form = true %>
+							<% break %>
+						<% end %>
+					<% end %>
+
+					<% if skip_form == true %>
+						<% skip_form == false %>
+						<% next %>
+					<% end %>
+					<!-- render the request -->
+					<%= render 'form_requests/request_response_modal', :formrequest => fr %><br/>
 				<% end %>
 			<ul>
 		</div>
