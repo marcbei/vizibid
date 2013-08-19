@@ -144,7 +144,7 @@ module FormHelper
       # save the request submission
       if !@request_submission.save
         flash[:error] = "There was a problem with your submission. Please try again."
-        redirect_to form_request_path(params[:requestid])
+        redirect_to root_path
         return
       end
 
@@ -177,7 +177,7 @@ module FormHelper
           if virus_scan(@form) != true
             @request_submission.destroy
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to form_request_path(params[:requestid])
+            redirect_to root_path
           end
 
 
@@ -195,7 +195,7 @@ module FormHelper
         end
       end
 
-      redirect_to form_request_path(params[:requestid])
+      redirect_to root_path
 
 	end
 end
