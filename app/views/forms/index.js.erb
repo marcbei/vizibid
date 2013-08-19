@@ -1,9 +1,9 @@
 <% if params[:sort] == "recent" %>
-	$(".active-forms-subscribed").removeClass('active');
-	$(".recent-forms-subscribed").addClass('active');
+	$(".active-forms-in-feed").removeClass('active');
+	$(".recent-forms-in-feed").addClass('active');
 <% elsif params[:sort] == "activity" %>
-	$(".recent-forms-subscribed").removeClass('active');
-	$(".active-forms-subscribed").addClass('active');
+	$(".recent-forms-in-feed").removeClass('active');
+	$(".active-forms-in-feed").addClass('active');
 <% end %>
 
-$('.subscription-content').replaceWith("<%= escape_javascript(render 'pages/home_partials/subscribed_forms_table')%>");
+$('.feed-content').replaceWith("<%= escape_javascript(render 'pages/home_partials/feed_table')%>");

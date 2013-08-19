@@ -1,7 +1,7 @@
 $('.contribute').removeClass("active")
 $('.requests').removeClass("active")
 $('.followed').removeClass("active")
-$('.subscription').removeClass("active")
+$('.feed').removeClass("active")
 
 
 <% if params[:tab] == "contribute" %>
@@ -14,8 +14,8 @@ $('.subscription').removeClass("active")
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/followed_documents_tab_pane' )%>");
 	$('.followed').addClass("active")
 <% else%>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/subscription_tab_pane' )%>");
-	$('.subscription').addClass("active")
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/feed_tab_pane' )%>");
+	$('.feed').addClass("active")
 <% end %>
 
 <!-- update dashboard data -->

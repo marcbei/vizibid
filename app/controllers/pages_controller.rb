@@ -13,7 +13,7 @@ class PagesController < ApplicationController
           @open_req = true
         elsif params[:tab] == "followed"
           @followedforms = FormFollow.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).sort_by{|f| f.form.updated_at}.reverse
-        elsif params[:tab] == "subscription"
+        elsif params[:tab] == "feed"
           @subscribedforms = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
           @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
