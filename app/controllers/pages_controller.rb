@@ -25,8 +25,8 @@ class PagesController < ApplicationController
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
 
           @subscribedformrequests = @subscribedformrequests.shuffle
-          if @subscribedformrequests.count > 15 
-            @subscribedformrequests = @subscribedformrequests.first(15)
+          if @subscribedformrequests.count > 20 
+            @subscribedformrequests = @subscribedformrequests.first(20)
           end
         end 
 

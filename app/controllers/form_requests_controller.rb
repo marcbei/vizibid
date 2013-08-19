@@ -34,7 +34,7 @@ class FormRequestsController < ApplicationController
 		@form_request = FormRequest.new(params[:form_request])
 		@form_request.user_id = current_user.id
 		@form_request.fufilled = false
-		@form_request.practice_area_id = params[:practice_area_id]
+		@form_request.practice_area_id = params[:form_request][:practice_area_id]
 
 		if @form_request.save
 		  flash[:success] = "Thank you for your request!"
