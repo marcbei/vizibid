@@ -66,12 +66,12 @@ $(document).ready(function() {
     })
 
     $('div').delegate("a.follow-button-following", "mouseover" ,function(){
-        $('.follow-button-following').html("unfollow");
+        $('.follow-button-following').html("Unfollow");
         $('.follow-button-following').css("color", "black");
     });
 
     $('div').delegate("a.follow-button-following", "mouseout", function(){
-        $('.follow-button-following').html("following");
+        $('.follow-button-following').html("Following");
         $('.follow-button-following').css("color", "white");
     });
 

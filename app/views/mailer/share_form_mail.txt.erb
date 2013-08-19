@@ -1,0 +1,9 @@
+Hello,
+
+<%= current_user.name %> has shared the following Vizibid document with you.
+
+<% if @shared_form.description != nil %>
+  Description: <%= @shared_form.description %>
+<% end %>
+
+<%= link_to @form.name, form_url(@form) %>

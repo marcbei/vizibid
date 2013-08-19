@@ -1,5 +1,5 @@
 <% if following == false %>
-	<%= link_to :"follow", followform_path(formid), :remote => true, :class => "btn follow-button", :style => "width: 85px;" %>
+	<%= link_to :"Follow", followform_path(formid), :remote => true, :class => "btn follow-button", :style => "width: 85px;" %>
 <% else %>
-	<%= link_to :"following", followform_path(formid), :remote => true, :class => "btn btn-info follow-button follow-button-following", :style => "width: 85px;" %>
+	<%= link_to :"Following", followform_path(formid), :remote => true, :class => "btn btn-info follow-button follow-button-following", :style => "width: 85px;" %>
 <% end %>

@@ -38,6 +38,7 @@ Vizibid::Application.routes.draw do
   match '/follow/:id' => 'form_follows#update', :via => :get, :as => :followform
   match '/unfollow/:id' => 'form_follows#unfollow', :via => :get, :as => :unfollowform
   match '/approveresponse/:id' => 'form_requests#approveresponse', :via => :get, :as => :approveresponse
+  match '/share/:id' => 'shared_forms#create', :via => :post, :as => :share
 
   match ':name' => 'users#show', :as => :usershow
   # The priority is based upon order of creation:

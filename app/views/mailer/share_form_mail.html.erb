@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>
+      Hello,<br/>
+      <%= @currentuser.name %> has shared the following Vizibid document with you.
+    </p>
+    <% if @shared_form.description != nil %>
+    <p>
+      Description: <%= @shared_form.description %>
+    </p>
+    <% end %>
+    <p>
+      <%= link_to @form.name, form_url(@form) %>
+    </p>
+  </body>
+</html>

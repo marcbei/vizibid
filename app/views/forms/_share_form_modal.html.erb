@@ -1,0 +1,16 @@
+<div id="shareformModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px; margin: -250px -150px; 0 -150px;">
+	<div class="well">
+		<%= form_tag share_path(form.id) do %>
+			Share this document with another attorney.
+			<br/><br/>
+			Email Address:
+			<%= text_field_tag :"Email" %>
+			Message (optional)
+			<%= text_area_tag :"Description" %>
+			<%= submit_tag(:Share, :class => "btn btn-info", :remote => true) %>
+			<button class = "btn" data-dismiss = "modal">Cancel</button>
+		<% end %>
+	</div>
+</div>
+ 
+<a class= "btn btn-inverse" data-toggle="modal" href="#shareformModal" data-backdrop="static" data-keyboard="false" style="width: 85px;" >Share</a>

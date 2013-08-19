@@ -73,4 +73,11 @@ class Mailer < ActionMailer::Base
     mail(:to => @requestowner.email, :subject => "New submission on your document request")
   end
 
+  def share_form_mail(user, shared_form)
+    @shared_form = shared_form
+    @currentuser = user
+    @form = Form.find(shared_form.form_id)
+    mail(:to => @shared_form.email_address, :subject => "Vizibid Form Shared With You")
+  end
+
 end
