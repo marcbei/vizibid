@@ -14,5 +14,5 @@
 <% if !f.average_rating.nan? %>
 	Rated <%= f.average_rating.round(2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <% end %>
-<% f.comments.count %> comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= f.comments.count %> comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <%= render 'forms/save_form_modal', :smallbutton => true %>
