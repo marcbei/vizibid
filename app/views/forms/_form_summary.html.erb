@@ -7,23 +7,15 @@
 <br/>
 <% if f.user != nil %>
 	<% name = f.user.name.gsub(' ', '_') %>
-	Submitted by: <%= link_to f.user.name, usershow_path(name.downcase) %>
+	uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  time_ago_in_words(f.created_at) ago
 	<br/>
 <% end %>
 
 
 <% if !f.average_rating.nan? %>
-	Average Rating: <%= f.average_rating.round(2) %> <br/>
+	Rated <%= f.average_rating.round(2) %>
 <% end %>
-
-<% if f.jurisdiction %>
-	<em><%= f.jurisdiction %></em>
-<% end %>
-
-<br/>
-
-<% if f.description %>
-	<%= truncante_description(f.description) %>
-<% end %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= f.comments.count %> comments
 
 
