@@ -77,7 +77,15 @@ class Mailer < ActionMailer::Base
     @shared_form = shared_form
     @currentuser = user
     @form = Form.find(shared_form.form_id)
-    attachments[@form.name] =  File.read @form.form.url
+
+     open(@form.form.url) {|form|
+      tmpfile = Tempfile.new("temp#{@form_file_name}")
+      File.open(tmpfile.path, 'wb') do |f| 
+        f.write form.read
+      end 
+    }
+
+    attachments[@form.name] =  File.read(tmpfile.path)
     mail(:to => @shared_form.email_address, :subject => "Vizibid Form Shared With You")
   end
 
