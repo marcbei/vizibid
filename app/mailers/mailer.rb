@@ -86,7 +86,7 @@ class Mailer < ActionMailer::Base
       end 
     }
 
-    attachments[@form.name] =  File.read(tmpfile.path)
+    attachments[File.basename(@form.form.to_s.split('?')[0])] =  File.read(tmpfile.path)
     mail(:to => @shared_form.email_address, :subject => "Vizibid Form Shared With You")
   end
 
