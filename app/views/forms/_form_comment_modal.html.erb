@@ -2,7 +2,7 @@
   
   <div class="well">
 
-  <p>Fill in your comment below<p>
+  <p>Fill in your response below<p>
   <%= form_for @comment, :html => {:multipart => true}  do |f| %>
     <%= f.hidden_field :parent_id, :value => parent_id %>
     <%= f.hidden_field :form_id, :value => form_id %>
@@ -45,7 +45,7 @@
 
 
 <% if button == true %>
-  <B><a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >New Comment</a></B>
+  <B><a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >New Response</a></B>
 <% else %>
-  <a class = "commentmodallink" style = "margin-left: 18px;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Reply</a>
+  <a class = "commentmodallink" style = "margin-left: 18px;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Respond</a>
 <% end %>

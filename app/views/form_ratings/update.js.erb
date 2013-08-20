@@ -1,4 +1,4 @@
-$('div#ratingstext').replaceWith("<br/><br/><h4>Your rating:</h4>");
+$('div#ratingstext').html("<strong>Your rating:</strong>");
 
 <% if !@form.average_rating.nan? %>
 	<% @rating = @form.average_rating.round(2).to_s %>
