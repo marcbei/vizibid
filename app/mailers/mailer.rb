@@ -77,9 +77,10 @@ class Mailer < ActionMailer::Base
     @shared_form = shared_form
     @currentuser = user
     @form = Form.find(shared_form.form_id)
+    tmpfile = nil
 
      open(@form.form.url) {|form|
-      tmpfile = Tempfile.new("temp#{@form_file_name}")
+      tmpfile = Tempfile.new("temp#{@form.name}")
       File.open(tmpfile.path, 'wb') do |f| 
         f.write form.read
       end 
