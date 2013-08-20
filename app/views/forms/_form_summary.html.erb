@@ -7,15 +7,12 @@
 <br/>
 <% if f.user != nil %>
 	<% name = f.user.name.gsub(' ', '_') %>
-	uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  time_ago_in_words(f.created_at) ago
+	uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> ago
 	<br/>
 <% end %>
 
-
 <% if !f.average_rating.nan? %>
-	Rated <%= f.average_rating.round(2) %>
+	Rated <%= f.average_rating.round(2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <% end %>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= f.comments.count %> comments
-
-
+<% f.comments.count %> comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= render 'forms/save_form_modal', :smallbutton => true %>
