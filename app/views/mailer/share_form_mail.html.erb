@@ -6,7 +6,7 @@
   <body>
     <p>
       Hello,<br/><br/>
-      <%= @currentuser.name %> has shared the following Vizibid document with you.
+      <%= @currentuser.name %> has shared the attached Vizibid document with you.
     </p>
     <% if @shared_form.description != nil %>
     <p>
@@ -15,6 +15,9 @@
     <% end %>
     <p>
       <%= link_to @form.name, form_url(@form) %>
+    </p>
+    <p>
+      Check out <a href="www.vizibid.com">Vizibid</a>
     </p>
   </body>
 </html>
