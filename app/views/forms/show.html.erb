@@ -41,21 +41,20 @@
 				<% if !@form.average_rating.nan? %>
 					<%= @form.average_rating.round(2) %>
 				<% else %>
-					Document has no ratings.
+					Document has no ratings.<br/>
 				<% end %>
 			</div>
-			<div id = "ratingstext">
-				<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
-					<div id = "ratingstext">
-						<%if current_user_rating(@form.id) != "N/A" %>
-							<strong>Your rating:</strong>
-						<% else %>
-							<strong>Rate this form:</strong>
-						<% end %>
-					<%= render 'forms/ratings_form' %>
-				<% end %>
-			</div>
-			<br/>
+			<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
+				<div id = "ratingstext">
+					<%if current_user_rating(@form.id) != "N/A" %>
+						<strong>Your rating:</strong>
+					<% else %>
+						<strong>Rate this form:</strong>
+					<% end %>
+				</div>
+				<%= render 'forms/ratings_form' %>
+			<% end %>
+			<br/><br/>
 
 			<%= render 'forms/form_download_modal', :form => @form %>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
