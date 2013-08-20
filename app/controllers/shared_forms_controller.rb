@@ -10,6 +10,7 @@ class SharedFormsController < ApplicationController
 			Mailer.delay.share_form_mail(current_user, @sharedForm)
 		end
 
+		flash[:success] = "Thank you for sharing this document."
 		redirect_to form_path(params[:id])
 	end
 
