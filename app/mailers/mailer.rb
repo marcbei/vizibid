@@ -77,7 +77,7 @@ class Mailer < ActionMailer::Base
     @shared_form = shared_form
     @currentuser = user
     @form = Form.find(shared_form.form_id)
-    attachments[@form.name_to_s] =  File.read @form.form.url
+    attachments[@form.name] =  File.read @form.form.url
     mail(:to => @shared_form.email_address, :subject => "Vizibid Form Shared With You")
   end
 
