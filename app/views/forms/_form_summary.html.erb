@@ -15,14 +15,14 @@
 
 <div class="row-fluid search-doc-content">
 	<% if !f.average_rating.nan? %>
-		average rating <%= f.average_rating.round(2) %> (by <%= pluralize(f.form_ratings.count, 'members') %>)
+		average rating <%= f.average_rating.round(2) %> (by <%= pluralize(f.form_ratings.count, 'member') %>)
 	<% else %>
 		ro ratings
 	<% end %>
 </div>
 
 <div class="row-fluid search-doc-content">
-	<%= pluralize(f.comments.count, 'responses') %>
+	<%= pluralize(f.comments.count, 'response') %>
 </div>
 
 <div class="row-fluid">
