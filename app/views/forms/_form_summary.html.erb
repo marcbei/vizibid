@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row-fluid search-doc-name">
 	<% if f.name != nil %>
 		<%= link_to f.name, f %>
 	<% else %>
@@ -6,25 +6,26 @@
 	<% end %>
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid search-doc-content">
 	<% if f.user != nil %>
 		<% name = f.user.name.gsub(' ', '_') %>
 		uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> ago
 	<% end %>
 </div>
 
-<div class="row-fluid">
+<div class="row-fluid search-doc-content">
 	<div class="span3">
 		<% if !f.average_rating.nan? %>
-			Rated <%= f.average_rating.round(2) %>
+			rated <%= f.average_rating.round(2) %>
 		<% else %>
-			No ratings
+			ro ratings
 		<% end %>
 	</div>
 	<div class="span3">
 		<%= f.comments.count %> comments
 	</div>
-	<div class="span6">
-		<%= render 'forms/save_form_modal', :smallbutton => true %>
-	</div>
+</div>
+
+<div class="row-fluid">
+	<%= render 'forms/save_form_modal', :smallbutton => true %>
 </div>

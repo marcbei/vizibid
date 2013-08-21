@@ -5,7 +5,7 @@
 	<div class= "span8">
 		<!-- Search Results -->
 		<% if @forms != nil %>
-			<p><%= pluralize(@total_forms, 'result') %>:<p>
+			<p style="text-decoration: underline;"><%= pluralize(@total_forms, 'result') %>:<p>
 				<% @i = 1 %>
 				<% @forms.each do |f| %>
 				<tr>
@@ -16,7 +16,7 @@
 					<hr/>
 				<% end %>
 			<% end %>
-			<%= will_paginate(@forms) %>
+			<%#= will_paginate(@forms) %>
 		<% else %>
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">
