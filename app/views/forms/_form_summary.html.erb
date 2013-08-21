@@ -1,18 +1,30 @@
-<% if f.name != nil %>
-	<%= link_to f.name, f %>
-<% else %>
-	<%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %>
-<% end %>
+<div class="row-fluid">
+	<% if f.name != nil %>
+		<%= link_to f.name, f %>
+	<% else %>
+		<%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %>
+	<% end %>
+</div>
 
-<br/>
-<% if f.user != nil %>
-	<% name = f.user.name.gsub(' ', '_') %>
-	uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> ago
-	<br/>
-<% end %>
-
-<% if !f.average_rating.nan? %>
-	Rated <%= f.average_rating.round(2) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<% end %>
-<%= f.comments.count %> comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= render 'forms/save_form_modal', :smallbutton => true %>
+<div class="row-fluid">
+	<div class="span3">
+		<% if f.user != nil %>
+			<% name = f.user.name.gsub(' ', '_') %>
+			uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> ago
+			<br/>
+		<% end %>
+	</div>
+	<div class="span3 offset3 ">
+		<% if !f.average_rating.nan? %>
+			Rated <%= f.average_rating.round(2) %>
+		<% else %>
+			No ratings
+		<% end %>
+	</div>
+	<div class="span3 offset6">
+		<%= f.comments.count %> comments;
+	</div>
+	<div class="span3 offset9">
+		<%= render 'forms/save_form_modal', :smallbutton => true %>
+	</div>
+</div>
