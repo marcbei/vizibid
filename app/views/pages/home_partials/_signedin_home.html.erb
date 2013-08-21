@@ -13,10 +13,10 @@
 			 	</tr>
 				<% @i += 1 %>
 					<% if @i < @forms.count+1 %>
-					<hr/>
+					<hr class="search-seperator"/>
 				<% end %>
 			<% end %>
-			<%#= will_paginate(@forms) %>
+			<%= will_paginate(@forms) %>
 		<% else %>
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">

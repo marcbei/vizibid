@@ -14,16 +14,15 @@
 </div>
 
 <div class="row-fluid search-doc-content">
-	<div class="span3">
-		<% if !f.average_rating.nan? %>
-			rated <%= f.average_rating.round(2) %>
-		<% else %>
-			ro ratings
-		<% end %>
-	</div>
-	<div class="span3">
-		<%= f.comments.count %> comments
-	</div>
+	<% if !f.average_rating.nan? %>
+		rated <%= f.average_rating.round(2) %>
+	<% else %>
+		ro ratings
+	<% end %>
+</div>
+
+<div class="row-fluid search-doc-content">
+	<%= f.comments.count %> comments
 </div>
 
 <div class="row-fluid">
