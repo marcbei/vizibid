@@ -9,7 +9,7 @@
 <div class="row-fluid">
 	<% if f.user != nil %>
 		<% name = f.user.name.gsub(' ', '_') %>
-		uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> agox
+		uploaded by <%= link_to f.user.name, usershow_path(name.downcase) %>  <%=time_ago_in_words(f.created_at) %> ago
 	<% end %>
 </div>
 
@@ -22,7 +22,7 @@
 		<% end %>
 	</div>
 	<div class="span3">
-		<%= f.comments.count %> comments;
+		<%= f.comments.count %> comments
 	</div>
 	<div class="span6">
 		<%= render 'forms/save_form_modal', :smallbutton => true %>
