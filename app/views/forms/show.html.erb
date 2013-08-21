@@ -46,13 +46,9 @@
 			</div>
 			<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>
 				<div id = "ratingstext">
-					<%if current_user_rating(@form.id) != "N/A" %>
-						<strong>Your rating:</strong>
-					<% else %>
-						<strong>Rate this form:</strong>
-					<% end %>
+					<%= render 'forms/ratings_form'%>
 				</div>
-				<%= render 'forms/ratings_form' %>
+				
 			<% end %>
 			<br/><br/>
 

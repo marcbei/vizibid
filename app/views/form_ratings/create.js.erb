@@ -1,5 +1,3 @@
-$('div#ratingstext').html("<strong>Your rating:</strong>");
-
 <% if !@form.average_rating.nan? %>
 	<% @rating = @form.average_rating.round(2).to_s %>
 <% else %>
