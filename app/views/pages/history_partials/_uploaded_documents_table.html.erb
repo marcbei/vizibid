@@ -1,0 +1,27 @@
+<div class="uploaded-documents-pane-content">
+    <table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="span4">Document</th>
+				<th>Jurisdiction</th>
+				<th>Practice Area</th>
+			</tr>
+		</thead>
+		<% @uploadedforms.each do |uf| %>
+			<tr>
+				<td>
+					<%= link_to uf.name, form_path(uf) %><br/>
+					<div style="font-size: 12px;">
+						uploaded <%= time_ago_in_words(uf.created_at) %> ago
+					</div>
+				</td>
+				<td><%= uf.jurisdiction %></td>
+				<td>
+					<% if uf.practice_area != nil %>
+						<%= uf.practice_area.practice_area_title %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

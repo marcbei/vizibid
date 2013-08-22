@@ -1,0 +1,28 @@
+<div class="downloaded-documents-pane-content">
+    <table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="span4">Document</th>
+				<th>Jurisdiction</th>
+				<th>Practice Area</th>
+			</tr>
+		</thead>
+		<% @formdownloads.each do |f| %>
+			<tr>
+				<td>
+					<% form = Form.find(f.form_id) %>
+					<%= link_to form.name, form_path(form) %><br/>
+					<div style="font-size: 12px;">
+						downloaded <%= time_ago_in_words(f.created_at) %> ago
+					</div>
+				</td>
+				<td><%= form.jurisdiction %></td>
+				<td>
+					<% if form.practice_area != nil %>
+						<%= form.practice_area.practice_area_title %>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
