@@ -107,11 +107,29 @@ class PagesController < ApplicationController
   def history
     signed_in_user
 
+
+    if params[:tab] == "downloaded"
+
+    elsif params[:tab] == "uploaded"
+
+    elsif params[:tab] == "searches"
+
+    else
+
+    end
+
+    ## move this where it belongs in above if/else statement
     @formdownloads = current_user.downloads.order("created_at asc")
     @fd = current_user.form_downloads.order("created_at asc")
     @formrequests = current_user.form_requests.order("created_at asc")
     @uploadedforms = current_user.forms.order("created_at asc")
     @comments = current_user.comments.order("created_at desc").group_by{|c| c.form_id}
+
+    respond_to do |format|
+      format.js  
+      format.html
+    end
+
   end
 
   def forum
