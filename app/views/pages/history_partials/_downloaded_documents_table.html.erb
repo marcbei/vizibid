@@ -10,16 +10,15 @@
 		<% @formdownloads.each do |f| %>
 			<tr>
 				<td>
-					<% form = Form.find(f.form_id) %>
-					<%= link_to form.name, form_path(form) %><br/>
+					<%= link_to f.form.name, form_path(f.form) %><br/>
 					<div style="font-size: 12px;">
 						downloaded <%= time_ago_in_words(f.created_at) %> ago
 					</div>
 				</td>
-				<td><%= form.jurisdiction %></td>
+				<td><%= f.form.jurisdiction %></td>
 				<td>
-					<% if form.practice_area != nil %>
-						<%= form.practice_area.practice_area_title %>
+					<% if f.form.practice_area != nil %>
+						<%= f.form.practice_area.practice_area_title %>
 					<% end %>
 				</td>
 			</tr>
