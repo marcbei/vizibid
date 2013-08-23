@@ -9,7 +9,7 @@
 	<% end %>
 
 	<% if params[:tab] == "viewed" %>
-		
+		$('.viewed-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/viewed_documents_table')%>");
 	<% elsif params[:tab] == "downloaded" %>
 		$('.downloaded-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/downloaded_documents_table')%>");
 	<% elsif params[:tab] == "uploaded" %>

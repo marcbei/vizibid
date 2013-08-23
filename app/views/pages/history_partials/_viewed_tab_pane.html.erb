@@ -1,3 +1,14 @@
 <div class="tab-content-root">
-	<p style="text-decoration: underline;">Viewed Documents</p>
+	<div class="row-fluid">
+		<p class="span6" style="text-decoration: underline; margin-top: 5px;">
+			Viewed Documents (<%= @viewedforms.count %>)
+		</p>
+		<ul class="nav nav-pills pull-right">
+	  	  <li class="recent active"><%= link_to :"Recent", history_path(:tab => "viewed", :sort => "recent"), :remote => true %></li>
+	  	  <li class="alpha"><%= link_to :"Alphabetical", history_path(:tab => "viewed", :sort => "alpha"), :remote => true %></li>
+	  	</ul>
+	  </div>
+  	<div class = "viewed-tab-content">
+		<%= render 'pages/history_partials/viewed_documents_table' %>
+	</div>
 </div>

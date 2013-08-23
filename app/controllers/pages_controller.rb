@@ -107,7 +107,6 @@ class PagesController < ApplicationController
   def history
     signed_in_user
 
-
     if params[:tab] == "downloaded"
       if params[:sort] == "alpha"
         @formdownloads = FormDownload.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.name)')
@@ -122,6 +121,11 @@ class PagesController < ApplicationController
       end
     elsif params[:tab] == "searches"
     else
+      if params[:sort] == "alpha"
+        @viewedforms = FormView.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.name)')
+      else
+        @viewedforms = current_user.form_views.order("created_at desc")
+      end
     end
 
     respond_to do |format|

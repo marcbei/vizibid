@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   has_many :form_downloads
   has_many :downloads, :through => :form_downloads, :source => :form
 
+  has_many :form_views
+  has_many :views, :through => :form_views, :source => :form
+
   has_many :user_permissions
   has_many :permissions, :through => :user_permissions, :source => :role
 

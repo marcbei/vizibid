@@ -49,6 +49,8 @@ class FormsController < ApplicationController
       return
     end
 
+    FormView.create(:user_id => current_user.id, :form_id => params[:id])
+
     @comments = @form.comments
     @comment = current_user.comments.build
     @user = @form.user.name
