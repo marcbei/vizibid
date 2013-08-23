@@ -15,15 +15,15 @@
 	<% elsif params[:tab] == "uploaded" %>
 		$('.uploaded-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/uploaded_documents_table')%>");
 	<% else%>
-		
+		$('.search-queries-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/search_queries_table')%>");
 	<% end %>
 
 <% else %>
+
 	$('.viewed').removeClass("active")
 	$('.downloaded').removeClass("active")
 	$('.uploaded').removeClass("active")
 	$('.searches').removeClass("active")
-
 
 	<% if params[:tab] == "viewed" %>
 		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/viewed_tab_pane' )%>");
@@ -35,7 +35,7 @@
 		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/uploaded_tab_pane' )%>");
 		$('.uploaded').addClass("active")
 	<% else%>
-		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/searches_tab_pane' )%>");
+		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/search_queries_tab_pane' )%>");
 		$('.searches').addClass("active")
 	<% end %>
 

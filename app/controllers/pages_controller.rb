@@ -35,9 +35,10 @@ class PagesController < ApplicationController
           with(:approved, true)
           fulltext params[:search]
         end
+        SearchQuery.create(:user_id => current_user.id, :query => params[:search])
         @forms = @search.results
         @total_forms = @forms.count
-        @forms = @forms.paginate(:page => params[:page], :per_page => 5)
+        @forms = @forms.paginate(:page => params[:page], :per_page => 10)
       end
   	else
   		@user = User.new
@@ -120,6 +121,11 @@ class PagesController < ApplicationController
         @uploadedforms = current_user.forms.order("created_at desc")
       end
     elsif params[:tab] == "searches"
+      if params[:sort] == "alpha"
+        @searchqueries = current_user.search_queries.order("LOWER(query)")
+      else
+        @searchqueries = current_user.search_queries.order("created_at desc")
+      end
     else
       if params[:sort] == "alpha"
         @viewedforms = FormView.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.name)')

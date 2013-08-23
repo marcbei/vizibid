@@ -1,0 +1,14 @@
+<div class="tab-content-root">
+	<div class="row-fluid">
+		<p class="span6" style="text-decoration: underline; margin-top: 5px;">
+			Search Queries
+		</p>
+		<ul class="nav nav-pills pull-right">
+	  	  <li class="recent active"><%= link_to :"Recent", history_path(:tab => "searches", :sort => "recent"), :remote => true %></li>
+	  	  <li class="alpha"><%= link_to :"Alphabetical", history_path(:tab => "searches", :sort => "alpha"), :remote => true %></li>
+	  	</ul>
+	  </div>
+  	<div class = "viewed-tab-content">
+		<%= render 'pages/history_partials/search_queries_table' %>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<div class="search-queries-pane-content">
+    <table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Search Query</th>
+			</tr>
+		</thead>
+		<% @searchqueries.each do |s| %>
+			<tr>
+				<td>
+					<%= link_to s.query, root_path(:search => s.query) %><br/>
+					<div style="font-size: 12px;">
+						searched <%= time_ago_in_words(s.created_at) %> ago
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
