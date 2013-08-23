@@ -115,7 +115,11 @@ class PagesController < ApplicationController
         @formdownloads = current_user.form_downloads.order("created_at desc")
       end
     elsif params[:tab] == "uploaded"
-      @uploadedforms = current_user.forms.order("created_at desc")
+      if params[:sort] == "alpha"
+        @uploadedforms = current_user.forms.order("LOWER(name)")
+      else
+        @uploadedforms = current_user.forms.order("created_at desc")
+      end
     elsif params[:tab] == "searches"
     else
     end

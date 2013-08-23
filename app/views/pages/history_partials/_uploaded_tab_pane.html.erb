@@ -1,4 +1,14 @@
 <div class="tab-content-root">
-	<p style="text-decoration: underline;">Uploaded Documents (<%= @uploadedforms.count %>)</p>
-	<%= render 'pages/history_partials/uploaded_documents_table' %>
+	<div class="row-fluid">
+		<p class="span6" style="text-decoration: underline; margin-top: 5px;">
+			Uploaded Documents (<%= @uploadedforms.count %>)
+		</p>
+		<ul class="nav nav-pills pull-right">
+	  	  <li class="recent active"><%= link_to :"Recent", history_path(:tab => "uploaded", :sort => "recent"), :remote => true %></li>
+	  	  <li class="alpha"><%= link_to :"Alphabetical", history_path(:tab => "uploaded", :sort => "alpha"), :remote => true %></li>
+	  	</ul>
+	</div>
+	<div class = "uploaded-tab-content">
+		<%= render 'pages/history_partials/uploaded_documents_table' %>
+	</div>
 </div>

@@ -13,7 +13,7 @@
 	<% elsif params[:tab] == "downloaded" %>
 		$('.downloaded-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/downloaded_documents_table')%>");
 	<% elsif params[:tab] == "uploaded" %>
-		
+		$('.uploaded-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/uploaded_documents_table')%>");
 	<% else%>
 		
 	<% end %>
