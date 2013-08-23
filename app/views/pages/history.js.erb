@@ -1,21 +1,43 @@
-$('.viewed').removeClass("active")
-$('.downloaded').removeClass("active")
-$('.uploaded').removeClass("active")
-$('.searches').removeClass("active")
+<% if params[:sort] != nil %>
+
+	<% if params[:sort] == "recent" %>
+		$(".alpha").removeClass('active');
+		$(".recent").addClass('active');
+	<% elsif params[:sort] == "alpha" %>
+		$(".recent").removeClass('active');
+		$(".alpha").addClass('active');
+	<% end %>
+
+	<% if params[:tab] == "viewed" %>
+		
+	<% elsif params[:tab] == "downloaded" %>
+		$('.downloaded-documents-pane-content').replaceWith("<%= escape_javascript(render 'pages/history_partials/downloaded_documents_table')%>");
+	<% elsif params[:tab] == "uploaded" %>
+		
+	<% else%>
+		
+	<% end %>
+
+<% else %>
+	$('.viewed').removeClass("active")
+	$('.downloaded').removeClass("active")
+	$('.uploaded').removeClass("active")
+	$('.searches').removeClass("active")
 
 
-<% if params[:tab] == "viewed" %>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/viewed_tab_pane' )%>");
-	$('.viewed').addClass("active")
-<% elsif params[:tab] == "downloaded" %>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/downloaded_tab_pane' )%>");
-	$('.downloaded').addClass("active")
-<% elsif params[:tab] == "uploaded" %>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/uploaded_tab_pane' )%>");
-	$('.uploaded').addClass("active")
-<% else%>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/searches_tab_pane' )%>");
-	$('.searches').addClass("active")
+	<% if params[:tab] == "viewed" %>
+		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/viewed_tab_pane' )%>");
+		$('.viewed').addClass("active")
+	<% elsif params[:tab] == "downloaded" %>
+		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/downloaded_tab_pane' )%>");
+		$('.downloaded').addClass("active")
+	<% elsif params[:tab] == "uploaded" %>
+		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/uploaded_tab_pane' )%>");
+		$('.uploaded').addClass("active")
+	<% else%>
+		$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/history_partials/searches_tab_pane' )%>");
+		$('.searches').addClass("active")
+	<% end %>
+
+	<!-- update dashboard data -->
 <% end %>
-
-<!-- update dashboard data -->

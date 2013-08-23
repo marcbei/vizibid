@@ -1,4 +1,14 @@
 <div class="tab-content-root">
-	<p style="text-decoration: underline;">Downloaded Documents  (<%= @formdownloads.count %>)</p>
-    <%= render 'pages/history_partials/downloaded_documents_table' %>
+	<div class="row-fluid">
+		<p class= "span6" style="text-decoration: underline; margin-top: 8px;">
+			Downloaded Documents  (<%= @formdownloads.count %>)
+		</p>
+		<ul class="nav nav-pills pull-right">
+	  	  <li class="recent active"><%= link_to :"Recent", history_path(:tab => "downloaded", :sort => "recent"), :remote => true %></li>
+	  	  <li class="alpha"><%= link_to :"Alphabetical", history_path(:tab => "downloaded", :sort => "alpha"), :remote => true %></li>
+	  	</ul>
+	</div>
+	<div class = "downloaded-tab-content">
+    	<%= render 'pages/history_partials/downloaded_documents_table' %>
+    </div>
 </div>
