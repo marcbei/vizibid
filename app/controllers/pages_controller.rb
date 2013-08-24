@@ -35,7 +35,12 @@ class PagesController < ApplicationController
           with(:approved, true)
           fulltext params[:search]
         end
-        SearchQuery.create(:user_id => current_user.id, :query => params[:search])
+        
+        # don't log requests after pagination
+        if params[:page] == nil
+          SearchQuery.create(:user_id => current_user.id, :query => params[:search])
+        end
+        
         @forms = @search.results
         @total_forms = @forms.count
         @forms = @forms.paginate(:page => params[:page], :per_page => 10)
