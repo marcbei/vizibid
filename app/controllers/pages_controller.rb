@@ -146,10 +146,6 @@ class PagesController < ApplicationController
 
   end
 
-  def folders
-
-  end
-
   def forum
 
     signed_in_user

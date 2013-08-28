@@ -21,7 +21,6 @@ Vizibid::Application.routes.draw do
   match '/why' => 'pages#why'
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
-  match '/folders' => 'pages#folders'
   match '/share' => 'pages#share'
   match '/feedback' => 'pages#feedback'
   match '/signup' => 'users#new'
