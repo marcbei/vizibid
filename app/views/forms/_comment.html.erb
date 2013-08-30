@@ -33,7 +33,7 @@
 	<div class = "formCommentContent"><%= comment.content %></div>
 	<% associatedform = Form.find_by_sourcecomment_id(comment.id) %>
 	<% if associatedform != nil%>
-		<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="associatedform">associated document: <%= link_to associatedform.name, form_path(associatedform)%></span><br/>
+		<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="associatedform">associated document: <%= link_to associatedform.description, form_path(associatedform)%></span><br/>
 	<% end %>
     <div class="actions">
     	<% if comment.user != nil %>
