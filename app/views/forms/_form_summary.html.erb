@@ -1,9 +1,5 @@
 <div class="row-fluid search-doc-name">
-	<% if f.name != nil %>
-		<%= link_to f.name, f %>
-	<% else %>
-		<%= link_to File.basename(f.form.url, File.extname(f.form.url)), f %>
-	<% end %>
+	<%= link_to f.description, f %>
 </div>
 
 <div class="row-fluid search-doc-content">

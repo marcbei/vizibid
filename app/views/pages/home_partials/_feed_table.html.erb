@@ -11,7 +11,7 @@
 			<tr>
 				<td>
 					<% name = f.user.name.gsub(' ', '_') %>
-					<%= link_to f.name, form_path(f) %><br/>
+					<%= link_to f.description, form_path(f) %><br/>
 					<div style="font-size: 12px;">
 						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %>
 					</div>
