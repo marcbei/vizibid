@@ -12,7 +12,7 @@
 		<span class="content"><%= f.form.description %></span><br/>
 	<% end %>
 	<% if f.form %>
-		<em>associated document:</em> <%= link_to f.form.name, form_path(f.form) %>
+		<em>associated document:</em> <%= link_to f.form.description, form_path(f.form) %>
 	<% end %>
 	<div class="actions">
     	<%= render 'form_requests/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>

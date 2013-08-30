@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <p>New comment received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%= link_to @form.name, form_url(@form)%></p>
+    <p>New comment received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%= link_to @form.description, form_url(@form)%></p>
     <p>
       Comment: <%= @comment.content %><br/><br/>
     </p>

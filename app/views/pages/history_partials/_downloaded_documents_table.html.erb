@@ -10,7 +10,7 @@
 		<% @formdownloads.each do |f| %>
 			<tr>
 				<td>
-					<%= link_to f.form.name, form_path(f.form) %><br/>
+					<%= link_to f.form.description, form_path(f.form) %><br/>
 					<div style="font-size: 12px;">
 						downloaded <%= time_ago_in_words(f.created_at) %> ago
 					</div>

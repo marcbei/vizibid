@@ -31,7 +31,7 @@
 		<% @comments.each do |formid, comments|%>
 			<% comments.each do |comment| %>
 				<% if showformname %>
-					<%= link_to comment.form.name, form_path(formid) %>
+					<%= link_to comment.form.description, form_path(formid) %>
 					<% showformname = false %>		
 				<% end %>
 					<li><%= truncante_description(comment.content) %> on <%= time_ago_in_words(comment.created_at) %> ago </li>

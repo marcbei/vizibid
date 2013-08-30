@@ -80,7 +80,7 @@ class Mailer < ActionMailer::Base
     tmpfile = nil
 
      open(@form.form.url) {|form|
-      tmpfile = Tempfile.new("temp#{@form.name}")
+      tmpfile = Tempfile.new("temp#{@form.description}")
       File.open(tmpfile.path, 'wb') do |f| 
         f.write form.read
       end 

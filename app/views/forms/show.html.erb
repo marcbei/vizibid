@@ -6,12 +6,7 @@
 
 	<div class="row-fluid">
 		<div class = "span8">
-			<% if @form.name != nil %>
-				<H4><%= @form.name %></H4>
-			<% else %>
-				<H4>
-					<%= File.basename(@form.form.url, File.extname(@form.form.url)) %></H4>
-			<% end %>
+			<H4><%= @form.description %></H4>
 
 			<div style="margin-top: -7px;">
 				<% name = @form.user.name.gsub(' ', '_') %>
@@ -26,15 +21,6 @@
 				<strong>Jurisdiction: </strong> <%= @form.jurisdiction %>
 			</div>
 
-			<div style="margin-top: 10px;">
-				<% if @form.description != nil && @form.description.length > 0 %>
-					<strong>Description:</strong> <%= @form.description %>
-				<% end %>
-				<br/>
-				<% if @form.keywords != nil && @form.keywords.length > 0 %>
-					<strong>Associated Keywords:</strong> <%= @form.keywords %>
-				<% end %>
-			</div>
 			<br/>
 			<strong>Average Rating: </strong> 
 			<div class = "averagerating" style="Display: inline;">

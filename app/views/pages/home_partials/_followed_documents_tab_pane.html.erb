@@ -5,7 +5,7 @@
         <% i = 0 %>
         <% @followedforms.each do |ff| %>
           <li class="<% if i == 0 %> active <% end %>">
-            <a href="#r<%= i %>" data-toggle="tab"><%= ff.form.name %></a>
+            <a href="#r<%= i %>" data-toggle="tab"><%= ff.form.description %></a>
           </li>
           <% i = i + 1 %>
         <% end %>

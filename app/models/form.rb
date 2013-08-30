@@ -10,7 +10,6 @@
 #  description      :text
 #  jurisdiction     :string(255)
 #  keywords         :string(255)
-#  name             :string(255)
 #  sourcecomment_id :integer
 #  approved         :boolean
 #  practice_area_id :integer
@@ -20,7 +19,7 @@ class Form < ActiveRecord::Base
 
   require 'open-uri'
 
-  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :name, :sourcecomment_id, :approved, :practicearea_id
+  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practicearea_id
 
   mount_uploader :form, FormsUploader
 
@@ -45,13 +44,13 @@ class Form < ActiveRecord::Base
   belongs_to :practice_area
 
   validates :form, :presence => true
-  validates :name, :presence => true
+  validates :description, :presence => true
   validates :jurisdiction, :presence => true
 
   searchable do
-    text :name, :boost => 3
+    text :description, :boost => 3
     text :keywords, :boost => 2
-    text :description, :jurisdiction
+    text :jurisdiction
     text :user do
       user.name
     end

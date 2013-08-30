@@ -152,7 +152,7 @@ module FormHelper
       @requestowner = User.find(@request.user.id)
 
       # if the request submission doesn't have a form associated, send mail and redirect to the original request
-      if params[:commentonly] == "yes" || params[:form][:name].empty?
+      if params[:commentonly] == "yes" || params[:form][:description].empty?
         flash[:success] = "Thank you for your contribution!"
 
         #send mail

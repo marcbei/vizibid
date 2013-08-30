@@ -4,7 +4,7 @@
         Responses (<%= f.RequestSubmissions.count %>)
         <% f.RequestSubmissions.each do |rs| %>
           <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
-            <%= link_to rs.form.name, form_path(rs.form) %> 
+            <%= link_to rs.form.description, form_path(rs.form) %> 
             <br/>
             <% name = rs.user.name.gsub(' ', '_') %>
             by: <%= link_to rs.user.name, usershow_path(name.downcase) %>

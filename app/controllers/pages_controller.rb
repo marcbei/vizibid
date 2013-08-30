@@ -115,13 +115,13 @@ class PagesController < ApplicationController
 
     if params[:tab] == "downloaded"
       if params[:sort] == "alpha"
-        @formdownloads = FormDownload.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.name)')
+        @formdownloads = FormDownload.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.description)')
       else
         @formdownloads = current_user.form_downloads.order("created_at desc")
       end
     elsif params[:tab] == "uploaded"
       if params[:sort] == "alpha"
-        @uploadedforms = current_user.forms.order("LOWER(name)")
+        @uploadedforms = current_user.forms.order("LOWER(description)")
       else
         @uploadedforms = current_user.forms.order("created_at desc")
       end
@@ -133,7 +133,7 @@ class PagesController < ApplicationController
       end
     else
       if params[:sort] == "alpha"
-        @viewedforms = FormView.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.name)')
+        @viewedforms = FormView.find_all_by_user_id(current_user.id, :include => [:form], :order => 'LOWER(forms.description)')
       else
         @viewedforms = current_user.form_views.order("created_at desc")
       end

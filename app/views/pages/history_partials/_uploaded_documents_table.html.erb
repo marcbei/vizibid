@@ -10,7 +10,7 @@
 		<% @uploadedforms.each do |uf| %>
 			<tr>
 				<td>
-					<%= link_to uf.name, form_path(uf) %><br/>
+					<%= link_to uf.description, form_path(uf) %><br/>
 					<div style="font-size: 12px;">
 						uploaded <%= time_ago_in_words(uf.created_at) %> ago
 					</div>
