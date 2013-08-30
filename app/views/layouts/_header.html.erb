@@ -18,12 +18,12 @@
         <nav>
           <a class="pull-left" href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>
           <span class="pull-right navbar-signed-links">
-            <%= link_to "History", history_path %>&nbsp;&nbsp;|&nbsp;
             <span id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:white;">
                 <%= @current_user.name %> <span style="color:white; border-top-color:white;" class="caret"></span>
               </a>
               <ul class="dropdown-menu pull-right">
+                <li><%= link_to "History", history_path %></li>
                 <% name = current_user.name.gsub(' ', '_') %>
                 <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
                 <li><%= link_to "Settings", settings_path("account") %></li>
