@@ -13,7 +13,7 @@
 	<% if !f.average_rating.nan? %>
 		average rating <%= f.average_rating.round(2) %> (<%= pluralize(f.form_ratings.count, 'rating') %>)
 	<% else %>
-		ro ratings
+		no ratings
 	<% end %>
 </div>
 
