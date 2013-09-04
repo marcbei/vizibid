@@ -6,15 +6,19 @@ $('.feed').removeClass("active")
 
 <% if params[:tab] == "contribute" %>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/contribute_tab_pane' )%>");
+	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.contribute').addClass("active")
 <% elsif params[:tab] == "requests" %>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/your_requests_tab_pane' )%>");
+	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.requests').addClass("active")
 <% elsif params[:tab] == "followed" %>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/followed_documents_tab_pane' )%>");
+	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.followed').addClass("active")
 <% else%>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/feed_tab_pane' )%>");
+	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.feed').addClass("active")
 <% end %>
 
