@@ -2,5 +2,5 @@
 You have <%= pluralize(@open_form_requests_count, "open request") %> and <%= pluralize(@closed_form_requests_count, "fulfilled request")%>.
 </div>
 <div style="padding-left: 10px;  padding-right: 5px; margin-top: 10px;">
-there have been [x] responses to your requests of which [y] have documents from [z] users
+There have been <%= pluralize(current_user.request_submissions_count, "response") %> to your requests of which <%= pluralize(current_user.request_submissions_with_forms_count, "have document") %> from <%= pluralize(current_user.number_of_users_responded_to_requests ,"user") %>.
 </div>

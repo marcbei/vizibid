@@ -62,6 +62,34 @@ class User < ActiveRecord::Base
   validates :bar_number,  presence: true, length: { maximum: 9 }
   validates :state_licensed,  presence: true
 
+  def request_submissions_count
+    sum = 0
+    self.form_requests.each{|fr| sum = sum + fr.RequestSubmissions.count}
+    return sum
+  end
+
+  def request_submissions_with_forms_count
+    sum = 0
+    self.form_requests.each do |fr|
+      fr.RequestSubmissions.each do |rs|
+        if rs.form_id != nil 
+          sum = sum + 1
+        end
+      end
+    end 
+    return sum
+  end
+
+  def number_of_users_responded_to_requests
+    user_ids = Hash.new
+    self.form_requests.each do |fr| 
+      fr.RequestSubmissions.each do |rs| 
+        user_ids[rs.user_id] = true 
+      end
+    end
+    return user_ids.count
+  end
+
   def send_password_reset
     self.password_reset_token = SecureRandom.urlsafe_base64
     self.password_reset_sent_at = Time.zone.now
