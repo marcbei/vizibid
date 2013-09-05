@@ -15,10 +15,6 @@ class PagesController < ApplicationController
           @open_req = true
         elsif params[:tab] == "followed"
           @followedforms = FormFollow.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).sort_by{|f| f.form.updated_at}.reverse
-        elsif params[:tab] == "feed"
-          @subscribedforms = Array.new
-          UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
-          @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
         else
           # call helper to get appropriate data
           @form = Form.new
@@ -27,9 +23,11 @@ class PagesController < ApplicationController
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
 
           @subscribedformrequests = @subscribedformrequests.shuffle
-          if @subscribedformrequests.count > 20 
-            @subscribedformrequests = @subscribedformrequests.first(20)
-          end
+
+          @subscribedforms = Array.new
+          UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
+          @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
+
         end 
 
       else

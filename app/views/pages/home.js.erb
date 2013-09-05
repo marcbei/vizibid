@@ -1,13 +1,12 @@
-$('.contribute').removeClass("active")
+$('.community').removeClass("active")
 $('.requests').removeClass("active")
 $('.followed').removeClass("active")
-$('.feed').removeClass("active")
 
 
-<% if params[:tab] == "contribute" %>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/contribute_tab_pane' )%>");
+<% if params[:tab] == "community" %>
+	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/community_tab_pane' )%>");
 	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
-	$('.contribute').addClass("active")
+	$('.community').addClass("active")
 <% elsif params[:tab] == "requests" %>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/your_requests_tab_pane' )%>");
 	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
@@ -16,10 +15,6 @@ $('.feed').removeClass("active")
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/followed_documents_tab_pane' )%>");
 	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.followed').addClass("active")
-<% else%>
-	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/feed_tab_pane' )%>");
-	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
-	$('.feed').addClass("active")
 <% end %>
 
 <!-- update dashboard data -->

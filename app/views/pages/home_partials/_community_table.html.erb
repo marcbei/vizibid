@@ -1,26 +1,20 @@
-<div class = "feed-content">
+<div class = "community-content">
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th class="span4">Document</th>
-				<th>Jurisdiction</th>
-				<th>Practice Area</th>
+				<th class="span2">Type</th>
+				<th>Details</th>
 			</tr>
 		</thead>
 		<% @subscribedforms.each do |f| %>
 			<tr>
+				<td>Document:</td>
 				<td>
 					<% name = f.user.name.gsub(' ', '_') %>
 					<%= link_to f.description, form_path(f) %><br/>
 					<div style="font-size: 12px;">
 						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %>
 					</div>
-				</td>
-				<td><%= f.jurisdiction %></td>
-				<td>
-					<% if f.practice_area != nil %>
-						<%= f.practice_area.practice_area_title %>
-					<% end %>
 				</td>
 			</tr>
 		<% end %>

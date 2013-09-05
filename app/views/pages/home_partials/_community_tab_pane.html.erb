@@ -1,0 +1,13 @@
+<div class="tab-content-root">
+	<div>
+		<%= render 'pages/home_partials/manage_feed_modal' %>
+		<%= render 'forms/form_upload_modal' %>
+		<ul class="nav nav-pills pull-right">
+	  	  <li class="recent-forms-in-feed active"><%= link_to :"Recent", forms_path(:sort => "recent"), :remote => true %></li>
+	  	  <li class="active-forms-in-feed"><%= link_to :"Active", forms_path(:sort => "activity"), :remote => true %></li>
+	  	</ul>
+	</div>
+  	<div class="community-content">
+    	<%= render 'pages/home_partials/community_table' %>
+  	</div>
+</div>
