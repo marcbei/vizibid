@@ -10,6 +10,10 @@ module SessionsHelper
 		cookies.delete(:remember_token)
 	end
 
+	def update_sign_in_time(user)
+		user.update_attributes(:last_signin_at => Time.zone.now)
+	end
+
 	def signed_in?
     	!current_user.nil?
   	end

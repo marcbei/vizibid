@@ -16,10 +16,11 @@
 #  bar_number                 :integer
 #  state_licensed             :string(255)
 #  verified                   :boolean
+#  last_signin_at             :datetime
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :id, :email, :name, :password, :password_confirmation, :verification_token, :verification_token_sent_at, :bar_number, :state_licensed, :verified
+  attr_accessible :id, :email, :name, :password, :password_confirmation, :verification_token, :verification_token_sent_at, :bar_number, :state_licensed, :verified, :last_signin_at
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -39,6 +40,9 @@ class User < ActiveRecord::Base
 
   has_many :user_permissions
   has_many :permissions, :through => :user_permissions, :source => :role
+
+  has_many :form_follows
+  has_many :followed_forms, :through => :form_follows, :source => :form
 
   has_many :user_practice_areas
   has_many :practice_areas, :through => :user_practice_areas
@@ -88,6 +92,26 @@ class User < ActiveRecord::Base
       end
     end
     return user_ids.count
+  end
+
+  def number_of_comments_on_followed_forms_since_last_signin
+    sum = 0
+    self.followed_forms.each do |ff| 
+      sum = sum + ff.comments.where("created_at > ?", self.last_signin_at).count
+    end
+    return sum
+  end
+
+def number_of_iterations_on_followed_forms_since_last_signin
+    sum = 0
+    self.followed_forms.each do |ff| 
+      ff.comments.where("created_at > ?", self.last_signin_at).each do |c|
+        if Form.where("sourcecomment_id = ?", c.id).count != 0
+          sum = sum + 1
+        end
+      end
+    end
+    return sum
   end
 
   def send_password_reset

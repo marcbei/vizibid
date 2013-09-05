@@ -26,13 +26,15 @@
                   This document has no comments or iterations associated with it yet.
               <% end %>
               <% comments.each do |c| %>
-                <% name = c.user.name.gsub(' ', '_') %>
+                  <% if c.content != "[Deleted]" %>
+                    <% name = c.user.name.gsub(' ', '_') %>
 
-                <% if Form.find(:all, :conditions => ["sourcecomment_id = '#{c.id}'"]).count > 0 %>
-                  Comment with new document from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
-                <% else %>
-                  Comment from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
-                <% end %>
+                    <% if Form.find(:all, :conditions => ["sourcecomment_id = '#{c.id}'"]).count > 0 %>
+                      Comment with new document from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                    <% else %>
+                      Comment from <%= link_to c.user.name, usershow_path(name.downcase)%><br/>submitted <%= time_ago_in_words(c.created_at) %> ago
+                    <% end %>
+                  <% end %>
                 <hr style="margin-top: 7px; margin-bottom: 7px"/>
               <% end %>
             </div>

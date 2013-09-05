@@ -2,8 +2,12 @@
 You are following <%= pluralize(@followedforms.count, "document") %>.
 </div>
 <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
-There have been [x] new comments since your last session.
+<% num_comments = current_user.number_of_comments_on_followed_forms_since_last_signin %>
+<% num_iterations = current_user.number_of_iterations_on_followed_forms_since_last_signin %>
+There <%= num_comments == 1 ? "is" : "are" %>  
+<%= pluralize(num_comments,"new comment") %> since your last sign-in.
 </div>
 <div style="padding-left: 10px; padding-right: 5px; margin-top: 10px;">
-There have been [y] new iterations on these documents since your last session.
+There <%= num_iterations == 1 ? "is" : "are" %>  
+<%= pluralize(num_iterations,"new iteration") %> on these documents since your last sign-in.
 </div>
