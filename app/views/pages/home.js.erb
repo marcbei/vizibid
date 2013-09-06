@@ -2,7 +2,6 @@ $('.community').removeClass("active")
 $('.requests').removeClass("active")
 $('.followed').removeClass("active")
 
-
 <% if params[:tab] == "community" %>
 	$('.tab-content-root').replaceWith("<%= escape_javascript(render 'pages/home_partials/community_tab_pane' )%>");
 	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
@@ -16,5 +15,3 @@ $('.followed').removeClass("active")
 	$('.dashboard').replaceWith("<%= escape_javascript(render 'shared/dashboard' )%>");
 	$('.followed').addClass("active")
 <% end %>
-
-<!-- update dashboard data -->

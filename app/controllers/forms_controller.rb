@@ -6,13 +6,16 @@ class FormsController < ApplicationController
   
   def index
 
+    @subscribedformrequests = Array.new
+    UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
+
     @subscribedforms = Array.new
     UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
 
-    if params[:sort] == "recent"
-      @subscribedforms = @subscribedforms.sort_by(&:created_at).reverse
+    if params[:sort] == "newest"
+      @items = (@subscribedformrequests + @subscribedforms).sort_by(&:created_at).reverse
     elsif params[:sort] == "acitivty"
-      @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
+      @items = (@subscribedformrequests + @subscribedforms).sort_by(&:updated_at).reverse
     end
 
     respond_to do |format|
