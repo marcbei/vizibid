@@ -22,13 +22,12 @@ class PagesController < ApplicationController
           @subscribedformrequests = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedformrequests = @subscribedformrequests + pa.practice_area.form_requests}
 
-          @subscribedformrequests = @subscribedformrequests.shuffle
-
           @subscribedforms = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
-          @subscribedforms = @subscribedforms.sort_by(&:updated_at).reverse
+          
+          @items = (@subscribedformrequests + @subscribedforms).sort_by(&:updated_at).reverse
 
-        end 
+        end
 
       else
         @search = Form.search do

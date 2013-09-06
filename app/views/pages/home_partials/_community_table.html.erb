@@ -1,15 +1,31 @@
 <div class = "community-content">
 	<table class="table table-striped">
-		<% @subscribedforms.each do |f| %>
+		<% @items.each do |i| %>
 			<tr>
-				<td class="span2">Document:</td>
-				<td>
-					<% name = f.user.name.gsub(' ', '_') %>
-					<%= link_to f.description, form_path(f) %><br/>
-					<div style="font-size: 12px;">
-						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %> for <%= f.jurisdiction %>
-					</div>
-				</td>
+				<% if i.class.name == "Form" %>
+					<td class="span2">Document:</td>
+					<td>
+						<% name = i.user.name.gsub(' ', '_') %>
+						<%= link_to i.description, form_path(i) %><br/>
+						<div style="font-size: 12px;">
+							Uploaded <%= time_ago_in_words(i.created_at) %> ago by <%= link_to i.user.name, usershow_path(name) %> for <%= i.jurisdiction %>
+						</div>
+					</td>
+				<% else %>
+					<td class="span2">Request:</td>
+					<td>
+						<% name = i.user.name.gsub(' ', '_') %>
+						<%= link_to i.name, form_request_path(i) %><br/>
+						<div style="font-size: 12px;">
+							Requested <%= time_ago_in_words(i.created_at) %> ago by 
+							<% if i.anonymous == false %>
+								<%= link_to i.user.name, usershow_path(name) %>
+							<% else %>
+								anonymouse
+							<% end %>
+						</div>
+					</td>
+				<% end %>
 			</tr>
 		<% end %>
 	</table>
