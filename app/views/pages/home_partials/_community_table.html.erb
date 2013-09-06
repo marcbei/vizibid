@@ -1,19 +1,13 @@
 <div class = "community-content">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th class="span2">Type</th>
-				<th>Details</th>
-			</tr>
-		</thead>
+	<table class="table table-striped table-bordered">
 		<% @subscribedforms.each do |f| %>
 			<tr>
-				<td>Document:</td>
+				<td class="span2">Document:</td>
 				<td>
 					<% name = f.user.name.gsub(' ', '_') %>
 					<%= link_to f.description, form_path(f) %><br/>
 					<div style="font-size: 12px;">
-						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %>
+						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %> for <%= f.jurisidiction %>
 					</div>
 				</td>
 			</tr>
