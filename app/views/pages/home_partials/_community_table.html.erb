@@ -7,7 +7,7 @@
 					<% name = f.user.name.gsub(' ', '_') %>
 					<%= link_to f.description, form_path(f) %><br/>
 					<div style="font-size: 12px;">
-						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %> for <%= f.jurisidiction %>
+						uploaded <%= time_ago_in_words(f.created_at) %> ago by <%= link_to f.user.name, usershow_path(name) %> for <%= f.jurisdiction %>
 					</div>
 				</td>
 			</tr>
