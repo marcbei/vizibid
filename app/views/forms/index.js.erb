@@ -1,9 +1,9 @@
 <% if params[:sort] == "newest" %>
-	$(".active-forms-in-feed").removeClass('active');
-	$(".recent-forms-in-feed").addClass('active');
+	$(".newest-items").addClass('active');
+	$(".activity-items").removeClass('active');
 <% elsif params[:sort] == "activity" %>
-	$(".recent-forms-in-feed").removeClass('active');
-	$(".active-forms-in-feed").addClass('active');
+	$(".newest-items").removeClass('active');
+	$(".activity-items").addClass('active');
 <% end %>
 
 $('.community-content').replaceWith("<%= escape_javascript(render 'pages/home_partials/community_table')%>");

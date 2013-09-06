@@ -6,11 +6,9 @@
 		<div class = "pull-right">
 			<ul class="nav nav-pills" style = "display: inline-block;">
 		  	  <li class="newest-items active"><%= link_to :"Newest", forms_path(:sort => "newest"), :remote => true %></li>
-		  	  <li class="recent-items"><%= link_to :"Active", forms_path(:sort => "activity"), :remote => true %></li>
+		  	  <li class="activity-items"><%= link_to :"Active", forms_path(:sort => "activity"), :remote => true %></li>
 		  	</ul>
 		</div>
 	</div>
-  	<div class="community-content">
-    	<%= render 'pages/home_partials/community_table' %>
-  	</div>
+	<%= render 'pages/home_partials/community_table' %>
 </div>

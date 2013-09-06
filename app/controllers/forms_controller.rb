@@ -14,7 +14,7 @@ class FormsController < ApplicationController
 
     if params[:sort] == "newest"
       @items = (@subscribedformrequests + @subscribedforms).sort_by(&:created_at).reverse
-    elsif params[:sort] == "acitivty"
+    elsif params[:sort] == "activty"
       @items = (@subscribedformrequests + @subscribedforms).sort_by(&:updated_at).reverse
     end
 
