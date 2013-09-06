@@ -19,7 +19,7 @@ class Form < ActiveRecord::Base
 
   require 'open-uri'
 
-  attr_accessible :form, :user_id, :NumDownload, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practicearea_id
+  attr_accessible :form, :user_id, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practicearea_id
 
   mount_uploader :form, FormsUploader
 

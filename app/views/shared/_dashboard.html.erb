@@ -6,23 +6,7 @@
 		<% elsif params[:tab] == "requests" %>
 			<%= render 'pages/home_partials/requests_dashboard_content' %>
 		<% else %>
-			<ul>
-				<li>
-					uploaded <%= pluralize(current_user.forms.count, "document") %>
-				</li>
-				<li>
-					submitted <%= pluralize(current_user.comments.count,"comment") %> 
-				</li>
-				<li>
-					submitted <%= pluralize(current_user.form_requests.count, "request") %> 
-				</li>
-				<li>
-					replied to <%= pluralize(current_user.request_submissions.count, "request") %> 
-				</li>
-				<li>
-					subscribed to <%= pluralize(current_user.practice_areas.count, "practice area") %> 
-				</li>
-			</ul>
+			<%= render 'pages/home_partials/community_dashboard_content' %>
 		<% end %>
 	</p>
 </div>

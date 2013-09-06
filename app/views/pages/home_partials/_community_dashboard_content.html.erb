@@ -1,0 +1,15 @@
+<div style="padding-left: 10px; padding-right: 10px;">
+You have shared <%= pluralize(current_user.forms.count, "document") %>.
+</div>
+<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
+You have written <%= pluralize(current_user.comments.count, "comment") %>.
+</div>
+<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
+Your documents have been downloaded <%= pluralize(current_user.num_form_downloads, "time") %>.
+</div>
+<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
+You last shared a document <%= time_ago_in_words(current_user.num_days_since_upload) %> ago.
+</div>
+<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
+You last wrote a comment <%= time_ago_in_words(current_user.num_days_since_comment) %> ago.
+</div>

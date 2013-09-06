@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
     return sum
   end
 
-def number_of_iterations_on_followed_forms_since_last_signin
+  def number_of_iterations_on_followed_forms_since_last_signin
     sum = 0
     self.followed_forms.each do |ff| 
       ff.comments.where("created_at > ?", self.last_signin_at).each do |c|
@@ -112,6 +112,22 @@ def number_of_iterations_on_followed_forms_since_last_signin
       end
     end
     return sum
+  end
+
+  def num_form_downloads
+    sum = 0
+    self.forms.each do |f|
+      sum = sum + f.downloads.count
+    end
+    return sum
+  end
+
+  def num_days_since_upload
+    days = self.forms.order("created_at DESC").first.created_at
+  end
+
+  def num_days_since_comment
+    days = self.comments.order("created_at DESC").first.created_at
   end
 
   def send_password_reset
