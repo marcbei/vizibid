@@ -1,6 +1,6 @@
 <div id="manageFeedModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class = "well">
-		Select the practice areas that you would like in your feed.<br/>
+		Select the practice areas that you would like to subscribe to.<br/>
 		<%= form_tag practicearea_path do %>
 			<% PracticeArea.all.each_with_index do |pa,i| %>
 				<% if UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}' and practice_area_id = '#{pa.id}'"]).count == 1 %>
