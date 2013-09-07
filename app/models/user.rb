@@ -123,11 +123,19 @@ class User < ActiveRecord::Base
   end
 
   def num_days_since_upload
-    days = self.forms.order("created_at DESC").first.created_at
+    days = 0
+    if self.forms != nil
+      days = self.forms.order("created_at DESC").first.created_at
+    end
+    return days
   end
 
   def num_days_since_comment
-    days = self.comments.order("created_at DESC").first.created_at
+    days = 0
+    if self.comments != nil
+      days = self.comments.order("created_at DESC").first.created_at
+    end
+    return days
   end
 
   def send_password_reset
