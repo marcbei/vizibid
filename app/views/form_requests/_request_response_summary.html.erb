@@ -1,6 +1,6 @@
 <% user = User.find_by_id(f.user_id) %>
 
-<li>
+<div>
 	<% if user != nil %>
 		<% name = user.name.gsub(' ', '_') %>
 		<strong><%= link_to user.name, usershow_path(name.downcase) %></strong>
@@ -14,11 +14,5 @@
 	<% if f.form %>
 		<em>associated document:</em> <%= link_to f.form.description, form_path(f.form) %>
 	<% end %>
-	<div class="actions">
-    	<%= render 'form_requests/request_response_modal', :parent_id => f.id, :fr_id => f.form_request_id, :button => false %>
-    	<% if current_user.id == f.user_id %>
-    		&nbsp;&nbsp;&nbsp;<%= link_to :Delete, deleteresponse_path(f.id, :requestid => f.form_request_id.to_s) %>
-    	<% end %>
-	</div>
-</li>
+</div>
 

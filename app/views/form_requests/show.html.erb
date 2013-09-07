@@ -27,4 +27,8 @@
 	<% end %>
 	<h3>Responses (<%= @requestsubmissions.count %>)</h3>
 	<hr/>
+	<% @requestsubmissions.each do |rs| %>
+		<%= render 'form_requests/request_response_summary', :f => rs %>
+		<hr/>
+	<% end %>
 </div>
