@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
 
   def num_days_since_upload
     days = 0
-    if self.forms != nil
+    if self.forms.count > 0
       days = self.forms.order("created_at DESC").first.created_at
     end
     return days
@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
 
   def num_days_since_comment
     days = 0
-    if self.comments != nil
+    if self.comments.count > 0
       days = self.comments.order("created_at DESC").first.created_at
     end
     return days
