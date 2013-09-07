@@ -30,5 +30,8 @@
 			</div>
 		<% end %>
 	</div>
-	<%= render 'shared/dashboard' %>
+	<!-- dashboard -->
+	<% if @forms == nil %>
+		<%= render 'shared/dashboard' %>
+	<% end %>
 </div>
