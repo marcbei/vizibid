@@ -71,7 +71,6 @@ class FormsController < ApplicationController
 
     @pemitted_user = check_permissions(@form)
 
-    @form = Form.find(params[:id])
     respond_to do |format|
           format.js  
           format.html
