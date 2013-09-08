@@ -5,7 +5,6 @@ class FormRequestsController < ApplicationController
 	before_filter :signed_in_user
 
 	def index
-
 		if params[:scope] == "open"
 			@form_requests = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled != true"])
 			@open_req = true
@@ -60,7 +59,7 @@ class FormRequestsController < ApplicationController
 
 	def show
 		@form_request = FormRequest.find(params[:id])
-		@requestsubmissions = @form_request.RequestSubmissions.order("created_at DESC").find(:all)
+		@requestsubmissions = @form_request.RequestSubmissions.order("created_at ASC").find(:all)
 
 		@inappropriate_request_report = InappropriateRequest.find_by_user_id_and_request_id(current_user.id, @form_request .id)
     	@ir = InappropriateRequest.new
