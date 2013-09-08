@@ -4,4 +4,7 @@
 		<%= submit_tag "Search", :class => "btn btn-info" %>
 	<% end %>
 </div>
-<span style="margin-left: 70px"><%= render 'form_requests/new_form_request_modal' %></span>
+<span style="margin-left: 70px">
+	<span><%= render 'form_requests/new_form_request_modal' %></span>
+	<span style="margin-left: 6px"><%= render 'forms/form_upload_modal' %></span>
+</span>
