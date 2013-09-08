@@ -15,8 +15,8 @@
         <% @followedforms.each do |ff| %>
             <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
             <div>
-              <%= link_to :"Open Document", form_path(ff.form.id), :class => "btn btn-success" %>
-                <%= link_to :"Unfollow", unfollowform_path(ff.form.id), :remote => true, :class => "btn btn-info" %>
+              <%= link_to :"Open", form_path(ff.form.id), :class => "btn btn-success" %>
+                <%= link_to :"Unfollow", unfollowform_path(ff.form.id), :remote => true, :class => "btn" %>
             </div>
             <div style = "margin-top: 10px;">
               <% comments = ff.form.comments.order(:updated_at).reverse.first(5) %>
