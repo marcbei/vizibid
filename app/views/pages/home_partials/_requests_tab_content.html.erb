@@ -18,7 +18,7 @@
             <p>
               On <%= f.created_at.to_datetime.strftime("%B %d, %Y") %> you requested:
                 <div style="border: solid #ccc 1px; padding: 5px 5px 5px 5px;">
-                  <%= f.description %>
+                  <%= link_to f.description, form_request_path(f) %>
                 </div>
                 <div style="margin-top: 10px;">
                   Jurisdiction: <%= f.jurisdiction %>
@@ -28,10 +28,6 @@
                 <% end %>
                 </div>
                 <% if f.fufilled == false %>
-                  <div style="margin-top: 10px;">
-                    <%= render 'form_requests/edit_request_modal', :formrequest => f %>
-                    <%= render 'form_requests/delete_request_modal', :formrequest => f %>
-                  </div>
                   <div style="margin-top: 10px;">
                      <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true, :class=> "btn" %>                  
                   </div>

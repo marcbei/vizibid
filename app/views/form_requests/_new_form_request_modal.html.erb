@@ -1,4 +1,4 @@
-<% @form_request = FormRequest.new %>
+<% @form_request_to_upload = FormRequest.new %>
 <a data-toggle="modal" href="#modalFormRequest" class="btn">Request</a>
 
 <div id="modalFormRequest" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -6,7 +6,7 @@
     <strong><p>Complete and submit this form to request a document.</p></strong>
     <div class = "row">
       <div class="span6">
-        <%= form_for @form_request do |fr| %>
+        <%= form_for @form_request_to_upload do |fr| %>
         	   Name
         	  <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name that is descriptive of the document you are requesting. Make sure the name will help other users understand what this document is."><i class="icon-question-sign"></i></a></u>
             <%= fr.text_field :name %>

@@ -1,24 +1,26 @@
-<H3><%= @form_request.name %></H3>
+<H4><%= @form_request.name %></H4>
 
-<% if @form_request.jurisdiction %>
-	<em><%= @form_request.jurisdiction %></em>
-<% end %>
+<div style="margin-top: -7px;">
+	<% name = @form_request.user.name.gsub(' ', '_') %>
+	requested by 
+	<% if @form_request.anonymous == true %>
+		anonymous
+	<% else %>
+		<%=link_to @form_request.user.name, usershow_path(name.downcase) %>
+	<% end %>
+	<%= time_ago_in_words(@form_request.created_at) %> ago
+</div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Requested <%= time_ago_in_words(@form_request.created_at) %> ago
-<% if @form_request.anonymous == true %>
-(anonymous)
-<% else %>
-<% name = @form_request.user.name.gsub(' ', '_') %>
-by <%=link_to @form_request.user.name, usershow_path(name.downcase)%>
-<% end %>
+<div style="margin-top: 10px;">
+	<% if @form_request.practice_area != nil %>
+		<strong>Practice Area: </strong> <%= @form_request.practice_area.practice_area_title %> <br/>
+	<% end %>
+	<strong>Jurisdiction: </strong> <%= @form_request.jurisdiction %>
+</div>
 
-<br/><br/>
-
-<em>Requester's Description:</em><br/> <%= @form_request.description %>
-
-<br/><br/>
-
-<% if @form_request.keywords.length > 0 %>
-<em>Requester's Suggested Keywords:</em><br/> <%= @form_request.keywords %></H1>
-<% end %>
+<div style="margin-top: 10px;">
+	<strong>Description:</strong><%= @form_request.description %>
+	<% if @form_request.keywords.length > 0 %>
+		<strong>Keywords:</strong><%= @form_request.keywords %>
+	<% end %>
+</div>

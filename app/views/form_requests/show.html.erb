@@ -1,34 +1,38 @@
 <% provide(:title, 'Form Request Details')%>
-<div class = "span10">
-	<%= render 'form_requests/form_request_details' %>
-	<br/><br/>
+<div class = "container-fluid">
+	<%= render 'forms/search'%>
+	<br/>
 
-	<!-- if the request is mine, show options to edit, delete or mark fulfilled if there is a submission-->
-	<% if @form_request.fufilled == false %>
-		<% if @form_request.user.id == current_user.id %>
-			<%= button_to "Edit Request", edit_form_request_path(@form_request.id), :class => "btn", :method => :get %>
-			<% if @form_request.forms.count >0 %>
-				<%= button_to "Complete Request", completerequest_path(@form_request.id), :class => "btn btn-info" %>
+	<div class="row-fluid">
+		<div class = "span8">
+			<%= render 'form_requests/form_request_details' %>
+
+			<% if @form_request.user.id == current_user.id %>
+				<div class="row-fluid" style="margin-top: 20px;">
+                    <%= render 'form_requests/edit_request_modal', :formrequest => @form_request %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= render 'form_requests/delete_request_modal', :formrequest => @form_request %>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<% if @form_request.fufilled == false %>
+						<%= link_to "Close Request", completerequest_path(@form_request.id), :class => "btn btn-success" %>
+					<% end %>
+				</div>
+			<% end %>
+			<br/>
+			<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
+			<br/><br/>
+			<h4>Responses (<%= @requestsubmissions.count %>)</h4>
+			<hr/>
+			<% if @form_request.fufilled == false %>
+				<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id, :formrequest => @form_request, :details_page => true %>
 			<% else %>
-				<%= button_to "Delete Request", form_request_path(@form_request.id), :method => :delete, :class => "btn btn-danger" %>
+				Request is closed.
 			<% end %>
-		<% else %>
-			<% if @permitted_user %>
-				<% if @inappropriate_request_report == nil %>
-					<br/>
-					<%= render 'form_requests/inappropriate_request_modal', :requestid => @form_request.id %>
-					<br/><br/>
-				<% end %>
-				<%= render 'form_requests/request_response_modal', :parent_id => nil, :button => true, :fr_id => @form_request.id, :formrequest => @form_request, :details_page => true %><br/><br/>				
-			<% end %>
+			<hr/>
+			<% @requestsubmissions.each do |rs| %>
+				<%= render 'form_requests/request_response_summary', :f => rs %>
+				<hr/>
 		<% end %>
-	<% else %>
-		<h3>Request Completed!</h3>
-	<% end %>
-	<h3>Responses (<%= @requestsubmissions.count %>)</h3>
-	<hr/>
-	<% @requestsubmissions.each do |rs| %>
-		<%= render 'form_requests/request_response_summary', :f => rs %>
-		<hr/>
-	<% end %>
+		</div>
+	</div>
 </div>
