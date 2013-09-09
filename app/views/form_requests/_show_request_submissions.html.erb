@@ -3,19 +3,21 @@
     <p style="margin-top: 30px; border-bottom: 1px solid black;">
         Responses (<%= f.RequestSubmissions.count %>)
         <% f.RequestSubmissions.each do |rs| %>
-          <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
-            <%= link_to rs.form.description, form_path(rs.form) %> 
-            <br/>
-            <% name = rs.user.name.gsub(' ', '_') %>
-            by: <%= link_to rs.user.name, usershow_path(name.downcase) %>
-            <div style="margin-top: 7px;">
-              <% if rs.accepted == false %>
-                <%= link_to :Approve, approveresponse_path(:id => rs.id, :form_id => f), :class=> "btn btn-success btn-mini", :remote => true %>
-              <% else %>
-                <em>Accepted</em>
-              <% end %>
+          <% if rs.form != nil %>
+            <div style="margin-top: 5px;" class = "rs-<%=rs.id%>"> 
+              <%= link_to rs.form.description, form_path(rs.form) %> 
+              <br/>
+              <% name = rs.user.name.gsub(' ', '_') %>
+              by: <%= link_to rs.user.name, usershow_path(name.downcase) %>
+              <div style="margin-top: 7px;">
+                <% if rs.accepted == false %>
+                  <%= link_to :Approve, approveresponse_path(:id => rs.id, :form_id => f), :class=> "btn btn-success btn-mini", :remote => true %>
+                <% else %>
+                  <em>Accepted</em>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
     </p>
   <% elsif f.RequestSubmissions.count == 0  %>
