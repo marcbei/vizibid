@@ -177,13 +177,13 @@ module FormHelper
           if virus_scan(@form) != true
             @request_submission.destroy
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to root_path
+            redirect_to form_request_path(@request)
           end
 
 
-		  # opt in the user to following their own form
-		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
-		  @form_follow.save
+    		  # opt in the user to following their own form
+    		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
+    		  @form_follow.save
 
           #sendmail
           if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
@@ -195,7 +195,6 @@ module FormHelper
         end
       end
 
-      redirect_to root_path
-
+      redirect_to form_request_path(@request)
 	end
 end
