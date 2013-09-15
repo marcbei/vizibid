@@ -130,7 +130,6 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.1)
-    newrelic_rpm (3.6.7.152)
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
     options (2.3.0)
@@ -248,7 +247,6 @@ DEPENDENCIES
   font-awesome-rails
   jquery-rails
   json
-  newrelic_rpm
   nokogiri
   pg (= 0.12.2)
   progress_bar

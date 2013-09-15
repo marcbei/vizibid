@@ -16,10 +16,6 @@ group :development, :test do
   gem 'daemons'
 end
 
-group :production do
-	gem 'newrelic_rpm'
-end
-
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 
