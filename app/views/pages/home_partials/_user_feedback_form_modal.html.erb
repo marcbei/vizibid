@@ -1,4 +1,4 @@
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="feedbackmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <% @feedback = UserFeedback.new %>
   <div class="well">
       <p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p>
@@ -14,7 +14,6 @@
 
 </div>
 
-<div class = "offset6">
-  Your feedback is valuable!&nbsp;
-  <a style = "color: green;" data-toggle="modal" href="#myModal" >Send us a suggestion</a>
+<div class= "span4" style="margin-top: 25px; font-size: 13px;">  Your feedback is valuable!&nbsp;
+  <a style = "color: green;" data-toggle="modal" href="#feedbackmodal" >Send us a suggestion</a>
 </div>

@@ -12,30 +12,35 @@
     </div>
   </div>
 <% elsif signed_in? %>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <nav>
-          <a class="pull-left" href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>
-          <span class="pull-right navbar-signed-links">
-            <span id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown" style="color:white;">
-                <%= @current_user.name %> <span style="color:white; border-top-color:white;" class="caret"></span>
-              </a>
-              <ul class="dropdown-menu pull-right">
-                <li><%= link_to "History", history_path %></li>
-                <% name = current_user.name.gsub(' ', '_') %>
-                <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
-                <li><%= link_to "Settings", settings_path("account") %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </div>
-          </span>
-        </nav>
+  <div class = "row">
+    <a class="span4" href="<%=root_path%>"><img src="/assets/vizibid-RGB-312x104.png" width="234" height="78" style="margin-left: -20px;"/></a>
+    <%= render 'pages/home_partials/user_feedback_form_modal' %>
+    <span class="offset1 span3 navbar-signed-links">
+      <div class = "row">
+      <div class="span1">
+        <%= render 'form_requests/new_form_request_modal' %>
       </div>
+      <div class="span1">
+        <%= render 'forms/form_upload_modal' %>
+      </div>
+      <div class="span1">
+        <span id="fat-menu" class="dropdown">
+          <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown">
+            <%= @current_user.name.split(" ")[0] %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li><%= link_to "History", history_path %></li>
+            <% name = current_user.name.gsub(' ', '_') %>
+            <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
+            <li><%= link_to "Settings", settings_path("account") %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Sign out", signout_path, method: "delete" %>
+            </li>
+          </ul>
+        </span>
+        </div>
+      </div>
+      </span>
     </div>
-  </div>
 <% end %>

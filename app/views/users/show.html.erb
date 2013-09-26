@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
-<div class = "container">
-	<div class = "row span6">
+<div class = "row">
+	<div class = "span12">
 	<br/>
 	<b><%= @user.name %></b>, Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %>
 	<br/>
@@ -80,6 +80,5 @@
 	<% end %>
 		<br/>
 	<% end %>
-
 	</div>
 </div>

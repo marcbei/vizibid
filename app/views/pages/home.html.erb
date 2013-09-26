@@ -1,9 +1,7 @@
 <% provide(:title, 'Home') %>
 
-<div class = "container-fluid">
-	<% if signed_in? %>
-		<%= render 'pages/home_partials/signedin_home' %>
-	<% else %>
-		<%= render 'pages/home_partials/default_home' %>
-	<% end %>
-</div>
+<% if signed_in? %>
+	<%= render 'pages/home_partials/signedin_home' %>
+<% else %>
+	<%= render 'pages/home_partials/default_home' %>
+<% end %>

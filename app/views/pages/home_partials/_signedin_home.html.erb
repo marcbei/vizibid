@@ -1,6 +1,10 @@
 <!-- Search Box -->
-<%= render 'forms/search' %>
-<div class="row-fluid">
+<div class="row">
+	<div class = "span12">
+		<%= render 'forms/search' %>
+	</div>
+</div>
+<div class="row">
 	<!-- tabbable window panes -->
 	<div class= "span8">
 		<!-- Search Results -->
@@ -20,9 +24,10 @@
 		<% else %>
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">
-			    <li class="community active"><%= link_to :Community, root_path(:tab => "community"), :remote => true%></li>
-			    <li class="requests"><%= link_to :"Your Requests", root_path(:tab => "requests"), :remote => true%></li>
-			    <li class="followed"><%= link_to :"Followed Documents", root_path(:tab => "followed"), :remote => true%></li>
+			    <li class="community active"><%= link_to :"COMMUNITY NEWS", root_path(:tab => "community"), :remote => true%></li>
+			    <li class="requests"><%= link_to :"MY REQUESTS", root_path(:tab => "requests"), :remote => true%></li>
+			    <li class="followed"><%= link_to :"TRACKING", root_path(:tab => "followed"), :remote => true%></li>
+			    <li class=""><%= link_to :"MY COLLEAGUES", "#" %></li>
 			  </ul>
 			  <div class="tab-content-root">
 			      <%= render 'pages/home_partials/community_tab_pane' %>

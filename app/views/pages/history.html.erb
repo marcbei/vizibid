@@ -1,23 +1,21 @@
 <% provide(:title, 'History') %>
 
-<div class = "container-fluid">
-	<!-- Search Box -->
-	<%= render 'forms/search' %>
-	<h4 style="margin-bottom: 20px;">History</h4>
-	<div class="row-fluid">
-		<!-- tabbable window panes -->
-		<div class= "span10">
-			<div class="tabbable"> 
-			  <ul class="nav nav-tabs">
-			    <li class="active viewed"><%= link_to :Viewed, history_path(:tab => "viewed"), :remote => true%></li>
-			    <li class="downloaded"><%= link_to :Downloaded, history_path(:tab => "downloaded"), :remote => true%></li>
-			    <li class="uploaded"><%= link_to :Uploaded, history_path(:tab => "uploaded"), :remote => true%></li>
-			    <li class="searches"><%= link_to :Searches, history_path(:tab => "searches"), :remote => true%></li>
-			  </ul>
-			  <div class="tab-content-root">
-			      <%= render 'pages/history_partials/viewed_tab_pane' %>
-			  </div>
-			</div>
+<!-- Search Box -->
+<%= render 'forms/search' %>
+<h4 style="margin-bottom: 20px;">History</h4>
+<div class="row">
+	<!-- tabbable window panes -->
+	<div class= "span10">
+		<div class="tabbable"> 
+		  <ul class="nav nav-tabs">
+		    <li class="active viewed"><%= link_to :Viewed, history_path(:tab => "viewed"), :remote => true%></li>
+		    <li class="downloaded"><%= link_to :Downloaded, history_path(:tab => "downloaded"), :remote => true%></li>
+		    <li class="uploaded"><%= link_to :Uploaded, history_path(:tab => "uploaded"), :remote => true%></li>
+		    <li class="searches"><%= link_to :Searches, history_path(:tab => "searches"), :remote => true%></li>
+		  </ul>
+		  <div class="tab-content-root">
+		      <%= render 'pages/history_partials/viewed_tab_pane' %>
+		  </div>
 		</div>
 	</div>
 </div>
