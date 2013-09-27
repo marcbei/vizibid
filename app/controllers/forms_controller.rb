@@ -28,7 +28,7 @@ class FormsController < ApplicationController
 
     # handle the case where the form is a assoicated with a request
     if (params[:form][:origin] != "" && params[:form][:origin] != nil)
-      @form = Form.new(params)
+      @form = Form.new(params[:form])
       @form.user_id = current_user.id
       @form.description = params[:form][:description]
       @form.jurisdiction = params[:form][:jurisdiction]
