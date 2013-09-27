@@ -27,7 +27,9 @@ class FormsController < ApplicationController
   def create
 
     # handle the case where the form is a assoicated with a request
-    if(params[:requestid] != nil)
+    if (params[:origin] != "" && params[:origin] != nil)
+      flash[:messgae] = "foo"
+    elsif(params[:requestid] != nil)
       # maybe this makes more sense to be in form_requests controller
       save_request(params)
       # this handles an uploaaded form not associated with a request
@@ -97,4 +99,11 @@ class FormsController < ApplicationController
       Mailer.delay.doc_download_mail(current_user, @form)  
     end  
   end
+
+  def upload_special
+
+    @f = Form.new
+
+  end
+
 end

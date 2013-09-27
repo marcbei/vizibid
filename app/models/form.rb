@@ -13,13 +13,15 @@
 #  sourcecomment_id :integer
 #  approved         :boolean
 #  practice_area_id :integer
+#  origin           :string(255)
+#  seed             :boolean
 #
 
 class Form < ActiveRecord::Base
 
   require 'open-uri'
 
-  attr_accessible :form, :user_id, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practice_area_id
+  attr_accessible :form, :user_id, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practice_area_id, :origin, :seed
 
   mount_uploader :form, FormsUploader
 
