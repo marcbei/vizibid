@@ -29,6 +29,7 @@ class FormsController < ApplicationController
     # handle the case where the form is a assoicated with a request
     if (params[:form][:origin] != "" && params[:form][:origin] != nil)
       flash[:messgae] = "foo"
+      redirect_to uploadpage_path
     elsif(params[:requestid] != nil)
       # maybe this makes more sense to be in form_requests controller
       save_request(params)
