@@ -27,7 +27,7 @@ class FormsController < ApplicationController
   def create
 
     # handle the case where the form is a assoicated with a request
-    if (params[:origin] != "" && params[:origin] != nil)
+    if (params[:form][:origin] != "" && params[:form][:origin] != nil)
       flash[:messgae] = "foo"
     elsif(params[:requestid] != nil)
       # maybe this makes more sense to be in form_requests controller
