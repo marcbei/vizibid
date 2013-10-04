@@ -1,18 +1,81 @@
-<img src="/assets/image.jpg" class="full-screen"/>
-
-<div class="navbar navbar-signedin navbar-fixed-top">
-	<div class="container">
-		<a class = "pull-left "href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>
-		<span class="pull-right">
-	    	<%= render 'sessions/sign_in_modal' %>
-	  	</span>
+<div class = "row">
+	<div class= "span10 offset1" style="padding-top: 30px;">
+		<div id="myCarousel" class="carousel slide">
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+		    <div class="active item" style="padding-top: 79px; padding-bottom: 217px;">
+		    	<div class = "row">
+		    		<div class="offset1">
+		    			Welcome, Friend.<br/><br/>
+		    			Together, we're going to revolutionize the way lawyers obtain documents
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="item" style="padding-top: 79px; padding-bottom: 119px;">
+		    	<div class = "row">
+		    		<div class = "span3 offset1">
+		    			Vizibid is an online community for lawyers to share and expand a model document library.<br/><br/>
+		    			Whenever you need to draft a new document, Vizibid can help you quickly find and download reliable examples from other lawyers.
+		    			<br/><br/>
+		    			<a href="<%=about_path%>">Learn More ></a>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="item" style="padding-top: 79px; padding-bottom: 105px;">
+		    	<div class = "row">
+		    		<div class = "span4 offset1">
+		    			Lawyers draft a lot of documents and high-quality model documents can be expensive and hard to find.<br/><br/>
+		    			Vizibid enables you to search for any document you want and download as many documents as you need. If a document is not yet part of our library, you can request it from the Vizibid community.
+		    			<br/><br/>
+		    			<a href="<%=about_path%>">Learn More ></a>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="item" style="padding-top: 79px; padding-bottom: 127px;">
+				<div class = "row">
+		    		<div class = "span4 offset1">
+		    			Vizibid is the right solution for a lot of reasons.
+		    			<br/><br/>
+		    			<ul>
+		    				<li>Low price</li>
+		    				<li>High quality and high quantity</li>
+		    				<li>Confidence</li>
+		    				<li>Opportunities</li>
+		    			</ul>
+		    			<a href="<%=about_path%>">Learn More ></a>
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
 	</div>
 </div>
 
-<div class="default_home_main_content">
-	<h1>Collaborative Documents For Lawyers</h1>
-	<a data-toggle="modal" href="#signupModal" class="btn btn-success btn-large signup">Try It Free!</a>
-	<h4><a href="">Learn More...</a></h4>
+<div class="row">
+	<div class="span2 offset1 well">
+		Vizibid is smart and collaborative.<br/><br/>
+		Collaborate with other lawyers to share documents.
+	</div>
+	<div class="span2 well">
+		Vizibid saves time and money.<br/><br/>
+		Reduce the amount of time spent drafting documents.
+	</div>
+	<div class="span2 well">
+		Vizibid is growing. <br/>
+		Grow with us.<br/><br/>
+		As our community grows, our services grow.
+	</div>
+	<div class="span2">
+		<a data-toggle="modal" href="#signupModal" class="btn btn-info">TRY IT FREE</a>
+		<br/><br/>
+		<a class="btn btn-info" href="<%=about_path%>">LEARN MORE</a>
+	</div>
 </div>
+
+
+<!--a data-toggle="modal" href="#signupModal" class="btn btn-success btn-large signup">Try It Free!</a-->
 
 <%= render 'pages/home_partials/sign_up_form_modal' %>

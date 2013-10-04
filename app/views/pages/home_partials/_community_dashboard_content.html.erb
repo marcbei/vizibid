@@ -1,3 +1,4 @@
+<div class="well">
 <div style="padding-left: 10px; padding-right: 10px;">
 You have shared <%= pluralize(current_user.forms.count, "document") %>.
 </div>
@@ -22,4 +23,5 @@ Your documents have been downloaded <%= pluralize(current_user.num_form_download
 <% else %>
 	You have not written any comments.
 <% end %>
+</div>
 </div>

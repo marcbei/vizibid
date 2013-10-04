@@ -1,15 +1,9 @@
-<% if !(signed_in?) && (defined?(@home)).nil? %>
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <nav>
-          <a class="pull-left" href="<%=root_path%>"><img src="/assets/vizibid-logo.png" width = "148" height="49"/></a>
-          <span class="pull-right">
-            <%= render 'sessions/sign_in_modal' %>
-          </span>
-        </nav>
-      </div>
-    </div>
+<% if !(signed_in?)%>
+  <div class = "row">
+    <a class="span4" href="<%=root_path%>" style="padding-top: 12px;"><img src="/assets/vizibid-RGB-312x104.png" width="270" height="90"/></a>
+    <span class="pull-right">
+        <%= render 'sessions/sign_in_modal' %>
+      </span>
   </div>
 <% elsif signed_in? %>
   <div class = "row" style="padding-top: 10px;">
