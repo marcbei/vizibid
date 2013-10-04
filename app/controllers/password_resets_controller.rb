@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
 	  user = User.find_by_email(params[:email])
 	  if user != nil
 	  	user.send_password_reset 
-	  	redirect_to signin_path, :notice => "Email sent with password reset instructions."
+	  	redirect_to root_path, :notice => "Email sent with password reset instructions."
 	  else
 	  	redirect_to root_path
 	  end
