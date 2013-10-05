@@ -8,10 +8,9 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body>
-	<div class = "container">
+<body <% if !(signed_in?) %> style = "background-color: lightgrey;" <% end %>>
+	<div class = "container <% if !(signed_in?) %> containersignedout <% end %>">
 		<%= render 'layouts/header' %>
-
 		<% flash.each do |key, value| %>
 			<div class="alert alert-<%= key %>" style="margin-top: 5px; margin-bottom: 15px;">
 				<button type="button" class="close alert-<%= key %> flashclose" data-dismiss="alert" style = "border: none;">×</button>

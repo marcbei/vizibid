@@ -1,7 +1,7 @@
 <% if !(signed_in?)%>
-  <div class = "row">
+  <div class = "row" style="margin-left: 0px; height: 120px; width: 1000px; background-color: white;">
     <a class="span4" href="<%=root_path%>" style="padding-top: 12px;"><img src="/assets/vizibid-RGB-312x104.png" width="270" height="90"/></a>
-    <span class="pull-right">
+    <span class="pull-right" style="margin-right: 30px;">
         <%= render 'sessions/sign_in_modal' %>
       </span>
   </div>
