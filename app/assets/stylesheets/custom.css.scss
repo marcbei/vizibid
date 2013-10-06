@@ -1,5 +1,4 @@
 $baseFontFamily: Helvetica, Sans-Serif;
-$gridGutterWidth: 8px;
 
 @import "bootstrap";
 
@@ -9,6 +8,24 @@ $gridGutterWidth: 8px;
   -moz-box-sizing: border-box; 
   -webkit-box-sizing: border-box; 
   box-sizing: border-box;
+}
+
+@font-face
+{
+  font-family: 'bariol';
+  src: url('Bariol_Regular.otf');
+}
+
+@font-face
+{
+  font-family: 'bariol-light';
+  src: url('Bariol_Light.otf');
+}
+
+@font-face
+{
+  font-family: 'bariol-bold';
+  src: url('Bariol_Bold.otf');
 }
 
 /* universal */
