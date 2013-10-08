@@ -73,6 +73,12 @@ class PagesController < ApplicationController
     end
   end
 
+  def learnmore
+    if !signed_in?
+      @user = User.new
+    end
+  end
+
   def share
   	signed_in_user
 

@@ -1,0 +1,21 @@
+<% provide(:title, 'Learn More') %>
+
+<div class="row">
+  <div class="span3 bs-docs-sidebar" style = "margin-left: 30px; font-family: bariol;">
+    <ul class="nav nav-list bs-docs-sidenav">
+      <li class= "active" id="account"><%= link_to learn_more_path("what"), :remote => :true do %><i class="icon-chevron-right"></i> What is Vizibid?<% end %></li>
+      <li id="password"><%= link_to learn_more_path("why"), :remote => :true do %><i class="icon-chevron-right"></i> Why use Vizibid?<% end %></li>
+      <li id = "notifications"><%= link_to learn_more_path("how"), :remote => :true do %><i class="icon-chevron-right"></i> How does Vizibid work?<% end %></li>
+  </div>
+
+  <div id = "content" class= "span9 well" style="background-color: white; margin-top: 30px; padding-top: 0px;">
+    <% if params[:path] == "why" %>
+       <%= render 'pages/learnmore_partials/why' %>
+    <% elsif params[:path] == "how" %>
+      <%= render 'pages/learnmore_partials/how' %>
+    <% else %>
+      <%= render 'pages/learnmore_partials/what' %>
+    <% end %>
+  </div>
+
+</div>

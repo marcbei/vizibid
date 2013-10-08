@@ -1,0 +1,9 @@
+$('.alert').remove()
+
+<% if params[:path] == "what" %>
+	$('div#content').html("<%=j render :partial=> "pages/learnmore_partials/what" %>");
+<% elsif params[:path] == "why" %>
+	$('div#content').html("<%=j render :partial=> "pages/learnmore_partials/why" %>");
+<% elsif params[:path] == "how" %>
+	$('div#content').html("<%=j render :partial=> "pages/learnmore_partials/how" %>");
+<% end %>
