@@ -21,7 +21,7 @@
             </td>
             <td class="span3">
               <% if f.fufilled == false %>
-                <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true %>                  
+                <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true, :class => "btn" %>                  
                   </div>
                 <% end %>
             </td>
