@@ -152,7 +152,7 @@ class User < ActiveRecord::Base
       if count == 0
         average = 0
       else
-        average = sum/count
+        average = (sum/count).round(2)
       end
     else
       average = 0
