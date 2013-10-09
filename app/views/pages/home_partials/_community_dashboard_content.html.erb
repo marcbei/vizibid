@@ -8,11 +8,7 @@
 
 	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
 		<% days = current_user.num_days_since_upload %>
-		<% if days != 0 %>
-			You last shared a document <%= time_ago_in_words(days) %> ago.
-		<% else %>
-			<span style = "font-size: 20px;"><%=current_user.forms.count %></span> documents
-		<% end %>
+		<span style = "font-size: 20px;"><%=current_user.forms.count %></span> documents
 	</div>
 
 	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">

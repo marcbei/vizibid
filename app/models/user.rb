@@ -141,11 +141,19 @@ class User < ActiveRecord::Base
   def average_form_rating
     sum = 0
     if self.forms.count != 0
+      count = 0
       self.forms.each do |f|
-        sum = sum + f.average_rating
+        if !f.average_rating.nan?
+          sum = sum + f.average_rating
+          count = count + 1
+        end
       end
 
-      average = sum/self.forms.count
+      if count == 0
+        average = 0
+      else
+        average = sum/count
+      end
     else
       average = 0
     end
