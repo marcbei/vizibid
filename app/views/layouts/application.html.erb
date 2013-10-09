@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body <% if !(signed_in?) %> style = "background-color: lightgrey;" <% end %>>
+<body <% if !(signed_in?) %> style = "background-color: lightgrey;" <% else %> "padding-bottom: 20px" <% end %>>
 	<div class = "container <% if !(signed_in?) %> containersignedout <% end %>">
 		<%= render 'layouts/header' %>
 		<% flash.each do |key, value| %>
