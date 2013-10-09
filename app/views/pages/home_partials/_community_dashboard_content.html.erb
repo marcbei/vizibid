@@ -28,14 +28,12 @@
 		<span style = "font-size: 20px;"><%=current_user.comments.count%></span> comments
 	</div>
 
-	<% numupvotes = 0 %>
-	<% numdownvotes = 0 %>
 	<% current_user.num_comment_votes(numupvotes, numdownvotes) %>
 	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
-		<span style = "font-size: 20px;"><%= numupvotes %></span> up votes
+		<span style = "font-size: 20px;"><%= current_user.num_up_votes %></span> up votes
 	</div>
 
 	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
-		<span style = "font-size: 20px;"><%= numdownvotes %></span> down votes
+		<span style = "font-size: 20px;"><%= current_user.num_down_votes %></span> down votes
 	</div>
 </div>
