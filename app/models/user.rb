@@ -159,18 +159,32 @@ class User < ActiveRecord::Base
     end
   end
 
-  def num_comment_votes(upvotes, downvotes)
+  def num_up_votes
     upvotes = 0
-    downvotes = 0
     self.comments.each do |c| 
       c.comment_votes.each do |cv|
         if cv.value == 1
           upvotes = upvotes + 1
-        elsif cv.value == -1
+        end
+      end
+    end
+
+    return upvotes
+
+  end
+
+  def num_down_votes
+    downvotes = 0
+    self.comments.each do |c| 
+      c.comment_votes.each do |cv|
+        if cv.value == -1
           downvotes = downvotes + 1
         end
       end
     end
+
+    return downvotes
+
   end
 
   def send_password_reset
