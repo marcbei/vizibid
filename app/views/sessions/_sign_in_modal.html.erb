@@ -1,9 +1,9 @@
-<div class="header-signin-form" style = "margin-top: 30px">
+<div class="header-signin-form" style = "margin-top: 32px">
 	<%= form_for(:session, url: sessions_path) do |f| %>
 		<%= f.text_field :email, :placeholder => "email", :style => "width: 150px;margin-top: 15px;" %>
 		<%= f.password_field :password, :placeholder => "password", :style => "width: 150px; margin-top: 15px;"  %>
 
-		<%= f.submit "Sign in", class: "btn btn-info btn-small", style: "margin-top: 5px;" %>
+		<%= f.submit "", :type => :image, :src => "/assets/signin_72x28.png", style: "margin-top: 15px; border: none;" %>
 	<% end %>
-	<%= link_to "Forgot your password?", new_password_reset_path, :style => "color: black; margin-left: 173px;" %>
+	<%= link_to "Forgot your password?", new_password_reset_path, :style => "color: black; margin-left: 173px; padding: 0px;" %>
 </div>

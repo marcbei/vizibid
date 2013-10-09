@@ -397,3 +397,25 @@ footer {
   margin-bottom: 2px;
 }
 
+.teaser{
+  border: 30px solid grey;
+  border-image: url('diagonal-lines.png') 30 30 30 30;
+}
+
+.teaser2{
+  background-image: url('teaser2.png');
+  width: 960px;
+  height: 462px;
+}
+
+.teaser3{
+  background-image: url('teaser3.png');
+  width: 960px;
+  height: 462px;
+}
+
+.teaser4{
+  background-image: url('teaser4.png');
+  width: 960px;
+  height: 462px;
+}
