@@ -4,7 +4,7 @@
       <% @followedforms.each do |f| %>
         <tr>
           <td class="span9">
-            <%= link_to f.name, form_request_path(f) %>
+            <%= link_to f.description, form_request_path(f) %>
             <div style="font-size: 12px;">
               Requested <%= time_ago_in_words(f.created_at) %> 
               for
