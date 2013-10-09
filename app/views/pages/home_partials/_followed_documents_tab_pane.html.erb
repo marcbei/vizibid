@@ -4,19 +4,22 @@
       <% @followedforms.each do |f| %>
         <tr>
           <td class="span9">
-            <%= link_to f.description, form_request_path(f) %>
+            <%= link_to f.form.description, form_path(f.form) %>
             <div style="font-size: 12px;">
-              Requested <%= time_ago_in_words(f.created_at) %> 
+              Requested <%= time_ago_in_words(f.form.created_at) %> 
               for
-              <% if f.jurisdiction == "Any" %>
+              <% if f.form.jurisdiction == "Any" %>
                 any jurisdiction
               <% else %>
-                <%= f.jurisdiction %>
+                <%= f.form.jurisdiction %>
               <% end %>
              </div>
              <div style="font-size: 12px;">
-                <%= pluralize(f.comments.count, 'comments') %> 
+                <%= pluralize(f.form.comments.count, 'comments') %> 
              </div>
+          </td>
+          <td class="span3">
+            <%= link_to :"Unfollow", unfollowform_path(f.form.id), :remote => true %>
           </td>
         </tr>
       <% end %>
