@@ -1,49 +1,33 @@
 <div class = "request-content">
-  <br/>
-  <% if form_requests.count > 0 %>
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs span4">
-        <% i = 0 %>
+  <table class="table table-striped">
+    <% if form_requests.count > 0 %>
+
         <% form_requests.each do |f| %>
-          <li class="<% if i == 0 %> active <% end %>">
-            <a href="#r<%= i %>" data-toggle="tab"><%= f.name %></a>
-          </li>
-          <% i = i + 1 %>
-        <%end%>
-      </ul>
-      <div class="tab-content span7">
-        <% i = 0 %>
-        <% form_requests.each do |f| %>
-          <div class="tab-pane <% if i == 0 %> active <% end %>" id="r<%= i %>">
-            <p>
-              On <%= f.created_at.to_datetime.strftime("%B %d, %Y") %> you requested:
-                <div style="border: solid #ccc 1px; padding: 5px 5px 5px 5px;">
-                  <%= link_to f.description, form_request_path(f) %>
-                </div>
-                <div style="margin-top: 10px;">
-                  Jurisdiction: <%= f.jurisdiction %>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <% if f.practice_area != nil %>
-                    <br/>Practice Area: <%= f.practice_area.practice_area_title %> <br/>
+          <tr>
+            <td class="span9">
+              <%= link_to f.name, form_request_path(f) %>
+              <div style="font-size: 12px;">
+                Requested <%= time_ago_in_words(f.created_at) %> 
+                for
+                <% if f.jurisdiction == "Any" %>
+                  any jurisdiction
+                <% else %>
+                  <%= f.jurisdiction %>
                 <% end %>
-                </div>
-                <% if f.fufilled == false %>
-                  <div style="margin-top: 10px;">
-                     <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true, :class=> "btn" %>                  
+               </div>
+               <div style="font-size: 12px;">
+                  <%= pluralize(f.forms.count, 'responses') %> 
+               </div>
+            </td>
+            <td class="span3">
+              <% if f.fufilled == false %>
+                <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true %>                  
                   </div>
                 <% end %>
-            </p>
-            <%= render 'form_requests/show_request_submissions', :f => f %>
-          </div>
-          <% i = i + 1 %>
+            </td>
+          </tr>
         <% end %>
-      </div>
-    </div>
-    <% else %>
-      <% if @open_req == true %>
-        You have no open requests.
-      <% else %>
-        You have no fulfilled requests.
-      <% end %>
+
     <% end %>
+  </table>
 </div>
