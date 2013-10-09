@@ -1,27 +1,45 @@
 <div class="well">
-<div style="padding-left: 10px; padding-right: 10px;">
-You have shared <%= pluralize(current_user.forms.count, "document") %>.
-</div>
-<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
-You have written <%= pluralize(current_user.comments.count, "comment") %>.
-</div>
-<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
-Your documents have been downloaded <%= pluralize(current_user.num_form_downloads, "time") %>.
-</div>
-<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
-<% days = current_user.num_days_since_upload %>
-<% if days != 0 %>
-	You last shared a document <%= time_ago_in_words(days) %> ago.
-<% else %>
-	You have not shared any documents.
-<% end %>
-</div>
-<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
-<% days = current_user.num_days_since_comment %>
-<% if days != 0 %>
-	You last wrote a comment <%= time_ago_in_words(days) %> ago.
-<% else %>
-	You have not written any comments.
-<% end %>
-</div>
+	<div style="padding-left: 10px; padding-right: 10px;">
+		<strong><%= current_user.name %></strong>
+	</div>
+	<div style="padding-left: 10px; padding-right: 8px; font-size: 12px; margin-top: 8px;">
+		UPLOADED DOCUMENTS
+	</div>
+
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 10px;">
+		<% days = current_user.num_days_since_upload %>
+		<% if days != 0 %>
+			You last shared a document <%= time_ago_in_words(days) %> ago.
+		<% else %>
+			<span style = "font-size: 20px;"><%=current_user.forms.count %></span> documents
+		<% end %>
+	</div>
+
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
+		<span style = "font-size: 20px;"><%= current_user.num_form_downloads %></span> downloaded by others
+	</div>
+
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
+		<span style = "font-size: 20px;"><%= current_user.average_form_rating %></span> average rating
+	</div>
+
+
+	<div style="padding-left: 10px; padding-right: 8px; font-size: 12px; margin-top: 16px;">
+		COMMENTS
+	</div>
+
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
+		<span style = "font-size: 20px;"><%=current_user.comments.count%></span> comments
+	</div>
+
+	<% numupvotes = 0 %>
+	<% numdownvotes = 0 %>
+	<% current_user.num_comment_votes(numupvotes, numdownvotes) %>
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
+		<span style = "font-size: 20px;"><%= numupvotes %></span> up votes
+	</div>
+
+	<div style="padding-left: 10px;  padding-right: 10px; margin-top: 14px;">
+		<span style = "font-size: 20px;"><%= numdownvotes %></span> down votes
+	</div>
 </div>

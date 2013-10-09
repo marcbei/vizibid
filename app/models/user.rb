@@ -138,6 +138,33 @@ class User < ActiveRecord::Base
     return days
   end
 
+  def average_form_rating
+    sum = 0
+    if self.forms.count != 0
+      self.forms.each do |f|
+        sum = sum + f.average_rating
+      end
+
+      average = sum/self.forms.count
+    else
+      average = 0
+    end
+  end
+
+  def num_comment_votes(upvotes, downvotes)
+    upvotes = 0
+    downvotes = 0
+    self.comments.each do |c| 
+      c.comment_votes.each do |cv|
+        if cv.value == 1
+          upvotes = upvotes + 1
+        elsif cv.value == -1
+          downvotes = downvotes + 1
+        end
+      end
+    end
+  end
+
   def send_password_reset
     self.password_reset_token = SecureRandom.urlsafe_base64
     self.password_reset_sent_at = Time.zone.now

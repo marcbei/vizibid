@@ -1,12 +1,11 @@
 <div class="span3 offset1 dashboard">
-	<h4 style="padding-left: 10px;">Your Activity</h4>
 	<p>
-		<% if params[:tab] == "followed" %>
-			<%= render 'pages/home_partials/followed_dashboard_content' %>
-		<% elsif params[:tab] == "requests" %>
-			<%= render 'pages/home_partials/requests_dashboard_content' %>
-		<% else %>
+		<%# if params[:tab] == "followed" %>
+			<%#= render 'pages/home_partials/followed_dashboard_content' %>
+		<%# elsif params[:tab] == "requests" %>
+			<%#= render 'pages/home_partials/requests_dashboard_content' %>
+		<%# else %>
 			<%= render 'pages/home_partials/community_dashboard_content' %>
-		<% end %>
+		<%# end %>
 	</p>
 </div>
