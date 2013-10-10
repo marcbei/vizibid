@@ -4,11 +4,10 @@
     <div class = "well">
       <% name = current_user.name.gsub(' ', '_') %>
       <h3><%= link_to current_user.name, usershow_path(name.downcase)%></h3>
-      (View my profile page)
+      (View your profile page)
     </div>
     <ul class="nav nav-list bs-docs-sidenav">
-      <li class= "active" id="account"><%= link_to settings_path("account"), :remote => :true do %><i class="icon-chevron-right"></i> Account<% end %></li>
-      <li id="password"><%= link_to settings_path("password"), :remote => :true do %><i class="icon-chevron-right"></i> Password<% end %></li>
+      <li id="password" class="active"><%= link_to settings_path("password"), :remote => :true do %><i class="icon-chevron-right"></i> Password<% end %></li>
       <li id = "notifications"><%= link_to settings_path("notifications"), :remote => :true do %><i class="icon-chevron-right"></i> Email Notifications<% end %></li>
       <li id = "profile"><%= link_to settings_path("profile"), :remote => :true  do %><i class="icon-chevron-right"></i> Profile<% end %></li>
       </ul>
@@ -18,8 +17,6 @@
 <div id = "content" class= "span6 well">
 <% if params[:path] == "password" %>
   <%= render 'pages/settings_partials/password_settings' %>
-<% elsif params[:path] == "account" %>
-   <%= render 'pages/settings_partials/account_settings' %>
 <% elsif params[:path] == "notifications" %>
   <%= render 'pages/settings_partials/notifications_settings' %>
 <% elsif params[:path] == "profile" %>

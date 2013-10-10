@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   	if @user.save
       # create the default user details and notifications
       @user_details = UserDetail.new(:user_id => @user.id, :show_comments => false, 
-        :show_uploaded => true, :show_requests => true)
+        :show_uploaded => false, :show_requests => false)
       
       @user_notifications = UserNotification.new(:user_id => @user.id, :requests => true,
         :forms => true, :news => true, :tips => true, :surveys => true, :downloads => true)

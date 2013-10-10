@@ -12,8 +12,6 @@ $('.alert').remove()
 
 <% if params[:path] == "password" %>
 	$('div#content').html("<%=j render :partial=> "pages/settings_partials/password_settings" %>");
-<% elsif params[:path] == "account" %>
-	$('div#content').html("<%=j render :partial=> "pages/settings_partials/account_settings" %>");
 <% elsif params[:path] == "notifications" %>
 	$('div#content').html("<%=j render :partial=> "pages/settings_partials/notifications_settings" %>");
 <% elsif params[:path] == "profile" %>

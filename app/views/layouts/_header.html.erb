@@ -26,7 +26,7 @@
             <li><%= link_to "History", history_path %></li>
             <% name = current_user.name.gsub(' ', '_') %>
             <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
-            <li><%= link_to "Settings", settings_path("account") %></li>
+            <li><%= link_to "Settings", settings_path("password") %></li>
             <li class="divider"></li>
             <li>
               <%= link_to "Sign out", signout_path, method: "delete" %>
