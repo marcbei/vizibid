@@ -1,7 +1,6 @@
 <div class = "request-content">
-  <table class="table table-striped">
     <% if form_requests.count > 0 %>
-
+      <table class="table table-striped">
         <% form_requests.each do |f| %>
           <tr>
             <td class="span9">
@@ -21,13 +20,19 @@
             </td>
             <td class="span3">
               <% if f.fufilled == false %>
-                <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true, :class => "btn" %>                  
-                  </div>
+                <%= link_to :"Close Request", completerequest_path(:id => f.id), :remote => true, :class => "btn" %>           
                 <% end %>
             </td>
           </tr>
         <% end %>
-
+      </table>
+    <% else %>
+      <div class= "span8">
+        <% if params[:scope] == "open" || params[:scope].nil?%>
+          You do not have any open requests. Click the 'request' button to request a document.
+        <% else %>
+          You do not have any fulfilled requests.
+        <% end %>
+      </div>
     <% end %>
-  </table>
 </div>
