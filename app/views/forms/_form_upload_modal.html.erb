@@ -3,9 +3,9 @@
 
 <div id="modalFormUpload" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="well">
-    <strong><p>Complete and submit this form to upload a new model legal document to Vizibid.</p></strong>
-    <div class = "row-fluid">
+    <div class = "row">
       <div class = "span6">
+        <strong><p>Complete and submit this form to upload a new model legal document to Vizibid.</p></strong>
         <%= form_for @form_to_upload, :html => {:multipart => true} do |f| %>
           <div class="field">
 
@@ -30,6 +30,7 @@
               <%= f.file_field :form, :style => "Display: inline;" %>
           <div >
             <%= f.submit "Submit", :class => "btn btn-info"%>
+            <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
           </div>
         <% end %>
       </div>
