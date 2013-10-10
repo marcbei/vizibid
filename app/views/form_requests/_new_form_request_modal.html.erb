@@ -8,11 +8,11 @@
       <div class="span6">
         <%= form_for @form_request_to_upload do |fr| %>
         	   Name
-        	  <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name that is descriptive of the document you are requesting. Make sure the name will help other users understand what this document is."><i class="icon-question-sign"></i></a></u>
+        	  <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name that is descriptive of the document you are requesting. Make sure the name will help other lawyers understand what this document is."><i class="icon-question-sign"></i></a></u>
             <%= fr.text_field :name %>
           	
             Description
-          	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+          	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other lawyers provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
             <%= fr.text_area :description, :size => "10x6" %>
           	
             Practice Area
@@ -22,7 +22,7 @@
             </div>
 
             Jurisdiction
-          	<u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+          	<u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
             <div class = "jurisdropdown">
           		<%= fr.select :jurisdiction, options_for_select(us_states) %>
           	</div>
