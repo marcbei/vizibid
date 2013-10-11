@@ -3,19 +3,36 @@
 	<%#= render 'shared/error_messages' %>
 	<%= f.label :location %>
 	<%= f.text_field :location %>
+	<div style="margin-top: -15px;">
+		<%= f.check_box :show_location, :style => "margin-bottom: 6px;" %>
+		<%= f.label :show_location, "Show your location on your profile", :style => "display:inline;" %>
+	</div>
 	<%= f.label :website %>
 	<%= f.text_field :website %>
+	<div style="margin-top: -15px;">
+		<%= f.check_box :show_website, :style => "margin-bottom: 6px;" %>
+		<%= f.label :show_website, "Show your website on your profile", :style => "display:inline;" %>
+	</div>
 	<%= f.label :practice_area, 'Practice Area' %>
 	<%= f.text_field :practice_area %>
+	<div style="margin-top: -15px;">
+		<%= f.check_box :show_practice_area, :style => "margin-bottom: 6px;" %>
+		<%= f.label :show_practice_area, "Show your practice area on your profile", :style => "display:inline;" %>
+	</div>
 	<%= f.label :bio %>
 	<%= f.text_area :bio, :size => "10x5" %>
-	<br/>
+	<div style="margin-top: -15px;">
+		<%= f.check_box :show_bio, :style => "margin-bottom: 6px;" %>
+		<%= f.label :show_bio, "Show your bio on your profile", :style => "display:inline;" %>
+	</div>
+	<%= f.check_box :show_email, :style => "margin-bottom: 6px;" %>
+	<%= f.label :show_email, "Show your email address on your profile", :style => "display:inline;" %><br/>
 	<%= f.check_box :show_uploaded, :style => "margin-bottom: 6px;" %>
-	<%= f.label :show_uploaded, "Show the documents I've shared on my profile", :style => "display:inline;" %><br/>
+	<%= f.label :show_uploaded, "Show the documents you've shared on you profile", :style => "display:inline;" %><br/>
 	<%= f.check_box :show_requests, :style => "margin-bottom: 6px;"%>
-	<%= f.label :show_requests, "Show the documents I've requested on my profile", :style => "display:inline;" %><br/>
+	<%= f.label :show_requests, "Show the documents you've requested on your profile", :style => "display:inline;" %><br/>
 	<%= f.check_box :show_comments, :style => "margin-bottom: 6px;"%>
-	<%= f.label :show_comments, "Show my comments on my profile", :style => "display:inline;" %><br/>
+	<%= f.label :show_comments, "Show your comments on your profile", :style => "display:inline;" %><br/>
 	<br/>
 	<%= f.submit "Save changes", class: "btn btn-info" %>
 <% end %>

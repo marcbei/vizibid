@@ -3,7 +3,7 @@ class UserDetailsController < ApplicationController
 	before_filter :signed_in_user, only: [:edit, :update]
 
 	def update
-
+		
 		# verify the user
 		@user_detail = UserDetail.find(params[:id])
 		correct_user_with_id(@user_detail.user.id)

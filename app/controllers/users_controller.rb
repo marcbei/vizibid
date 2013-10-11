@@ -12,7 +12,10 @@ class UsersController < ApplicationController
     # pull data for the profile page
     name = params[:name].gsub('_', ' ')
   	@user = User.all(:conditions => ['name ILIKE ?', name]).first
-    
+    if @user.id == current_user.id
+      @show_edit = true
+    end
+
     @formdownloads = @user.downloads.order("created_at asc")
     @formdownloads_a = FormDownload.find_all_by_user_id(@user.id)
     @formdownloads_count = @user.downloads.count
@@ -42,8 +45,9 @@ class UsersController < ApplicationController
   	if @user.save
       # create the default user details and notifications
       @user_details = UserDetail.new(:user_id => @user.id, :show_comments => false, 
-        :show_uploaded => false, :show_requests => false)
-      
+        :show_uploaded => false, :show_requests => false, :show_location => false, :show_website => false,
+        :show_bio => false, :show_practice_area => false, :show_email => false)
+
       @user_notifications = UserNotification.new(:user_id => @user.id, :requests => true,
         :forms => true, :news => true, :tips => true, :surveys => true, :downloads => true)
       

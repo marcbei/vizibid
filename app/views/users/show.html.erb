@@ -2,22 +2,30 @@
 <div class = "row">
 	<div class = "span12">
 	<br/>
+	<% if @show_edit == true %>
+		<%= link_to "Edit what appears on your profile", settings_path("profile") %>
+		<br/><br/>
+	<% end %> 
 	<b><%= @user.name %></b>, Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %>
 	<br/>
-	Email: <%= mail_to @user.email%>
+	Licensed in <%= @user.state_licensed %>
 	<br/>
-	<% if !@user.user_detail.website.nil? %>
+	<% if @user.user_detail.show_email == true %>
+		Email: <%= mail_to @user.email%>
+		<br/>
+	<% end %>
+	<% if !@user.user_detail.website.nil? && @user.user_detail.show_website == true %>
 		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %><br/>
 	<% end %>
-	<% if !@user.user_detail.location.nil? %>
+	<% if !@user.user_detail.location.nil? && @user.user_detail.show_location == true  %>
 		Location: <%= @user.user_detail.location %><br/>
 	<% end %>
 
-	<% if !@user.user_detail.practice_area.nil? %>
+	<% if !@user.user_detail.practice_area.nil?&& @user.user_detail.show_practice_area == true  %>
 		Practice Area: <%= @user.user_detail.practice_area %><br/><br/>
 	<% end %>
 
-	<% if !@user.user_detail.bio.nil? %>
+	<% if !@user.user_detail.bio.nil? && @user.user_detail.show_bio == true  %>
 		Bio: <%= @user.user_detail.bio %><br/>
 	<% end %>
 	<br/>
