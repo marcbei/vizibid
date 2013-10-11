@@ -12,7 +12,7 @@ class UserNotificationsController < ApplicationController
 		current_user.user_notification.update_attributes(params[:user_notification])
 
 		flash[:success] = "Notification settings updated"
-		redirect_to settings_path("account")
+		redirect_to settings_path("notifications")
 	end
 
 end

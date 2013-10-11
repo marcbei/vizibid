@@ -18,7 +18,7 @@ class UserDetailsController < ApplicationController
 			flash[:error] = "Unable to save profile settings"
 		end
 
-		redirect_to settings_path("account")
+		redirect_to settings_path("profile")
 	end
 
 end

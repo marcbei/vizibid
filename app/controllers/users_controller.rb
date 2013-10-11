@@ -86,26 +86,26 @@ class UsersController < ApplicationController
         @user = current_user
 
         # update username and/or email address
-        if params[:account_reset] == "true"
+       # if params[:account_reset] == "true"
 
-          if params[:user][:name] != nil && params[:user][:name] != "" && params[:user][:name] != @user.name
-              @user.name = params[:user][:name]
-          end
+        #  if params[:user][:name] != nil && params[:user][:name] != "" && params[:user][:name] != @user.name
+         #     @user.name = params[:user][:name]
+         # end
 
-          if params[:user][:email] != nil && params[:user][:email] != "" && params[:user][:email] != @user.email
-              @user.email = params[:user][:email]
-          end
+          #if params[:user][:email] != nil && params[:user][:email] != "" && params[:user][:email] != @user.email
+              #@user.email = params[:user][:email]
+          #end
 
-          if @user.save
-            sign_in(User.find(@user.id))
-            flash[:success] = "Updated account settings"
+          #if @user.save
+           # sign_in(User.find(@user.id))
+            #flash[:success] = "Updated account settings"
             
-          else
-            flash[:error] = "Unable to update account settings"
-          end
+          #else
+           # flash[:error] = "Unable to update account settings"
+         # end
           
         # update password
-        elsif params[:password_reset] == "true"
+        if params[:password_reset] == "true"
          if @user.authenticate(params[:user][:password]) && params[:user][:password].length >= 6 && params[:user][:newpassword].length >= 6 && params[:user][:newpassword_confirmation].length >= 6
               @user.password = params[:user][:newpassword]
               @user.password_confirmation = params[:user][:newpassword_confirmation]
@@ -117,6 +117,6 @@ class UsersController < ApplicationController
           end
         end
 
-        redirect_to settings_path("account")
+        redirect_to settings_path("password")
   end
 end

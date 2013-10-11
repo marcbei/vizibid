@@ -7,9 +7,9 @@
       (View your profile page)
     </div>
     <ul class="nav nav-list bs-docs-sidenav">
-      <li id="password" class="active"><%= link_to settings_path("password"), :remote => :true do %><i class="icon-chevron-right"></i> Password<% end %></li>
-      <li id = "notifications"><%= link_to settings_path("notifications"), :remote => :true do %><i class="icon-chevron-right"></i> Email Notifications<% end %></li>
-      <li id = "profile"><%= link_to settings_path("profile"), :remote => :true  do %><i class="icon-chevron-right"></i> Profile<% end %></li>
+      <li id="password" <% if params[:path] == "password" || params[:path].nil?%> class="active" <% end %>><%= link_to settings_path("password"), :remote => :true do %><i class="icon-chevron-right"></i> Password<% end %></li>
+      <li id = "notifications" <% if params[:path] == "notifications" %> class="active" <% end %>><%= link_to settings_path("notifications"), :remote => :true do %><i class="icon-chevron-right"></i> Email Notifications<% end %></li>
+      <li id = "profile" <% if params[:path] == "profile" %> class="active" <% end %>><%= link_to settings_path("profile"), :remote => :true  do %><i class="icon-chevron-right"></i> Profile<% end %></li>
       </ul>
   </div>
 
