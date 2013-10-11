@@ -28,19 +28,19 @@ class Form < ActiveRecord::Base
   has_many :RequestSubmissions
   has_many :form_requests, :through => :RequestSubmissions
 
-  has_many :form_ratings
+  has_many :form_ratings, dependent: :destroy
   has_many :raters, :through => :form_ratings, :source => :user
 
-  has_many :form_downloads
+  has_many :form_downloads, dependent: :destroy
   has_many :downloads, :through => :form_downloads, :source => :user
 
-  has_many :form_views
+  has_many :form_views, dependent: :destroy
   has_many :views, :through => :form_views, :source => :user
 
-  has_many :form_permissions
+  has_many :form_permissions, dependent: :destroy
   has_many :permissions, :through => :form_permissions, :source => :role
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :user
 
   belongs_to :practice_area
