@@ -5,10 +5,10 @@
 			You are not subscribed to any practice areas. Click the 'manage' button to set your practice areas.
 		</div>
 	<% else %>
-		<table class="table table-striped">
+		<table class="table">
 			<% @items.each do |i| %>
-				<tr>
-					<% if i.class.name == "Form" %>
+				<% if i.class.name == "Form" %>
+					<tr style="background-color:#f9f9f9;">	
 						<td class="span2">Document:</td>
 						<td>
 							<img src="assets/doc-15x15.png"/>
@@ -29,24 +29,25 @@
 							</div>
 						</td>
 					<% else %>
-						<td class="span2">Request:</td>
-						<td>
-							<img src="assets/req-15x15.png"/>
-							<% name = i.user.name.gsub(' ', '_') %>
-							<%= link_to i.name, form_request_path(i) %><br/>
-							<div style="font-size: 12px;">
-								<% if params[:sort] == "activity" %>
-									Updated <%= time_ago_in_words(i.updated_at) %> 
-								<% else %>
-									Requested <%= time_ago_in_words(i.created_at) %> 
-								<% end %> ago by 
-								<% if i.anonymous == false %>
-									<%= link_to i.user.name, usershow_path(name) %>
-								<% else %>
-									anonymous
-								<% end %>
-							</div>
-						</td>
+						<tr>
+							<td class="span2">Request:</td>
+							<td>
+								<img src="assets/req-15x15.png"/>
+								<% name = i.user.name.gsub(' ', '_') %>
+								<%= link_to i.name, form_request_path(i) %><br/>
+								<div style="font-size: 12px;">
+									<% if params[:sort] == "activity" %>
+										Updated <%= time_ago_in_words(i.updated_at) %> 
+									<% else %>
+										Requested <%= time_ago_in_words(i.created_at) %> 
+									<% end %> ago by 
+									<% if i.anonymous == false %>
+										<%= link_to i.user.name, usershow_path(name) %>
+									<% else %>
+										anonymous
+									<% end %>
+								</div>
+							</td>
 					<% end %>
 				</tr>
 			<% end %>
