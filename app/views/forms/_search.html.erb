@@ -1,5 +1,5 @@
 <div style ="display:inline-block;">
-	<%= form_tag root_path, :method => 'get' do %>
+	<%= form_tag root_path, :style=>"margin-top:35px;", :method => 'get' do %>
 		<%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "searchbox"%>
 		<%= submit_tag "Search", :class => "btn btn-info" %>
 	<% end %>

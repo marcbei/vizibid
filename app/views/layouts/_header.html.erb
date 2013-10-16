@@ -11,13 +11,13 @@
     <%= render 'pages/home_partials/user_feedback_form_modal' %>
     <span class="span4 navbar-signed-links">
       <div class = "row">
-      <div class="span1">
+      <div class="span1 offset1">
         <%= render 'form_requests/new_form_request_modal' %>
       </div>
       <div class="span1">
         <%= render 'forms/form_upload_modal' %>
       </div>
-      <div class="span2">
+      <div class="span1">
         <span id="fat-menu" class="dropdown">
           <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown">
             <%= @current_user.name.split(" ")[0] %> <span class="caret"></span>
