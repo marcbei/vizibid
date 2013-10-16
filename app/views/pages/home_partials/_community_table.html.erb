@@ -11,6 +11,7 @@
 					<% if i.class.name == "Form" %>
 						<td class="span2">Document:</td>
 						<td>
+							<img src="assets/doc-15x15.png"/>
 							<% name = i.user.name.gsub(' ', '_') %>
 							<%= link_to i.description, form_path(i) %><br/>
 							<div style="font-size: 12px;">
@@ -30,6 +31,7 @@
 					<% else %>
 						<td class="span2">Request:</td>
 						<td>
+							<img src="assets/req-15x15.png"/>
 							<% name = i.user.name.gsub(' ', '_') %>
 							<%= link_to i.name, form_request_path(i) %><br/>
 							<div style="font-size: 12px;">

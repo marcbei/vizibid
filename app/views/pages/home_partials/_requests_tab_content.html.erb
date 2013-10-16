@@ -4,6 +4,7 @@
         <% form_requests.each do |f| %>
           <tr>
             <td class="span9">
+              <img src="assets/req-15x15.png"/>
               <%= link_to f.name, form_request_path(f) %>
               <div style="font-size: 12px;">
                 Requested <%= time_ago_in_words(f.created_at) %> 
