@@ -7,34 +7,41 @@
   </div>
 <% elsif signed_in? %>
   <div class = "row" style="padding-top: 10px;">
-    <a class="span4" href="<%=root_path%>"><img src="/assets/vizibid-RGB-312x104.png" width="234" height="78" style="margin-left: -20px;"/></a>
+    <div class="span4">
+      <a href="<%=root_path%>"><img src="/assets/vizibid-RGB-312x104.png" width="234" height="78" style="margin-left: -20px;"/></a>
+    </div>
     <%= render 'pages/home_partials/user_feedback_form_modal' %>
     <span class="span4 navbar-signed-links">
       <div class = "row">
-      <div class="span1 offset1">
-        <%= render 'form_requests/new_form_request_modal' %>
-      </div>
-      <div class="span1">
-        <%= render 'forms/form_upload_modal' %>
-      </div>
-      <div class="span1">
-        <span id="fat-menu" class="dropdown">
-          <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown">
-            <%= @current_user.name.split(" ")[0] %> <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu pull-right">
-            <li><%= link_to "History", history_path %></li>
-            <% name = current_user.name.gsub(' ', '_') %>
-            <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
-            <li><%= link_to "Settings", settings_path("password") %></li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to "Sign out", signout_path, method: "delete" %>
-            </li>
-          </ul>
-        </span>
+        <div class="span1 offset1">
+          <%= render 'form_requests/new_form_request_modal' %>
+        </div>
+        <div class="span1">
+          <%= render 'forms/form_upload_modal' %>
+        </div>
+        <div class="span1">
+          <span id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle headerli" data-toggle="dropdown">
+              <%= @current_user.name.split(" ")[0] %> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li><%= link_to "History", history_path %></li>
+              <% name = current_user.name.gsub(' ', '_') %>
+              <li><%= link_to "Profile", usershow_path(name.downcase) %></li>
+              <li><%= link_to "Settings", settings_path("password") %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Sign out", signout_path, method: "delete" %>
+              </li>
+            </ul>
+          </span>
         </div>
       </div>
-      </span>
-    </div>
+      <div class = "row">
+        <div class = "offset1" style="font-size: 10px; font-style: italic; padding-top: 5px; line-height: 12px;">
+          *Vizibid is currently free during the alpha release. There will be a monthly fee eventually.
+        </div>
+      </div>
+    </span>
+  </div>
 <% end %>
