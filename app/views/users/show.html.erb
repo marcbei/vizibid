@@ -15,7 +15,7 @@
 		<br/>
 	<% end %>
 	<% if !@user.user_detail.website.nil? && @user.user_detail.show_website == true %>
-		Website: <%= link_to @user.user_detail.website, @user.user_detail.website %><br/>
+		Website: <%= link_to @user.user_detail.website, url_with_protocol(@user.user_detail.website), :target => "_blank" %><br/>
 	<% end %>
 	<% if !@user.user_detail.location.nil? && @user.user_detail.show_location == true  %>
 		Location: <%= @user.user_detail.location %><br/>

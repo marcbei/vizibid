@@ -3,6 +3,10 @@ module UsersHelper
 	require 'nokogiri'
 	require 'open-uri'
 
+ 	def url_with_protocol(url)
+    	/http/.match(url) ? url : "http://#{url}"
+  	end
+
 	def set_permissions(user, access_code)
 
 		@user_permission = UserPermission.new
