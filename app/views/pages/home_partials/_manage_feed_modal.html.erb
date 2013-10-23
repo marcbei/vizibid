@@ -4,9 +4,9 @@
 		<%= form_tag practicearea_path do %>
 			<% PracticeArea.all.each_with_index do |pa,i| %>
 				<% if UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}' and practice_area_id = '#{pa.id}'"]).count == 1 %>
-					<%= check_box_tag(practice_areas[i][0], 'selected', true, :style => "margin-bottom: 8px;") %>
+					<%= check_box_tag(practice_areas[i][0], 'selected', true, :style => "margin-bottom: 4px;") %>
 				<% else %>
-					<%= check_box_tag(practice_areas[i][0], 'selected', false, :style => "margin-bottom: 8px;") %>
+					<%= check_box_tag(practice_areas[i][0], 'selected', false, :style => "margin-bottom: 4px;") %>
 				<% end %>
 				<%= label_tag(practice_areas[i][0], practice_areas[i][0], :style => "display: inline-block;") %>
 				<br/>
