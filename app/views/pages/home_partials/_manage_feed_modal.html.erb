@@ -1,5 +1,5 @@
 <div id="manageFeedModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class = "well">
+	<div class = "well" style = "height: 500px; overflow:scroll;">
 		Select the practice areas that you would like to subscribe to.<br/>
 		<%= form_tag practicearea_path do %>
 			<% PracticeArea.all.each_with_index do |pa,i| %>
@@ -11,6 +11,7 @@
 				<%= label_tag(practice_areas[i][0], practice_areas[i][0], :style => "display: inline-block;") %>
 				<br/>
 			<% end %>
+			<br/>
 			<%= submit_tag(:Save, :class => "btn btn-info") %>
 			<%= submit_tag(:Cancel, :class => "btn", :'data-dismiss' => "modal") %>
 		<% end %>
