@@ -5,14 +5,14 @@
 				<strong class = "pull-left">Sign Up and Try It For Free</strong> <br/><br/>
 				<%= form_for(@user, :validate => true) do |f| %>
 
-					<%= f.text_field :name, :placeholder => "name" %>
-					<%= f.text_field :email, :placeholder => "email" %>
-					<%= f.label "State Licensed", :class => "pull-left" %>
+					<%= f.text_field :name, :placeholder => "name (required)" %>
+					<%= f.text_field :email, :placeholder => "email (required)" %>
+					<%= f.label "State Licensed (required)", :class => "pull-left" %>
 					<%= f.select :state_licensed, options_for_select(options_for_state_licensed) %>
-					<%= f.text_field :bar_number, :placeholder => "bar id number" %>
-					<%= f.password_field :password, :placeholder => "password" %>
-			  		<%= f.password_field :password_confirmation, :placeholder => "repeat password" %>
-			  		<%= text_field_tag :accesscode, nil, :placeholder => "access code" %>
+					<%= f.text_field :bar_number, :placeholder => "bar id number (required)" %>
+					<%= f.password_field :password, :placeholder => "password (required)" %>
+			  		<%= f.password_field :password_confirmation, :placeholder => "repeat password (required)" %>
+			  		<%= f.text_field :referrer, :placeholder => "Who referred you? (optional)" %>
 			  		<br/>
 			  		<%= f.submit "Sign Up For Vizibid", class: "btn btn-info pull-left" %>
 			  		<div style="margin-left: 150px;">

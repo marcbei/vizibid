@@ -17,10 +17,11 @@
 #  state_licensed             :string(255)
 #  verified                   :boolean
 #  last_signin_at             :datetime
+#  referrer                   :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :id, :email, :name, :password, :password_confirmation, :verification_token, :verification_token_sent_at, :bar_number, :state_licensed, :verified, :last_signin_at
+  attr_accessible :id, :email, :name, :password, :password_confirmation, :verification_token, :verification_token_sent_at, :bar_number, :state_licensed, :verified, :last_signin_at, :referrer
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

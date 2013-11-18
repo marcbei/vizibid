@@ -23,12 +23,13 @@
 
 			<%= f.label :password_confirmation, "Repeat Password" %>
       		<%= f.password_field :password_confirmation %>
-
-      		<%= f.label "Access Code (optional)" %>
-      		<%= text_field_tag :accesscode, nil %>
+			
+			<%= f.label :"Who referred you?" %>
+			<%= f.text_field :referrer %>
 
       		<%= f.submit "Create my account", class: "btn  btn-primary" %>
 
 		<% end %>
 	</div>
 </div>
+<br/><br/>
