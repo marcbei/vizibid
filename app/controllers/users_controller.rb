@@ -16,6 +16,10 @@ class UsersController < ApplicationController
       @show_edit = true
     end
 
+    if name.downcase.eql? "vizibid"
+      @vizibid_account = true
+    end
+
     @formdownloads = @user.downloads.order("created_at asc")
     @formdownloads_a = FormDownload.find_all_by_user_id(@user.id)
     @formdownloads_count = @user.downloads.count
