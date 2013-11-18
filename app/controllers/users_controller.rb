@@ -57,7 +57,7 @@ class UsersController < ApplicationController
       
       if @user_details.save && @user_notifications.save
         # set permissions
-        set_permissions(@user, params[:accesscode])
+        set_permissions(@user, '712')
         
         # verify the user
         verify_user(@user)
