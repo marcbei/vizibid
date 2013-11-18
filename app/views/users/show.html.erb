@@ -3,7 +3,9 @@
 	<div class = "span12">
 	<br/>
 		<% if @vizibid_account == true %>
-			This is Vizibid's account used for sharing documents. If you would like to share a lot of documents, please contact us at <%= mail_to "info@vizibid.com" %>
+			<div class = "span8">
+				This is Vizibid's account used for sharing documents. If you would like to share a lot of documents, please contact us at <%= mail_to "info@vizibid.com" %>
+			</div>
 		<% else %>
 		<% if @show_edit == true %>
 			<%= link_to "Edit what appears on your profile", settings_path("profile") %>

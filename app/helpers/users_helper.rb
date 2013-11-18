@@ -30,9 +30,9 @@ module UsersHelper
 
 		emailaddress = ""
 		if user.state_licensed.downcase == "washington"
-			#emailaddress = verify_washington_user(user)
+			emailaddress = verify_washington_user(user)
 		elsif user.state_licensed.downcase == "oregon"
-			#emailaddress = verify_oregon_user(user)
+			emailaddress = verify_oregon_user(user)
 		end
 
 		if emailaddress.to_s.empty?
