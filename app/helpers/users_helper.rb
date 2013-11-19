@@ -52,7 +52,7 @@ module UsersHelper
 		splitname = user.name.split(' ')
 		index = splitname.length-1
 		lastname = splitname[index].to_s.downcase
-		doc = Nokogiri::HTML(open("http://www.mywsba.org/default.aspx?tabid=178&RedirectTabId=177&Usr_ID=#{user.bar_number}"))
+		doc = Nokogiri::HTML(open("https://www.mywsba.org/LawyerDirectory/LawyerProfile.aspx?Usr_ID=#{user.bar_number}"))
 		divs = doc.css("div.inner")
 		if (divs.text.include? "Active") && (divs.text.include? user.bar_number.to_s) && (divs.text.downcase.include? lastname)
 			doc.css('a.link-copy').each do |email|
