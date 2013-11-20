@@ -98,8 +98,10 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
     @form_file_name = File.basename(@form.form.to_s.split('?')[0])
     
-    @formdownload = FormDownload.new(:user_id => current_user.id, :form_id => @form.id)
-    @formdownload.save
+    if @form.user.id != current_user.id
+      @formdownload = FormDownload.new(:user_id => current_user.id, :form_id => @form.id)
+      @formdownload.save
+    end
 
     open(@form.form.url) {|form|
       tmpfile = Tempfile.new("temp#{@form_file_name}")
