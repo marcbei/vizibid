@@ -107,13 +107,18 @@ class FormsController < ApplicationController
       open(@form.form.url) {|form|
         tmpfile = Tempfile.new("temp#{@form_file_name}")
         File.open(tmpfile.path, 'wb') do |f|
-          text = form.read
-          puts text
-          if text.includes? "HTTP/1.1 500 Internal Server Error"
-            raise
+          f.write form.read
+        end
+
+        File.open(tmpfile.path, 'wb') do |f|
+          while line = f.gets
+            puts line
+            if line.contains? "HTTP/1.1 500 Internal Server Error"
+              raise
+            end
           end
-          f.write text
         end 
+
         send_file tmpfile.path, :filename =>  @form_file_name
       }
     rescue
