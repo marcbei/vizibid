@@ -103,13 +103,27 @@ class FormsController < ApplicationController
       @formdownload.save
     end
 
-    open(@form.form.url) {|form|
-      tmpfile = Tempfile.new("temp#{@form_file_name}")
-      File.open(tmpfile.path, 'wb') do |f| 
-        f.write form.read
-      end 
-      send_file tmpfile.path, :filename =>  @form_file_name
-    }
+    begin
+      open(@form.form.url) {|form|
+        tmpfile = Tempfile.new("temp#{@form_file_name}")
+        File.open(tmpfile.path, 'wb') do |f|
+          text = form.read
+          if text.includes? "HTTP/1.1 500 Internal Server Error"
+            raise
+          end
+          f.write text
+        end 
+        send_file tmpfile.path, :filename =>  @form_file_name
+      }
+    rescue
+      open(@form.form.url) {|form|
+        tmpfile = Tempfile.new("temp#{@form_file_name}")
+        File.open(tmpfile.path, 'wb') do |f| 
+          f.write form.read
+        end 
+        send_file tmpfile.path, :filename =>  @form_file_name
+      }
+    end
 
     if current_user.user_notification.downloads == true && current_user.id != @form.user.id
       Mailer.delay.doc_download_mail(current_user, @form)  
