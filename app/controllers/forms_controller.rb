@@ -108,6 +108,7 @@ class FormsController < ApplicationController
         tmpfile = Tempfile.new("temp#{@form_file_name}")
         File.open(tmpfile.path, 'wb') do |f|
           text = form.read
+          puts text
           if text.includes? "HTTP/1.1 500 Internal Server Error"
             raise
           end
