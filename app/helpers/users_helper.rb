@@ -36,14 +36,14 @@ module UsersHelper
 		end
 
 		if emailaddress.to_s.empty?
-			flash[:success] = "Verification email will be sent to the email address that you have signed-up with."
+			flash[:success] = "A verification email will be sent to the email address you signed up with. Follow the instructions in that email to complete the registration process."
 		else
-			flash[:success] = "Verification email has been sent to the email address that is registered with your state's bar association."
+			flash[:success] = "A verification email will be sent to the email address on file with the bar association. Follow the instructions in that email to complete the registration process."
 		end
 
 		Mailer.delay.user_verification_email(user, emailaddress)		
 
-		redirect_to signin_path
+		redirect_to root_path
 
 	end
 

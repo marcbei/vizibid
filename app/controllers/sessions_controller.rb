@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
 			sign_in user
 			redirect_to root_path
 		else
-			redirect_to signin_path
+			flash[:error] = "Error signing in. Please try again."
+			redirect_to root_path
 		end
 	end
 

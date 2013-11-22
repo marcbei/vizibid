@@ -63,9 +63,12 @@ class UsersController < ApplicationController
         verify_user(@user)
         return
       end
-  	end
+  	else
+      flash[:error] = "Unable to create your account. Please try again."
+      redirect_to root_path
 
-    render 'new'
+    end
+      
   end
 
   def verify
