@@ -55,6 +55,10 @@ class UsersController < ApplicationController
       @user_notifications = UserNotification.new(:user_id => @user.id, :requests => true,
         :forms => true, :news => true, :tips => true, :surveys => true, :downloads => true)
       
+      practice_areas.each do |p|
+        UserPracticeArea.new(:user_id => @user.id, :practice_area_id => p[1]).save
+      end
+
       if @user_details.save && @user_notifications.save
         # set permissions
         set_permissions(@user, '712')
