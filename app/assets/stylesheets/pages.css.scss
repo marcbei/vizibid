@@ -114,8 +114,12 @@ body div#content div.row ul {
   margin-bottom: 0;
 }
 
+body div#content div.row ul li {
+  padding-top: 20px;
+}
+
 body div#content div.row ul strong {
-  font-family: bariol-bold;
+  font-family: bariol;
 }
 
 body div#content div.row:first-child h2 {
