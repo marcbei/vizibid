@@ -91,7 +91,7 @@ body div#content div.row h2 {
 }
 
 body div#content div.row p {
-  font-family: bariol-light;
+  font-family: bariol;
   font-size: 18px;
   line-height: 24px;
   font-weight: normal;
@@ -100,4 +100,20 @@ body div#content div.row p {
   letter-spacing: 0;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+body div#content div.row:first-child h2 {
+  padding-top: 32px;
+}
+
+body div#content div.row h2 {
+  padding-top: 44px;
+}
+
+body div#content div.row {
+  padding-left: 32px;
+}
+
+body div#content div.row p {
+  padding-top: 24px;
 }
