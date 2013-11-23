@@ -110,10 +110,17 @@ body div#content div.row h2 {
   padding-top: 44px;
 }
 
-body div#content div.row {
+body div#content .row {
   padding-left: 32px;
 }
 
-body div#content div.row p {
+body div#content .row p {
   padding-top: 24px;
+}
+
+body div#content .row.try-it-button {
+  padding-bottom: 20px;
+}
+body div#content .row.try-it-button a {
+  width: 203px;
 }
