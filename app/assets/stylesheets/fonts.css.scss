@@ -6,26 +6,26 @@ $baseFontFamily: Helvetica, Sans-Serif;
 
 @font-face {
     font-family: 'bariol';
-    src: url('assets/fonts/Bariol_Regular/bariol_regular.eot?#iefix') format('embedded-opentype'),
-         url('assets/fonts/Bariol_Regular/bariol_regular.woff') format('woff'),
-         url('assets/fonts/Bariol_Regular/bariol_regular.ttf') format('truetype'),
-         url('assets/fonts/Bariol_Regular/bariol_regular.svg#bariol') format('svg');
+    src: url('/assets/fonts/Bariol_Regular/bariol_regular.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/Bariol_Regular/bariol_regular.woff') format('woff'),
+         url('/assets/fonts/Bariol_Regular/bariol_regular.ttf') format('truetype'),
+         url('/assets/fonts/Bariol_Regular/bariol_regular.svg#bariol') format('svg');
 }
 
 
 @font-face {
     font-family: 'bariol-light';
-    src: url('assets/fonts/Bariol_Light/bariol_light.eot?#iefix') format('embedded-opentype'),
-         url('assets/fonts/Bariol_Light/bariol_light.woff') format('woff'),
-         url('assets/fonts/Bariol_Light/bariol_light.ttf') format('truetype'),
-         url('assets/fonts/Bariol_Light/bariol_light.svg#bariol-light') format('svg');
+    src: url('/assets/fonts/Bariol_Light/bariol_light.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/Bariol_Light/bariol_light.woff') format('woff'),
+         url('/assets/fonts/Bariol_Light/bariol_light.ttf') format('truetype'),
+         url('/assets/fonts/Bariol_Light/bariol_light.svg#bariol-light') format('svg');
 }
 
 
 @font-face {
     font-family: 'bariol-bold';
-    src: url('assets/fonts/Bariol_Bold/bariol_bold.eot?#iefix') format('embedded-opentype'),
-         url('assets/fonts/Bariol_Bold/bariol_bold.woff') format('woff'),
-         url('assets/fonts/Bariol_Bold/bariol_bold.ttf') format('truetype'),
-         url('assets/fonts/Bariol_Bold/bariol_bold.svg#bariol-bold') format('svg');
+    src: url('/assets/fonts/Bariol_Bold/bariol_bold.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/Bariol_Bold/bariol_bold.woff') format('woff'),
+         url('/assets/fonts/Bariol_Bold/bariol_bold.ttf') format('truetype'),
+         url('/assets/fonts/Bariol_Bold/bariol_bold.svg#bariol-bold') format('svg');
 }
