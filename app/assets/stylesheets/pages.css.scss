@@ -102,6 +102,22 @@ body div#content div.row p {
   margin-bottom: 0;
 }
 
+body div#content div.row ul {
+  font-family: bariol;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: normal;
+  text-align: left;
+  color: #515151;
+  letter-spacing: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body div#content div.row ul strong {
+  font-family: bariol-bold;
+}
+
 body div#content div.row:first-child h2 {
   padding-top: 32px;
 }
@@ -121,7 +137,4 @@ body div#content .row p {
 body div#content .row.try-it-button {
   padding-bottom: 20px;
   padding-top: 56px;
-}
-body div#content .row.try-it-button a {
-  width: 203px;
 }
