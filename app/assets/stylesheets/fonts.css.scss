@@ -6,6 +6,7 @@ $baseFontFamily: Helvetica, Sans-Serif;
 
 @font-face {
     font-family: 'bariol';
+    src: url('/assets/bariol_regular.eot');
     src: url('/assets/bariol_regular.eot?#iefix') format('embedded-opentype'),
          url('/assets/bariol_regular.woff') format('woff'),
          url('/assets/bariol_regular.ttf') format('truetype'),
@@ -15,6 +16,7 @@ $baseFontFamily: Helvetica, Sans-Serif;
 
 @font-face {
     font-family: 'bariol-light';
+    src: url('/assets/bariol_light.eot');
     src: url('/assets/bariol_light.eot?#iefix') format('embedded-opentype'),
          url('/assets/bariol_light.woff') format('woff'),
          url('/assets/bariol_light.ttf') format('truetype'),
@@ -24,6 +26,7 @@ $baseFontFamily: Helvetica, Sans-Serif;
 
 @font-face {
     font-family: 'bariol-bold';
+    src: url('/assets/bariol_bold.eot');
     src: url('/assets/bariol_bold.eot?#iefix') format('embedded-opentype'),
          url('/assets/bariol_bold.woff') format('woff'),
          url('/assets/bariol_bold.ttf') format('truetype'),
