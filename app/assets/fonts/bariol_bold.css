@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'BariolBold';
+    src: url('bariol_bold.eot');
+    src: url('bariol_bold.eot') format('embedded-opentype'),
+         url('bariol_bold.woff') format('woff'),
+         url('bariol_bold.ttf') format('truetype'),
+         url('bariol_bold.svg#BariolBold') format('svg');
+}

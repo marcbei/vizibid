@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'BariolLight';
+    src: url('bariol_light.eot');
+    src: url('bariol_light.eot') format('embedded-opentype'),
+         url('bariol_light.woff') format('woff'),
+         url('bariol_light.ttf') format('truetype'),
+         url('bariol_light.svg#BariolLight') format('svg');
+}
