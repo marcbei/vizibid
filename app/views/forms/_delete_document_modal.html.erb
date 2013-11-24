@@ -2,8 +2,8 @@
   <div class="well">
   	Are you sure you want to delete this document?
   	<br/>
-  	<%= submit_tag "Delete", {:controller => :forms,
-      :action => 'destroy', :class => "btn btn-danger",:id => formid}, :method => :delete %>
+  	<%= submit_tag "Delete", :controller => :forms,
+      :action => 'destroy', :class => "btn btn-danger",:id => formid %>
     <%= submit_tag "Cancel", :class => "btn", :'data-dismiss' => "modal" %>
   </div>
  </div>
