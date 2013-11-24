@@ -48,10 +48,8 @@
 				<%= render 'forms/inappropriate_document_modal', :formid => @form.id %>
 			<% end %>
 
-			<% if @form.user.id != current_user.id %>
-				<div>
+			<% if @form.user.id == current_user.id %>
 				<%= render 'forms/delete_document_modal', :formid => @form.id %>
-			</div>
 			<% end %>
 			
 			<br/><br/>
