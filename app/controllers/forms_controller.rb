@@ -122,9 +122,14 @@ class FormsController < ApplicationController
 
   def destroy
     @form = Form.find(params[:id])
-    @form.destroy
 
-    flash[:success] = "document deleted"
+    if @form.user.id == current_user.id
+      @form.destroy
+      flash[:success] = "document deleted"
+    else
+      flash[:error] = "unable to delete the document"
+    end
+
     redirect_to root_path
   end
 
