@@ -49,7 +49,9 @@
 			<% end %>
 
 			<% if @form.user.id != current_user.id %>
+				<div>
 				<%= render 'forms/delete_document_modal', :formid => @form.id %>
+			</div>
 			<% end %>
 			
 			<br/><br/>
