@@ -112,9 +112,6 @@ class FormsController < ApplicationController
 
     send_file tmpfile.path, :filename =>  @form_file_name
 
-    if current_user.user_notification.downloads == true && current_user.id != @form.user.id
-      Mailer.delay.doc_download_mail(current_user, @form)  
-    end  
   end
 
   def upload_special

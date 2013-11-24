@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         :show_bio => false, :show_practice_area => false, :show_email => false)
 
       @user_notifications = UserNotification.new(:user_id => @user.id, :requests => true,
-        :forms => true, :news => true, :tips => true, :surveys => true, :downloads => true)
+        :forms => true, :news => true, :tips => true, :surveys => true)
       
       practice_areas.each do |p|
         UserPracticeArea.new(:user_id => @user.id, :practice_area_id => p[1]).save

@@ -49,12 +49,6 @@ class Mailer < ActionMailer::Base
     end
   end
 
-  def doc_download_mail(user, form)
-    @user = user
-    @form = form
-    mail(:to => user.email, :subject => "Thank you for your download")
-  end
-
   def doc_comment_mail(current_user, rootform, formowner, comment)
     @currentuser = current_user
     @form = rootform
