@@ -37,9 +37,9 @@ class FormsController < ApplicationController
       @form.seed = true
 
       if @form.save 
-        flash[:message] = "form saved"
+        flash[:message] = "docment saved"
       else
-        flash[:message] = "form not saved"
+        flash[:message] = "document not saved"
       end
 
       redirect_to uploadpage_path
@@ -118,6 +118,14 @@ class FormsController < ApplicationController
 
     @f = Form.new
 
+  end
+
+  def destroy
+    @form = Form.find(params[:id])
+    @form.destroy
+
+    flash[:success] = "document deleted"
+    redirect_to root_path
   end
 
 end
