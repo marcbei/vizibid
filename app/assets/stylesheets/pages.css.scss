@@ -78,7 +78,7 @@ background-image: none;
 
 // Layout for Static Pages
 
-body div#content div.row h2 {
+body div#content h2 {
   font-family: bariol;
   font-size: 24px;
   line-height: 28px;
@@ -90,7 +90,7 @@ body div#content div.row h2 {
   margin-bottom: 0;
 }
 
-body div#content div.row p {
+body div#content p {
   font-family: bariol;
   font-size: 18px;
   line-height: 24px;
@@ -102,7 +102,7 @@ body div#content div.row p {
   margin-bottom: 0;
 }
 
-body div#content div.row ul {
+body div#content ul {
   font-family: bariol;
   font-size: 18px;
   line-height: 24px;
@@ -114,7 +114,7 @@ body div#content div.row ul {
   margin-bottom: 0;
 }
 
-body div#content div.row ul li {
+body div#content ul li {
   padding-top: 20px;
 }
 
@@ -122,20 +122,17 @@ body div#content div.row ul strong {
   font-family: bariol;
 }
 
-body div#content div.row:first-child h2 {
-  padding-top: 32px;
-}
 
-body div#content div.row h2 {
+body #content h2 {
   padding-top: 44px;
 }
 
-body div#content .row {
-  padding-left: 32px;
+body div#content h2:first-child {
+  padding-top: 30px;
 }
 
-body div#content .row p {
-  padding-top: 24px;
+body div#content p {
+  padding-top: 22px;
 }
 
 body div#content .row.try-it-button {
