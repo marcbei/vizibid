@@ -78,10 +78,17 @@ background-image: none;
 
 // Layout for Static Pages
 
-body div#content h2 {
+body div#content { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
+
+body div#content p, h2, h3, li {
   font-family: bariol;
-  font-size: 24px;
-  line-height: 28px;
+}
+
+body div#content h2, h3 {
   font-weight: normal;
   text-align: left;
   color: #515151;
@@ -90,8 +97,28 @@ body div#content h2 {
   margin-bottom: 0;
 }
 
+body div#content h2 {
+  font-size: 24px;
+  line-height: 28px;
+  padding-top: 44px;
+}
+
+
+body div#content h2:first-child {
+  padding-top: 30px;
+}
+
+body div#content h3 {
+  font-size: 20px;
+  line-height: 28px;
+  padding-top: 22px;
+}
+
+body div#content h3+p {
+  padding-top: 8px;
+}
+
 body div#content p {
-  font-family: bariol;
   font-size: 18px;
   line-height: 24px;
   font-weight: normal;
@@ -100,10 +127,14 @@ body div#content p {
   letter-spacing: 0;
   margin-top: 0;
   margin-bottom: 0;
+  padding-top: 22px;
+}
+
+body div#content p:last-child {
+  padding-bottom: 20px;
 }
 
 body div#content ul {
-  font-family: bariol;
   font-size: 18px;
   line-height: 24px;
   font-weight: normal;
@@ -118,22 +149,6 @@ body div#content ul li {
   padding-top: 20px;
 }
 
-body div#content div.row ul strong {
-  font-family: bariol;
-}
-
-
-body #content h2 {
-  padding-top: 44px;
-}
-
-body div#content h2:first-child {
-  padding-top: 30px;
-}
-
-body div#content p {
-  padding-top: 22px;
-}
 
 body div#content .row.try-it-button {
   padding-bottom: 20px;
