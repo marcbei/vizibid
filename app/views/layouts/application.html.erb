@@ -7,6 +7,7 @@
   <%# yield :scripts %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body <% if !(signed_in?) %> style = "background-color: lightgrey;" <% elsif signed_in? %>style = "padding-bottom: 40px" <% end %>>
 	<div class = "container <% if !(signed_in?) %> containersignedout <% end %>">

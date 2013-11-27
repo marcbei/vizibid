@@ -61,7 +61,19 @@ class PagesController < ApplicationController
     end
   end
 
-  def contactus
+  def support
+    if !signed_in?
+      @user = User.new
+    end
+  end
+
+  def privacy_policy
+    if !signed_in?
+      @user = User.new
+    end
+  end
+
+  def terms_of_use
     if !signed_in?
       @user = User.new
     end

@@ -19,7 +19,9 @@ Vizibid::Application.routes.draw do
   match '/about' => 'pages#about'
   match '/learn_more/' => 'pages#learnmore', :as => :learn_more_base
   match '/learn_more/:path' => 'pages#learnmore', :as => :learn_more
-  match '/contactus' => 'pages#contactus'
+  match '/support' => 'pages#support'
+  match '/privacy_policy' => 'pages#privacy_policy'
+  match '/terms_of_use' => 'pages#terms_of_use'
   match '/why' => 'pages#why'
   match '/requestcenter' => 'pages#requestcenter'
   match '/history' => 'pages#history'
