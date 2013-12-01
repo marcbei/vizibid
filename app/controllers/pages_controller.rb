@@ -14,7 +14,11 @@ class PagesController < ApplicationController
           @closed_form_requests_count = FormRequest.order("created_at DESC").find(:all, :conditions => [ "user_id = '#{current_user.id}' and fufilled = true"]).count
           @open_req = true
         elsif params[:tab] == "followed"
-          @followedforms = FormFollow.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).sort_by{|f| f.form.updated_at}.reverse
+          if current_user.form_follows.count > 0
+            @followedforms = FormFollow.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).sort_by{|f| f.form.updated_at}.reverse
+          else
+            @followedforms = nil
+          end
         else
           # call helper to get appropriate data
           @form = Form.new
