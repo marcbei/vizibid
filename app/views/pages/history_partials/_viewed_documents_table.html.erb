@@ -8,20 +8,22 @@
 			</tr>
 		</thead>
 		<% @viewedforms.each do |f| %>
-			<tr>
-				<td>
-					<%= link_to f.form.description, form_path(f.form) %><br/>
-					<div style="font-size: 12px;">
-						viewed <%= time_ago_in_words(f.created_at) %> ago
-					</div>
-				</td>
-				<td><%= f.form.jurisdiction %></td>
-				<td>
-					<% if f.form.practice_area != nil %>
-						<%= f.form.practice_area.practice_area_title %>
-					<% end %>
-				</td>
-			</tr>
+			<%if f.form != nil %>
+				<tr>
+					<td>
+						<%= link_to f.form.description, form_path(f.form) %><br/>
+						<div style="font-size: 12px;">
+							viewed <%= time_ago_in_words(f.created_at) %> ago
+						</div>
+					</td>
+					<td><%= f.form.jurisdiction %></td>
+					<td>
+						<% if f.form.practice_area != nil %>
+							<%= f.form.practice_area.practice_area_title %>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
 		<% end %>
 	</table>
 </div>

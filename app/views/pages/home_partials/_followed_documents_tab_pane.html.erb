@@ -1,5 +1,5 @@
 <div class="tab-content-root">
-  <% if @followedforms.count > 0 %>
+  <% if !@followedforms.nil? && @followedforms.count > 0 %>
     <table class="table table-striped">
       <% @followedforms.each do |f| %>
         <tr>
