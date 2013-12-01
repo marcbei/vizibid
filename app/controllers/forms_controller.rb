@@ -122,9 +122,13 @@ class FormsController < ApplicationController
 
   def destroy
     @form = Form.find(params[:id])
+    @form_views = FormView.find_all_by_form_id(params[:id])
+    @form_follows = FormFollow.find_all_by_form_id(params[:id])
 
     if @form.user.id == current_user.id
       @form.destroy
+      @form_views.destroy_all
+      @form_follows.destroy_all
       flash[:success] = "document deleted"
     else
       flash[:error] = "unable to delete the document"
