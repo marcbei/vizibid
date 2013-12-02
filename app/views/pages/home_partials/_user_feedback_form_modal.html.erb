@@ -1,7 +1,7 @@
 <div id="feedbackmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <% @feedback = UserFeedback.new %>
   <div class="well">
-      <p>Please let us know any feedback you have for us. We'll be sure to read it and respond.</p>
+      <p>We take your feedback very seriously. You can also email us at <a href="mailto:support@vizibid.com">support@vizibid.com</a></p>
       <%= form_for @feedback do |f| %>
         <%= f.label :subject %>
         <%= f.text_field :subject%>
@@ -15,5 +15,5 @@
 </div>
 
 <div class= "span4" style="margin-top: 25px; font-size: 13px;">  Your feedback is valuable!&nbsp;
-  <a style = "color: green;" data-toggle="modal" href="#feedbackmodal" >Send us a suggestion</a>
+  <a style = "color: green;" data-toggle="modal" href="#feedbackmodal" >Send us a suggestion.</a>
 </div>
