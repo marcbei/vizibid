@@ -82,9 +82,11 @@
 			<ul>
 				<% i = @formrequests.count-1 %>
 				<% while i  >= 0 %>
-					<li>
-						<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
-					</li>
+					<% if @formrequests[i].anonymous == false %> 
+						<li>
+							<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
+						</li>
+					<% end %>
 					<% i = i-1 %>
 				<%end%>
 			</ul>
