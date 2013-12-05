@@ -156,7 +156,8 @@ body div#content .row.try-it-button {
 }
 
 body div.backgroundtexture {
-  background-image: url('diagonal-lines.png');
+  background-image: url('diagonal-lines_strip-shaded.png'), url('diagonal-lines_strip_non-shaded.png');
+  background-repeat: no-repeat, repeat;
 }
 
 ul.no-bullets {
