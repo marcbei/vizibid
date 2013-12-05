@@ -77,22 +77,22 @@
 		<% end %>
 
 		<% if @user.user_detail.show_requests %>
-			<% if @formrequests.count > 0 &&  !@formrequests.nil?%>
-			Made the following (<%= @formrequests.count %>) requests:
-			<ul>
-				<% i = @formrequests.count-1 %>
-				<% while i  >= 0 %>
-					<li>
-						<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
-					</li>
-					<% i = i-1 %>
-				<%end%>
-			</ul>
-		<% else %>
-			0 requests
-		<% end %>
-			<br/>
-		<% end %>
+			<% if !@formrequests.nil? && @formrequests.count > 0 %>
+				Made the following (<%= @formrequests.count %>) requests:
+				<ul>
+					<% i = @formrequests.count-1 %>
+					<% while i  >= 0 %>
+						<li>
+							<%= link_to @formrequests[i].name,form_request_path(@formrequests[i].id)%> on <%= time_ago_in_words(@formrequests[i].created_at) %> ago</li>
+						</li>
+						<% i = i-1 %>
+					<%end%>
+				</ul>
+			<% else %>
+				0 requests
+			<% end %>
+				<br/>
+			<% end %>
 		<% end %>
 	</div>
 </div>
