@@ -77,7 +77,7 @@
 		<% end %>
 
 		<% if @user.user_detail.show_requests %>
-			<% if @formrequests.count > 0 %>
+			<% if @formrequests.count > 0 &&  !@formrequests.nil?%>
 			Made the following (<%= @formrequests.count %>) requests:
 			<ul>
 				<% i = @formrequests.count-1 %>
