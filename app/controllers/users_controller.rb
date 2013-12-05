@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       @formshared_count = 0
     end
 
-    @formrequests = @user.form_requests.order("created_at asc")
+    @formrequests = @user.form_requests.find_all_by_anonymous(false).order("created_at asc")
     @commentcount = @user.comments.count
     @comments = @user.comments.order("created_at desc").group_by{|c| c.form_id}
 
