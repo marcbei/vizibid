@@ -10,17 +10,22 @@
 		<!-- Search Results -->
 		<% if @forms != nil %>
 			<p style="text-decoration: underline;"><%= pluralize(@total_forms, 'result') %>:<p>
+			<% if @total_forms > 0 %>
 				<% @i = 1 %>
 				<% @forms.each do |f| %>
-				<tr>
-			      <td><%= render 'forms/form_summary', :f => f %></td>
-			 	</tr>
-				<% @i += 1 %>
-					<% if @i < @forms.count+1 %>
-					<hr class="search-seperator"/>
+					<tr>
+				      <td><%= render 'forms/form_summary', :f => f %></td>
+				 	</tr>
+					<% @i += 1 %>
+						<% if @i < @forms.count+1 %>
+						<hr class="search-seperator"/>
+					<% end %>
 				<% end %>
+				<%= will_paginate(@forms) %>
+			<% else %>
+				No documents were found. 
+				<a data-toggle="modal" href="#modalFormRequest">Request the document that you are looking for./a>
 			<% end %>
-			<%= will_paginate(@forms) %>
 		<% else %>
 			<div class="tabbable"> 
 			  <ul class="nav nav-tabs">
