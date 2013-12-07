@@ -9,8 +9,8 @@
 	<div class= "span8">
 		<!-- Search Results -->
 		<% if @forms != nil %>
-			<p style="text-decoration: underline;"><%= pluralize(@total_forms, 'result') %>:<p>
 			<% if @total_forms > 0 %>
+				<p style="text-decoration: underline;"><%= pluralize(@total_forms, 'result') %>:</p>
 				<% @i = 1 %>
 				<% @forms.each do |f| %>
 					<tr>
@@ -24,7 +24,7 @@
 				<%= will_paginate(@forms) %>
 			<% else %>
 				No documents were found. 
-				<a data-toggle="modal" href="#modalFormRequest">Request the document that you are looking for./a>
+				<a data-toggle="modal" style="display: inline; text-decoration: underline;" href="#modalFormRequest">Request the document that you are looking for.</a>
 			<% end %>
 		<% else %>
 			<div class="tabbable"> 
