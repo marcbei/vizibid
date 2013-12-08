@@ -5,12 +5,13 @@
   <div class="well">
     <div class = "row">
       <div class = "span6">
-        <strong><p>Complete and submit this form to upload a new model legal document to Vizibid.</p></strong>
+        <h3>Upload</h3><br />
+        <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
         <%= form_for @form_to_upload, :html => {:multipart => true} do |f| %>
           <div class="field">
 
             Descriptive Title
-            <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a descriptive title of the document you are uploading. Be specific. This information will help other lawyers find this document."><i class="icon-question-sign"></i></a></u>
+            <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :description, :size => "10x10"%>
             
             Practice Area
@@ -24,7 +25,7 @@
               <%= f.select :jurisdiction, options_for_select(us_states)%>
             </div>
               Keywords
-              <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+              <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
               <%= f.text_area :keywords, :size => "10x5"%>
                     </div>
               <%= f.file_field :form, :style => "Display: inline;" %>

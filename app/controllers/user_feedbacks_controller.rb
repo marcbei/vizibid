@@ -11,7 +11,7 @@ class UserFeedbacksController < ApplicationController
 			Mailer.delay.feedback_email(current_user, @userfeedback.subject, @userfeedback.comment)
 			redirect_to root_path
 		else
-			flash[:error] = "Unable to submit your feedback. You can email feedback to support@vizibid.com"
+			flash[:error] = "Unable to submit your feedback. You can email feedback to suggestions@vizibid.com."
 			redirect_to root_path
 		end
 	end
