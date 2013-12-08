@@ -2,28 +2,28 @@
   
   <div class="well">
 
-  <p>Fill in your response below<p>
+  <p>Your comment:<p>
   <%= form_for @comment, :html => {:multipart => true}  do |f| %>
     <%= f.hidden_field :parent_id, :value => parent_id %>
     <%= f.hidden_field :form_id, :value => form_id %>
     <p>
       <%= f.text_area :content, :rows => 2 %>
       <%= check_box_tag :upload, 'yes', false, :class => 'upload', :style => "margin-bottom: 7px;" %>
-      <%= label_tag :uploadtag, "Upload a document", :style => "Display: inline;" %>
+      <%= label_tag :uploadtag, "Upload a document with your comment", :style => "Display: inline;" %>
       <div class="uploadform">
 
       <%= fields_for @newform do |nf| %>
       <div class="field">
         Descriptive Title
-        <u><a href="#" rel="tooltip" data-placement="right" title="Please provide a  descriptive title of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+        <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
         <%= nf.text_area :description, :size => "10x2"%>
         Jurisdiction
-        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select "Any"."><i class="icon-question-sign"></i></a></u>
+        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where the document you are uploading should be used. If the document does not need to be jurisdiction-specific, select "Any."><i class="icon-question-sign"></i></a></u>
         <div class = "jurisdropdown">
           <%= nf.select :jurisdiction, options_for_select(us_states) %>
         </div>
           Keywords
-          <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+          <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
           <%= nf.text_area :keywords, :size => "5x2"%>
           <%= nf.file_field :form %>
       </div>
@@ -42,7 +42,7 @@
 
 
 <% if button == true %>
-  <a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >New Response</a>
+  <a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Add a Comment</a>
 <% else %>
   <a class = "commentmodallink" style = "margin-left: 18px;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Respond</a>
 <% end %>
