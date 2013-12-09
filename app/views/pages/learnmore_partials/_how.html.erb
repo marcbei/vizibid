@@ -2,9 +2,11 @@
 <p>
 	With an account, you can search the Vizibid document library for any document you need, or you can request the document from Vizibid's community of lawyers. Whenever a lawyer shares a document in response to a request, it becomes part of the ever-growing library. With lots of lawyers sharing, the library grows, and everybody benefits.
 </p>
-<div class = "row try-it-button">
-	<a data-toggle="modal" href="#signupModal" class="btn btn-info pull-right">TRY IT FREE</a>
-</div>
+<% if !signed_in? %>
+	<div class = "row try-it-button">
+		<a data-toggle="modal" href="#signupModal" class="btn btn-info pull-right">TRY IT FREE</a>
+	</div>
+<% end %>
 
 <% if !signed_in? %>
 	<%= render 'pages/home_partials/sign_up_form_modal' %>
