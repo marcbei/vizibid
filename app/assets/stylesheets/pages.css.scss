@@ -155,6 +155,13 @@ body div#content .row.try-it-button {
   padding-top: 56px;
 }
 
+body div#content .row.try-it-button.mid-page {
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 body div.backgroundtexture {
   background-image: url('diagonal-lines_strip-shaded.png'), url('diagonal-lines_strip_non-shaded.png');
   background-repeat: no-repeat, repeat;
