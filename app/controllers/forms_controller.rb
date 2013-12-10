@@ -127,8 +127,15 @@ class FormsController < ApplicationController
 
     if @form.user.id == current_user.id
       @form.destroy
-      @form_views.destroy_all
-      @form_follows.destroy_all
+
+      @form_follows.each do |ff|
+        ff.destroy
+      end
+
+      @form_views.each do |fv|
+        fv.destroy
+      end
+
       flash[:success] = "document deleted"
     else
       flash[:error] = "unable to delete the document"
