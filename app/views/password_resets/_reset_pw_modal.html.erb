@@ -1,11 +1,10 @@
 <div id="resetpw" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class = "well">
 		<%= form_tag password_resets_path, :method => :post do %>
-		  <div class="field">
 		    <%= label_tag :email %>
-		    <%= text_field_tag :email, params[:email], :style => "Width: 300px;" %>
-		  </div>
-		  <div class="actions"><%= submit_tag "Reset Password", :class => "btn" %></div>
+		    <%= text_field_tag :email, params[:email], :style => "Width: 300px;" %><br/>
+		  <%= submit_tag "Reset Password", :class => "btn btn-info" %>
+		  <button class = "btn" data-dismiss = "modal">Cancel</button>
 		<% end %>
 	</div>
 </div>
