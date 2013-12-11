@@ -26,7 +26,6 @@ class FormsController < ApplicationController
 
   def create
 
-    # handle the case where the form is a assoicated with a request
     if (params[:form][:origin] != "" && params[:form][:origin] != nil)
       @form = Form.new(params[:form])
       @form.user_id = current_user.id
@@ -44,9 +43,13 @@ class FormsController < ApplicationController
 
       redirect_to uploadpage_path
     elsif(params[:requestid] != nil)
-      # maybe this makes more sense to be in form_requests controller
-      save_request(params)
-      # this handles an uploaaded form not associated with a request
+      # requests require a form
+      if(params[:form] == nil)
+        flash[:error] = "There was a problem with your submission. Please try again."
+        redirect_to form_request_path(params[:requestid])
+      else
+        save_request(params)
+      end
     else
       save_form(params[:form])
     end

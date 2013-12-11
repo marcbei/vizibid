@@ -151,49 +151,37 @@ module FormHelper
       @request = FormRequest.find(params[:requestid])
       @requestowner = User.find(@request.user.id)
 
-      # if the request submission doesn't have a form associated, send mail and redirect to the original request
-      if params[:commentonly] == "yes" || params[:form][:description].empty?
-        flash[:success] = "Thank you for your contribution!"
+      @form = Form.new(params[:form])
+      @form.user_id = current_user.id
+      @form.description = params[:form][:description]
+      @form.jurisdiction = params[:form][:jurisdiction]
+      @form.practice_area_id = @request.practice_area_id
 
-        #send mail
+      # save the form
+      if @form.save
+        flash[:success] = "Thank you for your contribution!"
+        @request_submission.form_id = @form.id
+        @request_submission.save
+
+        # scan the form for viruses
+        if virus_scan(@form) != true
+          @request_submission.destroy
+          flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+          redirect_to form_request_path(@request)
+        end
+
+
+  		  # opt in the user to following their own form
+  		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
+  		  @form_follow.save
+
+        #sendmail
         if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
           Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
         end
-
-      # the request submission has a form submission so save the form
       else
-        @form = Form.new(params[:form])
-        @form.user_id = current_user.id
-        @form.description = params[:form][:description]
-        @form.jurisdiction = params[:form][:jurisdiction]
-        @form.practice_area_id = @request.practice_area_id
-
-        # save the form
-        if @form.save
-          flash[:success] = "Thank you for your contribution!"
-          @request_submission.form_id = @form.id
-          @request_submission.save
-
-          # scan the form for viruses
-          if virus_scan(@form) != true
-            @request_submission.destroy
-            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to form_request_path(@request)
-          end
-
-
-    		  # opt in the user to following their own form
-    		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
-    		  @form_follow.save
-
-          #sendmail
-          if @requestowner.user_notification.requests == true && current_user.id != @requestowner.id
-            Mailer.delay.doc_request_mail(current_user, @request, @requestowner, @request_submission) 
-          end
-        else
-          @request_submission.destroy
-          flash[:error] = "There was a problem with your submission. Please try again."
-        end
+        @request_submission.destroy
+        flash[:error] = "There was a problem with your submission. Please try again."
       end
 
       redirect_to form_request_path(@request)
