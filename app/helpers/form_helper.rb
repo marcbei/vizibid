@@ -104,7 +104,7 @@ module FormHelper
         flash[:success] = "Thank you for your contribution!"
         redirect_to form_path(@form.id)
       else
-        flash[:error] = "There was a problem with your submission. Please try again."
+        flash[:error] = "There was a problem with your submission. Please fill out all fields and try again."
         redirect_to share_path
       end
 	end
@@ -143,7 +143,7 @@ module FormHelper
       
       # save the request submission
       if !@request_submission.save
-        flash[:error] = "There was a problem with your submission. Please try again."
+        flash[:error] = "There was a problem with your submission. Please fill out all fields and try again."
         redirect_to root_path
         return
       end
@@ -181,7 +181,7 @@ module FormHelper
         end
       else
         @request_submission.destroy
-        flash[:error] = "There was a problem with your submission. Please try again."
+        flash[:error] = "There was a problem with your submission. Please fill out all fields and try again."
       end
 
       redirect_to form_request_path(@request)
