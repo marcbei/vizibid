@@ -6,3 +6,5 @@ Reported by: <%= @user.name %>
 For request: <%= link_to @request.name, form_request_url(@request, :only_path => false, :host=>'vizibid-dev.herokuapp.com') %>
 
 Reason: <%= @reason %>
+
+<%= render 'mailer/corp_disclaimer_txt' %>

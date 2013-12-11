@@ -1,3 +1,5 @@
 New comment received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%= link_to @form.description, form_url(@form) %>
 
 Comment: <%= @comment.content %>
+
+<%= render 'mailer/corp_disclaimer_txt' %>

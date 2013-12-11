@@ -11,5 +11,6 @@
     <p>
       For document: <%= link_to @form.description, form_url(@form, :only_path => false, :host=>'vizibid-dev.herokuapp.com') %>
     </p>
+    <%= render 'mailer/corp_disclaimer_html' %>
   </body>
 </html>
