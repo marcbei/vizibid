@@ -25,7 +25,7 @@ class Form < ActiveRecord::Base
 
   mount_uploader :form, FormsUploader
 
-  has_many :RequestSubmissions
+  has_many :RequestSubmissions, dependent: :destroy
   has_many :form_requests, :through => :RequestSubmissions
 
   has_many :form_ratings, dependent: :destroy
