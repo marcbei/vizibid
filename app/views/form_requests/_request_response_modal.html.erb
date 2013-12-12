@@ -1,12 +1,12 @@
 <div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="well">
-      <h3>Respond to Request</h3><br />
+      <h3>Upload</h3><br />
       <strong>
-        <p><%= formrequest.name %><br/>
+        <p>Requested Document: <%= formrequest.name %><br/>
           <% if formrequest.anonymous == false %>
             Requested by <%= formrequest.user.name %> <%= time_ago_in_words(formrequest.created_at)%> ago
           <% else %>
-            Anonymous request <%= time_ago_in_words(formrequest.created_at)%> ago
+            Requested anonymously <%= time_ago_in_words(formrequest.created_at)%> ago
           <% end %>
         </p>
       </strong>
@@ -46,4 +46,4 @@
   </div>
 </div>
 
-<a class = "requestresponselink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalResponse<%=formrequest.id%>" >Respond with a Document</a>
+<a class = "requestresponselink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalResponse<%=formrequest.id%>" >Upload a Document</a>
