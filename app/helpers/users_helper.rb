@@ -36,7 +36,7 @@ module UsersHelper
 		end
 
 		if emailaddress.to_s.empty?
-			flash[:success] = "A verification email will be sent to the email address you signed up with. Follow the instructions in that email to complete the registration process."
+			flash[:success] = "Please be patient while we verify your license status. Once you are verified, an email with a confirmation link will be sent to the address you provided."
 		else
 			flash[:success] = "A verification email will be sent to the email address on file with the bar association. Follow the instructions in that email to complete the registration process."
 		end
