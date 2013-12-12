@@ -1,5 +1,6 @@
 <div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="well">
+      <h3>Respond to Request</h3><br />
       <strong>
         <p><%= formrequest.name %><br/>
           <% if formrequest.anonymous == false %>
@@ -9,7 +10,6 @@
           <% end %>
         </p>
       </strong>
-      <h3>Upload</h3><br />
       <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
       <div class="field">
       <%= form_for @form, :html => {:multipart => true} do |f| %>
