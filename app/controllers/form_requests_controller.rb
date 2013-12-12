@@ -36,7 +36,7 @@ class FormRequestsController < ApplicationController
 		@form_request.practice_area_id = params[:form_request][:practice_area_id]
 
 		if @form_request.save
-		  flash[:success] = "Thank you for your request!"
+		  flash[:success] = "Your request was submitted."
 		else
 		  flash.now[:error] = "There was a problem with your request. Please try again."
 		end

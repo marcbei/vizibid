@@ -23,13 +23,13 @@
           <%= f.text_area :description, :size => "10x2" %>
           
           Jurisdiction
-          <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where you want to use this document. If the document does not need to be jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
+          <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where this document should be used. If the document is not jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
           <div class = "jurisdropdown">
             <%= f.select :jurisdiction, options_for_select(us_states) %>
           </div>
             
             Keywords
-            <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+            <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :keywords, :size => "10x2" %>
             <%= f.file_field :form %>
         </div>

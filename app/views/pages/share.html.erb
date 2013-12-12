@@ -18,7 +18,7 @@
       		<%= f.select :jurisdiction, options_for_select(us_states)%>
       	</div>
           Keywords
-          <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
+          <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
           <%= f.text_area :keywords, :size => "10x5"%>
                 </div>
           <%= f.file_field :form, :style => "Display: inline;" %>
