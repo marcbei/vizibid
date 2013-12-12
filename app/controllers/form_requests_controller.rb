@@ -113,9 +113,18 @@ class FormRequestsController < ApplicationController
 		
 		respond_to do |format|
 			format.js
-			format.html
 		end
 	end
+
+	def completerequestfrompage
+
+		@form_request = FormRequest.find(params[:id])
+		@form_request.fufilled = true
+		@form_request.save
+
+		redirect_to form_request_path(@form_request)
+	end
+
 
 	def approveresponse
 		@response = RequestSubmission.find(params[:id])

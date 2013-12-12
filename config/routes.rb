@@ -35,6 +35,7 @@ Vizibid::Application.routes.draw do
   match '/signin' => 'sessions#new'
   match '/signout' => 'sessions#destroy', :via => :delete
   match '/completerequest/:id' => 'form_requests#completerequest', :as => :completerequest
+  match '/completerequestfrompage/:id' => 'form_requests#completerequestfrompage', :as => :completerequestfrompage
   match '/form_requests/edit/:id/:comment' => 'form_requests#edit', :as => :requestcomment
   match '/deleteresponse/:id' => 'form_requests#destroy_response', :as => :deleteresponse
   match '/verify/:id' => 'users#verify', :as => :verify

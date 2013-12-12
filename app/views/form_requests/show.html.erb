@@ -14,7 +14,7 @@
                     <%= render 'form_requests/delete_request_modal', :formrequest => @form_request %>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<% if @form_request.fufilled == false %>
-						<%= link_to "Close Request", completerequest_path(@form_request.id), :class => "btn btn-success" %>
+						<%= link_to "Close Request", completerequestfrompage_path(@form_request.id), :class => "btn btn-success" %>
 					<% end %>
 				</div>
 			<% end %>
