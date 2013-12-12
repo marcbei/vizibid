@@ -46,7 +46,7 @@ class FormsController < ApplicationController
       # requests require a form
       if(params[:form] == nil)
         flash[:error] = "There was a problem with your submission. Please try again."
-        redirect_to form_request_path(params[:requestid])
+        redirect_to root_path
       else
         save_request(params)
       end

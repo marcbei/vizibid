@@ -37,11 +37,11 @@ class FormRequestsController < ApplicationController
 
 		if @form_request.save
 		  flash[:success] = "Your request was submitted."
+		  redirect_to form_request_path(@form_request)
 		else
-		  flash.now[:error] = "There was a problem with your request. Please try again."
+		  flash[:error] = "There was a problem with your request. Please try again."
+		  redirect_to root_path
 		end
-
-		redirect_to form_request_path(@form_request)
 	end
 
 	def update
@@ -50,11 +50,11 @@ class FormRequestsController < ApplicationController
 		
 		if @form_request.save
 		  flash[:success] = "Edits saved!"
+  		  redirect_to form_request_path(@form_request)
 		else
-		  flash.now[:error] = "There was a problem with your request. Please try again."
+		  flash[:error] = "There was a problem with your request. Please try again."
+		  redirect_to root_path
 		end
-
-		redirect_to root_path
 	end
 
 	def show

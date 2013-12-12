@@ -105,7 +105,7 @@ module FormHelper
         redirect_to form_path(@form.id)
       else
         flash[:error] = "There was a problem with your submission. Please fill out all fields and try again."
-        redirect_to share_path
+        redirect_to root_path
       end
 	end
 

@@ -16,7 +16,7 @@ Vizibid::Application.routes.draw do
   root :to => 'pages#home'
 
   match 'password_resets/new' => 'password_resets#new', :via => :get
-  match '/about' => 'pages#about'
+  match '/faq' => 'pages#faq'
   match '/learn_more/' => 'pages#learnmore', :as => :learn_more_base
   match '/learn_more/:path' => 'pages#learnmore', :as => :learn_more
   match '/support' => 'pages#support'

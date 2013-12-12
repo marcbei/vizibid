@@ -59,7 +59,7 @@ class PagesController < ApplicationController
 
   end
 
-  def about
+  def faq
     if !signed_in?
       @user = User.new
     end
