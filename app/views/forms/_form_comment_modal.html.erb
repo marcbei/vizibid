@@ -13,12 +13,13 @@
       <div class="uploadform">
 
       <%= fields_for @newform do |nf| %>
-      <div class="field">
+        <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
+        <div class="field">
         Descriptive Title
         <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
         <%= nf.text_area :description, :size => "10x2"%>
         Jurisdiction
-        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where the document you are uploading should be used. If the document does not need to be jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
+        <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where this document should be used. If the document is not jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
         <div class = "jurisdropdown">
           <%= nf.select :jurisdiction, options_for_select(us_states) %>
         </div>
@@ -42,7 +43,7 @@
 
 
 <% if button == true %>
-  <a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Add a Document or Comment in Reply</a> 
+  <a class = "commentmodallink" style = "font-size: large; color: green;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Start a New Comment</a> 
 <% else %>
-  <a class = "commentmodallink" style = "margin-left: 18px;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Respond</a>
+  <a class = "commentmodallink" style = "margin-left: 18px;" data-toggle="modal" href="#myModalComment<%=parent_id%>" >Reply</a>
 <% end %>

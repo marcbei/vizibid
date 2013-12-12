@@ -24,12 +24,12 @@
   <br/>
   <%= form_for @form, :html => {:multipart => true} do |f| %>
     <div class="field">
-    	Name of Document
-      <u><a href="#" rel="tooltip" data-placement="right" title="Choose a name for this document that will help other users understand what this document is. Be specific."><i class="icon-question-sign"></i></a></u>
+    	Brief Description
+      <u><a href="#" rel="tooltip" data-placement="right" title="Briefly describe the document you want."><i class="icon-question-sign"></i></a></u>
       <%= f.text_field :name %>
 
-      Description
-    	<u><a href="#" rel="tooltip" data-placement="right" title="Please provide a thorough description of the document you are requesting. Be specific. This information will help other users provide a document that meets your needs."><i class="icon-question-sign"></i></a></u>
+      Additional Details
+    	<u><a href="#" rel="tooltip" data-placement="right" title="Provide any additional details that will help others understand your request."><i class="icon-question-sign"></i></a></u>
       <%= f.text_area :description, :size => "10x10" %>
     	
       Jurisdiction
@@ -39,8 +39,8 @@
     	</div>
         
         Keywords
-        <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful keywords (which can be words or phrases) that you would use in a search for the document you are requesting. Separate each word or phrase with a comma or semi-colon. The more thorough and specific your keywords are, the better."><i class="icon-question-sign"></i></a></u>
-        <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any helpful keywords associated with the document you're uploading for seperate by a comma. E.g., contract, divorce, etc." %>
+        <u><a href="#" rel="tooltip" data-placement="right" title="List any words or phrases that you would expect to lead to the requested document appearing in search results. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
+        <%= f.text_area :keywords, :size => "10x5", :placeholder => "List any words or phrases that you would expect to lead to the requested document appearing in search results. Separate each word or phrase with a comma or semi-colon." %>
         <%= f.file_field :form %>
         <%= hidden_field_tag :requestid, @form_request.id.to_s %>
     </div>
