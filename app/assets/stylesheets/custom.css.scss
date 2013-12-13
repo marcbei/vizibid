@@ -412,10 +412,15 @@ div.CarouselBox {
   height: 462px;
 }
 
-/* signed-in tab navigation & sorting buttons */
+/* signed-in tab navigation & sorting */
 
 .nav-pills > .active > a, .nav-pills > .active > a:hover {
   background-color: #0091AE;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-color: #0091AE;
+  background-image: linear-gradient(to bottom, #0091AE, #0091AE);
 }
 
 /* buttons */
