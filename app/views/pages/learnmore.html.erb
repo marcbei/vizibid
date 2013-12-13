@@ -8,7 +8,7 @@
       <li id = "notifications"><%= link_to learn_more_path("how"), :remote => :true do %><i class="icon-chevron-right"></i> How does Vizibid work?<% end %></li>
   </div>
 
-  <div id = "content" <%if signed_in? %>class= "span8 well"<%else%>class= "span9 well"<%end%> style="background-color: white; margin-top: 30px; padding-top: 0px; border: 0px; padding-left: 32px; padding-right:32px;">
+  <div id = "content" <%if signed_in? %>class= "span8 well"<%else%>class= "span9 well"<%end%> style="background-color: white; margin-top: 30px; padding-top: 0px; border: 0px; padding-left: 32px; padding-right:32px; margin-bottom: 30px;">
     <% if params[:path] == "why" %>
        <%= render 'pages/learnmore_partials/why' %>
     <% elsif params[:path] == "how" %>
