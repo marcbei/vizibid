@@ -12,6 +12,7 @@
 					<%= f.text_field :bar_number, :placeholder => "Your state bar ID number" %>
 					<%= f.password_field :password, :placeholder => "Choose a password." %>
 			  		<%= f.password_field :password_confirmation, :placeholder => "Re-enter your password." %>
+			  		<%= text_field_tag :AccessCode, "", :placeholder => "Access Code" %>
 			  		<%= f.text_field :referrer, :placeholder => "Who referred you to Vizibid? (optional)" %>
 			  		<br/>
 			  		<%= f.submit "Sign up for Vizibid", class: "btn btn-info pull-left" %>

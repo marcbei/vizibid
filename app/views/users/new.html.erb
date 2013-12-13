@@ -24,6 +24,8 @@
 			<%= f.label :password_confirmation, "Repeat Password" %>
       		<%= f.password_field :password_confirmation %>
 			
+      		<%= text_field_tag :AccessCode, "", :placeholder => "Access Code" %>
+			
 			<%= f.label :"Who referred you?" %>
 			<%= f.text_field :referrer %>
 

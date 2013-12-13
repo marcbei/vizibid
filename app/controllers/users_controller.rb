@@ -41,6 +41,13 @@ class UsersController < ApplicationController
 
   def create
   	# create the user
+
+    if params[:AccessCode] != 'lawdoc1'
+      flash[:error] = "Access code is not correct. Contact info@vizibid.com to get the access code."
+      redirect_to root_path
+      return
+    end
+
     @user = User.new(params[:user])
     @user.verified = false
     @user.verification_token = SecureRandom.urlsafe_base64
@@ -70,7 +77,6 @@ class UsersController < ApplicationController
   	else
       flash[:error] = "Unable to create your account. Please try again."
       redirect_to root_path
-
     end
       
   end
