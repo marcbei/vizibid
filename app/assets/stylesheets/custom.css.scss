@@ -38,6 +38,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+a {
+  color: #0091AE;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -406,4 +410,18 @@ div.CarouselBox {
   background-image: url('teaser4.png');
   width: 960px;
   height: 462px;
+}
+
+/* signed-in tab navigation & sorting buttons */
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  background-color: #0091AE;
+}
+
+/* buttons */
+
+.btn-info {
+  background-color: #0091AE;
+  background-image: linear-gradient(to bottom, #0091AE, #0091AE);
+  border: none;
 }

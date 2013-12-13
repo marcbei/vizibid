@@ -54,7 +54,14 @@
   background-color: #f5f5f5;
 }
 .bs-docs-sidenav > li.active > a:hover {
-  background-color: #0088CC;
+  background-color: #0091AE;
+}
+.bs-docs-sidenav > li.active > a {
+  background-color: #0091AE;
+  color: white;
+}
+.bs-docs-sidenav > li > a {
+  color: #0091AE;
 }
 .bs-docs-sidenav a:hover .icon-chevron-right {
   opacity: .5;
@@ -160,6 +167,13 @@ body div#content .row.try-it-button.mid-page {
   padding-bottom: 0;
   margin-left: auto;
   margin-right: auto;
+}
+
+body div#content .row.try-it-button .btn-info {
+  background-color: #0091AE;
+  background-image: linear-gradient(to bottom, #0091AE, #0091AE);
+  border: none;
+  font-size: 12px;
 }
 
 body div.backgroundtexture {
