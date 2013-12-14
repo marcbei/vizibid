@@ -63,12 +63,10 @@ module FormHelper
 		http.use_ssl = true
 		http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
-		## enable this do do virus scan
-		#request.basic_auth("d50cff87d2414c70b312461bac787dfd", "sYMTxSJP3")
-		#response = http.request(request)
-		#parsed_response = JSON.parse(response.body)
-		status = "clean" #parsed_response["status"]
-		## end
+		request.basic_auth("a338e7711ee249a181e8a11eda6d2e6e", "dvDvURuHy")
+		response = http.request(request)
+		parsed_response = JSON.parse(response.body)
+		status = parsed_response["status"]
 
 		if status == "clean"
 			logger.debug "clean file"
@@ -94,7 +92,7 @@ module FormHelper
         # scan the form for viruses
         if virus_scan(@form) != true
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to share_path
+            redirect_to root_path
         end
 
         # opt in the user to following their own form
@@ -122,7 +120,7 @@ module FormHelper
         # scan the form for viruses
         if virus_scan(@form) != true
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to share_path
+            redirect_to root_path
         end
 
         # opt in the user to following their own form
