@@ -6,7 +6,7 @@
   <body>
     <p>
       Hello,<br/><br/>
-      <%= @currentuser.name %> has shared the attached Vizibid document with you.
+      <%= @currentuser.name %> shared the attached document with you on <a href="http://www.vizibid.com">vizibid.com</a>.
     </p>
     <% if @shared_form.description != nil %>
     <p>
@@ -14,10 +14,10 @@
     </p>
     <% end %>
     <p>
-      <%= link_to @form.description, form_url(@form) %>
+      See lawyers' comments and ratings for this document on Vizibid: <%= link_to @form.description, form_url(@form) %>
     </p>
     <p>
-      Check out <a href="www.vizibid.com">Vizibid</a>
+      Find more model legal documents for your law practice on <a href="http://www.vizibid.com">Vizibid</a>.
     </p>
     <div>
       Vizibid is not a law firm and does not provide legal advice. Using the Vizibid websites and services or sending Vizibid an email does not constitute legal advice and does not create an attorney-client relationship. Vizibid provides all websites, services, information, tools, and licenses on an "as-is" basis.

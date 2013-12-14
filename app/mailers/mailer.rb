@@ -42,10 +42,10 @@ class Mailer < ActionMailer::Base
   def user_verification_email(user, emailaddress)
     @user = user
     if !emailaddress.to_s.empty?
-      mail(:to => emailaddress, :bcc => ["marc@vizibid.com, forrest@vizibid.com"], :subject => "Vizibid Verification")
+      mail(:to => emailaddress, :bcc => ["marc@vizibid.com, forrest@vizibid.com"], :subject => "Verify Your Vizibid Account")
     else 
       @manual = true
-      mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Vizibid Verification")
+      mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Verify Your Vizibid Account")
     end
   end
 
@@ -55,7 +55,7 @@ class Mailer < ActionMailer::Base
     @formowner = formowner
     @comment = comment
 
-    mail(:to => @formowner.email, :subject => "New comment on your document")
+    mail(:to => @formowner.email, :subject => "Your Document Received a New Comment")
   end
 
   def doc_request_mail(current_user, request, requestowner, request_submission)
@@ -64,7 +64,7 @@ class Mailer < ActionMailer::Base
     @requestowner = requestowner
     @requestsubmission = request_submission
 
-    mail(:to => @requestowner.email, :subject => "New submission on your document request")
+    mail(:to => @requestowner.email, :subject => "You Received a Document in Response to Your Request")
   end
 
   def share_form_mail(user, shared_form)
@@ -81,7 +81,7 @@ class Mailer < ActionMailer::Base
     }
 
     attachments[File.basename(@form.form.to_s.split('?')[0])] =  File.read(tmpfile.path)
-    mail(:to => @shared_form.email_address, :subject => "Vizibid Form Shared With You")
+    mail(:to => @shared_form.email_address, :subject => "Document Shared with You via Vizibid")
   end
 
 end

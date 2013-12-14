@@ -1,5 +1,9 @@
-New comment received from: <%= link_to @currentuser.name, user_url(@currentuser) %> on <%= link_to @form.description, form_url(@form) %>
+Your document received a new comment from <%= @currentuser.name %>.
+
+Document: <%= @form.description %>
 
 Comment: <%= @comment.content %>
+
+View the document and all its comments at: <%= form_url(@form) %>
 
 Vizibid is not a law firm and does not provide legal advice. Using the Vizibid websites and services or sending Vizibid an email does not constitute legal advice and does not create an attorney-client relationship. Vizibid provides all websites, services, information, tools, and licenses on an "as-is" basis.
