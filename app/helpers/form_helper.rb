@@ -41,6 +41,11 @@ module FormHelper
 	# scan form for viruses
 	def virus_scan(form)
 
+    #don't virus scan vizibid docs
+    if @current_user.name.downcase == "vizibid"
+      return true
+    end
+
 		uri = URI.parse("https://scanii.com/api/scan/")
 		form_url = form.form.url
 		form_url = form_url.gsub('//uploads', '/vizibid-test-files/uploads')
@@ -69,12 +74,10 @@ module FormHelper
 		status = parsed_response["status"]
 
 		if status == "clean"
-			logger.debug "clean file"
 			form.approved = true
 			form.save
 			return true
 		else
-			logger.debug "dangerous file"
 			Mailer.delay.upload_failed_virus_scan_email(current_user, form)
 			return false
 		end
