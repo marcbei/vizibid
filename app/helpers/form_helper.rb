@@ -41,8 +41,8 @@ module FormHelper
 	# scan form for viruses
 	def virus_scan(form)
 
-    #don't virus scan vizibid docs
-    if @current_user.name.downcase == "vizibid"
+    #don't virus scan vizibid or forrest's docs
+    if @current_user.id == 1 || @current_user.id == 2
       return true
     end
 
