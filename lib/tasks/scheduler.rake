@@ -7,8 +7,7 @@ task :call_page => :environment do
    uri = URI.parse('http://vizibid.com/')
    
    http = Net::HTTP.new(uri.host, uri.port)
-   http.use_ssl = true
-   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+   http.use_ssl = false
 
    request = Net::HTTP::Get.new(uri.request_uri)
    res = http.request(request)
