@@ -4,7 +4,7 @@ require "uri"
 desc "This task is called by the Heroku cron add-on"
 task :call_page => :environment do
    
-   uri = URI.parse('https://vizibid-dev.herokuapp.com/')
+   uri = URI.parse('http://vizibid.com/')
    
    http = Net::HTTP.new(uri.host, uri.port)
    http.use_ssl = true
