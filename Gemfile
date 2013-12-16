@@ -43,6 +43,7 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem 'carrierwave_direct'
 
 gem 'font-awesome-rails'
 
