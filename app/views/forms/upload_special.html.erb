@@ -5,7 +5,7 @@
         <%= form_for @f, :html => {:multipart => true} do |f| %>
           <div class="field">
 
-            Descriptive Title
+            Descriptive Title*
             <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :description, :size => "10x10"%>
             
@@ -27,6 +27,9 @@
             <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :keywords, :size => "10x5"%>
             <%= f.file_field :form, :style => "Display: inline;" %>
+          <div>
+            * Required Field
+          </div><br />
           <div >
             <%= f.submit "Submit", :class => "btn btn-info"%>
           </div>
