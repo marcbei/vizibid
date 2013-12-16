@@ -15,7 +15,7 @@
       <%= fields_for @newform do |nf| %>
         <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
         <div class="field">
-        Descriptive Title
+        Descriptive Title*
         <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
         <%= nf.text_area :description, :size => "10x2"%>
         Jurisdiction
@@ -31,6 +31,9 @@
       <% end %>
     </div>
         </p>
+    <div>
+      * Required Field
+    </div><br />
     <p>
       <div class="btn-group">
         <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>

@@ -6,11 +6,11 @@
     <div class = "row">
       <div class = "span6">
         <h3>Upload</h3><br />
-        <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
+        <p style="line-height: 1em;"><strong>REMEMBER:</strong> Remove all confidential, privileged, and private data before uploading.</p>
         <%= form_for @form_to_upload, :html => {:multipart => true} do |f| %>
           <div class="field">
 
-            Descriptive Title
+            Descriptive Title*
             <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :description, :size => "10x10"%>
             
@@ -24,11 +24,14 @@
             <div class = "jurisdropdown">
               <%= f.select :jurisdiction, options_for_select(us_states)%>
             </div>
-              Keywords
-              <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
-              <%= f.text_area :keywords, :size => "10x5"%>
-                    </div>
-              <%= f.file_field :form, :style => "Display: inline;" %>
+            Keywords
+            <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
+            <%= f.text_area :keywords, :size => "10x5"%>
+          </div>
+          <%= f.file_field :form, :style => "Display: inline;" %>
+          <div>
+            * Required Field
+          </div><br />
           <div >
             <%= f.submit "Submit", :class => "btn btn-info"%>
             <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>

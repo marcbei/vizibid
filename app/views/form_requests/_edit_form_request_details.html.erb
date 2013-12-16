@@ -1,9 +1,9 @@
 <%= form_for @form_request do |fr| %>
-    Brief Description
+    Brief Description*
     <u><a href="#" rel="tooltip" data-placement="right" title="Briefly describe the document you want."><i class="icon-question-sign"></i></a></u>
     <%= fr.text_field :name%>
     
-    Additional Details
+    Additional Details*
     <u><a href="#" rel="tooltip" data-placement="right" title="Provide any additional details that will help others understand your request."><i class="icon-question-sign"></i></a></u>
     <%= fr.text_area :description, :size => "10x10"%>
     
@@ -21,6 +21,9 @@
         <%= fr.check_box :anonymous, :style=>"display: inline;" %>
         <%= fr.label :'Make Request Anonymously', :style=>"display: inline;" %>
         <u><a href="#" rel="tooltip" data-placement="right" style="display: inline;" title="If this box is checked, your name will not be revealed in connection with your request. This box is checked by default."><i class="icon-question-sign"></i></a></u>
+    </div>
+    <div>
+        * Required Fields
     </div>
     <br/><br/>
     <%= fr.submit "Submit", :class => "btn  btn-success"%>
