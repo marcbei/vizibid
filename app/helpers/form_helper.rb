@@ -43,6 +43,8 @@ module FormHelper
 
     #don't virus scan vizibid or forrest's docs
     if @current_user.id == 1 || @current_user.id == 2
+      form.approved = true
+      form.save
       return true
     end
 
