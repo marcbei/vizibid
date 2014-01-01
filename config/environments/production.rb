@@ -32,6 +32,8 @@ Vizibid::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
 
+  GA.tracker = "UA-46783563-1"
+
   # See everything in the log (default is :info)
   # config.log_level = :debug
 

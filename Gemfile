@@ -57,6 +57,7 @@ gem 'nokogiri'
 gem 'client_side_validations'
 gem 'database_cleaner'
 gem 'json'
+gem 'google-analytics-rails'
 
 #gem "ruby-filemagic", "~> 0.4.2"
 
