@@ -4,6 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
+    <%= image_tag attachments['logo.png'].url, height: '30', width: '115' %>
     <p>
       Your document received a new comment from <%= link_to @currentuser.name, user_url(@currentuser) %>.<br /><br />
     </p>

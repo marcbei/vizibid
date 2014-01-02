@@ -13,6 +13,7 @@ class Mailer < ActionMailer::Base
   def upload_failed_virus_scan_email(user, form)
     @user = user
     @form = form
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
 
     mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Attempted upload failed virus scan")
   end
@@ -22,6 +23,7 @@ class Mailer < ActionMailer::Base
   	@user = user
   	@form = form
     @reason = reason
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
 
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Inappropriate document reported")
   end
@@ -31,17 +33,22 @@ class Mailer < ActionMailer::Base
     @user = user
     @request = request
     @reason = reason
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
     
     mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "Inappropriate request reported")
   end
 
   def password_reset(user)
     @user = user
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
+
     mail(:to => user.email, :subject => "Password Reset")
   end
 
   def user_verification_email(user, emailaddress)
     @user = user
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
+
     if !emailaddress.to_s.empty?
       mail(:to => emailaddress, :bcc => ["marc@vizibid.com, forrest@vizibid.com"], :subject => "Verify Your Vizibid Account")
     else 
@@ -55,6 +62,7 @@ class Mailer < ActionMailer::Base
     @form = rootform
     @formowner = formowner
     @comment = comment
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
 
     mail(:to => @formowner.email, :subject => "Your Document Received a New Comment")
   end
@@ -64,6 +72,7 @@ class Mailer < ActionMailer::Base
     @request = request
     @requestowner = requestowner
     @requestsubmission = request_submission
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
 
     mail(:to => @requestowner.email, :subject => "You Received a Document in Response to Your Request")
   end
@@ -71,6 +80,7 @@ class Mailer < ActionMailer::Base
   def share_form_mail(user, shared_form)
     @shared_form = shared_form
     @currentuser = user
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
     @form = Form.find(shared_form.form_id)
     tmpfile = nil
 
