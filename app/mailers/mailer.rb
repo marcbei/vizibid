@@ -5,7 +5,7 @@ class Mailer < ActionMailer::Base
   	@user = user
   	@subject = subject
   	@message = message
-    attachments.inline['logo.png'] = File.read("#{Rails.root}/assets/logo_230x.png")
+    attachments.inline['logo.png'] = File.read(Vizibid::Application.assets.find_asset('logo_230x60.png').pathname.to_s)
 
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "New Feedback Received")
   end
