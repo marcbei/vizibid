@@ -5,7 +5,7 @@ class Mailer < ActionMailer::Base
   	@user = user
   	@subject = subject
   	@message = message
-    attachments.inline['logo.png'] = File.read("#{Rails.root}/assets/images/logo_230x60.png")
+    attachments.inline['logo.png'] = File.read(asset_path("logo_230x60.png"))
 
   	mail(:to => "marc@vizibid.com, forrest@vizibid.com", :subject => "New Feedback Received")
   end
