@@ -1,4 +1,4 @@
-<% provide(:title, 'Form Details')%>
+<% provide(:title, 'Document Details')%>
 
 <div class = "container-fluid">
 	<%= render 'forms/search'%>
@@ -29,7 +29,7 @@
 				<% if !@form.average_rating.nan? %>
 					<%= @form.average_rating.round(2) %>
 				<% else %>
-					Document has no ratings.<br/>
+					This document has not been rated yet.<br/>
 				<% end %>
 			</div>
 			<% if @form.user.id != current_user.id && document_downloaded && @pemitted_user == true %>

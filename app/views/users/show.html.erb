@@ -8,30 +8,30 @@
 			</div>
 		<% else %>
 		<% if @show_edit == true %>
-			<%= link_to "Edit what appears on your profile", settings_path("profile") %>
+			<%= link_to "Edit what appears on your profile.", settings_path("profile") %>
 			<br/><br/>
 		<% end %> 
-		<b><%= @user.name %></b>, Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %>
+		<h3><%= @user.name %></h3>Vizibid member since <%= @user.created_at.strftime("%B %d, %Y") %><br />
 		<br/>
-		Licensed in <%= @user.state_licensed %>
+		<strong>Licensed in:</strong> <%= @user.state_licensed %>
 		<br/>
 		<% if @user.user_detail.show_email == true %>
-			Email: <%= mail_to @user.email%>
+			<strong>Email:</strong> <%= mail_to @user.email%>
 			<br/>
 		<% end %>
 		<% if !@user.user_detail.website.nil? && @user.user_detail.show_website == true %>
-			Website: <%= link_to @user.user_detail.website, url_with_protocol(@user.user_detail.website), :target => "_blank" %><br/>
+			<strong>Website:</strong> <%= link_to @user.user_detail.website, url_with_protocol(@user.user_detail.website), :target => "_blank" %><br/>
 		<% end %>
 		<% if !@user.user_detail.location.nil? && @user.user_detail.show_location == true  %>
-			Location: <%= @user.user_detail.location %><br/>
+			<strong>Location:</strong> <%= @user.user_detail.location %><br/>
 		<% end %>
 
 		<% if !@user.user_detail.practice_area.nil?&& @user.user_detail.show_practice_area == true  %>
-			Practice Area: <%= @user.user_detail.practice_area %><br/><br/>
+			<strong>Practice Areas:</strong> <%= @user.user_detail.practice_area %><br/><br/>
 		<% end %>
 
 		<% if !@user.user_detail.bio.nil? && @user.user_detail.show_bio == true  %>
-			Bio: <%= @user.user_detail.bio %><br/>
+			<strong>Bio:</strong> <%= @user.user_detail.bio %><br/>
 		<% end %>
 		<br/>
 

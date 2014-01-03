@@ -1,7 +1,7 @@
 <% if !@form.average_rating.nan? %>
 	<% @rating = @form.average_rating.round(2).to_s %>
 <% else %>
-	<% @rating = "Document has no ratings." %>
+	<% @rating = "This document has not been rated yet." %>
 <% end %>
 
 $('.averagerating').replaceWith("<div class=\"averagerating\" style=\"Display: inline;\"> <%= escape_javascript(@rating) %> </div>");
