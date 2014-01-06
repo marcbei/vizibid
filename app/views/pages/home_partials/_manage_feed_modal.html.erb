@@ -1,6 +1,6 @@
 <div id="manageFeedModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class = "well" style = "height: 500px; overflow:scroll;">
-		Select the practice areas for which you would like to see the latest documents, comments, and requests.<br/>
+		Select the practice areas that will appear on your Community News feed. You can adjust these practice areas at any time.<br />
 		<%= form_tag practicearea_path do %>
 			<% PracticeArea.all.each_with_index do |pa,i| %>
 				<% if UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}' and practice_area_id = '#{pa.id}'"]).count == 1 %>

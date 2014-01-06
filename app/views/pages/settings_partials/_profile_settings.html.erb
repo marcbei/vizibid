@@ -1,4 +1,4 @@
-<H3>Profile</H3><br/>
+<H3>Your Profile</H3><br/>
 <%= form_for(current_user.user_detail) do |f| %>
 	<%#= render 'shared/error_messages' %>
 	<%= f.label :location %>
@@ -13,11 +13,11 @@
 		<%= f.check_box :show_website, :style => "margin-bottom: 6px;" %>
 		<%= f.label :show_website, "Show your website on your profile", :style => "display:inline;" %>
 	</div>
-	<%= f.label :practice_area, 'Practice Area' %>
+	<%= f.label :practice_area, 'Practice Area(s)' %>
 	<%= f.text_field :practice_area %>
 	<div style="margin-top: -15px;">
 		<%= f.check_box :show_practice_area, :style => "margin-bottom: 6px;" %>
-		<%= f.label :show_practice_area, "Show your practice area on your profile", :style => "display:inline;" %>
+		<%= f.label :show_practice_area, "Show your practice area(s) on your profile", :style => "display:inline;" %>
 	</div>
 	<%= f.label :bio %>
 	<%= f.text_area :bio, :size => "10x5" %>
