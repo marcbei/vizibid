@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def create
   	# create the user
 
-    if params[:AccessCode].downcase != 'lawdoc1'
+    if params[:AccessCode].downcase.strip != 'lawdoc1'
       flash[:error] = "Access code is not correct. Contact info@vizibid.com to get the access code."
       redirect_to root_path
       return
