@@ -14,6 +14,8 @@ group :development, :test do
   gem 'annotate', '2.5.0'
   gem 'rush'
   gem 'daemons'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem 'bootstrap-will_paginate'
@@ -43,6 +45,7 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
+gem 's3_direct_upload'
 
 gem 'font-awesome-rails'
 

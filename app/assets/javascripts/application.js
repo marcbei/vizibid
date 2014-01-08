@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+//= require s3_direct_upload
 
  // Sets up the stars to match the data when the page is loaded.
 $(function () {

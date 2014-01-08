@@ -51,7 +51,7 @@ class FormsController < ApplicationController
         save_request(params)
       end
     else
-      save_form(params[:form])
+      save_form(params[:form], params[:url])
     end
   end
 

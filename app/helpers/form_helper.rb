@@ -85,20 +85,22 @@ module FormHelper
 		end
 	end
 
-	def save_form(form_params)
+	def save_form(form_params, formurl=nil)
+
 
       @form = Form.new(form_params)
       @form.user_id = current_user.id
       @form.description = form_params[:description]
       @form.jurisdiction = form_params[:jurisdiction]
       @form.practice_area_id = form_params[:practice_area_id]
+      @form.form.url = formurl
 
       if @form.save
         # scan the form for viruses
-        if virus_scan(@form) != true
-            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-            redirect_to root_path
-        end
+        #if virus_scan(@form) != true
+        #    flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+        #    redirect_to root_path
+        #end
 
         # opt in the user to following their own form
         @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)

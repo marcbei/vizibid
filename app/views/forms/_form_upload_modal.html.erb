@@ -7,9 +7,21 @@
       <div class = "span6">
         <h3>Upload</h3><br />
         <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
-        <%= form_for @form_to_upload, :html => {:multipart => true} do |f| %>
-          <div class="field">
 
+        <input type="button" class="btn" id="uploadBTN" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload').click();" />
+
+      <%= s3_uploader_form id: "s3-uploader" do %>
+        <%= file_field_tag :file, multiple: true , id: "file_upload", style: "display: none;"%>
+      <% end %>
+      <script id="template-upload" type="text/x-tmpl">
+      <div id="file-{%=o.unique_id%}" class="upload">
+        {%=o.name%}
+        <div class="progress"><div class="bar" style="width: 0%; height: 100%;"></div></div>
+      </div>
+      </script>
+       <%= form_for @form_to_upload, :html => {:multipart => true} do |f| %>
+          <div class="field">
+            <%= hidden_field_tag :url, :id=>"url" %>
             Descriptive Title*
             <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :description, :size => "10x10"%>
@@ -37,6 +49,7 @@
             <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
           </div>
         <% end %>
+
       </div>
     </div>
   </div>
