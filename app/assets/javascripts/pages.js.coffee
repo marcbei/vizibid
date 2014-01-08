@@ -10,4 +10,4 @@ jQuery ->
 
 $(document).bind 's3_upload_complete', (e, content) ->
 	$("#url").val content.url
-	$("#uploadBTN").hide()
+	$("#uploadBTN-req").hide()

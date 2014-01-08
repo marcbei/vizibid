@@ -42,14 +42,14 @@ module FormHelper
 	def virus_scan(form)
 
     #don't virus scan vizibid or forrest's docs
-    if @current_user.id == 1 || @current_user.id == 2
+   # if @current_user.id == 1 || @current_user.id == 2
       form.approved = true
       form.save
       return true
-    end
+  #  end
 
 		uri = URI.parse("https://scanii.com/api/scan/")
-		form_url = form.form.url
+		form_url = URI.escape(form.url)
 		form_url = form_url.gsub('//uploads', '/vizibid-test-files/uploads')
 		boundary = "AaB03x"
 
@@ -93,14 +93,14 @@ module FormHelper
       @form.description = form_params[:description]
       @form.jurisdiction = form_params[:jurisdiction]
       @form.practice_area_id = form_params[:practice_area_id]
-      @form.form.url = formurl
+      @form.url = formurl
 
       if @form.save
-        # scan the form for viruses
-        #if virus_scan(@form) != true
-        #    flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
-        #    redirect_to root_path
-        #end
+         #scan the form for viruses
+        if virus_scan(@form) != true
+            flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
+            redirect_to root_path
+        end
 
         # opt in the user to following their own form
         @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
@@ -114,7 +114,7 @@ module FormHelper
       end
 	end
 
-	def save_form_with_source_comment_id(form_params, source_comment_id)
+	def save_form_with_source_comment_id(form_params, source_comment_id, formurl = nil)
 
       @form = Form.new(form_params)
       @form.user_id = current_user.id
@@ -122,7 +122,8 @@ module FormHelper
       @form.jurisdiction = form_params[:jurisdiction]
       @form.sourcecomment_id = source_comment_id 
       @form.practice_area_id = form_params[:practice_area_id]
-
+      #@form.url = formurl
+      
       if @form.save
         # scan the form for viruses
         if virus_scan(@form) != true
@@ -140,7 +141,7 @@ module FormHelper
       end
 	end
 
-	def save_request(params)
+	def save_request(params, formurl=nil)
 
 	  # create a new request submission
       @request_submission = RequestSubmission.new(:form_request_id => params[:requestid], 
@@ -161,6 +162,7 @@ module FormHelper
       @form.description = params[:form][:description]
       @form.jurisdiction = params[:form][:jurisdiction]
       @form.practice_area_id = @request.practice_area_id
+      @form.url = formurl
 
       # save the form
       if @form.save

@@ -48,7 +48,7 @@ class FormsController < ApplicationController
         flash[:error] = "There was a problem with your submission. Please try again."
         redirect_to root_path
       else
-        save_request(params)
+        save_request(params, params[:urlreq])
       end
     else
       save_form(params[:form], params[:url])
@@ -99,7 +99,7 @@ class FormsController < ApplicationController
 
   def download
     @form = Form.find(params[:id])
-    @form_file_name = File.basename(@form.form.to_s.split('?')[0])
+    @form_file_name = File.basename(@form.url.to_s.split('?')[0])
     
     if @form.user.id != current_user.id
       @formdownload = FormDownload.new(:user_id => current_user.id, :form_id => @form.id)
@@ -107,7 +107,7 @@ class FormsController < ApplicationController
     end
 
     tmpfile = Tempfile.new("temp#{@form_file_name}")
-    open(@form.form.url) {|form|
+    open(URI.escape(@form.url)) {|form|
       File.open(tmpfile.path, 'wb') do |f|
         f.write form.read
       end

@@ -11,7 +11,6 @@
 #  surveys    :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  downloads  :boolean
 #
 
 class UserNotification < ActiveRecord::Base

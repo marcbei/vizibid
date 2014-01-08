@@ -3,7 +3,6 @@
 # Table name: forms
 #
 #  id               :integer          not null, primary key
-#  form             :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  user_id          :integer
@@ -15,15 +14,16 @@
 #  practice_area_id :integer
 #  origin           :string(255)
 #  seed             :boolean
+#  url              :text
 #
 
 class Form < ActiveRecord::Base
 
   require 'open-uri'
 
-  attr_accessible :form, :user_id, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practice_area_id, :origin, :seed
+  attr_accessible :url, :user_id, :description, :jurisdiction, :keywords, :sourcecomment_id, :approved, :practice_area_id, :origin, :seed
 
-  mount_uploader :form, FormsUploader
+  #mount_uploader :form, FormsUploader
 
   has_many :RequestSubmissions, dependent: :destroy
   has_many :form_requests, :through => :RequestSubmissions
@@ -45,27 +45,27 @@ class Form < ActiveRecord::Base
 
   belongs_to :practice_area
 
-  validates :form, :presence => true
+  validates :url, :presence => true
   validates :description, :presence => true
   validates :jurisdiction, :presence => true
 
-  searchable do
-    text :description, :boost => 3
-    text :keywords, :boost => 2
-    text :jurisdiction
-    text :user do
-      user.name
-    end
-    text :comments do
-      comments.map(&:content)
-    end
-    boolean :approved
+  #searchable do
+ #   text :description, :boost => 3
+ #   text :keywords, :boost => 2
+ #   text :jurisdiction
+  #  text :user do
+  #    user.name
+  #  end
+ #   text :comments do
+ #     comments.map(&:content)
+ #   end
+ #   boolean :approved
 
-    attachment :document_attachment
-  end
+ #   attachment :document_attachment
+ # end
   
   def document_attachment
-    URI.parse(form.url)
+    URI.parse(url)
   end
 
   def average_rating

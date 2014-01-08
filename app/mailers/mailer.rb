@@ -84,14 +84,14 @@ class Mailer < ActionMailer::Base
     @form = Form.find(shared_form.form_id)
     tmpfile = nil
 
-     open(@form.form.url) {|form|
+     open(URI.escape(@form.url)) {|form|
       tmpfile = Tempfile.new("temp#{@form.description}")
       File.open(tmpfile.path, 'wb') do |f| 
         f.write form.read
       end 
     }
 
-    attachments[File.basename(@form.form.to_s.split('?')[0])] =  File.read(tmpfile.path)
+    attachments[File.basename( File.basename(@form.url))] =  File.read(tmpfile.path)
     mail(:to => @shared_form.email_address, :subject => "Document Shared with You via Vizibid")
   end
 
