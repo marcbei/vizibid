@@ -80,5 +80,11 @@ $(document).ready(function() {
         event.preventDefault();
       });
 
-    
+    $('#uploadBTN').click(function(event){
+        $('#uploadBTN').hide();
+      });
+
+    $('#uploadBTN-req').click(function(event){
+        $('#uploadBTN-req').hide();
+      });
 });
