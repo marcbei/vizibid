@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     # upload the associated document
     if params[:upload] == "yes"
 
-      if save_form_with_source_comment_id(params[:form], @comment.id)
+      if save_form_with_source_comment_id(params[:form], @comment.id, params[:urlcom])
         flash[:success] = "Thank you for your comment and document!"
       else
         # destroy the comment of the form did not save

@@ -87,4 +87,9 @@ $(document).ready(function() {
     $('#uploadBTN-req').click(function(event){
         $('#uploadBTN-req').hide();
       });
+
+    $('#uploadBTN-form-comment').click(function(event){
+        $('#uploadBTN-form-comment').hide();
+      });
+
 });

@@ -28,7 +28,6 @@ Vizibid::Application.routes.draw do
   match '/share' => 'pages#share'
   match '/feedback' => 'pages#feedback'
   match '/signup' => 'users#new'
-  match '/uploadpage' => 'forms#upload_special', :via => :get
   match '/settings' => redirect('/settings/account')
   match '/settings/:path' => 'pages#settings', :as => :settings
   match '/download' =>'forms#download', :via => :get

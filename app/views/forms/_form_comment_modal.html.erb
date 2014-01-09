@@ -3,7 +3,30 @@
   <div class="well">
 
   <p>Your comment:<p>
-  <%= form_for @comment, :html => {:multipart => true}  do |f| %>
+
+<% if parent_id == -1 %>
+          <%= s3_uploader_form id: "s3-uploader-form-comment" do %>
+        <%= file_field_tag :file, multiple: true , id: "file_upload_com", style: "display: none;"%>
+      <% end %>
+      <script id="template-upload" type="text/x-tmpl">
+      <div id="file-{%=o.unique_id%}" class="upload">
+        {%=o.name%}
+        <div class="progress"><div class="bar" style="width: 0%; height: 100%;"></div></div>
+      </div>
+      </script>
+<% else %>
+          <%= s3_uploader_form id: "s3-uploader-form-commentp" do %>
+        <%= file_field_tag :file, multiple: true , id: "file_upload_comp", style: "display: none;"%>
+      <% end %>
+      <script id="template-upload" type="text/x-tmpl">
+      <div id="file-{%=o.unique_id%}" class="upload">
+        {%=o.name%}
+        <div class="progress"><div class="bar" style="width: 0%; height: 100%;"></div></div>
+      </div>
+      </script>
+<% end %>
+  <%= form_for @comment  do |f| %>
+    <%= hidden_field_tag :urlcom, :id=>"urlcom" %>
     <%= f.hidden_field :parent_id, :value => parent_id %>
     <%= f.hidden_field :form_id, :value => form_id %>
     <p>
@@ -11,6 +34,12 @@
       <%= check_box_tag :upload, 'yes', false, :class => 'upload', :style => "margin-bottom: 7px;" %>
       <%= label_tag :uploadtag, "Upload a document with your comment", :style => "Display: inline;" %>
       <div class="uploadform">
+
+<% if parent_id = -1 %>
+        <input type="button" class="btn" id="uploadBTN-form-comment" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_com').click();" />
+<% else %>
+<input type="button" class="btn" id="uploadBTN-form-comment" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_comp').click();" />
+<% end %>
 
       <%= fields_for @newform do |nf| %>
         <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
@@ -26,7 +55,6 @@
           Keywords
           <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
           <%= nf.text_area :keywords, :size => "5x2"%>
-          <%= nf.file_field :form %>
       </div>
       <% end %>
     </div>
