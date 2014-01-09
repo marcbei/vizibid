@@ -30,13 +30,13 @@
         <%= hidden_field_tag :urlreq, :id=>"urlreq" %>
         <%= fields_for @requestresponse do |rr| %>
             Comment
-            <%= rr.text_area :comment, :rows => 2 %>
+            <%= rr.text_area :comment, :rows => 2, :id=>"comm" %>
         <% end %>
         <div class = "responsedocform">
 
           Descriptive Title*
           <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
-          <%= f.text_area :description, :size => "10x2" %>
+          <%= f.text_area :description, :size => "10x2", :id => "description1" %>
           
           Jurisdiction
           <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where this document should be used. If the document is not jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
@@ -46,7 +46,7 @@
             
             Keywords
             <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
-            <%= f.text_area :keywords, :size => "10x2" %>
+            <%= f.text_area :keywords, :size => "10x2", :id => "keywords1" %>
         </div>
         <div>
             * Required Field
@@ -54,7 +54,7 @@
         <div class="actions">
           <div class="btn-group">
             <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
-            <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
+            <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id => "cancelrupload" %>
           </div>
         </div>
       <% end %>

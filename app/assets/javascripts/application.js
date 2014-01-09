@@ -92,4 +92,24 @@ $(document).ready(function() {
         $('#uploadBTN-form-comment').hide();
       });
 
+    $('.cancelupload').click(function(event){
+        $('#uploadBTN').show();
+        $('.upload').remove();
+      });
+
+    $('#cancelrupload').click(function(event){
+        $('#uploadBTN-req').show();
+        $('.upload').remove();
+      });
+
+    $('#cancelcupload').click(function(event){
+        $('#uploadBTN-form-comment').show();
+        $('.upload').remove();
+      });
+
+    $('#cancelcrupload').click(function(event){
+        $('#uploadBTN-form-commentp').show();
+        $('.upload').remove();
+      });
+
 });

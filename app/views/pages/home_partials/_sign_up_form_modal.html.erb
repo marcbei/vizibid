@@ -14,6 +14,7 @@
 			  		<%= f.password_field :password_confirmation, :placeholder => "Re-enter your password." %>
 			  		<%= text_field_tag :AccessCode, "", :placeholder => "Access Code" %>
 			  		<%= f.text_field :referrer, :placeholder => "Who referred you to Vizibid? (optional)" %>
+			  		<%= check_box_tag :TOS, "accepted", false, :style => "margin-bottom: 6px;" %>&nbsp;&nbsp;I accept the <%= link_to "Terms of Use.", terms_of_use_path %>
 			  		<br/>
 			  		<%= f.submit "Sign up for Vizibid", class: "btn btn-info pull-left" %>
 			  		<div style="margin-left: 150px;">

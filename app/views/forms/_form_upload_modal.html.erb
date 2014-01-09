@@ -24,7 +24,7 @@
             <%= hidden_field_tag :url, :id=>"url" %>
             Descriptive Title*
             <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
-            <%= f.text_area :description, :size => "10x10"%>
+            <%= f.text_area :description, :size => "10x10", :class=>"description"%>
             
             Practice Area
             <u><a href="#" rel="tooltip" data-placement="right" title="Select the practice area where this document belongs."><i class="icon-question-sign"></i></a></u>
@@ -38,14 +38,14 @@
             </div>
             Keywords
             <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
-            <%= f.text_area :keywords, :size => "10x5"%>
+            <%= f.text_area :keywords, :size => "10x5", :class=>"keywords"%>
           </div>
           <div>
             * Required Field
           </div><br />
           <div >
             <%= f.submit "Submit", :class => "btn btn-info"%>
-            <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
+            <%= f.submit :cancel, :class => "btn", :id => "cancelfupload", :'data-dismiss' => "modal" %>
           </div>
         <% end %>
 

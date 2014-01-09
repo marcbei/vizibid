@@ -38,7 +38,7 @@
 <% if parent_id = -1 %>
         <input type="button" class="btn" id="uploadBTN-form-comment" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_com').click();" />
 <% else %>
-<input type="button" class="btn" id="uploadBTN-form-comment" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_comp').click();" />
+<input type="button" class="btn" id="uploadBTN-form-commentp" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_comp').click();" />
 <% end %>
 
       <%= fields_for @newform do |nf| %>
@@ -65,7 +65,11 @@
     <p>
       <div class="btn-group">
         <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
-        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal" %>
+        <% if parent_id = -1 %>
+        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id=>"cancelcupload" %>
+        <% else %>
+        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id=>"cancelcrupload" %>
+        <% end %>
       </div>
     </p>
   <% end %>

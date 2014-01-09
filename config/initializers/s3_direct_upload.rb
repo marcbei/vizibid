@@ -1,5 +1,5 @@
 S3DirectUpload.config do |c|
-  c.access_key_id = "AKIAJM7PGSDYBRC76SFQ"       # your access key id
-  c.secret_access_key = "iNEplFVcVIQ+MVuPRr5sVUht9QPBZbPk3jjxAMVf"  # your secret access key
-  c.bucket = "test-viz"               # your bucket name
+  c.access_key_id = ENV['AWS_ACCESS_KEY']       # "AKIAJM7PGSDYBRC76SFQ"
+  c.secret_access_key = ENV['AWS_SECRET_KEY']  # your secret access key
+  c.bucket = ENV['AWS_BUCKET']               # your bucket name
 end

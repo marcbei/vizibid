@@ -48,6 +48,12 @@ class UsersController < ApplicationController
       return
     end
 
+    if params[:TOS] != "accepted"
+      flash[:error] = "You must accept the terms of service."
+      redirect_to root_path
+      return
+    end
+
     @user = User.new(params[:user])
     @user.verified = false
     @user.verification_token = SecureRandom.urlsafe_base64
