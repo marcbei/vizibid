@@ -92,7 +92,7 @@ $(document).ready(function() {
         $('#uploadBTN-form-comment').hide();
       });
 
-    $('.cancelupload').click(function(event){
+    $('#cancelfupload').click(function(event){
         $('#uploadBTN').show();
         $('.upload').remove();
       });
