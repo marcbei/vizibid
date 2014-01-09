@@ -65,7 +65,7 @@ class Form < ActiveRecord::Base
   end
   
   def document_attachment
-    URI.parse(url)
+    URI.parse(URI.escape(url))
   end
 
   def average_rating
