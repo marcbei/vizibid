@@ -81,15 +81,15 @@ $(document).ready(function() {
       });
 
     $('#uploadBTN').click(function(event){
-        $('#uploadBTN').hide();
+        $('.upload').remove();
       });
 
     $('#uploadBTN-req').click(function(event){
-        $('#uploadBTN-req').hide();
+        $('.upload').remove();
       });
 
     $('#uploadBTN-form-comment').click(function(event){
-        $('#uploadBTN-form-comment').hide();
+        $('.upload').remove();
       });
 
     $('#cancelfupload').click(function(event){
