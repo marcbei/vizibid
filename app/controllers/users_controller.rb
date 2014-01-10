@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     end
 
     if params[:TOS] != "accepted"
-      flash[:error] = "You must accept the terms of service."
+      flash[:error] = "You must accept the Terms of Use to create an account."
       redirect_to root_path
       return
     end
