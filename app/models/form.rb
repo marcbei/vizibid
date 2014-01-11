@@ -46,6 +46,7 @@ class Form < ActiveRecord::Base
   belongs_to :practice_area
 
   validates :url, :presence => true
+  validates_format_of :url, :with => URI.regexp
   validates :description, :presence => true
   validates :jurisdiction, :presence => true
 
