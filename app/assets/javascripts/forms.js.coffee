@@ -8,6 +8,7 @@ $(document).bind 's3_upload_complete', (e, content) ->
 	$("#url").val content.url
 	$("#urlcom").val content.url
 	$("#urlreq").val content.url
+	$('#statuscom').text('done');
 
 jQuery ->
   $("#s3-uploader-form-commentp").S3Uploader
@@ -19,3 +20,4 @@ $(document).bind 's3_upload_complete', (e, content) ->
 	$("#url").val content.url
 	$("#urlcom").val content.url
 	$("#urlreq").val content.url
+	$('#statuscomp').text('done');

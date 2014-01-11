@@ -9,10 +9,11 @@
         <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
 
         <input type="button" class="btn" id="uploadBTN" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload').click();" />
-
+      <label id="status"></label>
       <%= s3_uploader_form id: "s3-uploader" do %>
         <%= file_field_tag :file, multiple: true , id: "file_upload", style: "display: none;"%>
       <% end %>
+
       <script id="template-upload" type="text/x-tmpl">
       <div id="file-{%=o.unique_id%}" class="upload">
         {%=o.name%}

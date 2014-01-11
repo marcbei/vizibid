@@ -1,4 +1,4 @@
-<div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModalResponse<%=formrequest.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin: -350px 0 0 -250px;">
     <div class="well">
       <h3>Upload</h3><br />
       <strong>
@@ -12,7 +12,7 @@
       </strong>
       <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
       <input type="button" class="btn" id="uploadBTN-req" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_req').click();" />
-
+      <label id="statusr"></label>
       <%= s3_uploader_form id: "s3-uploader-req" do %>
         <%= file_field_tag :file, multiple: true , id: "file_upload_req", style: "display: none;"%>
       <% end %>

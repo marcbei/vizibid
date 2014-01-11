@@ -93,23 +93,39 @@ $(document).ready(function() {
       });
 
     $('#cancelfupload').click(function(event){
-        $('#uploadBTN').show();
+        $('#status').text('');
         $('.upload').remove();
       });
 
     $('#cancelrupload').click(function(event){
-        $('#uploadBTN-req').show();
+        $('#statusr').text('');
         $('.upload').remove();
       });
 
     $('#cancelcupload').click(function(event){
-        $('#uploadBTN-form-comment').show();
+        $('#statuscom').text('');
         $('.upload').remove();
       });
 
     $('#cancelcrupload').click(function(event){
-        $('#uploadBTN-form-commentp').show();
+        $('#statuscomp').text('');
         $('.upload').remove();
       });
 
+    $('#file_upload').change(function(event){
+        $('#status').text('uploading... please wait');
+    });    
+
+    $('#file_upload_com').change(function(event){
+        $('#statuscom').text('uploading... please wait');
+    }); 
+
+    $('#file_upload_comp').change(function(event){
+        $('#statuscomp').text('uploading... please wait');
+    }); 
+
+    $('#file_upload_req').change(function(event){
+        $('#statusr').text('uploading... please wait');
+    }); 
+    
 });

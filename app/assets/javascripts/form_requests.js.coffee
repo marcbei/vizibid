@@ -12,3 +12,4 @@ $(document).bind 's3_upload_complete', (e, content) ->
 	$("#url").val content.url
 	$("#urlcom").val content.url
 	$("#urlreq").val content.url
+	$('#statusr').text('done');

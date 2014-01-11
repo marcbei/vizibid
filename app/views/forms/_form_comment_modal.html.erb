@@ -5,6 +5,7 @@
   <p>Your comment:<p>
 
 <% if parent_id == -1 %>
+<label id="statuscom"></label>
           <%= s3_uploader_form id: "s3-uploader-form-comment" do %>
         <%= file_field_tag :file, multiple: true , id: "file_upload_com", style: "display: none;"%>
       <% end %>
@@ -14,6 +15,7 @@
       </div>
       </script>
 <% else %>
+<label id="statuscomp"></label>
           <%= s3_uploader_form id: "s3-uploader-form-commentp" do %>
         <%= file_field_tag :file, multiple: true , id: "file_upload_comp", style: "display: none;"%>
       <% end %>
