@@ -35,8 +35,14 @@
 
           Descriptive Title*
           <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
-          <%= f.text_area :description, :size => "10x2", :id => "description1" %>
           
+          <%= f.text_area :description, :size => "10x2", :id => "description1" %>
+          Practice Area
+          <u><a href="#" rel="tooltip" data-placement="right" title="Select the practice area where this document belongs."><i class="icon-question-sign"></i></a></u>
+          <div>
+            <%= f.select :practice_area_id, options_for_select(practice_areas)%>
+          </div>
+
           Jurisdiction
           <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where this document should be used. If the document is not jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
           <div class = "jurisdropdown">

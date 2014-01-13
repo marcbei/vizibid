@@ -161,7 +161,7 @@ module FormHelper
       @form.user_id = current_user.id
       @form.description = params[:form][:description]
       @form.jurisdiction = params[:form][:jurisdiction]
-      @form.practice_area_id = @request.practice_area_id
+      @form.practice_area_id = params[:form][:practice_area_id]
       @form.url = formurl
 
       # save the form
