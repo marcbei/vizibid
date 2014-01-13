@@ -26,7 +26,7 @@
             <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
             <%= f.text_area :description, :size => "10x10", :class=>"description"%>
             
-            Practice Area
+            Practice Area*
             <u><a href="#" rel="tooltip" data-placement="right" title="Select the practice area where this document belongs."><i class="icon-question-sign"></i></a></u>
             <div>
               <%= f.select :practice_area_id, options_for_select(practice_areas)%>
@@ -41,7 +41,7 @@
             <%= f.text_area :keywords, :size => "10x5", :class=>"keywords"%>
           </div>
           <div>
-            * Required Field
+            * Required Fields
           </div><br />
           <div >
             <%= f.submit "Submit", :id=>"fsubmit", :class => "btn btn-info disabled"%>

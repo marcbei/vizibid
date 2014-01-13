@@ -34,7 +34,7 @@
         Descriptive Title*
         <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
         <%= nf.text_area :description, :size => "10x2"%>
-        Practice Area
+        Practice Area*
           <u><a href="#" rel="tooltip" data-placement="right" title="Select the practice area where this document belongs."><i class="icon-question-sign"></i></a></u>
           <div>
             <%= nf.select :practice_area_id, options_for_select(practice_areas)%>
@@ -49,13 +49,13 @@
           <%= nf.text_area :keywords, :size => "5x2"%>
 
       </div>
+      <div>
+        * Required Fields
+      </div>
       <% end %>
     </div>
     <% end %>
         </p>
-    <div>
-      * Required Field
-    </div><br />
     <p>
       <div class="btn-group">
         <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
