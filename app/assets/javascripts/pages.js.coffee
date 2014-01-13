@@ -10,5 +10,7 @@ jQuery ->
 $(document).bind 's3_upload_complete', (e, content) ->
 	$("#urlcom").val content.url
 	$('#status').text('done');
+	$('#fsubmit').removeClass('disabled');
+	$('#fsubmit').unbind('click');
 
 	

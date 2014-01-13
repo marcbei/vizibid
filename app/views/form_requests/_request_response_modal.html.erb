@@ -58,7 +58,7 @@
           </div><br />
         <div class="actions">
           <div class="btn-group">
-            <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
+            <%= f.submit "Submit", :id=>"rsubmit", :class => "btn btn-info disabled", :style => "margin-right:5px;" %>
             <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id => "cancelrupload" %>
           </div>
         </div>

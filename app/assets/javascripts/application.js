@@ -76,8 +76,8 @@ $(document).ready(function() {
         $('.follow-button-following').css("color", "white");
     });
 
-    $('.disabled').click(function(event){
-        event.preventDefault();
+   $('.disabled').click(function(event){
+        return false;
       });
 
     $('#uploadBTN').click(function(event){
