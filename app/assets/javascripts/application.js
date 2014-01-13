@@ -60,9 +60,9 @@ $(document).ready(function() {
     });
 
     $('.uploadform').hide();
-    $('.upload').attr('checked', false);
+    $('.uploadd').attr('checked', false);
 
-    $('.upload').click (function() {
+    $('.uploadd').click (function() {
        $('.uploadform').toggle();
     })
 

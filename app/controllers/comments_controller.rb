@@ -39,6 +39,8 @@ class CommentsController < ApplicationController
         # destroy the comment of the form did not save
         @comment.destroy
         flash[:error] = "Sorry, we are unable to save your comment."
+        redirect_to form_path(params[:comment][:form_id])
+        return
       end
     end
 

@@ -1,4 +1,4 @@
-<div id="myModalComment<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="myModalComment<%=parent_id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin: -350px 0 0 -250px;">
   
   <div class="well">
 
@@ -14,16 +14,6 @@
         {%=o.name%}
       </div>
       </script>
-<% else %>
-<label id="statuscomp"></label>
-          <%= s3_uploader_form id: "s3-uploader-form-commentp" do %>
-        <%= file_field_tag :file, multiple: true , id: "file_upload_comp", style: "display: none;"%>
-      <% end %>
-      <script id="template-upload" type="text/x-tmpl">
-      <div id="file-{%=o.unique_id%}" class="upload">
-        {%=o.name%}
-      </div>
-      </script>
 <% end %>
   <%= form_for @comment  do |f| %>
     <%= hidden_field_tag :urlcom, :id=>"urlcom" %>
@@ -31,15 +21,12 @@
     <%= f.hidden_field :form_id, :value => form_id %>
     <p>
       <%= f.text_area :content, :rows => 2 %>
-      <%= check_box_tag :upload, 'yes', false, :class => 'upload', :style => "margin-bottom: 7px;" %>
+<% if parent_id == -1 %>
+      <%= check_box_tag :upload, 'yes', false, :class => 'uploadd', :style => "margin-bottom: 7px;" %>
       <%= label_tag :uploadtag, "Upload a document with your comment", :style => "Display: inline;" %>
       <div class="uploadform">
 
-<% if parent_id = -1 %>
         <input type="button" class="btn" id="uploadBTN-form-comment" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_com').click();" />
-<% else %>
-<input type="button" class="btn" id="uploadBTN-form-commentp" style="margin-bottom: 10px;" value="Choose File to Upload" onclick="document.getElementById('file_upload_comp').click();" />
-<% end %>
 
       <%= fields_for @newform do |nf| %>
         <p style="line-height: 1em;">REMEMBER: Remove all confidential, privileged, and private data before uploading.</p>
@@ -47,6 +34,11 @@
         Descriptive Title*
         <u><a href="#" rel="tooltip" data-placement="right" title="Enter a title that describes the document you are uploading."><i class="icon-question-sign"></i></a></u>
         <%= nf.text_area :description, :size => "10x2"%>
+        Practice Area
+          <u><a href="#" rel="tooltip" data-placement="right" title="Select the practice area where this document belongs."><i class="icon-question-sign"></i></a></u>
+          <div>
+            <%= nf.select :practice_area_id, options_for_select(practice_areas)%>
+          </div>
         Jurisdiction
         <u><a href="#" rel="tooltip" data-placement="right" title="Select the jurisdiction where this document should be used. If the document is not jurisdiction-specific, select &quot;Any.&quot;"><i class="icon-question-sign"></i></a></u>
         <div class = "jurisdropdown">
@@ -55,9 +47,11 @@
           Keywords
           <u><a href="#" rel="tooltip" data-placement="right" title="List any helpful words or phrases that others might use in searching for this document. Separate each word or phrase with a comma or semi-colon."><i class="icon-question-sign"></i></a></u>
           <%= nf.text_area :keywords, :size => "5x2"%>
+
       </div>
       <% end %>
     </div>
+    <% end %>
         </p>
     <div>
       * Required Field
@@ -65,11 +59,7 @@
     <p>
       <div class="btn-group">
         <%= f.submit "Submit", :class => "btn btn-info", :style => "margin-right:5px;" %>
-        <% if parent_id = -1 %>
         <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id=>"cancelcupload" %>
-        <% else %>
-        <%= f.submit :cancel, :class => "btn", :'data-dismiss' => "modal", :id=>"cancelcrupload" %>
-        <% end %>
       </div>
     </p>
   <% end %>
