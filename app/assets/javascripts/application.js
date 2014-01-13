@@ -64,6 +64,18 @@ $(document).ready(function() {
 
     $('.uploadd').click (function() {
        $('.uploadform').toggle();
+
+        if($('.uploadd').is(':checked')){
+            $('#csubmit').addClass('disabled');
+            $('#csubmit').click(function(event){
+                return false;
+            });
+        }
+        else
+        {
+            $('#csubmit').removeClass('disabled');
+            $('#csubmit').unbind('click');
+        }   
     })
 
     $('div').delegate("a.follow-button-following", "mouseover" ,function(){

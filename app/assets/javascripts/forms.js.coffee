@@ -9,3 +9,5 @@ $(document).bind 's3_upload_complete', (e, content) ->
 	$("#urlcom").val content.url
 	$("#urlreq").val content.url
 	$('#statuscom').text('done');
+	$('#csubmit').removeClass('disabled');
+	$('#csubmit').unbind('click');
