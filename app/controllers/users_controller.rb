@@ -138,9 +138,9 @@ class UsersController < ApplicationController
               @user.password_confirmation = params[:user][:newpassword_confirmation]
               @user.save
               sign_in(User.find(@user.id))
-              flash[:success] = "Updated password"
+              flash[:success] = "Your password has been changed."
           else
-            flash[:error] = "Unable to update password"
+            flash[:error] = "We were unable to update your password. Please try again."
           end
         end
 
