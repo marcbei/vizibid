@@ -10,7 +10,7 @@
 					<%= f.label "State where you are licensed:", :class => "pull-left" %>
 					<%= f.select :state_licensed, options_for_select(options_for_state_licensed) %>
 					<%= f.text_field :bar_number, :placeholder => "Your state bar ID number" %>
-					<%= f.password_field :password, :placeholder => "Choose a password." %>
+					<%= f.password_field :password, :placeholder => "Choose a password of at least 6 characters, including at least 1 number." %>
 			  		<%= f.password_field :password_confirmation, :placeholder => "Re-enter your password." %>
 			  		<%= text_field_tag :AccessCode, "", :placeholder => "Access Code" %>
 			  		<%= f.text_field :referrer, :placeholder => "Who referred you to Vizibid? (optional)" %>
