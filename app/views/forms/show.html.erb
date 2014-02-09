@@ -12,7 +12,7 @@
 
 			<div style="margin-top: -7px;">
 				<% name = @form.user.name.gsub(' ', '_') %>
-				uploaded by <%=link_to @user, usershow_path(URI.escape(name.downcase)) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
+				uploaded by <%=link_to @user, usershow_path(name.downcase) %> <%= time_ago_in_words(@form.created_at) %> ago<br/>
 				downloaded <%= @form.downloads.count %> times
 			</div>
 
