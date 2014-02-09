@@ -45,7 +45,7 @@ Vizibid::Application.routes.draw do
   match '/approveresponse/:id' => 'form_requests#approveresponse', :via => :get, :as => :approveresponse
   match '/share/:id' => 'shared_forms#create', :via => :post, :as => :share
 
-  match ':name' => 'users#show', :requirements => { :name => /.*/ }, :as => :usershow
+  match ':name' => 'users#show', :as => :usershow
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
