@@ -29,7 +29,7 @@ class PagesController < ApplicationController
           @subscribedforms = Array.new
           UserPracticeArea.find(:all, :conditions => ["user_id = '#{current_user.id}'"]).each{|pa| @subscribedforms = @subscribedforms + pa.practice_area.forms}
           
-          @items = (@subscribedformrequests + @subscribedforms).sort_by(&:created_at).reverse
+          @items = ((@subscribedformrequests + @subscribedforms).sort_by(&:created_at).reverse).first(30)
 
         end
 
