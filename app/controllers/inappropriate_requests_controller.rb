@@ -24,7 +24,7 @@ class InappropriateRequestsController < ApplicationController
 			flash[:success] = "Thank your for your report!"
 			Mailer.delay.inappropriate_request_email(@user, @request, @inappropriate_request.reason)
 		else
-			flash[:error] = "Sorry, we did mot receive your report."
+			flash[:error] = "Sorry, we did not receive your report."
 		end
 
 		redirect_to form_request_path(params[:requestid])
