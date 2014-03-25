@@ -107,7 +107,7 @@ class FormsController < ApplicationController
     end
 
     tmpfile = Tempfile.new("temp#{@form.id}")
-    open(URI.escape(@form.url)) {|form|
+    open(CGI.escape(@form.url)) {|form|
       File.open(tmpfile.path, 'wb') do |f|
         f.write form.read
       end
