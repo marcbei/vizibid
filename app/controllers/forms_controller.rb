@@ -106,6 +106,9 @@ class FormsController < ApplicationController
       @formdownload.save
     end
 
+    puts "Download: " + @form.url
+    puts URI.escape(@form.url)
+
     tmpfile = Tempfile.new("temp#{@form.id}")
     open(URI.escape(@form.url)) {|form|
       File.open(tmpfile.path, 'wb') do |f|
