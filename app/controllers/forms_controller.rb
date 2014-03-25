@@ -106,7 +106,7 @@ class FormsController < ApplicationController
       @formdownload.save
     end
 
-    tmpfile = Tempfile.new("temp#{@form_file_name}")
+    tmpfile = Tempfile.new("temp#{@form.id}")
     open(URI.escape(@form.url)) {|form|
       File.open(tmpfile.path, 'wb') do |f|
         f.write form.read
