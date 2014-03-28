@@ -95,6 +95,8 @@ module FormHelper
       @form.practice_area_id = form_params[:practice_area_id]
       @form.url = formurl
 
+      puts formurl
+
       if @form.save
          #scan the form for viruses
         if virus_scan(@form) != true
