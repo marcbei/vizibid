@@ -4,7 +4,6 @@ module FormHelper
 	require "uri"
 	require "json"
 	require 'open-uri'
-  require 'CGI'
 
 	def ratings_ballot(formid)
 		@rating = current_user.form_ratings.find_by_form_id(formid)
