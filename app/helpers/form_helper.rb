@@ -4,6 +4,7 @@ module FormHelper
 	require "uri"
 	require "json"
 	require 'open-uri'
+  require 'CGI'
 
 	def ratings_ballot(formid)
 		@rating = current_user.form_ratings.find_by_form_id(formid)
@@ -93,9 +94,12 @@ module FormHelper
       @form.description = form_params[:description]
       @form.jurisdiction = form_params[:jurisdiction]
       @form.practice_area_id = form_params[:practice_area_id]
-      @form.url = formurl
+      
+      url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
+      rem = CGI::unescape(url)
 
-      puts formurl
+      @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+
 
       if @form.save
          #scan the form for viruses
@@ -124,7 +128,11 @@ module FormHelper
       @form.jurisdiction = form_params[:jurisdiction]
       @form.sourcecomment_id = source_comment_id 
       @form.practice_area_id = form_params[:practice_area_id]
-      @form.url = formurl
+      
+      url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
+      rem = CGI::unescape(url)
+
+      @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
       
       if @form.save
         # scan the form for viruses
