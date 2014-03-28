@@ -95,10 +95,10 @@ module FormHelper
       @form.jurisdiction = form_params[:jurisdiction]
       @form.practice_area_id = form_params[:practice_area_id]
       
-      url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
-      rem = CGI::unescape(url)
+      #url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
+      #rem = CGI::unescape(url)
 
-      @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+      @form.url = formurl#"https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
 
 
       if @form.save
@@ -129,10 +129,10 @@ module FormHelper
       @form.sourcecomment_id = source_comment_id 
       @form.practice_area_id = form_params[:practice_area_id]
       
-      url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
-      rem = CGI::unescape(url)
+      #url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
+      #rem = CGI::unescape(url)
 
-      @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+      @form.url = formurl#"https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
       
       if @form.save
         # scan the form for viruses
