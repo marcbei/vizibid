@@ -116,7 +116,7 @@ class FormsController < ApplicationController
     url = @form.url.gsub(file, file_esc)
 
     tmpfile = Tempfile.new("temp#{@form.id}")
-    open(url {|form|
+    open(url) {|form|
       File.open(tmpfile.path, 'wb') do |f|
         f.write form.read
       end
