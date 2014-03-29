@@ -99,6 +99,7 @@ module FormHelper
       rem = CGI::unescape(url)
 
       @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+      puts "Upload url: " + @form.url 
 
 
       if @form.save
@@ -133,6 +134,7 @@ module FormHelper
       rem = CGI::unescape(url)
 
       @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+      puts "Upload url: " + @form.url 
       
       if @form.save
         # scan the form for viruses
@@ -172,7 +174,12 @@ module FormHelper
       @form.description = params[:form][:description]
       @form.jurisdiction = params[:form][:jurisdiction]
       @form.practice_area_id = params[:form][:practice_area_id]
-      @form.url = formurl
+      
+      url = formurl.gsub("https://s3.amazonaws.com/vizibid-production-files/uploads", "")
+      rem = CGI::unescape(url)
+
+      @form.url = "https://s3.amazonaws.com/vizibid-production-files/uploads" + rem
+      puts "Upload url: " + @form.url 
 
       # save the form
       if @form.save
