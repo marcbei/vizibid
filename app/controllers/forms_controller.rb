@@ -1,5 +1,6 @@
 class FormsController < ApplicationController
 
+  require "cgi"
   include FormHelper
   
   before_filter :signed_in_user
