@@ -109,8 +109,12 @@ class FormsController < ApplicationController
     puts "Download: " + @form.url
     puts URI.escape(@form.url)
 
+    file = @form.url.split('/')[-1]
+    file_esc = CGI::escape(file)
+    url = @form.url.gsub(file, file_esc)
+
     tmpfile = Tempfile.new("temp#{@form.id}")
-    open(URI.escape(@form.url)) {|form|
+    open(url {|form|
       File.open(tmpfile.path, 'wb') do |f|
         f.write form.read
       end
