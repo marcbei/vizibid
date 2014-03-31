@@ -113,6 +113,12 @@ module FormHelper
         @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
         @form_follow.save
 
+        User.transaction do
+          u = User.find(current_user.id)
+          u.download_allocation = u.download_allocation + 1
+          u.save!
+        end
+
         flash[:success] = "Thank you for your contribution!"
         redirect_to form_path(@form.id)
       else
@@ -141,6 +147,12 @@ module FormHelper
         if virus_scan(@form) != true
             flash[:error] = "There was a problem with your submission. It appears that the uploaded form is an unsafe document."
             redirect_to root_path
+        end
+
+        User.transaction do
+          u = User.find(current_user.id)
+          u.download_allocation = u.download_allocation + 1
+          u.save!
         end
 
         # opt in the user to following their own form
