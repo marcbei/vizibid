@@ -115,6 +115,8 @@ module FormHelper
 
         User.transaction do
           u = User.find(current_user.id)
+          u.lock!
+          u.save!
           u.download_allocation = u.download_allocation + 5
           u.save
           sign_in u
@@ -152,8 +154,9 @@ module FormHelper
 
        User.transaction do
           u = User.find(current_user.id)
+          u.lock!
+          u.save!
           u.download_allocation = u.download_allocation + 5
-          u.save
           sign_in u
         end
 
@@ -214,7 +217,7 @@ module FormHelper
           u.save
           sign_in u
         end
-        
+
   		  # opt in the user to following their own form
   		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
   		  @form_follow.save

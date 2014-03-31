@@ -130,6 +130,8 @@ class FormsController < ApplicationController
 
    User.transaction do
     u = User.find(current_user.id)
+    u.lock!
+    u.save!
     u.download_allocation = u.download_allocation - 1
     u.save
     sign_in u
