@@ -113,11 +113,12 @@ module FormHelper
         @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
         @form_follow.save
 
-        #User.transaction do
-        #  u = User.find(current_user.id)
-        #  u.download_allocation = u.download_allocation + 5
-        #  u.save
-        #end
+        User.transaction do
+          u = User.find(current_user.id)
+          u.download_allocation = u.download_allocation + 5
+          u.save
+          sign_in u
+        end
 
         flash[:success] = "Thank you for your contribution!"
         redirect_to form_path(@form.id)
@@ -149,11 +150,12 @@ module FormHelper
             redirect_to root_path
         end
 
-      # User.transaction do
-      #    u = User.find(current_user.id)
-      #    u.download_allocation = u.download_allocation + 5
-      #    u.save
-       # end
+       User.transaction do
+          u = User.find(current_user.id)
+          u.download_allocation = u.download_allocation + 5
+          u.save
+          sign_in u
+        end
 
         # opt in the user to following their own form
         @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
@@ -206,11 +208,13 @@ module FormHelper
           redirect_to form_request_path(params[:requestid])
         end
 
-      # User.transaction do
-      #    u = User.find(current_user.id)
-      #    u.download_allocation = u.download_allocation + 5
-      #    u.save
-       # end
+        User.transaction do
+          u = User.find(current_user.id)
+          u.download_allocation = u.download_allocation + 5
+          u.save
+          sign_in u
+        end
+        
   		  # opt in the user to following their own form
   		  @form_follow = FormFollow.new(:user_id => current_user.id, :form_id => @form.id)
   		  @form_follow.save

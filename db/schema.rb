@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108144053) do
+ActiveRecord::Schema.define(:version => 20140331035517) do
 
   create_table "comment_votes", :force => true do |t|
     t.integer  "comment_id"
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(:version => 20140108144053) do
     t.boolean  "verified"
     t.datetime "last_signin_at"
     t.string   "referrer"
+    t.integer  "download_allocation"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
