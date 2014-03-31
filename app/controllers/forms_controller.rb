@@ -128,11 +128,11 @@ class FormsController < ApplicationController
       end
     }
 
-   User.transaction do
-    u = User.find(current_user.id)
-    u.download_allocation = u.download_allocation - 1
-    u.save!
-   end
+   #User.transaction do
+   # u = User.find(current_user.id)
+   # u.download_allocation = u.download_allocation - 1
+   # u.save
+   #end
    
    send_file tmpfile.path, :filename =>  @form_file_name
 
