@@ -91,8 +91,12 @@ body div#content {
   box-sizing: border-box; 
 }
 
-body div#content p, body div#content h2, body div#content h3, body div#content li {
+body div#content p, body div#content li {
   font-family: bariol;
+}
+
+body div#content h2, body div#content h3 {
+  font-family: bariol-bold;
 }
 
 body div#content h2, h3 {
@@ -141,7 +145,7 @@ body div#content p:last-child {
   padding-bottom: 20px;
 }
 
-body div#content ul {
+body div#content ul, body div#content ol {
   font-size: 18px;
   line-height: 24px;
   font-weight: normal;
@@ -152,7 +156,7 @@ body div#content ul {
   margin-bottom: 0;
 }
 
-body div#content ul li {
+body div#content ul li, body div#content ol li {
   padding-top: 20px;
 }
 
