@@ -115,7 +115,7 @@ module FormHelper
 
         User.transaction do
           u = User.find(current_user.id)
-          u.download_allocation = u.download_allocation + 1
+          u.download_allocation = u.download_allocation + 5
           u.save!
         end
 
@@ -151,7 +151,7 @@ module FormHelper
 
         User.transaction do
           u = User.find(current_user.id)
-          u.download_allocation = u.download_allocation + 1
+          u.download_allocation = u.download_allocation + 5
           u.save!
         end
 
