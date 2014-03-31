@@ -103,7 +103,7 @@ class FormsController < ApplicationController
 
     @form = Form.find(params[:id])
 
-    if current_user.download_allocation <= 0
+    if current_user.download_allocation <= 0 && @form.user.id != current_user.id
       flash[:error] = "You do not have any downloads remaining. Upload a document to get 5 additional downloads."
       redirect_to form_path(params[:id])
       return
