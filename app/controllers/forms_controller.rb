@@ -103,7 +103,7 @@ class FormsController < ApplicationController
 
     @form = Form.find(params[:id])
 
-    if current_user.download_allocation <= 0 && @form.user.id != current_user.id
+    if current_user.download_allocation <= 0
       flash[:error] = "You do not have any downloads remaining. Upload a document to get 5 additional downloads."
       redirect_to form_path(params[:id])
       return
@@ -130,14 +130,16 @@ class FormsController < ApplicationController
       end
     }
 
-   User.transaction do
-    u = User.find(current_user.id)
-    u.lock!
-    u.save!
-    u.download_allocation = u.download_allocation - 1
-    u.save
-    sign_in u
-   end
+  if @form.user.id != current_user.id
+     User.transaction do
+      u = User.find(current_user.id)
+      u.lock!
+      u.save!
+      u.download_allocation = u.download_allocation - 1
+      u.save
+      sign_in u
+     end
+  end
    
    send_file tmpfile.path, :filename =>  @form_file_name
 
