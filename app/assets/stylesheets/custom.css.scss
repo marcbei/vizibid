@@ -79,6 +79,29 @@ h3 {
   margin-left: 30px;
 }
 
+body div#content.faq ul, body div#content.faq ol {
+  line-height: 1em;
+  padding-top: 4px;
+  padding-left: 40px;
+}
+
+body div#content.faq ul li, body div#content.faq ol li {
+  line-height: 1em;
+  padding-top: 8px;
+}
+
+body div#content.faq ul.faqlist {
+  list-style: none;
+  line-height: 1em;
+  padding-top: 15px;
+  padding-left: 0;
+}
+
+body div#content.faq ul.faqlist li {
+  line-height: 1em;
+  padding-top: 6px;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;

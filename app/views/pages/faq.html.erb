@@ -2,66 +2,129 @@
 <div class ="row backgroundtexture" style="margin-left: 0px">
 	<div id = "content" class = "span12 faq" style="background-color: white; margin-top: 30px; margin-left: 30px; margin-bottom: 30px; padding-left: 32px; padding-right: 32px">
 		<h2>Frequently Asked Questions</h2>
-		<h3><strong>Q:</strong> How much does Vizibid cost to use?</h3>
+		<ul class="faqlist">
+			<li><a href="#whatis">What is Vizibid?</a></li>
+			<li><a href="#purpose">What is Vizibid's purpose?</a></li>
+			<li><a href="#creators">Who created Vizibid?</a></li>
+			<li><a href="#cost">How much does Vizibid cost?</a></li>
+			<li><a href="#accesscode">I received an access code to create an account. Where do I use it?</a></li>
+			<li><a href="#howverify">How does Vizibid verify that I am a licensed attorney?</a></li>
+			<li><a href="#noconfirmation">I tried to create an account, but I have not received a confirmation email from you yet. What now?</a></li>
+			<li><a href="#blanksignup">I tried to create an account, but the sign-up form is just a bunch of blank text boxes. What do I do?</a></li>
+			<li><a href="#browserupgrade">How do I upgrade my browser for a better Vizibid experience?</a></li>
+			<li><a href="#docsources">Where does Vizibid get the model documents in its library?</a></li>
+			<li><a href="#donatecollection">I too would like to donate my entire collection of legal documents to Vizibid. Can I do that?</a></li>
+			<li><a href="#downloadlimit">Is there a limit to how many documents I can download?</a></li>
+			<li><a href="#virusscan">Does Vizibid scan uploaded documents for computer viruses?</a></li>
+			<li><a href="#https">When I connect to vizibid.com, why does my address bar show "https" instead of "http"?</a></li>
+			<li><a href="#notalawyer">I'm not a lawyer. Can I create a Vizibid account?</a></li>
+			<li><a href="#howtocontact">How do I contact Vizibid?</a></li>
+			<li><a href="#vizibidmeaning">What does the word "Vizibid" mean?</a></li>
+		</ul>
+		<a id="whatis"></a>
+		<h3>What is Vizibid?</h3>
 		<p>
-			<strong>A:</strong> Vizibid is currently available for free, and we collect no payment information from you to sign up. Eventually a paid subscription will be required to access Vizibid. At that time, you will be prompted to provide payment information to keep your account active.
+			Vizibid is a lawyers-only community for sharing model legal documents in the cloud. Vizibid uses the latest in cloud technology to archive the shared documents and shared knowledge of practitioners in an easily searchable community library.
+		</p>
+		<a id="purpose"></a>
+		<h3>What is Vizibid's purpose?</h3>
+		<p>
+			Vizibid's purpose is to increase access to legal services for all people. Vizibid strives toward this goal by empowering attorneys to share collective knowledge within the legal profession, to build professional relationships with each other, and to provide better, more cost-effective services for their clients.
+		</p>
+		<a id="creators"></a>
+		<h3>Who created Vizibid?</h3>
+		<p>
+			Vizibid was cofounded by software engineer <a href="https://twitter.com/MBeitchman" target="_blank">Marc Beitchman</a> and lawyer <a href="https://twitter.com/forrest_carlson" target="_blank">Forrest Carlson</a>.
+		</p>
+		<a id="cost"></a>
+		<h3>How much does Vizibid cost?</h3>
+		<p>
+			Vizibid is currently available for free, and we collect no payment information from you to sign up. Eventually a paid subscription may be required to access Vizibid. At that time, you will be prompted to provide payment information to keep your account active.
 		</p>
 		<% if !signed_in? %>
 			<div class="row try-it-button mid-page">
 				<a data-toggle="modal" href="#signupModal" class="btn btn-info">TRY IT FREE</a>
 			</div>
 		<% end %>
-		<h3><strong>Q:</strong> I received an access code to create an account. Can I share the code with other lawyers?</h3>
+		<a id="accesscode"></a>
+		<h3>I received an access code to create an account. Where do I use it?</h3>
 		<p>
-			<strong>A:</strong> Yes. Feel free to share your access code with any lawyer you know. Vizibid's document library and community content will only improve with the number of great lawyers who join.
+			Access codes are no longer required to create a Vizibid account, so you won't need it at all.
 		</p>
-		<h3><strong>Q:</strong> I do not have an access code, but I would like one. How do I get an access code?</h3>
+		<a id="howverify"></a>
+		<h3>How does Vizibid verify that I am a licensed attorney?</h3>
 		<p>
-			<strong>A:</strong> To get an access code, request one in an email to <a href="mailto:info@vizibid.com">info@vizibid.com</a>.
+			We use one of a variety of methods to confirm that you are who you claim to be and that you are currently licensed to practice law. These methods can include:
 		</p>
-		
-		<h3><strong>Q:</strong> I tried to sign up, but the sign-up form is just a bunch of blank text boxes. What do I do?</h3>
+		<ol>
+			<li>Sending a confirmation email to your email address in your bar association's lawyer directory; OR</li>
+			<li>Calling your phone number listed in your bar association's lawyer directory; OR</li>
+			<li>Sending a confirmation code by regular mail to your physical address listed in your bar association's lawyer directory; OR</li>
+			<li>Confirming that the email address you provided to Vizibid matches an email address listed with a reliable independent source other than a bar association, such as your publicly filed court records.</li>
+		</ol>
+		<a id="noconfirmation"></a>
+		<h3>I tried to create an account, but I have not received a confirmation email from you yet. What now?</h3>
 		<p>
-			<strong>A:</strong> The short answer is that you should upgrade your browser. (See the next question and answer for how to upgrade your browser.)
+			The first thing you should do is check your email at the email address you have listed in the lawyer directory of your state bar association. Although you may have signed up for Vizibid under a different email address, we will often attempt to verify your identity by sending a confirmation email to your bar-listed email address.
+		</p>
+		<p>
+			When you sign up for a Vizibid account, you immediately start our process of confirming your identity and verifying your license to practice law. For some jurisdictions, this process is automated and can take as little as a few minutes. However, in some cases the process will take longer because one of our staff has to perform the verification steps. To make this process as smooth as possible, we recommend that you keep your email address and phone number up-to-date in the lawyer directory of your state bar association.
+		</p>
+		<p>
+			If it has been more than 24 hours since you attempted to create a Vizibid account and you still have not heard from us, then let us know by sending an email to <a href="mailto:support@vizibid.com">support@vizibid.com</a>.
+		</p>
+		<a id="blanksignup"></a>
+		<h3>I tried to create an account, but the sign-up form is just a bunch of blank text boxes. What do I do?</h3>
+		<p>
+			The short answer is that you should <a href="#browserupgrade">upgrade your browser</a>.
 		</p>
 		<p>
 			Now for the long answer for those who are tech-curious: Vizibid's user experience design is built using the latest in web standards (currently <a href="http://en.wikipedia.org/wiki/HTML5" target="_blank">HTML5</a> and <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS3</a>). The latest standards are not fully supported in browsers that have not recently been updated. In older web browsers many modern websites will not look right, and interactive parts of modern web pages will often not operate as the designers intended. This means menus might not open when clicked, text may not be displayed, images may appear out of place or not at all, videos won't play, etc. The good news is that newer browsers are fully compatible with the latest web standards. (There is a helpful visualization of browser version capabilities at <a href="http://html5readiness.com/" target="_blank">html5readiness.com</a>.) Upgrading your web browser is free and could immensely improve your experience of the Internet. If nothing else, upgrading will probably improve your experience of Vizibid.
 		</p>
-		<h3><strong>Q:</strong> How do I upgrade my browser?</h3>
+		<a id="browserupgrade"></a>
+		<h3>How do I upgrade my browser for a better Vizibid experience?</h3>
 		<p>
-			<strong>A:</strong> Visit the website for the browser you prefer to use and download the latest version for free. Here are links to four major browsers: <a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a>, <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Chrome</a>, <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">Internet Explorer</a>, and <a href="http://support.apple.com/downloads/#safari" target="_blank">Safari</a>.
+			Visit the website for the browser you prefer to use and download the latest version for free. Here are links to four major browsers: <a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">Firefox</a>, <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Chrome</a>, <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">Internet Explorer</a>, and <a href="http://support.apple.com/downloads/#safari" target="_blank">Safari</a>.
 		</p>
-		<h3><strong>Q:</strong> Where does Vizibid get the model documents in its library?</h3>
+		<a id="docsources"></a>
+		<h3>Where does Vizibid get the model documents in its library?</h3>
 		<p>
-			<strong>A:</strong> Primarily, Vizibid's document library is built up from the documents that lawyers like you share. Because of this, Vizibid's available documents will grow and improve as more and more lawyers join and participate. Vizibid also contributes documents of its own. Vizibid's contributions are documents that were donated to Vizibid by experienced lawyers. You can identify these donated documents because they are uploaded by a user named "Vizibid." 
+			Primarily, Vizibid's document library is built up from the documents that lawyers like you share. Because of this, Vizibid's available documents will grow and improve as more and more lawyers join and participate. Vizibid also contributes documents of its own. Vizibid's contributions are documents that were donated to Vizibid by experienced lawyers. You can identify these donated documents because they are uploaded by a user named "Vizibid." 
 		</p>
-		<h3><strong>Q:</strong> I too would like to donate my entire collection of legal documents to Vizibid. Can I do that?</h3>
+		<a id="donatecollection"></a>
+		<h3>I too would like to donate my entire collection of legal documents to Vizibid. Can I do that?</h3>
 		<p>
-			<strong>A:</strong> We would love to hear from you. Send us an email at <a href="mailto:info@vizibid.com">info@vizibid.com</a> and let us know.
+			We would love to hear from you. Send us an email at <a href="mailto:info@vizibid.com">info@vizibid.com</a> and let us know.
 		</p>
-		<h3><strong>Q:</strong> Does Vizibid scan uploaded documents for computer viruses?</h3>
+		<a id="downloadlimit"></a>
+		<h3>Is there a limit to how many documents I can download?</h3>
 		<p>
-			<strong>A:</strong> Yes. All files that you and other lawyers upload to Vizibid are scanned using a third-party virus scanner, <a href="https://scanii.com/" target="_blank">Scanii</a> by Uva Software, LLC, before they are added to the community document library.
+			Yes. When you create a Vizibid account, you will be able to download five documents. You will get five more downloads every time you upload a document of your own to share. This means that you will continue to have unlimited downloads as long as you continue to give one document for every five you download.
 		</p>
-		<h3><strong>Q:</strong> When I connect to vizibid.com, my address bar shows "https" instead of "http." Why?</h3>
+		<a id="virusscan"></a>
+		<h3>Does Vizibid scan uploaded documents for computer viruses?</h3>
 		<p>
-			<strong>A:</strong> Every time you connect to vizibid.com, you connect over Hypertext Transfer Protocol Secure (HTTPS), which is a communications protocol for secure communications over a computer network. Vizibid uses HTTPS to help secure the information you send and receive while using vizibid.com. To learn more about HTTPS, read the entry on <a href="http://en.wikipedia.org/wiki/HTTP_Secure" target="_blank"> HTTP Secure</a> on Wikipedia.
+			Yes. All files that you and other lawyers upload to Vizibid are scanned using a third-party virus scanner, <a href="https://scanii.com/" target="_blank">Scanii</a> by Uva Software, LLC, before they are added to the community document library.
 		</p>
-		<h3><strong>Q:</strong> I'm not a lawyer. Can I create a Vizibid account?</h3>
+		<a id="https"></a>
+		<h3>When I connect to vizibid.com, why does my address bar show "https" instead of "http"?</h3>
 		<p>
-			<strong>A:</strong> Only lawyers can create an account on Vizibid. Lawyers with accounts will someday be able to create limited subordinate accounts for their non-lawyer employees.
+			Every time you connect to vizibid.com, you connect over Hypertext Transfer Protocol Secure (HTTPS), which is a communications protocol for secure communications over a computer network. Vizibid uses HTTPS to help secure the information you send and receive while using vizibid.com. To learn more about HTTPS, read the entry on <a href="http://en.wikipedia.org/wiki/HTTP_Secure" target="_blank"> HTTP Secure</a> on Wikipedia.
 		</p>
-		<h3><strong>Q:</strong> How do I contact Vizibid?</h3>
+		<a id="notalawyer"></a>
+		<h3>I'm not a lawyer. Can I create a Vizibid account?</h3>
 		<p>
-			<strong>A:</strong> For general inquiries, send us an email at <a href="mailto:info@vizibid.com">info@vizibid.com</a>. For technical support issues, email us at <a href="mailto:support@vizibid.com">support@vizibid.com</a>. Send any suggestions to <a href="mailto:suggestions@vizibid.com">suggestions@vizibid.com</a>. Also, visit our <%= link_to "support page", support_path %>.
+			No. Only lawyers can create an account on Vizibid. Lawyers with accounts will someday be able to create limited subordinate accounts for their non-lawyer employees.
 		</p>
-		<h3><strong>Q:</strong> What does the word "Vizibid" mean?</h3>
+		<a id="howtocontact"></a>
+		<h3>How do I contact Vizibid?</h3>
 		<p>
-			<strong>A:</strong> "Vizibid" is a made-up word, a combination of the abbreviations <em>viz.</em> and <em>ibid.</em>, which are sometimes seen in legal writing.
+			For general inquiries, send us an email at <a href="mailto:info@vizibid.com">info@vizibid.com</a>. For technical support issues, email us at <a href="mailto:support@vizibid.com">support@vizibid.com</a>. Send any suggestions to <a href="mailto:suggestions@vizibid.com">suggestions@vizibid.com</a>. Also, visit our <%= link_to "support page", support_path %>.
 		</p>
-		<h3><strong>Q:</strong> Who created Vizibid?</h3>
+		<a id="vizibidmeaning"></a>
+		<h3>What does the word "Vizibid" mean?</h3>
 		<p>
-			<strong>A:</strong> Vizibid was co-founded by software engineer <a href="https://twitter.com/MBeitchman" target="_blank">Marc Beitchman</a> and lawyer <a href="https://twitter.com/forrest_carlson" target="_blank">Forrest Carlson</a>.
+			"Vizibid" is a made-up word, a combination of the abbreviations <em>viz.</em> and <em>ibid.</em>, which are sometimes seen in legal writing.
 		</p>
 	</div>
 </div>
