@@ -14,6 +14,7 @@
 
 </div>
 
-<div class= "span4" style="margin-top: 25px; font-size: 13px;">  Your feedback is valuable!&nbsp;
-  <a style = "color: green;" data-toggle="modal" href="#feedbackmodal" >Send us a suggestion.</a>
+<div class= "span4" style="margin-top: 25px; font-size: 13px;">  
+  You have <%= pluralize(current_user.download_allocation, 'download') %>  left. <br/>Upload a document to get 5 more download credits.
+  <br/>
 </div>

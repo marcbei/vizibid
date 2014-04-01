@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     @user.verified = false
     @user.verification_token = SecureRandom.urlsafe_base64
     @user.verification_token_sent_at = Time.zone.now
+    @user.download_allocation = 5
 
   	if @user.save
       # create the default user details and notifications
