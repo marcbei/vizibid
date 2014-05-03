@@ -86,9 +86,8 @@ class UsersController < ApplicationController
     # verify the user
     @user = User.find_by_verification_token(params[:id])
     
-    if @user.verification_token_sent_at < 24.hours.ago
-      flash[:error] = "It has been over 24 hours since you signed up. Please try again."
-      @user.destroy
+    if @user.nil?
+      flash[:error] = "No user account found. Please sign up to create an account."
     else
       @user.verified = true
       @user.save
