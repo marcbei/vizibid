@@ -7,14 +7,13 @@ class SharedFormsController < ApplicationController
 
 		# charge a download if they are sending themselves a document which they didnt upload
 		if params[:Email].downcase == current_user.email.downncase && @f.user.id != current_user.id
-			    User.transaction do
-			      u = User.find(current_user.id)
-			      u.lock!
-			      u.save!
-			      u.download_allocation = u.download_allocation - 1
-			      u.save
-			      sign_in u
-			    end
+		    User.transaction do
+		      u = User.find(current_user.id)
+		      u.lock!
+		      u.save!
+		      u.download_allocation = u.download_allocation - 1
+		      u.save
+		      sign_in u
 		    end
 		end
 
