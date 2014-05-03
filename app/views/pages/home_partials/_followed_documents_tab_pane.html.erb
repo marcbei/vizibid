@@ -7,8 +7,8 @@
             <img src="assets/doc-15x15.png"/>
             <%= link_to f.form.description, form_path(f.form) %>
             <div style="font-size: 12px;">
-              Requested <%= time_ago_in_words(f.form.created_at) %> 
-              for
+              Uploaded <%= time_ago_in_words(f.form.created_at) %> 
+              ago for
               <% if f.form.jurisdiction == "Any" %>
                 any jurisdiction
               <% else %>
