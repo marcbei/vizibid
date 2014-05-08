@@ -28,7 +28,7 @@
         <%= hidden_field_tag :requestid, formrequest.id %>
         <%= hidden_field_tag :urlreq, :id=>"urlreq" %>
         <%= fields_for @requestresponse do |rr| %>
-            Comment
+            Comment*
             <%= rr.text_area :comment, :rows => 2, :id=>"comm" %>
         <% end %>
         <div class = "responsedocform">
