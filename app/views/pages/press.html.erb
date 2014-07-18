@@ -1,0 +1,22 @@
+<% provide(:title, 'Press') %>
+<div class ="row backgroundtexture" style="margin-left: 0px">
+	<div id = "content" class = "span12" style="background-color: white; margin-top: 30px; margin-left: 30px; margin-bottom: 30px; padding-left: 32px; padding-right: 32px">
+		<h2>Vizibid in the News</h2>
+		<p>
+			If you are a member of the press interested in learning more about Vizibid, please contact <a href="mailto:info@vizibid.com">info@vizibid.com</a>.
+		</p>
+		<p>
+			<a href="http://jurispage.com/2014/law-tech-startups/vizibid-a-platform-for-attorneys-to-share-documents/" target="_blank">Vizibid – A Platform for Attorneys to Share Documents</a><br />
+			JurisPage - July 16, 2014
+		</p>
+		<p>
+			<a href="http://nwlawyer.wsba.org/nwlawyer/july_august_2014#pg56" target="_blank">Serving Up Software; 9 Legal Technology Companies You Should Know</a><br />
+			NWLawyer - July-August 2014
+		</p>
+	</div>
+</div>
+
+<% if !signed_in? %>
+	<%= render 'pages/home_partials/sign_up_form_modal' %>
+	<%= render 'password_resets/reset_pw_modal' %>
+<% end %>

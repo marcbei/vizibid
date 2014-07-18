@@ -64,6 +64,12 @@ class PagesController < ApplicationController
       @user = User.new
     end
   end
+  
+  def press
+    if !signed_in?
+      @user = User.new
+    end
+  end
 
   def support
     if !signed_in?
